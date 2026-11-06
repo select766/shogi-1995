@@ -4,6 +4,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
@@ -68,11 +69,16 @@ def main():
         raise ValueError('model hash differs')
     if report['identity']['model_code_sha256'] != digest(ROOT / 'src/shogi1995/halfkp_network.py'):
         raise ValueError('model implementation changed since training')
+    if report['identity']['feature_code_sha256'] != digest(ROOT / 'src/shogi1995/halfkp_features.py'):
+        raise ValueError('feature implementation changed since training')
+    os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
     torch.set_num_threads(4)
     torch.set_float32_matmul_precision('highest')
     torch.use_deterministic_algorithms(True)
     model = HalfKPNetwork(report['width'], report['hidden'], report['quantization_aware'])
     model.load_state_dict(torch.load(args.model / 'best.pt', map_location='cpu', weights_only=True))
+    if not torch.equal(model.material_cp, torch.from_numpy(material_initial_weights())):
+        raise ValueError('checkpoint material buffer differs from guest baseline')
     with tempfile.TemporaryDirectory() as folder:
         exported = Path(folder) / 'model.bin'
         export(model, exported)
