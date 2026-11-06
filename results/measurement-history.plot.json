@@ -1,12 +1,13 @@
 {
-  "input_sha256": "54c6b814c77ebcd1bc2f76a4822dcc81a616fecf661d831589f1c0b12c89df93",
+  "input_sha256": "2896f6e4ae5b2615fa64b037ae4dcf2b704b3a41d458460bf61408455fadaae4",
   "plotter_sha256": "05387c91a35e5e9a910f5c6cbfc1b3e741197058e1addee6b0655645c840806f",
   "matplotlib": "3.9.2",
   "backend": "86box",
   "include_subsets": false,
   "groups": [
     "33ccaf2e75e7",
-    "24625c57c23a"
+    "24625c57c23a",
+    "86a9670dafa6"
   ],
   "points": [
     {
@@ -78,6 +79,26 @@
       "wilson95_upper_percent": "31.55744368384819",
       "source_commit": "06219a9480c5fbfd46de1cbe167ba4de4cea37e6",
       "result_sha256": "c365a1b3261480a8737a1e99047ad510465483a71ac412c0fe74a9e6a05b1c61"
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T082823212819Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T08:28:23.212819+00:00",
+      "accuracy_percent": "37.890625",
+      "wilson95_lower_percent": "32.16847629418709",
+      "wilson95_upper_percent": "43.970820228626984",
+      "source_commit": "e2c242e69638e55c83fdfd56c50378783785bfcb",
+      "result_sha256": "427018c0767ec6da16b61ddfee98dea1ce9222ed4aa790bfa4c4a8543200225d"
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-v1-usi-20261106T083113855561Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T08:31:13.855561+00:00",
+      "accuracy_percent": "37.890625",
+      "wilson95_lower_percent": "32.16847629418709",
+      "wilson95_upper_percent": "43.970820228626984",
+      "source_commit": "4b79ba5cde5e5e7feff1f126be563cdc1a1d48de",
+      "result_sha256": "0c3fd8d818adb891923a4534bd88fa43f74d4ff9f0921a32d00fbb1d35bc873d"
     }
   ],
   "excluded_run_ids": [
@@ -112,8 +133,17 @@
     "halfkp-linear-v2-usi-20261106T071340731403Z-003-candidate",
     "material-v1-20261106T072451072756Z-003-baseline",
     "halfkp-nnue-w8-h0-v1-20261106T074028789368Z-halfkp-nnue-w8-h0-v1-native-nodes10000-quick256",
-    "halfkp-nnue-w8-h0-addsub-v1-20261106T074825015401Z-halfkp-nnue-w8-h0-addsub-v1-native-nodes10000-quick256"
+    "halfkp-nnue-w8-h0-addsub-v1-20261106T074825015401Z-halfkp-nnue-w8-h0-addsub-v1-native-nodes10000-quick256",
+    "halfkp-nnue-w8-h0-v1-usi-20261106T081210681800Z-000-baseline",
+    "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T081451444537Z-000-candidate",
+    "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T081729517057Z-001-candidate",
+    "halfkp-nnue-w8-h0-v1-usi-20261106T082013336003Z-001-baseline",
+    "halfkp-nnue-w8-h0-v1-usi-20261106T082258939609Z-002-baseline",
+    "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T082538882788Z-002-candidate",
+    "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T082823212819Z-003-candidate",
+    "halfkp-nnue-w8-h0-v1-usi-20261106T083113855561Z-003-baseline",
+    "halfkp-nnue-w8-h0-output32-v1-20261106T083440601464Z-halfkp-nnue-w8-h0-output32-v1-native-nodes10000-quick256"
   ],
-  "svg_sha256": "c454c9a54aeb626c851c2f4d2774f6d5945ff0cc33934cd7ede82457dab358dc",
-  "png_sha256": "52f9cb22c3f548996f450ecc177b371f626c3ab6e81d6aacd9fa0c6d0e527e48"
+  "svg_sha256": "e1fa21a2736f1f43260043105b37cb70620edac1543b2c302b77fa466859c49a",
+  "png_sha256": "a6a72a650e0998b0f95b0921c3b5ac59381af0b953058492bedaae6ff3760570"
 }

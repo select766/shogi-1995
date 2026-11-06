@@ -1,0 +1,17 @@
+{
+  "purpose": "same-model Pentium bounded int32 output accumulation comparison; not primary strength",
+  "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+  "dataset_sha256": "60f527d8c3aa9c1ae74c9ba34d9dfadef7cc02f5d4318673c9932f80af1689c8",
+  "positions": 256,
+  "nodes": 10000,
+  "block_size": 64,
+  "order": "AB/BA alternating; one VM at a time",
+  "baseline": "manifests/halfkp-nnue-w8-h0-addsub-v1-candidate.json",
+  "candidate": "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+  "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+  "output": ".local/evaluation/halfkp-nnue-output32-speed-v1",
+  "start_condition": "All guest parity checks and other heavy jobs must be terminal before timing starts",
+  "required_evidence": "zero operational errors; all 256 bestmoves, final node counts and completed depths equal; median host-time saving with paired bootstrap 95% interval",
+  "speedup_supported_if": "paired bootstrap lower limit of median time saved is greater than zero; inspect per-block observations for drift",
+  "selection_scope": "Arithmetic speed evidence only. Select model strength using normal 2000ms full development and independent test."
+}
