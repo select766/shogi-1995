@@ -66,6 +66,10 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 
 `scripts/validate-halfkp-nnue.py`は、選択checkpointから全重みを再出力してバイト一致を確認し、学習時と同じ独立validationの全局面について整数化後のloss・評価値誤差を測る。整数演算はTorchのforwardから独立したCPU int64参照を使い、持ち駒等の視点別の半CP値も差し引くまで保持する。2層・3層の256局面で盤面からの整数参照との一致を確認した。本学習済みモデルの検証は学習完了後に実施する。通常は収束していないモデルを拒否し、小規模な動作確認だけ明示的に許可できる。
 
+合成重みの幅16・隠れ8を32 MiBのPentiumゲストに載せ、通常USIでの自動ロードと16局面の独立整数参照との一致を確認した。NetworkDelay類も引き続き設定でき、空きRAMは10,473,472 bytes、swap 0だった。[実ゲスト検証](../results/2026-11-06/halfkp-nnue-w16-h8-guest-operational-v1.json)、[検証専用manifest](../manifests/halfkp-nnue-w16-h8-operational-v1.json)。重みは4,013,068 bytes。これは3層構造の動作・収容確認であり、棋力候補ではない。
+
+短い学習結果に全件量子化検証器を通したところ、非QATの2層版は97局面で正常に完了した。一方、QATの3層版は97局面中1局面で浮動小数点forwardと独立整数推論が1 CPずれ、検証が失敗した。[非QAT](../results/2026-11-06/halfkp-nnue-float-quantization-smoke.json)、[QATの失敗記録](../results/2026-11-06/halfkp-nnue-qat-quantization-smoke.json)。C++と独立整数参照の一致とは別の問題であり、QATの丸め境界を修正して再検証するまではQAT版を棋力候補にしない。進行中の幅8の本学習は非QATであり、この失敗による再起動は行わない。
+
 ## 線形モデルの学習結果
 
 純線形モデルは125,388係数。以下は学習・validationの診断であり、棋譜一致率や棋力の測定ではない。

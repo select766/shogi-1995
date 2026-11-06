@@ -1,0 +1,34 @@
+{
+  "id": "halfkp-nnue-w16-h8-operational-v1-usi",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "de0dc4e9ca0ed841ced359e12a7106e00d189455115427423d6bc64654550672",
+  "image_sha256": "f1a567c5618743ff07d99a3ef5e13c5996175fe132795b00e7e3aef759c316bc",
+  "source_commit": "3bd2c67318dc754f85218f99506b6e7eb06f65a5",
+  "source_tree_sha256": "c77b0216c2488a1e9e00101261d6d601e263902fffc6f73e0e206c1221b11e80",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "59425a116cd585f1f2aeb93abc9b585f67b6a7ec704f15826c8a4099639c5c99",
+  "feature_difference": "\u6a19\u6e96HalfKP\u5e4516\u30fb\u96a0\u308c8\u306e3\u5c64NN03\u5b9f\u88c5\u3001\u5408\u6210\u91cd\u307f\u306b\u3088\u308bPentium\u52d5\u4f5c\u30fbRAM\u78ba\u8a8d\u5c02\u7528\u3001\u68cb\u529b\u5019\u88dc\u3067\u306f\u306a\u3044\u3001USI\u901a\u5e38\u8d77\u52d5\u3067\u3082\u540c\u3058\u8a55\u4fa1\u30d5\u30a1\u30a4\u30eb\u3092\u81ea\u52d5\u8a2d\u5b9a",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-operational-v1/root.ext2"
+  ],
+  "model_sha256": "c7c01afde615c0f39a470f6576f7f5a517a21dd6b25b7bec010707dab5108db0",
+  "model_bytes": 4013068,
+  "model_origin": "/home/select766/shogi/shogi-1995/.local/tests/halfkp-nnue-smoke-v1/synthetic-w16-h8.bin",
+  "prepared_at_utc": "2026-11-06T07:28:22.020996+00:00",
+  "preparation_commit": "3bd2c67318dc754f85218f99506b6e7eb06f65a5",
+  "preparation_worktree_dirty": false,
+  "preparation_script_sha256": "ed7b987cfe632a67edd3468d9995e49f3397207a0b30b8d1f2167c29c668518d",
+  "parent_manifest_sha256": "2ad1e6e0e7ed85736316215f2b0b1cc5435e78ca939587e2b46db97239e8e375",
+  "configured_guest_options": {
+    "EvalFile": "/eval/model.bin"
+  }
+}
