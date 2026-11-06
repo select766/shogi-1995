@@ -45,14 +45,18 @@ class HalfKPNetwork(nn.Module):
             acc=(self.embedding(features).sum(dim=2)+self.bias).clamp(0,1).flatten(1)
             hidden=self.fc(acc).clamp(0,1) if self.fc is not None else acc
             return material/600+self.out(hidden).squeeze(1)
-        acc=(nn.functional.embedding(features,quantize(self.embedding.weight,128),padding_idx=INPUTS).sum(dim=2)
-             +quantize(self.bias,128)).clamp(0,1).flatten(1)
+        # Keep exported integer scales in the forward pass. In particular,
+        # k/1200 * 600 in float32 can turn 24.5 CP into 24.499998 CP.
+        # Float64 exactly accumulates these bounded integer products; STE
+        # still supplies gradients to the original float32 parameters.
+        acc=(nn.functional.embedding(features,quantize(self.embedding.weight*128,1).double(),padding_idx=INPUTS).sum(dim=2)
+             +quantize(self.bias*128,1).double()).clamp(0,128).flatten(1)
         if self.fc is not None:
-            acc=nn.functional.linear(acc,quantize(self.fc.weight,64),quantize(self.fc.bias,8192)).clamp(0,1)
-            acc=quantize(acc,128,'positive')
-        residual=nn.functional.linear(acc,quantize(self.out.weight,1200),quantize(self.out.bias,153600)).squeeze(1)
-        residual=quantize(residual*600,1,'away')
-        return (material+residual).clamp(-12000,12000)/600
+            acc=nn.functional.linear(acc,quantize(self.fc.weight*64,1).double(),quantize(self.fc.bias*8192,1).double())
+            acc=quantize(acc/64,1,'positive').clamp(0,128)
+        raw=nn.functional.linear(acc,quantize(self.out.weight*1200,1).double(),quantize(self.out.bias*153600,1).double()).squeeze(1)
+        residual=quantize(raw/256,1,'away')
+        return ((material.double()+residual).clamp(-12000,12000)/600).float()
 
 
 def export(model,path):

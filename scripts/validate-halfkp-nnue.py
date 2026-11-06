@@ -3,6 +3,7 @@
 import argparse
 from datetime import datetime, timezone
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -67,21 +68,30 @@ def main():
             raise ValueError('validation data hash differs: ' + name)
     if digest(args.model / 'model.bin') != report['model_sha256']:
         raise ValueError('model hash differs')
-    if report['identity']['model_code_sha256'] != digest(ROOT / 'src/shogi1995/halfkp_network.py'):
-        raise ValueError('model implementation changed since training')
+    model_class, export_model = HalfKPNetwork, export
+    expected_model_source = report['identity']['model_code_sha256']
+    archived_model_source = expected_model_source != digest(ROOT / 'src/shogi1995/halfkp_network.py')
+    if archived_model_source:
+        snapshot = args.model / 'model-source.py'
+        if not snapshot.is_file() or digest(snapshot) != expected_model_source:
+            raise ValueError('matching archived model source required for older training run')
+        spec = importlib.util.spec_from_file_location('shogi1995._validation_model_' + expected_model_source, snapshot)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        model_class, export_model = module.HalfKPNetwork, module.export
     if report['identity']['feature_code_sha256'] != digest(ROOT / 'src/shogi1995/halfkp_features.py'):
         raise ValueError('feature implementation changed since training')
     os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
     torch.set_num_threads(4)
     torch.set_float32_matmul_precision('highest')
     torch.use_deterministic_algorithms(True)
-    model = HalfKPNetwork(report['width'], report['hidden'], report['quantization_aware'])
+    model = model_class(report['width'], report['hidden'], report['quantization_aware'])
     model.load_state_dict(torch.load(args.model / 'best.pt', map_location='cpu', weights_only=True))
     if not torch.equal(model.material_cp, torch.from_numpy(material_initial_weights())):
         raise ValueError('checkpoint material buffer differs from guest baseline')
     with tempfile.TemporaryDirectory() as folder:
         exported = Path(folder) / 'model.bin'
-        export(model, exported)
+        export_model(model, exported)
         if exported.read_bytes() != (args.model / 'model.bin').read_bytes():
             raise ValueError('model is not the exact selected checkpoint export')
     if not torch.cuda.is_available():
@@ -123,6 +133,7 @@ def main():
         'model_sha256': digest(args.model / 'model.bin'), 'checkpoint_sha256': digest(args.model / 'best.pt'),
         'validation_manifest_sha256': digest(args.validation / 'manifest.json'),
         'validator_sha256': digest(Path(__file__)),
+        'model_source_sha256': expected_model_source, 'archived_model_source_used': archived_model_source,
         'scope': 'export and quantization diagnostic; not move agreement or strength',
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)

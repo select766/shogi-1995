@@ -84,6 +84,7 @@ def main():
         if args.max_epochs<=first_epoch:raise ValueError('resume requires an epoch budget beyond the saved epoch')
     else:
         out.mkdir(parents=True);(out/'trainer-source.py').write_bytes(source)
+        (out/'model-source.py').write_bytes((ROOT/'src/shogi1995/halfkp_network.py').read_bytes())
         (out/'identity.json').write_text(json.dumps(identity,indent=2)+'\n')
     started=time.monotonic();train_x,train_y=datasets['train'];ntrain=len(train_x)
     report={'complete':False,'converged':False,'kind':'standard-HalfKP-clipped-residual-network','inputs':INPUTS,
