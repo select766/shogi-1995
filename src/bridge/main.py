@@ -46,31 +46,6 @@ def bios_escape():
         x.XCloseDisplay(display)
 
 
-def side_to_move(command):
-    words = command.split()
-    black = words[1] == 'startpos' or words[3] == 'b'
-    if 'moves' in words:
-        black ^= (len(words) - words.index('moves') - 1) % 2 == 1
-    return 'b' if black else 'w'
-
-
-def hard_budget(command, side, margin=.2):
-    words = command.split()
-    if 'infinite' in words or 'nodes' in words or 'depth' in words:
-        return None
-    values = {}
-    for i, word in enumerate(words[:-1]):
-        if word in ('btime', 'wtime', 'byoyomi', 'movetime', 'binc', 'winc'):
-            values[word] = max(0, int(words[i + 1]))
-    if 'movetime' in values:
-        ms = values['movetime']
-    elif side + 'time' in values:
-        ms = values[side + 'time'] + values.get('byoyomi', 0)
-    else:
-        return None
-    return max(0, ms / 1000 - margin)
-
-
 def main():
     def interrupted(signum, frame):
         raise SystemExit(128 + signum)
@@ -136,8 +111,7 @@ def main():
         ready = False
         boot_started = time.monotonic()
         next_escape = boot_started + 8
-        deadline = stop_sent = quit_sent = None
-        side = 'b'
+        stop_sent = quit_sent = None
         next_write = 0.0
 
         def send(line):
@@ -145,21 +119,16 @@ def main():
             events.write(f'{time.monotonic():.3f} > {line}\n')
 
         def command(line):
-            nonlocal side, deadline, stop_sent, quit_sent
-            if line.startswith('position '):
-                side = side_to_move(line)
+            nonlocal stop_sent, quit_sent
             if line.startswith('go ponder'):
                 raise RuntimeError('ponder is not supported by this build')
             if line.startswith('setoption name USI_Ponder') and line.endswith('true'):
                 print('info string Ponder is disabled in shogi-1995', flush=True)
                 return
             if line == 'go' or line.startswith('go '):
-                budget = hard_budget(line, side)
-                deadline = time.monotonic() + budget if budget is not None else None
                 stop_sent = None
             if line == 'stop':
                 stop_sent = time.monotonic()
-                deadline = None
             if line == 'quit':
                 quit_sent = time.monotonic()
             send(line)
@@ -176,9 +145,6 @@ def main():
                 if args.backend == '86box' and now >= next_escape:
                     bios_escape()
                     next_escape = now + 5
-            if deadline is not None and now >= deadline:
-                send('stop')
-                stop_sent, deadline = now, None
             if stop_sent is not None and now - stop_sent > 3:
                 raise RuntimeError('guest did not return bestmove after stop')
             if quit_sent is not None and now - quit_sent > 1:
@@ -230,7 +196,7 @@ def main():
                     else:
                         events.write(f'{now:.3f} < {line}\n')
                         if line.startswith('bestmove '):
-                            deadline = stop_sent = None
+                            stop_sent = None
                         if line == 'guest shell exited; restart VM to retry':
                             if quit_sent is not None:
                                 return 0

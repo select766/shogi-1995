@@ -1,0 +1,213 @@
+{
+  "backend": "86box",
+  "engine_sha256": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+  "options": {
+    "NetworkDelay": 0,
+    "NetworkDelay2": 0,
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false
+  },
+  "samples": [
+    {
+      "repeat": 0,
+      "position": "position startpos",
+      "command": "go movetime 1000",
+      "requested_ms": 1000,
+      "host_elapsed_ms": 1042.529,
+      "guest_reported_ms": 1011,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 31.529
+    },
+    {
+      "repeat": 0,
+      "position": "position startpos",
+      "command": "go btime 0 wtime 0 byoyomi 1000",
+      "requested_ms": 1000,
+      "host_elapsed_ms": 1031.418,
+      "guest_reported_ms": 1009,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 22.418
+    },
+    {
+      "repeat": 0,
+      "position": "position startpos",
+      "command": "go movetime 2000",
+      "requested_ms": 2000,
+      "host_elapsed_ms": 2026.195,
+      "guest_reported_ms": 2004,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 22.195
+    },
+    {
+      "repeat": 0,
+      "position": "position startpos",
+      "command": "go btime 0 wtime 0 byoyomi 2000",
+      "requested_ms": 2000,
+      "host_elapsed_ms": 2028.115,
+      "guest_reported_ms": 2006,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 22.115
+    },
+    {
+      "repeat": 0,
+      "position": "position startpos",
+      "command": "go movetime 5000",
+      "requested_ms": 5000,
+      "host_elapsed_ms": 5023.483,
+      "guest_reported_ms": 5003,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 20.483
+    },
+    {
+      "repeat": 0,
+      "position": "position startpos",
+      "command": "go btime 0 wtime 0 byoyomi 5000",
+      "requested_ms": 5000,
+      "host_elapsed_ms": 5029.399,
+      "guest_reported_ms": 5008,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 21.399
+    },
+    {
+      "repeat": 1,
+      "position": "position startpos moves 7g7f 3c3d",
+      "command": "go movetime 1000",
+      "requested_ms": 1000,
+      "host_elapsed_ms": 1029.296,
+      "guest_reported_ms": 1006,
+      "bridge_added_stops": 0,
+      "bestmove": "1g1f",
+      "host_minus_guest_ms": 23.296
+    },
+    {
+      "repeat": 1,
+      "position": "position startpos moves 7g7f 3c3d",
+      "command": "go btime 0 wtime 0 byoyomi 1000",
+      "requested_ms": 1000,
+      "host_elapsed_ms": 1042.828,
+      "guest_reported_ms": 1006,
+      "bridge_added_stops": 0,
+      "bestmove": "1g1f",
+      "host_minus_guest_ms": 36.828
+    },
+    {
+      "repeat": 1,
+      "position": "position startpos moves 7g7f 3c3d",
+      "command": "go movetime 2000",
+      "requested_ms": 2000,
+      "host_elapsed_ms": 2026.881,
+      "guest_reported_ms": 2003,
+      "bridge_added_stops": 0,
+      "bestmove": "8h2b+",
+      "host_minus_guest_ms": 23.881
+    },
+    {
+      "repeat": 1,
+      "position": "position startpos moves 7g7f 3c3d",
+      "command": "go btime 0 wtime 0 byoyomi 2000",
+      "requested_ms": 2000,
+      "host_elapsed_ms": 2039.384,
+      "guest_reported_ms": 2007,
+      "bridge_added_stops": 0,
+      "bestmove": "8h2b+",
+      "host_minus_guest_ms": 32.384
+    },
+    {
+      "repeat": 1,
+      "position": "position startpos moves 7g7f 3c3d",
+      "command": "go movetime 5000",
+      "requested_ms": 5000,
+      "host_elapsed_ms": 5023.491,
+      "guest_reported_ms": 5002,
+      "bridge_added_stops": 0,
+      "bestmove": "8h7g",
+      "host_minus_guest_ms": 21.491
+    },
+    {
+      "repeat": 1,
+      "position": "position startpos moves 7g7f 3c3d",
+      "command": "go btime 0 wtime 0 byoyomi 5000",
+      "requested_ms": 5000,
+      "host_elapsed_ms": 5040.551,
+      "guest_reported_ms": 5010,
+      "bridge_added_stops": 0,
+      "bestmove": "8h7g",
+      "host_minus_guest_ms": 30.551
+    },
+    {
+      "repeat": 2,
+      "position": "position startpos",
+      "command": "go movetime 1000",
+      "requested_ms": 1000,
+      "host_elapsed_ms": 1026.28,
+      "guest_reported_ms": 1004,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 22.28
+    },
+    {
+      "repeat": 2,
+      "position": "position startpos",
+      "command": "go btime 0 wtime 0 byoyomi 1000",
+      "requested_ms": 1000,
+      "host_elapsed_ms": 1031.283,
+      "guest_reported_ms": 1008,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 23.283
+    },
+    {
+      "repeat": 2,
+      "position": "position startpos",
+      "command": "go movetime 2000",
+      "requested_ms": 2000,
+      "host_elapsed_ms": 2024.242,
+      "guest_reported_ms": 2002,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 22.242
+    },
+    {
+      "repeat": 2,
+      "position": "position startpos",
+      "command": "go btime 0 wtime 0 byoyomi 2000",
+      "requested_ms": 2000,
+      "host_elapsed_ms": 2031.529,
+      "guest_reported_ms": 2009,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 22.529
+    },
+    {
+      "repeat": 2,
+      "position": "position startpos",
+      "command": "go movetime 5000",
+      "requested_ms": 5000,
+      "host_elapsed_ms": 5024.536,
+      "guest_reported_ms": 5003,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 21.536
+    },
+    {
+      "repeat": 2,
+      "position": "position startpos",
+      "command": "go btime 0 wtime 0 byoyomi 5000",
+      "requested_ms": 5000,
+      "host_elapsed_ms": 5025.796,
+      "guest_reported_ms": 5005,
+      "bridge_added_stops": 0,
+      "bestmove": "5i4h",
+      "host_minus_guest_ms": 20.796
+    }
+  ],
+  "passed": true
+}

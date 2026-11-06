@@ -85,6 +85,16 @@ def run(backend, timing_seconds):
         report['short_clock_seconds'] = time.monotonic()-start
         assert report['short_clock_seconds'] < 1.2
         send('position startpos')
+        log_path = ROOT / '.local/run/usi.log'
+        stops_before = log_path.read_text().count(' > stop\n')
+        start = time.monotonic()
+        send('go movetime 2000')
+        wait('bestmove ', 5)
+        report['movetime_2000_seconds'] = time.monotonic()-start
+        assert 1.95 <= report['movetime_2000_seconds'] <= 2.3, report
+        assert log_path.read_text().count(' > stop\n') == stops_before
+        report['bridge_added_stop_during_movetime'] = False
+        send('position startpos')
         timing_start = time.monotonic()
         first_timing_line = len(lines)
         send('go infinite')
