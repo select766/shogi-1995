@@ -4,6 +4,7 @@
 - [企画と要件](idea.md)
 - [ツール選定と実装計画](docs/implementation-plan.md)
 - [強化と棋譜一致率の評価計画](docs/strength-evaluation-plan.md)
+- [測定履歴の一覧表](docs/measurement-history.md) / [グラフ用CSV](results/measurement-history.csv)
 
 Pentium 100 MHz、RAM 32 MiBの86BoxでSlackware 3.0のLinux 1.2.13を動かし、移植したやねうら王をUSI経由で操作します。現在の評価関数は駒得評価です。
 

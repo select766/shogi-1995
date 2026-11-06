@@ -6,8 +6,11 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
+from shogi1995.provenance import source_identity
 
 def sha(path):
     h=hashlib.sha256()
@@ -17,6 +20,7 @@ def sha(path):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--name',required=True);p.add_argument('--model',required=True,type=Path)
+    p.add_argument('--feature-difference',default='変更点未記入（要追記）')
     args=p.parse_args()
     if not args.name.replace('-','').replace('_','').isalnum():raise ValueError('invalid candidate ID')
     out=ROOT/'.local/candidates'/args.name
@@ -27,12 +31,9 @@ def main():
     shutil.copy2(ROOT/'.local/guest-root/shogi',out/'shogi')
     shutil.copyfile(args.model,out/'model.bin')
     subprocess.run(['bash','scripts/build-guest-probe.sh','--engine',str(out/'root.ext2')],cwd=ROOT,check=True)
-    h=hashlib.sha256()
-    for file in sorted((ROOT/'vendor/YaneuraOu/source').rglob('*')):
-        if file.is_file():h.update(str(file.relative_to(ROOT)).encode()+bytes.fromhex(sha(file)))
-    report={'id':args.name,'complete':True,'guest_diagnostics':True,'engine_sha256':sha(out/'shogi'),'image_sha256':sha(out/'root.ext2'),
+    report={'id':args.name,'complete':True,'guest_diagnostics':True,'search_diagnostics':True,'engine_sha256':sha(out/'shogi'),'image_sha256':sha(out/'root.ext2'),
             'model_sha256':sha(out/'model.bin'),'model_bytes':(out/'model.bin').stat().st_size,
-            'source_tree_sha256':h.hexdigest(),'model_origin':str(args.model.resolve()),
+            **source_identity(),'model_origin':str(args.model.resolve()),'feature_difference':args.feature_difference,
             'engine_options':{'EvalFile':'/eval/model.bin'},
             'command':[str(ROOT/'run-shogi-1995.sh'),'--image',str(out/'root.ext2')]}
     (out/'manifest.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

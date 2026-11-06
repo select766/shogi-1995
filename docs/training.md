@@ -37,3 +37,13 @@ PSQTは`tests/psqt_parity.py`、小型ネットワークは`tests/tiny_parity.py
 差分版ではStateInfoに未クリップの加算値と移動・捕獲情報を保存し、親局面の加算値がある場合に動いた駒・持ち駒だけを更新する。自玉が動いた視点や親に計算済みの値がない場合は全特徴を再計算する。undoは前のStateInfoへ戻るため加算値も復元される。モデル切り替えには世代番号を使う。`EvalVerify=true`は各評価で差分値と全再計算値を照合し、不一致があれば終了する検証用オプション。通常運用ではfalse。
 
 初回の差分版は256局面・各10,000ノードで1,142,867回の評価を照合し、全再計算版とのbestmove・実ノード数もすべて一致した。再計算も含めたPython整数参照との512局面の一致を確認し、候補`tiny-v1-inc`として固定した。[検証結果](../results/2026-11-06/tiny-incremental-verification.json)。
+
+## 測定履歴の更新
+
+[測定履歴](measurement-history.md)と`results/measurement-history.csv`、`results/measurement-history.json`を随時更新する。今後の`evaluate-accuracy.py`は開始・終了UTC、測定器のコミット、作業ツリーの変更有無、構成の識別子を保存し、完走すると自動的に明細を`results/<JST日付>/`へコピーして履歴を更新する。`--engine-manifest`で固定した候補を指定し、`--feature-difference`に基準からの主な変更を書く。候補manifestに同じ説明がある場合は省略できる。
+
+候補作成時は、ソースをコミットしてからビルド・パッケージ化する。manifestにはソースコミットとソースツリーSHA、未コミット差分の有無を保存する。未コミット差分があるものはその事実も表示する。過去のtiny-v1は保存済みソースツリーSHAとコミットの内容を照合して対応づけた。過去のPSQT専用試作は対応するソースが当時コミットされていないため、コミットを未確定として残す。
+
+既存結果の手動登録は`scripts/update-measurements.py --result <明細JSON> --engine-manifest <manifest> --feature-difference <説明>`。旧結果には正確なUTC記録がないため、当初の出力を`--historical-output`で指定し、ファイルの更新日時から復元した概算と区別する。レコードの上書きや条件の混同を避け、同じrun IDが異なる明細を指す場合はエラーにする。
+
+グラフはCSVの`finished_at_utc`を横軸、`accuracy_percent`を縦軸にする。`comparison_group`が一致する行を同じ系列とし、Wilson区間の上下限を誤差棒に使える。レーティングはまだ測定していないため空欄。

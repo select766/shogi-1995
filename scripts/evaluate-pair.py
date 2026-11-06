@@ -28,6 +28,7 @@ def main():
     if args.block_size <= 0 or args.milliseconds <= 0:
         p.error('block size and time must be positive')
     variants = {key: json.loads(path.read_text()) for key, path in (('baseline', args.baseline), ('candidate', args.candidate))}
+    manifest_paths={'baseline':args.baseline.resolve(),'candidate':args.candidate.resolve()}
     records = [json.loads(line) for line in args.dataset.read_text().splitlines() if line.strip()]
     if not records:
         raise ValueError('empty dataset')
@@ -55,10 +56,13 @@ def main():
                            '--dataset', str(args.dataset.resolve()), '--output', str(output.resolve()),
                            '--engine-command', json.dumps(variant['command']),
                            '--engine-id', variant['id'], '--engine-sha256', variant['engine_sha256'],
+                           '--engine-manifest',str(manifest_paths[key]),
                            '--engine-options', json.dumps(variant.get('engine_options', {})),
                            '--milliseconds', str(args.milliseconds), '--offset', str(start), '--limit', str(count)]
                 if variant.get('guest_diagnostics'):
                     command.append('--guest-diagnostics')
+                if variant.get('search_diagnostics'):
+                    command.append('--search-diagnostics')
                 with output.with_suffix('.console.log').open('w') as log:
                     subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, check=True)
             result = json.loads(output.read_text())
@@ -80,10 +84,14 @@ def main():
             combined['details'] = [row for part in chunks[key] for row in part['details']]
             combined['complete'] = len(combined['details']) == len(records)
             combined['elapsed_seconds'] = sum(part['elapsed_seconds'] for part in chunks[key])
+            if chunks[key][-1].get('finished_at_utc'):
+                combined['finished_at_utc']=chunks[key][-1]['finished_at_utc']
             combined['blocks'] = [f'{i:03d}-{key}.json' for i in range(len(chunks[key]))]
             combined.update(summary(combined['details'], len(records)))
             target = args.output / (key + '.json')
             temp = target.with_suffix('.partial'); temp.write_text(json.dumps(combined, indent=2) + '\n'); temp.replace(target)
+            if combined['complete']:
+                subprocess.run([sys.executable,str(ROOT/'scripts/update-measurements.py'),'--result',str(target.resolve())],cwd=ROOT,check=True)
         print(f'completed paired block {block + 1}: {start + count}/{len(records)}', flush=True)
     subprocess.run([sys.executable, str(ROOT / 'scripts/compare-accuracy.py'),
                     str((args.output / 'baseline.json').resolve()), str((args.output / 'candidate.json').resolve()),
