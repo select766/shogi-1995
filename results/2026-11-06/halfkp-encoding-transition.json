@@ -1,0 +1,35 @@
+{
+  "transition_requested_at_utc": "2026-11-06T05:15:13.572751+00:00",
+  "reason": "verified byte-identical parallel encoder, 3.47x host throughput in fixture; preserve full 64-million-record input",
+  "previous_pid": 178831,
+  "previous_progress_at_request": {
+    "complete": false,
+    "split": "train",
+    "started_at_utc": "2026-11-06T05:03:49.248047+00:00",
+    "feature_layout": "YaneuraOu HalfKP(Friend), fe_end=1548, no DISTINGUISH_GOLDS",
+    "inputs": 125388,
+    "stride": 1548,
+    "active": 38,
+    "features_dtype": "<i4",
+    "targets_dtype": "<f4",
+    "source_index_dtype": "<u4",
+    "source_qsearch_manifest": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-v1/raw-train/manifest.json",
+    "source_qsearch_manifest_sha256": "c92aa704ea0be21bb474c9dbff7ec5df25b1679e0c47d078458fd50063742573",
+    "source_qsearch_output_sha256": "d4730b573d750ac66506b7e74db3a4d34b38b19bcf6876098359c4a639aa7721",
+    "exclusions_sha256": "5f9529a085a945858a69d0600b0ee11569d35c29f9f03b24da993ffd6a1f1570",
+    "encoder_sha256": "6a87ee77f32c6e41c73ed9e76900b6dba9958d52a48e0feba90fdc63a3bd08db",
+    "feature_code_sha256": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+    "validation_manifest_sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+    "processed": 16388096,
+    "records": 16382352,
+    "rejections": {
+      "validation_overlap": 5579,
+      "evaluation_overlap": 165
+    }
+  },
+  "previous_output_preserved": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-features-v1/train",
+  "new_data_directory": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-features-v2",
+  "source_qsearch_output_sha256": "d4730b573d750ac66506b7e74db3a4d34b38b19bcf6876098359c4a639aa7721",
+  "new_workers": 4,
+  "new_chunk_records": 65536
+}

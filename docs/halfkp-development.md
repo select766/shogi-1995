@@ -23,7 +23,9 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 
 `scripts/encode-halfkp-data.py`は変換済み末端を標準HalfKPへ符号化し、元のqsearchファイルのレコード番号も保存する。`scripts/train-halfkp-linear.py --data <trainとvalidationを含む特徴量ディレクトリ> --output <新規モデル>`で、共有したスカラー重みから双方の視点の総和の差を学習する。初期値は駒得評価と一致する重みであり、既存の学習済み重みは使わない。教師スコア/600のsigmoidに対する交差エントロピーを用い、整数推論には256倍したint32を出力する。モデルは501,568 bytes。
 
-約19 GBのtrain特徴量は、空き165 GBを確認したローカルSSDの`.local/feature-cache/halfkp-v1/train`を作業キャッシュとする。外部ディスク側の`training/halfkp-features-v1/train`はこのディレクトリへのリンク。原本・抽出レコード・qsearch結果・モデルは外部ディスクに保存し、キャッシュは固定入力とコードから再生成できる。保存先だけを変更した小規模変換で、特徴量・教師値・元インデックス・局面キーの全ハッシュが一致した。[保存先の検証](../results/2026-11-06/halfkp-ssd-cache-validation.json)。
+約19 GBのtrain特徴量は、空き165 GBを確認したローカルSSDの`.local/feature-cache/halfkp-v2/train`を作業キャッシュとする。外部ディスク側の`training/halfkp-features-v2/train`はこのディレクトリへのリンク。validationは先に確定したv1の204,662件を共有する。原本・抽出レコード・qsearch結果・モデルは外部ディスクに保存し、キャッシュは固定入力とコードから再生成できる。保存先だけを変更した小規模変換で、特徴量・教師値・元インデックス・局面キーの全ハッシュが一致した。[保存先の検証](../results/2026-11-06/halfkp-ssd-cache-validation.json)。
+
+逐次符号化の途中成果v1を保存し、`scripts/encode-halfkp-parallel.py`で4プロセス・入力順固定の符号化へ切り替えた。131,072件の実データで、逐次版と特徴量・教師値・元インデックス・局面キー・除外件数が一致し、ホスト処理時間は5.50秒から1.59秒だった。本データの先頭65,536件とも一致した。[並列化の検証](../results/2026-11-06/halfkp-parallel-encoding-validation.json)。完了後は`scripts/verify-halfkp-prefix.py`で、保存した逐次版のcheckpoint全範囲と照合してから学習する。v2は符号化処理の変更であり、64,000,000件のqsearch入力・順序・除外規則・学習条件を変更するものではない。
 
 既定の終了条件は、最低20 epoch、延べ10億局面、学習率が初期値の3%以下、直近5 epochでvalidation lossの範囲が2e-5以下かつ訓練lossの範囲が5e-5以下をすべて満たすこと。validationの改善が頭打ちになった際には学習率を段階的に下げる。100 epochの上限に達しても条件を満たさなければ`converged=false`とし、収束済みと称して評価しない。epoch末のcheckpointから明示的な`--resume`で継続できる。固定データ・コード・設定の照合とCPU/CUDA乱数・optimizer・schedulerの復元を行う。
 

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "fixture_input_records": 131072,
+  "accepted_records": 131024,
+  "features_targets_indices_and_keys_identical": true,
+  "rejection_counts_identical": true,
+  "production_prefix_raw_records": 65536,
+  "production_prefix_accepted_records": 65528,
+  "production_prefix_matches_existing_sequential_run": true,
+  "workers": 4,
+  "serial_seconds": 5.500599210001383,
+  "parallel_seconds": 1.5858869049989153,
+  "speed_ratio": 3.468468774578314,
+  "scope": "host preprocessing throughput only; no Pentium strength or speed claim"
+}
