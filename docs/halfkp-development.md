@@ -283,3 +283,11 @@ swapは全ブロックの開始・終了観測で0。3層版のホスト時間�
 [packed積和の速度比較計画](../manifests/halfkp-nnue-packed-fc-speed-execution-plan-v1.json)は、同じ幅16・隠れ8の重みを使う従来の幅固定版と追加演算版を固定した。前処理・予約済み2つの学習・整数化検証・ビルドの終了後、先に幅固定版3モデルの速度比較を済ませ、その後にquick256・10,000ノード・64局面AB/BAで比較する。対応あり95%区間の下限が正であること、全4ブロックの時間短縮率、全件の探索一致を確認して採否を決める。速度が支持された場合も、通常2秒・全developmentで保持候補と比較してから選ぶ。新しく学習する幅8・隠れ8は、別に同じ重みでの検証と速度条件を固定する。現時点ではpacked版は速度未測定・未採用。
 
 整数値と探索の検証スクリプトに`--binary`を追加し、stagingを変更せず保存済みの推論バイナリを指定できるようにした。既定値は従来どおりで、今回の全学習済みモデルの検査も通過した。新しいモデルを元の演算版に載せる際にも、パッケージに保存したバイナリを直接照合する。
+
+## 128百万件版の学習完了
+
+幅8・2層の128百万件版は2026年11月7日01:08:48 JSTに40epoch・延べ5,118,189,520局面で既定の飽和条件を満たした。所要3,748.05秒、最良checkpointは36epoch。最終学習率3e-6、直近5epochの訓練loss変動幅1.1134e-5・validation loss変動幅3.7242e-6だった。[学習manifest](../manifests/halfkp-nnue-w8-h0-128m-v1-training.json)、[全epoch履歴](../results/2026-11-07/halfkp-nnue-w8-h0-128m-v1-training-history.json)、[実行完了記録](../results/2026-11-07/halfkp-nnue-w8-h0-128m-v1-completion.json)。
+
+同日01:09:04 JSTに[全validationの整数化検証](../results/2026-11-06/halfkp-nnue-w8-h0-128m-v1-quantization.json)も通過した。最良float lossは0.55677373、整数化後は0.55686043、整数化の評価値誤差RMSEは19.8725内部単位だった。重み容量は従来と同じ2,006,300 bytes、SHAは`d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff`。checkpointの全重みからの再出力はbyte単位で一致した。これらは学習・整数化の診断であり、棋譜一致率や棋力の改善はまだ測定していない。次に固定した推論版へ載せ、整数値・探索・実ゲストの照合を行う。
+
+後続の幅8・隠れ8の初回実行は、計画で指定した`.local/feature-cache/halfkp-v2/validation`へのリンクが欠けており、入力検証で停止した。[停止記録](../results/2026-11-07/halfkp-nnue-w8-h8-prerequisite-stop-v1.json)を保存した。学習出力とログを作る前の停止で、モデルの部分学習はない。同じ固定validation（manifest SHA `e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16`）へのローカルリンクを用意し、元の計画・seed・コード・入力・出力先を維持した新しいattempt2のstateで開始した。停止したstateは上書きしていない。

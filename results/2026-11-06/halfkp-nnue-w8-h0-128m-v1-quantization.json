@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "measured_at_utc": "2026-11-06T16:09:04.487460+00:00",
+  "positions": 204662,
+  "converged": true,
+  "checkpoint_export_exact_all_weights": true,
+  "quantization_aware": false,
+  "qat_integer_score_mismatches_tolerance_0_01_cp": 0,
+  "checkpoint_forward_validation_loss": 0.5567737451146586,
+  "integer_validation_loss": 0.5568604305322618,
+  "score_quantization_rmse": 19.872527284915883,
+  "score_abs_error_p99": 53.91941570281979,
+  "score_abs_error_max": 108.66629791259766,
+  "checkpoint_forward_scores_outside_inference_clamp": 0,
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "checkpoint_sha256": "560a6e717059fc14a4c14663fe8bfd934fdbcb987833fac54216af65f3cd6fb2",
+  "validation_manifest_sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+  "validator_sha256": "8e67bb3ccb371c8a1a203692e6debd08e69471b8615a677f9cff84dd8cc57073",
+  "model_source_sha256": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023",
+  "archived_model_source_used": false,
+  "scope": "export and quantization diagnostic; not move agreement or strength"
+}

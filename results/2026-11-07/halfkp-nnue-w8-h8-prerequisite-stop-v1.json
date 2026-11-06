@@ -1,0 +1,9 @@
+{
+  "status": "stopped",
+  "pid": 441866,
+  "started_at_utc": "2026-11-06T14:37:54.718260+00:00",
+  "plan_sha256": "914d9e20f224af1afa0ce94e23a53fdcf125a862aae9512eb17f505b457f6fb5",
+  "completed_prerequisite_sha256": "b471024e314b0e4da4affb8d556400c9b78d4a136e814d77bb47d52fd68162ed",
+  "error": "[Errno 2] No such file or directory: '/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v2/validation/manifest.json'",
+  "updated_at_utc": "2026-11-06T16:09:05.647687+00:00"
+}
