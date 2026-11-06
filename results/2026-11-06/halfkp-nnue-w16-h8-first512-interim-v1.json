@@ -1,0 +1,248 @@
+{
+  "complete": false,
+  "scope": "interim completed prefix512 of planned1024; no final selection or test scoring",
+  "paired_measured_positions": 512,
+  "planned_positions": 1024,
+  "measured_at_utc": "2026-11-06T13:24:54.239998+00:00",
+  "measurement_commit": "c27dbaf88266b50bfe8737cd46c49f7ada787db9",
+  "dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "milliseconds": 2000,
+  "nodes": null,
+  "mode": "fixed_byoyomi",
+  "backend": "86box",
+  "block_inputs": [
+    {
+      "block": 0,
+      "baseline": {
+        "result_path": "results/2026-11-06/halfkp-nnue-w8-h0-output32-v1-usi-20261106T125014865433Z-000-baseline.json",
+        "result_sha256": "9936327203884b466dcaeaf7888d3ec4d7a7ae7b3bc2a140cfa11f86253737ff"
+      },
+      "candidate": {
+        "result_path": "results/2026-11-06/halfkp-nnue-w16-h8-output32-v1-usi-20261106T130125385797Z-000-candidate.json",
+        "result_sha256": "dec123fc1cc2b2c8fbce80be4cbb5a28479167aa61d6cf8859b75298b42af2a5"
+      }
+    },
+    {
+      "block": 1,
+      "baseline": {
+        "result_path": "results/2026-11-06/halfkp-nnue-w8-h0-output32-v1-usi-20261106T132346318452Z-001-baseline.json",
+        "result_sha256": "6f6012c89a26b665e5f072d95abf5f4323aee2e86bf8ecb5970eee0a283598f0"
+      },
+      "candidate": {
+        "result_path": "results/2026-11-06/halfkp-nnue-w16-h8-output32-v1-usi-20261106T131236119706Z-001-candidate.json",
+        "result_sha256": "02ce1a146c5565c8e7dcbbc6fb082665805c52e18efc2d75dbc2af940328b6a4"
+      }
+    }
+  ],
+  "baseline_completed_prefix": {
+    "total": 512,
+    "measured": 512,
+    "matches": 200,
+    "accuracy": 0.390625,
+    "wilson_95": {
+      "lower": 0.349328706683909,
+      "upper": 0.43355031925547166
+    },
+    "errors": 0,
+    "illegal_moves": 0,
+    "time_overruns": 0,
+    "resignations": 0,
+    "declarations": 0
+  },
+  "candidate_completed_prefix": {
+    "total": 512,
+    "measured": 512,
+    "matches": 192,
+    "accuracy": 0.375,
+    "wilson_95": {
+      "lower": 0.3341426983074157,
+      "upper": 0.417719045623305
+    },
+    "errors": 0,
+    "illegal_moves": 0,
+    "time_overruns": 0,
+    "resignations": 0,
+    "declarations": 0
+  },
+  "paired": {
+    "both_correct": 137,
+    "baseline_only": 63,
+    "candidate_only": 55,
+    "both_wrong": 257,
+    "difference": -0.015625,
+    "bootstrap_95": {
+      "lower": -0.056640625,
+      "upper": 0.025390625
+    },
+    "replicates": 10000,
+    "seed": 20261106,
+    "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+  },
+  "comparison_operational_pass": true,
+  "performance": {
+    "baseline": {
+      "host_ms": {
+        "count": 512,
+        "minimum": 2041.2669069992262,
+        "p10": 2045.7599847009988,
+        "median": 2051.286835998326,
+        "p90": 2061.687141695438,
+        "maximum": 2124.9150919975364
+      },
+      "nps": {
+        "count": 512,
+        "minimum": 4463.0,
+        "p10": 5353.5,
+        "median": 6681.0,
+        "p90": 8430.800000000001,
+        "maximum": 9674.0
+      },
+      "nodes": {
+        "count": 512,
+        "minimum": 9057.0,
+        "p10": 10789.0,
+        "median": 13441.5,
+        "p90": 16913.0,
+        "maximum": 19397.0
+      },
+      "depth": {
+        "count": 512,
+        "minimum": 5.0,
+        "p10": 7.0,
+        "median": 8.0,
+        "p90": 10.0,
+        "maximum": 13.0
+      },
+      "final_nps": {
+        "count": 512,
+        "minimum": 4461.0,
+        "p10": 5353.3,
+        "median": 6680.5,
+        "p90": 8427.2,
+        "maximum": 9669.0
+      },
+      "final_nodes": {
+        "count": 512,
+        "minimum": 9057.0,
+        "p10": 10789.0,
+        "median": 13441.5,
+        "p90": 16913.0,
+        "maximum": 19397.0
+      },
+      "completed_depth": {
+        "count": 512,
+        "minimum": 4.0,
+        "p10": 6.0,
+        "median": 8.0,
+        "p90": 9.0,
+        "maximum": 12.0
+      },
+      "host_minus_final_guest_ms": {
+        "count": 512,
+        "minimum": 28.41280199860921,
+        "p10": 37.275102198444074,
+        "median": 40.105025499360636,
+        "p90": 48.596068201470196,
+        "maximum": 51.80439199670218
+      }
+    },
+    "candidate": {
+      "host_ms": {
+        "count": 512,
+        "minimum": 2043.337322997104,
+        "p10": 2047.4809167979402,
+        "median": 2053.965923998476,
+        "p90": 2064.0366891020676,
+        "maximum": 2097.1586579980794
+      },
+      "nps": {
+        "count": 512,
+        "minimum": 3842.0,
+        "p10": 4688.3,
+        "median": 5513.0,
+        "p90": 6563.9,
+        "maximum": 7856.0
+      },
+      "nodes": {
+        "count": 512,
+        "minimum": 7747.0,
+        "p10": 9437.8,
+        "median": 11073.5,
+        "p90": 13205.9,
+        "maximum": 15768.0
+      },
+      "depth": {
+        "count": 512,
+        "minimum": 5.0,
+        "p10": 7.0,
+        "median": 8.0,
+        "p90": 10.0,
+        "maximum": 13.0
+      },
+      "final_nps": {
+        "count": 512,
+        "minimum": 3842.0,
+        "p10": 4678.6,
+        "median": 5511.5,
+        "p90": 6563.9,
+        "maximum": 7856.0
+      },
+      "final_nodes": {
+        "count": 512,
+        "minimum": 7747.0,
+        "p10": 9437.8,
+        "median": 11073.5,
+        "p90": 13205.9,
+        "maximum": 15768.0
+      },
+      "completed_depth": {
+        "count": 512,
+        "minimum": 4.0,
+        "p10": 6.0,
+        "median": 8.0,
+        "p90": 9.0,
+        "maximum": 12.0
+      },
+      "host_minus_final_guest_ms": {
+        "count": 512,
+        "minimum": 29.051633002236485,
+        "p10": 39.15308850249276,
+        "median": 40.38713899831055,
+        "p90": 49.231390200176975,
+        "maximum": 51.88188500225078
+      }
+    },
+    "paired_candidate_over_baseline": {
+      "nps": {
+        "count": 512,
+        "minimum": 0.6636571428571428,
+        "p10": 0.7433680932561225,
+        "median": 0.8194156199856265,
+        "p90": 0.9224592965451663,
+        "maximum": 1.1139240506329113
+      },
+      "final_nps": {
+        "count": 512,
+        "minimum": 0.6639606677338212,
+        "p10": 0.743358221120382,
+        "median": 0.8193252640039987,
+        "p90": 0.9223125815589214,
+        "maximum": 1.1139240506329113
+      },
+      "final_nodes": {
+        "count": 512,
+        "minimum": 0.664291821031633,
+        "p10": 0.7447632423323773,
+        "median": 0.819269625952939,
+        "p90": 0.9235733926595976,
+        "maximum": 1.1111744042532992
+      }
+    },
+    "scope": "Diagnostic only. nps/nodes/depth come from the last regular USI info line; final_* counters require an explicit engine diagnostic. Missing counters are not substituted. Different models can visit different trees, so NPS ratios alone do not establish arithmetic speedups."
+  },
+  "comparison_sources": {
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/statistics.py": "a101cb0590d05d6a8115c8915e182b83d9b7dfc0948896b5a285160199c3671d",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf"
+  }
+}
