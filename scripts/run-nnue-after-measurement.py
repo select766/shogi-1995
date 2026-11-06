@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Owned deferred work: wait for one live measurement, then build/test/train."""
+"""Owned deferred work: wait for planned live measurements, then build/test/train."""
 import argparse
 from datetime import datetime,timezone
 import hashlib
@@ -25,11 +25,50 @@ def process_identity(pid):
     except FileNotFoundError:return None,None
 
 
+def completed_comparisons(plan):
+    targets=plan.get('measurements')
+    if targets is None:
+        targets=[{'output':plan['measurement_output'],
+                  'identity_sha256':plan['measurement_identity_sha256']}]
+    if not targets:raise ValueError('at least one planned measurement required')
+    if len({item['output'] for item in targets})!=len(targets):
+        raise ValueError('duplicate measurement targets')
+    if not all((ROOT/item['output']/'comparison.json').exists() for item in targets):return None
+    hashes={}
+    for item in targets:
+        pair=ROOT/item['output'];completed=pair/'comparison.json'
+        comparison=json.loads(completed.read_text())
+        reports=[json.loads((pair/(key+'.json')).read_text()) for key in ['baseline','candidate']]
+        if not all(r['complete'] and r['total']==1024 and r['measured']==1024 for r in reports):
+            raise ValueError('final measurement is not complete: '+item['output'])
+        if digest(pair/'identity.json')!=item['identity_sha256']:
+            raise ValueError('measurement identity changed: '+item['output'])
+        for report in reports:
+            if (report['dataset_sha256']!=plan['dataset_sha256'] or report['sample_ids']!=plan['sample_ids']
+                    or report['backend']!='86box' or report['mode']!='fixed_byoyomi'
+                    or report['milliseconds']!=2000 or report['nodes'] is not None):
+                raise ValueError('measurement conditions differ from the planned completed run')
+        if not comparison.get('comparison_operational_pass'):
+            raise ValueError('measurement requires operational investigation: '+item['output'])
+        hashes[item['output']]=digest(completed)
+    return hashes
+
+
+def producer_gate(completed,identity,expected_start,wait_for_exit):
+    status,start=identity
+    exited=status in (None,'Z') or start!=expected_start
+    if completed is not None:
+        return not wait_for_exit or exited
+    if exited:
+        raise RuntimeError('measurement producer stopped without all complete comparisons; do not restart it automatically')
+    return False
+
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--plan',required=True,type=Path)
     p.add_argument('--state',required=True,type=Path);args=p.parse_args()
     if args.state.exists():raise ValueError('state exists; inspect previous attempt')
-    plan=json.loads(args.plan.read_text());pair=ROOT/plan['measurement_output']
+    plan=json.loads(args.plan.read_text())
     state={'status':'waiting_for_measurement','started_at_utc':datetime.now(timezone.utc).isoformat(),
            'plan_sha256':digest(args.plan),'pid':os.getpid()};child=None
     args.state.parent.mkdir(parents=True,exist_ok=True)
@@ -40,27 +79,16 @@ def main():
     save()
     try:
         while True:
-            completed=pair/'comparison.json'
-            if completed.exists():
-                try:
-                    comparison=json.loads(completed.read_text())
-                    reports=[json.loads((pair/(key+'.json')).read_text()) for key in ['baseline','candidate']]
-                except json.JSONDecodeError:
-                    time.sleep(1);continue
-                if not all(r['complete'] and r['total']==1024 and r['measured']==1024 for r in reports):
-                    raise ValueError('final measurement is not complete')
-                if digest(pair/'identity.json')!=plan['measurement_identity_sha256']:
-                    raise ValueError('measurement identity changed')
-                for report in reports:
-                    if (report['dataset_sha256']!=plan['dataset_sha256'] or report['sample_ids']!=plan['sample_ids']
-                            or report['backend']!='86box' or report['mode']!='fixed_byoyomi'
-                            or report['milliseconds']!=2000 or report['nodes'] is not None):
-                        raise ValueError('measurement conditions differ from the planned completed run')
-                if not comparison.get('comparison_operational_pass'):raise ValueError('measurement requires operational investigation')
-                state['measurement_comparison_sha256']=digest(completed);break
-            status,start=process_identity(plan['producer_pid'])
-            if status in (None,'Z') or start!=plan['producer_start_time']:
-                raise RuntimeError('measurement producer stopped without a complete comparison; do not restart it automatically')
+            try:
+                completed=completed_comparisons(plan)
+            except json.JSONDecodeError:
+                producer_gate(None,process_identity(plan['producer_pid']),plan['producer_start_time'],False)
+                time.sleep(1);continue
+            if producer_gate(completed,process_identity(plan['producer_pid']),plan['producer_start_time'],
+                             plan.get('wait_for_producer_exit',False)):
+                state['measurement_comparisons_sha256']=completed
+                if len(completed)==1:state['measurement_comparison_sha256']=next(iter(completed.values()))
+                break
             time.sleep(2)
         if source_tree_hash()!=plan['source_tree_sha256']:raise ValueError('planned engine source changed')
         for name,expected in plan['code_sha256'].items():
