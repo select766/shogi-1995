@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "gpu_resume_parameters_optimizer_scheduler_rng_and_losses_identical": true,
+  "best_export_byte_identical": true,
+  "qat_training_operational": true,
+  "root_parities": [
+    {
+      "model_sha256": "e7e38a8ae59bfd833a9e3ecc58d8b57eb035930b0762236f207973076d0a01eb",
+      "positions": 512,
+      "exact_value_matches": 512,
+      "passed": true
+    },
+    {
+      "model_sha256": "70f221e60f9e7fdad2a551b8841832ca7df58f16913f31d728c482d7a6148a44",
+      "positions": 512,
+      "exact_value_matches": 512,
+      "passed": true
+    },
+    {
+      "model_sha256": "c7c01afde615c0f39a470f6576f7f5a517a21dd6b25b7bec010707dab5108db0",
+      "positions": 512,
+      "exact_value_matches": 512,
+      "passed": true
+    },
+    {
+      "model_sha256": "e2549955bc17f9099a28c27ba5d58e0a3119dd76a63b1fa86c7e986bee411f7c",
+      "positions": 512,
+      "exact_value_matches": 512,
+      "passed": true
+    },
+    {
+      "model_sha256": "4ce3be5c5ffc4bb1258d5aa0aa3724a9f46cf7db39cedc62e804490521a71b94",
+      "positions": 512,
+      "exact_value_matches": 512,
+      "passed": true
+    }
+  ],
+  "incremental": {
+    "passed": true,
+    "positions": 256,
+    "counters": {
+      "incremental": 1940073,
+      "refresh": 540517,
+      "verified": 1251446
+    },
+    "same_bestmoves_and_nodes": true,
+    "model_reload_passed": true,
+    "engine_sha256": "de0dc4e9ca0ed841ced359e12a7106e00d189455115427423d6bc64654550672",
+    "model_sha256": "e7e38a8ae59bfd833a9e3ecc58d8b57eb035930b0762236f207973076d0a01eb",
+    "reference_sha256": "5cb5b448bc6460d909b12ec5ba7c6e04f80635f119dbf4b16b87357d2bb5e256"
+  },
+  "model_switch_values_after_ready_and_position": [
+    -137,
+    -608,
+    -672,
+    -137
+  ],
+  "engine_sha256": "de0dc4e9ca0ed841ced359e12a7106e00d189455115427423d6bc64654550672",
+  "scope": "operational validation only; synthetic and short-trained models are not strength candidates"
+}
