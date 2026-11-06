@@ -16,7 +16,9 @@ def summary(rows,total):
     return {'total':total,'measured':len(rows),'matches':correct,'accuracy':correct/total if total else None,
             'wilson_95':wilson(correct,total),'errors':sum(r.get('error') is not None for r in rows),
             'illegal_moves':sum(r.get('legal') is False for r in rows),
-            'time_overruns':sum(r.get('time_overrun',False) for r in rows)}
+            'time_overruns':sum(r.get('time_overrun',False) for r in rows),
+            'resignations':sum(r.get('action')=='resign' for r in rows),
+            'declarations':sum(r.get('action')=='declaration' for r in rows)}
 
 
 def paired(baseline,candidate,seed=20261106,replicates=10000):

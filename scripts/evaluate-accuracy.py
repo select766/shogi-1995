@@ -13,6 +13,7 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
 import cshogi
 from shogi1995.usi import Engine
 from shogi1995.statistics import summary
+from shogi1995.actions import classify
 from shogi1995.provenance import environment_identity
 
 
@@ -72,7 +73,7 @@ def main():
             'measurement_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'measurement_worktree_dirty':bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()),
             'measurement_sources':{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in
-                                   ('scripts/evaluate-accuracy.py','src/shogi1995/usi.py','src/bridge/main.py')},
+                                   ('scripts/evaluate-accuracy.py','src/shogi1995/usi.py','src/shogi1995/actions.py','src/bridge/main.py')},
             'backend':args.backend,'feature_difference':args.feature_difference,
             'environment':environment_identity(args.backend),
             'dataset_sha256':hashlib.sha256(args.dataset.read_bytes()).hexdigest(),
@@ -114,8 +115,7 @@ def main():
                     engine.reset()
                     row.update(engine.search(r['sfen'],args.milliseconds,args.nodes,args.search_diagnostics))
                     board.set_sfen(r['sfen'])
-                    try:move=board.move_from_usi(row['actual']);row['legal']=bool(board.is_legal(move))
-                    except (ValueError,RuntimeError):row['legal']=False
+                    row.update(classify(board,row['actual']))
                     row['time_overrun']=args.nodes is None and row['host_ms']>args.milliseconds+200
                     row['match']=row['legal'] and not row['time_overrun'] and row['actual']==row['expected']
                 except (TimeoutError,RuntimeError,OSError) as error:

@@ -1,0 +1,31 @@
+{
+  "id": "halfkp-linear-v2",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "b23b1ad5a897252998be3dea42e152ae0589e78bea51aff9791cce20d7e865cd",
+  "image_sha256": "6fd885f86dd67111656e4052fbee56a733fe6ea4ba9af7da3fb2c8bace721040",
+  "source_commit": "43495b9b55937b65d382f6b816bf0fee2f891a28",
+  "source_tree_sha256": "3c15aa961d5619b0fa1da96ce1abec734a9e1662da539a6893a3a6bad4fc134a",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "947f1709eb365a40176cb0cfc69ac0d88c74c2df20fbf32cf38a28862862cbaa",
+  "feature_difference": "\u6a19\u6e96HalfKP\u7d14\u7dda\u5f62125388\u4fc2\u6570\u3001qsearch\u6e08\u307f63977434\u5c40\u9762\u300140epoch\u3067loss\u98fd\u548c\u78ba\u8a8d\u30fb\u6700\u826f29epoch\u3001\u8a55\u4fa1\u6642\u306b76\u7279\u5fb4\u3092\u518d\u52a0\u7b97",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/candidates/halfkp-linear-v2/root.ext2"
+  ],
+  "model_sha256": "5f0d598d6179557543fb55e7fc2ee38a4709498c6f825dd9ae8650ab0f82cbbb",
+  "model_bytes": 501568,
+  "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-linear-v2/model.bin",
+  "training_manifest": "manifests/halfkp-linear-v2-training.json",
+  "training_manifest_sha256": "9fed1acac9ea389faf5f16b393d90f999cde8e3e66c7698f0284309c35342e70",
+  "training_converged": true,
+  "training_selected_epoch": 29,
+  "training_examples_seen": 2559097360
+}
