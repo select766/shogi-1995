@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T18:51:29.462044+00:00",
+  "test": "tests/plot_history.py",
+  "test_sha256": "d880e58485566f1e835420dfeb4e2083e2d1fde51184bea5efc146fe4bfad399",
+  "measurement_data_unchanged": true,
+  "separate_plot_metadata": true,
+  "deterministic_svg_and_png": true,
+  "invalid_output_path_rejected": true,
+  "actual_png_visually_inspected": true,
+  "number_labels_spread_within_panels": true,
+  "plotter_sha256": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
+  "label_layout_sha256": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
+  "csv_sha256": "97e7f48620a040e7749b15e831b2796e1fdb67649407072854bb517c3dc2778f",
+  "registry_sha256": "6beb7ef58d703dc4ec9b31247534eebb4804babc249fa4d71eea655bc6304980",
+  "svg_sha256": "1e774c061efbc66bfff341bb15d655337b4081577ca47ef908a582f48db3b0c7",
+  "png_sha256": "afa422d6b4a4b531e01668c2e4aaa638675d5dbd352f8ec6cfa23484ec25614d",
+  "scope": "plot layout/registry regression, not a new engine measurement"
+}

@@ -8,6 +8,7 @@
 #include <limits>
 #include <vector>
 #include "shogi1995_packed_fc.h"
+#include "shogi1995_packed_accumulator.h"
 
 namespace YaneuraOu { namespace Eval {
 namespace {
@@ -25,6 +26,7 @@ std::vector<int32_t> tiny_bias,tiny_fc_bias;
 int32_t tiny_out_bias=0;
 bool tiny_output32=false;
 bool tiny_fc_packed32=false;
+bool tiny_accumulator_packed=false;
 std::vector<uint32_t> tiny_fc_pairs;
 unsigned tiny_generation=1;
 bool tiny_verify=false;
@@ -32,10 +34,11 @@ uint64_t tiny_incremental_count=0,tiny_refresh_count=0,tiny_verification_count=0
 
 void psqt_stats() {
     unsigned kernel_width=tiny_loaded && tiny_standard_halfkp && (tiny_width==8 || tiny_width==16)?tiny_width:0;
-    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu output_bits=%u kernel_width=%u fc_packed=%u fc_bits=%u\n",
+    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu output_bits=%u kernel_width=%u fc_packed=%u fc_bits=%u accumulator_packed=%u accumulator_bits=%u\n",
                 (unsigned long long)tiny_incremental_count,(unsigned long long)tiny_refresh_count,
                 (unsigned long long)tiny_verification_count,unsigned(tiny_loaded?(tiny_output32?32:64):0),kernel_width,
-                unsigned(tiny_loaded && tiny_fc_packed32),unsigned(tiny_loaded && tiny_hidden?(tiny_fc_packed32?32:64):0));
+                unsigned(tiny_loaded && tiny_fc_packed32),unsigned(tiny_loaded && tiny_hidden?(tiny_fc_packed32?32:64):0),
+                unsigned(tiny_loaded && tiny_accumulator_packed),unsigned(tiny_loaded?(tiny_accumulator_packed?16:32):0));
     std::fflush(stdout);
 }
 
@@ -49,6 +52,7 @@ void psqt_options(OptionsMap& options) {
         psqt_path=std::string(option);psqt_loaded=false;tiny_loaded=false;halfkp_linear_loaded=false;
         tiny_output32=false;
         tiny_fc_packed32=false;
+        tiny_accumulator_packed=false;
         tiny_fc_pairs.clear();
         if(++tiny_generation==0)++tiny_generation;
         return std::nullopt;
@@ -126,6 +130,27 @@ void psqt_load() {
                     tiny_fc_pairs[i*tiny_width+j]=PackedFC::coefficients(tiny_fc[offset],tiny_fc[offset+1]);
                 }
         }
+        tiny_accumulator_packed=tiny_standard_halfkp && (tiny_width==8 || tiny_width==16);
+        if(tiny_accumulator_packed) {
+            static_assert(PIECE_NUMBER_KING==38,"packed cache bound assumes38 non-king piece slots");
+            std::array<int,32> lowest{},highest{};
+            for(size_t row=0;row<tiny_embedding.size();row+=tiny_width)
+                for(unsigned lane=0;lane<tiny_width;++lane) {
+                    int weight=tiny_embedding[row+lane];
+                    lowest[lane]=std::min(lowest[lane],weight);
+                    highest[lane]=std::max(highest[lane],weight);
+                }
+            for(unsigned lane=0;lane<tiny_width;++lane) {
+                int64_t low=int64_t(tiny_bias[lane])+int64_t(PackedAccumulator::maximum_active_slots)*lowest[lane];
+                int64_t high=int64_t(tiny_bias[lane])+int64_t(PackedAccumulator::maximum_active_slots)*highest[lane];
+                if(low < -PackedAccumulator::bias || high>=PackedAccumulator::bias)tiny_accumulator_packed=false;
+            }
+            if(tiny_accumulator_packed)
+                for(size_t offset=0;offset<tiny_embedding.size();offset+=2) {
+                    uint32_t word=PackedAccumulator::delta(tiny_embedding[offset],tiny_embedding[offset+1]);
+                    PackedAccumulator::write(tiny_embedding.data()+offset,word);
+                }
+        }
     }
     psqt_loaded=true;
     std::printf("info string shogi1995 %s loaded: %s\n",halfkp_linear_loaded?"HalfKP linear":tiny_loaded?"tiny network":"PSQT",psqt_path.c_str());std::fflush(stdout);
@@ -137,6 +162,12 @@ template<unsigned Width> void tiny_add_width(int* accumulator,int king,int featu
     const unsigned width=Width?Width:tiny_width;
     int king_index=Width?king:(tiny_symmetric?(king%9)*5+std::min(king/9,8-king/9):king);
     const int16_t* weights=tiny_embedding.data()+size_t(king_index*((Width || tiny_standard_halfkp)?1548:2120)+feature)*width;
+    if(tiny_accumulator_packed) {
+        // Independent full recomputation recovers each original coefficient;
+        // production packed updates use the separate word-add path below.
+        for(unsigned j=0;j<width;++j)accumulator[j]+=PackedAccumulator::coefficient(weights,j)*count;
+        return;
+    }
     // HalfKP updates add or remove one feature. Avoid one scalar IMUL per
     // lane on the Pentium, while preserving arbitrary legacy hand counts.
     if(count==1)
@@ -145,6 +176,24 @@ template<unsigned Width> void tiny_add_width(int* accumulator,int king,int featu
         for(unsigned j=0;j<width;++j)accumulator[j]-=int(weights[j]);
     else
         for(unsigned j=0;j<width;++j)accumulator[j]+=int(weights[j])*count;
+}
+
+template<unsigned Width> void tiny_add_packed_width(int* accumulator,int king,int feature,int count) {
+    static_assert(Width==8 || Width==16,"packed cache width must be8 or16");
+    const int16_t* weights=tiny_embedding.data()+size_t(king*1548+feature)*Width;
+    if(count==1)
+        for(unsigned j=0;j<Width/2;++j)
+            PackedAccumulator::write(accumulator+j,PackedAccumulator::read(accumulator+j)+PackedAccumulator::read(weights+j*2));
+    else
+        for(unsigned j=0;j<Width/2;++j)
+            PackedAccumulator::write(accumulator+j,PackedAccumulator::read(accumulator+j)-PackedAccumulator::read(weights+j*2));
+}
+
+template<unsigned Width> void tiny_full_packed_width(const Position& pos,int perspective,int king,int* accumulator) {
+    for(unsigned j=0;j<Width/2;++j)
+        PackedAccumulator::write(accumulator+j,PackedAccumulator::encode(tiny_bias[j*2],tiny_bias[j*2+1]));
+    const auto* pieces=perspective==0?pos.eval_list()->piece_list_fb():pos.eval_list()->piece_list_fw();
+    for(int i=0;i<PIECE_NUMBER_KING;++i)tiny_add_packed_width<Width>(accumulator,king,int(pieces[i]),1);
 }
 
 void tiny_add(int* accumulator,int king,int feature,int count) {
@@ -207,7 +256,7 @@ template<class Sum,unsigned Width> int tiny_correction(const int32_t* activation
     return output>=0?int((output+128)/256):-int((-output+128)/256);
 }
 
-template<unsigned Width> int tiny_black_width(const Position& pos) {
+template<unsigned Width,bool Packed=false> int tiny_black_width(const Position& pos) {
     const unsigned width=Width?Width:tiny_width;
     StateInfo* state=pos.state();
     if(state->tiny_generation!=tiny_generation) {
@@ -227,7 +276,7 @@ template<unsigned Width> int tiny_black_width(const Position& pos) {
                 previous=previous->previous;
             }
             if(previous && previous->tiny_generation==tiny_generation) {
-                std::memcpy(accumulator,previous->tiny_accumulator[perspective],width*sizeof(int));
+                std::memcpy(accumulator,previous->tiny_accumulator[perspective],(Packed?width/2:width)*sizeof(int));
                 while(count) {
                     const StateInfo* change=changes[--count];
                     if(change->tiny_to<0)continue;
@@ -235,8 +284,13 @@ template<unsigned Width> int tiny_black_width(const Position& pos) {
                         const auto& dirty=change->dirtyPiece;
                         for(int i=0;i<dirty.dirty_num;++i) {
                             if(dirty.pieceNo[i]>=PIECE_NUMBER_KING)continue;
-                            tiny_add_width<Width>(accumulator,king,int(dirty.changed_piece[i].old_piece.from[perspective]),-1);
-                            tiny_add_width<Width>(accumulator,king,int(dirty.changed_piece[i].new_piece.from[perspective]),1);
+                            if constexpr(Packed) {
+                                tiny_add_packed_width<Width>(accumulator,king,int(dirty.changed_piece[i].old_piece.from[perspective]),-1);
+                                tiny_add_packed_width<Width>(accumulator,king,int(dirty.changed_piece[i].new_piece.from[perspective]),1);
+                            } else {
+                                tiny_add_width<Width>(accumulator,king,int(dirty.changed_piece[i].old_piece.from[perspective]),-1);
+                                tiny_add_width<Width>(accumulator,king,int(dirty.changed_piece[i].new_piece.from[perspective]),1);
+                            }
                         }
                         continue;
                     }
@@ -251,7 +305,8 @@ template<unsigned Width> int tiny_black_width(const Position& pos) {
                 }
                 ++tiny_incremental_count;
             } else {
-                tiny_full_width<Width>(pos,perspective,king,accumulator);
+                if constexpr(Packed)tiny_full_packed_width<Width>(pos,perspective,king,accumulator);
+                else tiny_full_width<Width>(pos,perspective,king,accumulator);
                 ++tiny_refresh_count;
             }
         }
@@ -264,20 +319,30 @@ template<unsigned Width> int tiny_black_width(const Position& pos) {
             // Keep verification on the general kernel, independent of the
             // specialized lane count and row-stride expressions above.
             int full[32];tiny_full_width<0>(pos,perspective,king,full);
-            for(unsigned j=0;j<width;++j)
-                if(full[j]!=state->tiny_accumulator[perspective][j]) {
+            for(unsigned j=0;j<width;++j) {
+                int cached=Packed?PackedAccumulator::lane(state->tiny_accumulator[perspective],j):state->tiny_accumulator[perspective][j];
+                if(full[j]!=cached) {
                     std::printf("info string accumulator mismatch perspective=%d lane=%u cached=%d full=%d\n",
-                                perspective,j,state->tiny_accumulator[perspective][j],full[j]);
+                                perspective,j,cached,full[j]);
                     std::fflush(stdout);std::exit(2);
                 }
+            }
         }
         ++tiny_verification_count;
     }
     int32_t activation[64];
     int stm=int(pos.side_to_move());
-    for(int relative=0;relative<2;++relative)
-        for(unsigned j=0;j<width;++j)
-            activation[relative*width+j]=std::max(0,std::min(128,state->tiny_accumulator[stm^relative][j]));
+    for(int relative=0;relative<2;++relative) {
+        if constexpr(Packed)
+            for(unsigned j=0;j<width/2;++j) {
+                uint32_t word=PackedAccumulator::read(state->tiny_accumulator[stm^relative]+j);
+                activation[relative*width+j*2]=std::max(0,std::min(128,PackedAccumulator::low(word)));
+                activation[relative*width+j*2+1]=std::max(0,std::min(128,PackedAccumulator::high(word)));
+            }
+        else
+            for(unsigned j=0;j<width;++j)
+                activation[relative*width+j]=std::max(0,std::min(128,state->tiny_accumulator[stm^relative][j]));
+    }
     int correction=tiny_output32?tiny_correction<int32_t,Width>(activation):tiny_correction<int64_t,Width>(activation);
     int black=pos.state()->materialValue+(stm?-correction:correction);
     return std::max(-12000,std::min(12000,black));
@@ -285,8 +350,8 @@ template<unsigned Width> int tiny_black_width(const Position& pos) {
 
 int tiny_black(const Position& pos) {
     if(tiny_standard_halfkp) {
-        if(tiny_width==8)return tiny_black_width<8>(pos);
-        if(tiny_width==16)return tiny_black_width<16>(pos);
+        if(tiny_width==8)return tiny_accumulator_packed?tiny_black_width<8,true>(pos):tiny_black_width<8>(pos);
+        if(tiny_width==16)return tiny_accumulator_packed?tiny_black_width<16,true>(pos):tiny_black_width<16>(pos);
     }
     return tiny_black_width<0>(pos);
 }

@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T17:57:47.382478+00:00",
+  "auditor_sha256": "879e5c4155e6d17a577204c30b13db8c2fa36dd44cc19965cf37167cecfdc023",
+  "completed_actual_measurements": [
+    {
+      "case": "w8-h0",
+      "positions": 256,
+      "all_block_medians_positive": true
+    },
+    {
+      "case": "w16-h0",
+      "positions": 256,
+      "all_block_medians_positive": true
+    },
+    {
+      "case": "w16-h8",
+      "positions": 256,
+      "all_block_medians_positive": true
+    }
+  ],
+  "invalid_evidence_checks": [
+    {
+      "case": "incomplete",
+      "rejected": true,
+      "reason": "incomplete block: /tmp/shogi-block-audit-oc7nxoyw/pair/001-baseline.json"
+    },
+    {
+      "case": "wrong-order",
+      "rejected": true,
+      "reason": "actual execution is not sequential AB/BA"
+    },
+    {
+      "case": "wrong-weights",
+      "rejected": true,
+      "reason": "block condition/artifact differs: guest_model_sha256"
+    },
+    {
+      "case": "different-tree",
+      "rejected": true,
+      "reason": "search differs: final_nodes"
+    }
+  ],
+  "scope": "read-only audit of existing measurements and disposable corrupted copies; no engine/timing run"
+}

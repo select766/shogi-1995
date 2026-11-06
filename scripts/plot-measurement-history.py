@@ -12,6 +12,8 @@ from pathlib import Path
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
+from shogi1995.plot_labels import spread_labels
 os.environ.setdefault('MPLCONFIGDIR',str(ROOT/'.local/matplotlib'))
 Path(os.environ['MPLCONFIGDIR']).mkdir(parents=True,exist_ok=True)
 import matplotlib
@@ -53,7 +55,7 @@ def main():
     panel_heights=[max(4.5,.36*len(items)+2) for items in groups.values()]
     fig,axes=plt.subplots(len(groups),1,figsize=(13,sum(panel_heights)),squeeze=False,
                           gridspec_kw={'height_ratios':panel_heights})
-    point_data=[]
+    point_data=[];annotations=[]
     for axis,(group,items) in zip(axes[:,0],groups.items()):
         items.sort(key=lambda row:row['finished_at_utc'])
         times=[datetime.fromisoformat(row['finished_at_utc']).astimezone(JST) for row in items]
@@ -67,7 +69,7 @@ def main():
                       ecolor='#64748b',elinewidth=1.2,capsize=4,markersize=6,zorder=2)
         legend=[]
         for index,(row,stamp,y) in enumerate(zip(items,times,values),1):
-            axis.annotate(str(index),(stamp,y),xytext=(6,6),textcoords='offset points',fontsize=9)
+            annotations.append(axis.annotate(str(index),(stamp,y),xytext=(6,6),textcoords='offset points',fontsize=9))
             legacy='*' if row['timestamp_source']!='recorded_utc' else ''
             commit=row['source_commit'][:7] or '?'
             legend.append(f"{index}. {stamp:%H:%M:%S}{legacy}  {row['engine_id']}\n    {y:.2f}%  ({row['matches']}/{row['positions']})  {commit}")
@@ -84,6 +86,8 @@ def main():
     fig.suptitle('Shogi-1995 measurement history',x=.07,y=.98,ha='left',va='top',fontsize=14)
     fig.text(.07,.015,'Wilson 95% intervals; links join identical conditions only. * Legacy times are approximate.\nAgreement is not Elo; detailed comparisons use paired bootstrap intervals.',fontsize=9)
     fig.subplots_adjust(left=.08,right=.61,top=.84 if len(groups)==1 else .93,bottom=.23 if len(groups)==1 else .13,hspace=.7)
+    for point,offset in zip(point_data,spread_labels(fig,annotations)):
+        point['label_offset_points']=offset
     args.output.parent.mkdir(parents=True,exist_ok=True)
     stamp=max(datetime.fromisoformat(row['finished_at_utc']) for row in selected).isoformat()
     svg_temp=args.output.with_suffix('.svg.partial');png_temp=png.with_suffix('.png.partial')
@@ -94,7 +98,8 @@ def main():
     fig.savefig(png_temp,format='png',dpi=144,metadata={'Software':'shogi-1995'})
     svg_temp.replace(args.output);png_temp.replace(png)
     plt.close(fig)
-    result={'input_sha256':hashlib.sha256(input_bytes).hexdigest(),'plotter_sha256':sha(Path(__file__)),'matplotlib':matplotlib.__version__,
+    result={'input_sha256':hashlib.sha256(input_bytes).hexdigest(),'plotter_sha256':sha(Path(__file__)),
+            'label_layout_sha256':sha(ROOT/'src/shogi1995/plot_labels.py'),'matplotlib':matplotlib.__version__,
             'backend':args.backend,'include_subsets':args.include_subsets,'groups':list(groups),
             'points':point_data,'excluded_run_ids':excluded,'svg_sha256':sha(args.output),'png_sha256':sha(png)}
     temp=metadata_path.with_suffix('.json.partial');temp.write_text(json.dumps(result,indent=2)+'\n');temp.replace(metadata_path)

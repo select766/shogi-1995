@@ -1,0 +1,196 @@
+{
+  "positions": 256,
+  "identical_model_and_search_results": true,
+  "median_host_time_saved_percent": 6.556270855420159,
+  "paired_bootstrap_95_percent": {
+    "lower": 6.141555963106815,
+    "upper": 6.804537929671439
+  },
+  "speedup_supported": true,
+  "replicates": 10000,
+  "seed": 20261106,
+  "performance": {
+    "baseline": {
+      "host_ms": {
+        "count": 256,
+        "minimum": 1201.2990490038646,
+        "p10": 1428.7726234979345,
+        "median": 1741.693692500121,
+        "p90": 2009.2476525023812,
+        "maximum": 2526.768025010824
+      },
+      "nps": {
+        "count": 256,
+        "minimum": 4026.0,
+        "p10": 5094.0,
+        "median": 5889.5,
+        "p90": 7208.0,
+        "maximum": 8622.0
+      },
+      "nodes": {
+        "count": 256,
+        "minimum": 10000.0,
+        "p10": 10002.0,
+        "median": 10011.0,
+        "p90": 10025.5,
+        "maximum": 10065.0
+      },
+      "depth": {
+        "count": 256,
+        "minimum": 4.0,
+        "p10": 6.0,
+        "median": 8.0,
+        "p90": 10.0,
+        "maximum": 12.0
+      },
+      "final_nps": {
+        "count": 256,
+        "minimum": 4024.0,
+        "p10": 5092.5,
+        "median": 5888.0,
+        "p90": 7203.0,
+        "maximum": 8622.0
+      },
+      "final_nodes": {
+        "count": 256,
+        "minimum": 10000.0,
+        "p10": 10002.0,
+        "median": 10011.0,
+        "p90": 10025.5,
+        "maximum": 10065.0
+      },
+      "completed_depth": {
+        "count": 256,
+        "minimum": 4.0,
+        "p10": 5.0,
+        "median": 7.0,
+        "p90": 9.0,
+        "maximum": 11.0
+      },
+      "host_minus_final_guest_ms": {
+        "count": 256,
+        "minimum": 30.321913992753252,
+        "p10": 38.54787749843672,
+        "median": 40.117034999188036,
+        "p90": 44.533466496446636,
+        "maximum": 51.34380499261897
+      }
+    },
+    "candidate": {
+      "host_ms": {
+        "count": 256,
+        "minimum": 1106.5690709947376,
+        "p10": 1326.2651449986151,
+        "median": 1626.450672003557,
+        "p90": 1913.6759155007894,
+        "maximum": 2430.9633979864884
+      },
+      "nps": {
+        "count": 256,
+        "minimum": 4187.0,
+        "p10": 5349.5,
+        "median": 6317.0,
+        "p90": 7779.0,
+        "maximum": 9391.0
+      },
+      "nodes": {
+        "count": 256,
+        "minimum": 10000.0,
+        "p10": 10002.0,
+        "median": 10011.0,
+        "p90": 10025.5,
+        "maximum": 10065.0
+      },
+      "depth": {
+        "count": 256,
+        "minimum": 4.0,
+        "p10": 6.0,
+        "median": 8.0,
+        "p90": 10.0,
+        "maximum": 11.0
+      },
+      "final_nps": {
+        "count": 256,
+        "minimum": 4186.0,
+        "p10": 5348.0,
+        "median": 6315.0,
+        "p90": 7779.0,
+        "maximum": 9391.0
+      },
+      "final_nodes": {
+        "count": 256,
+        "minimum": 10000.0,
+        "p10": 10002.0,
+        "median": 10011.0,
+        "p90": 10025.5,
+        "maximum": 10065.0
+      },
+      "completed_depth": {
+        "count": 256,
+        "minimum": 4.0,
+        "p10": 5.0,
+        "median": 7.0,
+        "p90": 9.0,
+        "maximum": 11.0
+      },
+      "host_minus_final_guest_ms": {
+        "count": 256,
+        "minimum": 30.014123986708,
+        "p10": 37.297346501087304,
+        "median": 39.92789349780651,
+        "p90": 45.05209000321338,
+        "maximum": 52.03858400147874
+      }
+    },
+    "paired_candidate_over_baseline": {
+      "nps": {
+        "count": 256,
+        "minimum": 1.0068861631159889,
+        "p10": 1.0415710944729017,
+        "median": 1.0721396767147011,
+        "p90": 1.103282481390091,
+        "maximum": 1.1260668812088988
+      },
+      "final_nps": {
+        "count": 256,
+        "minimum": 1.0027987082884822,
+        "p10": 1.0421456425164766,
+        "median": 1.0724159604318673,
+        "p90": 1.103282481390091,
+        "maximum": 1.1258751050126015
+      },
+      "final_nodes": {
+        "count": 256,
+        "minimum": 1.0,
+        "p10": 1.0,
+        "median": 1.0,
+        "p90": 1.0,
+        "maximum": 1.0
+      }
+    },
+    "scope": "Diagnostic only. nps/nodes/depth come from the last regular USI info line; final_* counters require an explicit engine diagnostic. Missing counters are not substituted. Different models can visit different trees, so NPS ratios alone do not establish arithmetic speedups."
+  },
+  "scope": "Pentium fixed-node speed diagnostic; not real-time agreement or strength",
+  "limitation": "Position bootstrap does not account for unknown game or temporal block correlation; use alternating blocks and inspect their observations.",
+  "compared_at_utc": "2026-11-06T18:05:43.162070+00:00",
+  "measurements": {
+    "baseline": {
+      "path": "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w16-h8-packed-fc-speed-v1/baseline.json",
+      "sha256": "97527e4dcff5a649e1a962cc75829fc57d6df8535fcf3a779f68b151782c17d0",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42"
+    },
+    "candidate": {
+      "path": "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w16-h8-packed-fc-speed-v1/candidate.json",
+      "sha256": "069ddcd8d36910a0d4092f9f254b721223636f6f15b9a6360b2ab74a447e97be",
+      "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42"
+    }
+  },
+  "comparison_sources": {
+    "scripts/compare-fixed-node-speed.py": "dcbef50770e1e975b1b4c977f1ce7ac43cfeda43939b9e57d891185ba974ba4c",
+    "src/shogi1995/speed_comparison.py": "4fd7c262692c62ac7ae71d5123f23b94533ce75de8d95a60c98e02b3c219aa6e",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf"
+  }
+}

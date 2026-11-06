@@ -1,6 +1,7 @@
 {
-  "input_sha256": "badf4a1d287c13730859d4f19165850e1e08df286975c2a61ed29d81b9454669",
-  "plotter_sha256": "05387c91a35e5e9a910f5c6cbfc1b3e741197058e1addee6b0655645c840806f",
+  "input_sha256": "97e7f48620a040e7749b15e831b2796e1fdb67649407072854bb517c3dc2778f",
+  "plotter_sha256": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
+  "label_layout_sha256": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
   "matplotlib": "3.9.2",
   "backend": "86box",
   "include_subsets": false,
@@ -18,7 +19,11 @@
       "wilson95_lower_percent": "25.884588878587177",
       "wilson95_upper_percent": "37.169805737383",
       "source_commit": "06219a9480c5fbfd46de1cbe167ba4de4cea37e6",
-      "result_sha256": "10630bf22a15e887cc0a5d2bf8f447f224ad162a8b54c8307a1eb593b7861c24"
+      "result_sha256": "10630bf22a15e887cc0a5d2bf8f447f224ad162a8b54c8307a1eb593b7861c24",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "tiny-v2-20261106T021551626893Z-tiny-v2-86box-quick256",
@@ -28,7 +33,11 @@
       "wilson95_lower_percent": "26.617385334096994",
       "wilson95_upper_percent": "37.97640950620776",
       "source_commit": "e04f6fca89535d94a8a48fda49560a8351f293ac",
-      "result_sha256": "f38b44163af8b48441d10e389164e102e94d9ff8d531f9cc7193dab2b81811b7"
+      "result_sha256": "f38b44163af8b48441d10e389164e102e94d9ff8d531f9cc7193dab2b81811b7",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "tiny-v7-sym-early-20261106T024918430625Z-tiny-v7-sym-early-86box-quick256",
@@ -38,7 +47,11 @@
       "wilson95_lower_percent": "29.5661910800322",
       "wilson95_upper_percent": "41.18520465761086",
       "source_commit": "b40cc88757f86344b9968b4c5ea6784e93db6f45",
-      "result_sha256": "f7fb86831cfc3d1bed3176b57ee93c5d0a5a21a98f92b30151ed4d19c8f62a54"
+      "result_sha256": "f7fb86831cfc3d1bed3176b57ee93c5d0a5a21a98f92b30151ed4d19c8f62a54",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "tiny-v3-small-20261106T030028879349Z-tiny-v3-small-86box-quick256",
@@ -48,7 +61,11 @@
       "wilson95_lower_percent": "29.5661910800322",
       "wilson95_upper_percent": "41.18520465761086",
       "source_commit": "52ab271c674b8188d7d4c4bb5b31cf732f5ae8e2",
-      "result_sha256": "46b11638ea94d8b3de3aac2907c16c1751145a7c975aad16b4ad5f27929a3db2"
+      "result_sha256": "46b11638ea94d8b3de3aac2907c16c1751145a7c975aad16b4ad5f27929a3db2",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "tiny-v5-sym-dense-20261106T031138249268Z-tiny-v5-sym-dense-86box-quick256",
@@ -58,7 +75,11 @@
       "wilson95_lower_percent": "27.71993280647148",
       "wilson95_upper_percent": "39.18296237033514",
       "source_commit": "52ab271c674b8188d7d4c4bb5b31cf732f5ae8e2",
-      "result_sha256": "2c3ad6427bb487b8dd5286969391cd1eed4d2812a1a982d47949e19bfb3aca45"
+      "result_sha256": "2c3ad6427bb487b8dd5286969391cd1eed4d2812a1a982d47949e19bfb3aca45",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-linear-v2-usi-20261106T071340731403Z-candidate",
@@ -68,7 +89,11 @@
       "wilson95_lower_percent": "30.29098160137891",
       "wilson95_upper_percent": "36.04623927731701",
       "source_commit": "43495b9b55937b65d382f6b816bf0fee2f891a28",
-      "result_sha256": "34e619a0e71c895a3f67a4afada10f94ceffa4c045a60ecdb898de72789f3515"
+      "result_sha256": "34e619a0e71c895a3f67a4afada10f94ceffa4c045a60ecdb898de72789f3515",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "material-v1-20261106T072451072756Z-baseline",
@@ -78,7 +103,11 @@
       "wilson95_lower_percent": "26.023562972543196",
       "wilson95_upper_percent": "31.55744368384819",
       "source_commit": "06219a9480c5fbfd46de1cbe167ba4de4cea37e6",
-      "result_sha256": "c365a1b3261480a8737a1e99047ad510465483a71ac412c0fe74a9e6a05b1c61"
+      "result_sha256": "c365a1b3261480a8737a1e99047ad510465483a71ac412c0fe74a9e6a05b1c61",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w8-h0-output32-v1-usi-20261106T102340603889Z-candidate",
@@ -88,7 +117,11 @@
       "wilson95_lower_percent": "34.490947395296125",
       "wilson95_upper_percent": "40.40790516743089",
       "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
-      "result_sha256": "699251c54d928ea2cdedc4c212ac8e75f93ac2baf88d2e42bc152c45ce5b7c33"
+      "result_sha256": "699251c54d928ea2cdedc4c212ac8e75f93ac2baf88d2e42bc152c45ce5b7c33",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-linear-v2-usi-20261106T103456002393Z-baseline",
@@ -98,7 +131,11 @@
       "wilson95_lower_percent": "30.005574962248012",
       "wilson95_upper_percent": "35.74789830162761",
       "source_commit": "43495b9b55937b65d382f6b816bf0fee2f891a28",
-      "result_sha256": "1704da107bcc8e9eecbe1139dac6eceb99d453d2d5f60c67b0177c22442a46a6"
+      "result_sha256": "1704da107bcc8e9eecbe1139dac6eceb99d453d2d5f60c67b0177c22442a46a6",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w16-h0-output32-v1-usi-20261106T122741469745Z-candidate",
@@ -108,7 +145,11 @@
       "wilson95_lower_percent": "34.01239331564168",
       "wilson95_upper_percent": "39.91354655571816",
       "source_commit": "fd27774dd62eedd1041032d804df607a601ba84d",
-      "result_sha256": "af6d26f019b69080a22834dbdee6eb7bf635f76a50f540ccf1c2e1ec120b9ca0"
+      "result_sha256": "af6d26f019b69080a22834dbdee6eb7bf635f76a50f540ccf1c2e1ec120b9ca0",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w8-h0-output32-v1-usi-20261106T123858912486Z-baseline",
@@ -118,7 +159,11 @@
       "wilson95_lower_percent": "34.490947395296125",
       "wilson95_upper_percent": "40.40790516743089",
       "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
-      "result_sha256": "e72237d36e049ad4363436ff61273044a7bf4152dbfc83b93bf3f117d7beaa42"
+      "result_sha256": "e72237d36e049ad4363436ff61273044a7bf4152dbfc83b93bf3f117d7beaa42",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w16-h8-output32-v1-usi-20261106T135717743523Z-candidate",
@@ -128,7 +173,11 @@
       "wilson95_lower_percent": "33.629782422466896",
       "wilson95_upper_percent": "39.51782729579921",
       "source_commit": "fd27774dd62eedd1041032d804df607a601ba84d",
-      "result_sha256": "b59a818aa54995f9ea9f4384fd041e7e9cf64d2d3a9aece25c4cd21f384c044d"
+      "result_sha256": "b59a818aa54995f9ea9f4384fd041e7e9cf64d2d3a9aece25c4cd21f384c044d",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w8-h0-output32-v1-usi-20261106T140827600166Z-baseline",
@@ -138,7 +187,11 @@
       "wilson95_lower_percent": "34.586696731601116",
       "wilson95_upper_percent": "40.506738369399336",
       "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
-      "result_sha256": "32696a9e0cc445b291238df03c60550b7656fc7ae4b2d5e28d6073e98672511e"
+      "result_sha256": "32696a9e0cc445b291238df03c60550b7656fc7ae4b2d5e28d6073e98672511e",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T082823212819Z-candidate",
@@ -148,7 +201,11 @@
       "wilson95_lower_percent": "32.16847629418709",
       "wilson95_upper_percent": "43.970820228626984",
       "source_commit": "e2c242e69638e55c83fdfd56c50378783785bfcb",
-      "result_sha256": "427018c0767ec6da16b61ddfee98dea1ce9222ed4aa790bfa4c4a8543200225d"
+      "result_sha256": "427018c0767ec6da16b61ddfee98dea1ce9222ed4aa790bfa4c4a8543200225d",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w8-h0-v1-usi-20261106T083113855561Z-baseline",
@@ -158,7 +215,11 @@
       "wilson95_lower_percent": "32.16847629418709",
       "wilson95_upper_percent": "43.970820228626984",
       "source_commit": "4b79ba5cde5e5e7feff1f126be563cdc1a1d48de",
-      "result_sha256": "0c3fd8d818adb891923a4534bd88fa43f74d4ff9f0921a32d00fbb1d35bc873d"
+      "result_sha256": "0c3fd8d818adb891923a4534bd88fa43f74d4ff9f0921a32d00fbb1d35bc873d",
+      "label_offset_points": [
+        -18,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w8-h0-output32-v1-usi-20261106T085829432089Z-candidate",
@@ -168,7 +229,11 @@
       "wilson95_lower_percent": "32.16847629418709",
       "wilson95_upper_percent": "43.970820228626984",
       "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
-      "result_sha256": "15e1a58c95b59c27d23bf3c9f8d4069f697be0a832225968d9252f8e8a51ea92"
+      "result_sha256": "15e1a58c95b59c27d23bf3c9f8d4069f697be0a832225968d9252f8e8a51ea92",
+      "label_offset_points": [
+        6,
+        6
+      ]
     },
     {
       "run_id": "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T090113753939Z-baseline",
@@ -178,7 +243,179 @@
       "wilson95_lower_percent": "32.16847629418709",
       "wilson95_upper_percent": "43.970820228626984",
       "source_commit": "e2c242e69638e55c83fdfd56c50378783785bfcb",
-      "result_sha256": "e4009c967481de4c46a35ca9ab5f2c29fc05400f03b881fc7c18785579049239"
+      "result_sha256": "e4009c967481de4c46a35ca9ab5f2c29fc05400f03b881fc7c18785579049239",
+      "label_offset_points": [
+        6,
+        -14
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T165443329810Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T16:54:43.329810+00:00",
+      "accuracy_percent": "37.890625",
+      "wilson95_lower_percent": "32.16847629418709",
+      "wilson95_upper_percent": "43.970820228626984",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "70e016c4d03e9c2707d49ffa5dbce7faa2034e88c16d1d1b87d2ef527d9b7fda",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-output32-v1-usi-20261106T165727800648Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T16:57:27.800648+00:00",
+      "accuracy_percent": "37.890625",
+      "wilson95_lower_percent": "32.16847629418709",
+      "wilson95_upper_percent": "43.970820228626984",
+      "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
+      "result_sha256": "a974251d72e5b6207b05e4be74f765ea05b7616845e49f0295a9bd04dfc1516d",
+      "label_offset_points": [
+        -18,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w16-h0-width-kernel-v1-usi-20261106T171633219757Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T17:16:33.219757+00:00",
+      "accuracy_percent": "39.453125",
+      "wilson95_lower_percent": "33.66434936094115",
+      "wilson95_upper_percent": "45.55374761054207",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "7e7e9165e8a43d7ee81c5fa95b72b7fbace37e1c844caf3a643b3aee07bb801e",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w16-h0-output32-v1-usi-20261106T171924369296Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T17:19:24.369296+00:00",
+      "accuracy_percent": "39.453125",
+      "wilson95_lower_percent": "33.66434936094115",
+      "wilson95_upper_percent": "45.55374761054207",
+      "source_commit": "fd27774dd62eedd1041032d804df607a601ba84d",
+      "result_sha256": "c954f87fd8588175ded4eadecf39585733c1a3866fc69c361c3949b56fc7a13d",
+      "label_offset_points": [
+        -18,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T173955042905Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T17:39:55.042905+00:00",
+      "accuracy_percent": "39.84375",
+      "wilson95_lower_percent": "34.03930035879241",
+      "wilson95_upper_percent": "45.9484967248581",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "e586f437102998dfd01fd30905598141d080e999dbfa621254f07050da0d989c",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w16-h8-output32-v1-usi-20261106T174259719821Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T17:42:59.719821+00:00",
+      "accuracy_percent": "39.84375",
+      "wilson95_lower_percent": "34.03930035879241",
+      "wilson95_upper_percent": "45.9484967248581",
+      "source_commit": "fd27774dd62eedd1041032d804df607a601ba84d",
+      "result_sha256": "b23e6bc4439202a78e4c659cf56178961f388242ed25ed0005b053213fb072b7",
+      "label_offset_points": [
+        6,
+        -14
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w16-h8-packed-fc-v1-usi-20261106T180242806761Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T18:02:42.806761+00:00",
+      "accuracy_percent": "39.84375",
+      "wilson95_lower_percent": "34.03930035879241",
+      "wilson95_upper_percent": "45.9484967248581",
+      "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
+      "result_sha256": "069ddcd8d36910a0d4092f9f254b721223636f6f15b9a6360b2ab74a447e97be",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T180540114410Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T18:05:40.114410+00:00",
+      "accuracy_percent": "39.84375",
+      "wilson95_lower_percent": "34.03930035879241",
+      "wilson95_upper_percent": "45.9484967248581",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "97527e4dcff5a649e1a962cc75829fc57d6df8535fcf3a779f68b151782c17d0",
+      "label_offset_points": [
+        6,
+        -14
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T182451692092Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T18:24:51.692092+00:00",
+      "accuracy_percent": "38.28125",
+      "wilson95_lower_percent": "32.541850659833585",
+      "wilson95_upper_percent": "44.36714597514778",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "2f4a7cab99345ae2ae1a77beba95202075eb1e24b6d9c0d03ebebc48e2e6fc5d",
+      "label_offset_points": [
+        6,
+        -14
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h8-output32-v1-usi-20261106T182743394533Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T18:27:43.394533+00:00",
+      "accuracy_percent": "38.28125",
+      "wilson95_lower_percent": "32.541850659833585",
+      "wilson95_upper_percent": "44.36714597514778",
+      "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
+      "result_sha256": "2d54130ec7c1ec29747495385359705e1fca9a19799270a31395eea47a8e8a53",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h8-packed-fc-v1-usi-20261106T184624662942Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T18:46:24.662942+00:00",
+      "accuracy_percent": "38.28125",
+      "wilson95_lower_percent": "32.541850659833585",
+      "wilson95_upper_percent": "44.36714597514778",
+      "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
+      "result_sha256": "47b1c760512c024c2ff1878e2a3dc958bb8d170a030e838eebadd75642cf7f9e",
+      "label_offset_points": [
+        6,
+        -14
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T184910639915Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-06T18:49:10.639915+00:00",
+      "accuracy_percent": "38.28125",
+      "wilson95_lower_percent": "32.541850659833585",
+      "wilson95_upper_percent": "44.36714597514778",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "730ddee460c1529c20aea597e7c1d6b96cf13faf8475652f96576e4bb039b252",
+      "label_offset_points": [
+        6,
+        6
+      ]
     }
   ],
   "excluded_run_ids": [
@@ -267,8 +504,56 @@
     "halfkp-nnue-w8-h0-128m-output32-v1-native-20261106T161352391100Z-halfkp-nnue-w8-h0-128m-output32-v1-native-nodes10000-quick256",
     "halfkp-nnue-w8-h8-width-kernel-v1-native-20261106T162406013626Z-halfkp-nnue-w8-h8-width-kernel-v1-native-nodes10000-quick256",
     "halfkp-nnue-w8-h8-packed-fc-v1-native-20261106T162537925497Z-halfkp-nnue-w8-h8-packed-fc-v1-native-nodes10000-quick256",
-    "halfkp-nnue-w8-h8-output32-v1-native-20261106T162709589760Z-halfkp-nnue-w8-h8-output32-v1-native-nodes10000-quick256"
+    "halfkp-nnue-w8-h8-output32-v1-native-20261106T162709589760Z-halfkp-nnue-w8-h8-output32-v1-native-nodes10000-quick256",
+    "halfkp-nnue-w8-h0-output32-v1-usi-20261106T163901244023Z-000-baseline",
+    "halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T164136789997Z-000-candidate",
+    "halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T164409807040Z-001-candidate",
+    "halfkp-nnue-w8-h0-output32-v1-usi-20261106T164648282644Z-001-baseline",
+    "halfkp-nnue-w8-h0-output32-v1-usi-20261106T164928144508Z-002-baseline",
+    "halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T165202962774Z-002-candidate",
+    "halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T165443329810Z-003-candidate",
+    "halfkp-nnue-w8-h0-output32-v1-usi-20261106T165727800648Z-003-baseline",
+    "halfkp-nnue-w16-h0-output32-v1-usi-20261106T170017124900Z-000-baseline",
+    "halfkp-nnue-w16-h0-width-kernel-v1-usi-20261106T170257508505Z-000-candidate",
+    "halfkp-nnue-w16-h0-width-kernel-v1-usi-20261106T170535681838Z-001-candidate",
+    "halfkp-nnue-w16-h0-output32-v1-usi-20261106T170820430390Z-001-baseline",
+    "halfkp-nnue-w16-h0-output32-v1-usi-20261106T171108430289Z-002-baseline",
+    "halfkp-nnue-w16-h0-width-kernel-v1-usi-20261106T171348775685Z-002-candidate",
+    "halfkp-nnue-w16-h0-width-kernel-v1-usi-20261106T171633219757Z-003-candidate",
+    "halfkp-nnue-w16-h0-output32-v1-usi-20261106T171924369296Z-003-baseline",
+    "halfkp-nnue-w16-h8-output32-v1-usi-20261106T172226773391Z-000-baseline",
+    "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T172519548218Z-000-candidate",
+    "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T172810323434Z-001-candidate",
+    "halfkp-nnue-w16-h8-output32-v1-usi-20261106T173107706347Z-001-baseline",
+    "halfkp-nnue-w16-h8-output32-v1-usi-20261106T173406153306Z-002-baseline",
+    "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T173657843737Z-002-candidate",
+    "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T173955042905Z-003-candidate",
+    "halfkp-nnue-w16-h8-output32-v1-usi-20261106T174259719821Z-003-baseline",
+    "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T174554843486Z-000-baseline",
+    "halfkp-nnue-w16-h8-packed-fc-v1-usi-20261106T174842050743Z-000-candidate",
+    "halfkp-nnue-w16-h8-packed-fc-v1-usi-20261106T175125980077Z-001-candidate",
+    "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T175416576927Z-001-baseline",
+    "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T175708210196Z-002-baseline",
+    "halfkp-nnue-w16-h8-packed-fc-v1-usi-20261106T175952706881Z-002-candidate",
+    "halfkp-nnue-w16-h8-packed-fc-v1-usi-20261106T180242806761Z-003-candidate",
+    "halfkp-nnue-w16-h8-width-kernel-v1-usi-20261106T180540114410Z-003-baseline",
+    "halfkp-nnue-w8-h8-output32-v1-usi-20261106T180831202282Z-000-baseline",
+    "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T181112329142Z-000-candidate",
+    "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T181352369091Z-001-candidate",
+    "halfkp-nnue-w8-h8-output32-v1-usi-20261106T181639248651Z-001-baseline",
+    "halfkp-nnue-w8-h8-output32-v1-usi-20261106T181925210825Z-002-baseline",
+    "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T182205801867Z-002-candidate",
+    "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T182451692092Z-003-candidate",
+    "halfkp-nnue-w8-h8-output32-v1-usi-20261106T182743394533Z-003-baseline",
+    "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T183027038187Z-000-baseline",
+    "halfkp-nnue-w8-h8-packed-fc-v1-usi-20261106T183305706863Z-000-candidate",
+    "halfkp-nnue-w8-h8-packed-fc-v1-usi-20261106T183543152974Z-001-candidate",
+    "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T183823382874Z-001-baseline",
+    "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T184103836587Z-002-baseline",
+    "halfkp-nnue-w8-h8-packed-fc-v1-usi-20261106T184341789693Z-002-candidate",
+    "halfkp-nnue-w8-h8-packed-fc-v1-usi-20261106T184624662942Z-003-candidate",
+    "halfkp-nnue-w8-h8-width-kernel-v1-usi-20261106T184910639915Z-003-baseline"
   ],
-  "svg_sha256": "bc68736e4b6c32922fbf7433084ded2823898c707c6ec87ff769b3a47d76d2bd",
-  "png_sha256": "e66b9f3026a345627539133f25db80ac8012099a811c6ccedb0045d310d14b09"
+  "svg_sha256": "1e774c061efbc66bfff341bb15d655337b4081577ca47ef908a582f48db3b0c7",
+  "png_sha256": "afa422d6b4a4b531e01668c2e4aaa638675d5dbd352f8ec6cfa23484ec25614d"
 }

@@ -1,0 +1,18 @@
+{
+  "complete": false,
+  "planned_positions": 256,
+  "measured_paired_positions": 64,
+  "measured_at_utc": "2026-11-06T16:45:07.503912+00:00",
+  "fixed_node_search_equal": true,
+  "operational_pass": true,
+  "nodes": 10000,
+  "median_host_time_saved_percent": 5.365305276650062,
+  "baseline_engine_sha256": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+  "candidate_engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+  "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+  "inputs": {
+    ".local/evaluation/halfkp-nnue-w8-h0-width-kernel-speed-v1/000-baseline.json": "155951022ec0706055e35f096fc5af0c57ebd995aba4d9dd531da8ebedab58f9",
+    ".local/evaluation/halfkp-nnue-w8-h0-width-kernel-speed-v1/000-candidate.json": "0991d2564bd02d78af8e5fe112194b726007ea73981813de495e248d1e984fea"
+  },
+  "scope": "first64-position paired-block interim only; no adoption or full256 speed conclusion; queue continues unchanged"
+}

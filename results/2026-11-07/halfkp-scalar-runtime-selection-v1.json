@@ -1,0 +1,183 @@
+{
+  "complete": true,
+  "passed": true,
+  "selected_at_utc": "2026-11-06T18:51:29.461454+00:00",
+  "auditor_sha256": "879e5c4155e6d17a577204c30b13db8c2fa36dd44cc19965cf37167cecfdc023",
+  "timing_completion_sha256": "6859b21cb88a6870f404ce6c5b71e038523f4611c6e04415814cbca28ca629b4",
+  "cases": [
+    {
+      "model": "w8-h0",
+      "variant": "width-kernel",
+      "comparison": "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-speed-v1.json",
+      "comparison_sha256": "ce48644d79dc0a2e2ba5471a1563570baefd083ca2d5cfcf6ecab17e285cbefd",
+      "positions": 256,
+      "median_host_time_saved_percent": 5.2741972932923264,
+      "paired_bootstrap_95_percent": {
+        "lower": 5.076224640278108,
+        "upper": 5.500440870760914
+      },
+      "block_medians": [
+        5.365305276650062,
+        5.6550519801867924,
+        5.011781667111759,
+        5.181617029360986
+      ],
+      "all_search_results_identical": true,
+      "operational_failures": 0
+    },
+    {
+      "model": "w16-h0",
+      "variant": "width-kernel",
+      "comparison": "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-speed-v1.json",
+      "comparison_sha256": "43de5c5f33d30ad581f0ea699050e2a5b623da013db44ba56acdf99de268d4dc",
+      "positions": 256,
+      "median_host_time_saved_percent": 6.117194820203586,
+      "paired_bootstrap_95_percent": {
+        "lower": 5.893470518072752,
+        "upper": 6.322656416509309
+      },
+      "block_medians": [
+        6.278982037198494,
+        6.10158037190544,
+        6.143795855778772,
+        5.9066743506605786
+      ],
+      "all_search_results_identical": true,
+      "operational_failures": 0
+    },
+    {
+      "model": "w16-h8",
+      "variant": "width-kernel",
+      "comparison": "results/2026-11-06/halfkp-nnue-w16-h8-width-kernel-speed-v1.json",
+      "comparison_sha256": "ce86380ddd03da48119f25a5164dd2bc2ad97dd4d4b250601d28c80a11926cce",
+      "positions": 256,
+      "median_host_time_saved_percent": 5.845727160768011,
+      "paired_bootstrap_95_percent": {
+        "lower": 5.618044003632539,
+        "upper": 6.109372016735959
+      },
+      "block_medians": [
+        6.256839274180232,
+        5.286614961089514,
+        5.419473691537758,
+        6.005968696473279
+      ],
+      "all_search_results_identical": true,
+      "operational_failures": 0
+    },
+    {
+      "model": "w16-h8",
+      "variant": "packed-fc",
+      "comparison": "results/2026-11-06/halfkp-nnue-w16-h8-packed-fc-speed-v1.json",
+      "comparison_sha256": "45fa1225e5fe2a6345a1b96ece1462a16659ef1cfd7c82ff10b3b9c44f1ce6d9",
+      "positions": 256,
+      "median_host_time_saved_percent": 6.556270855420159,
+      "paired_bootstrap_95_percent": {
+        "lower": 6.141555963106815,
+        "upper": 6.804537929671439
+      },
+      "block_medians": [
+        7.296832241292222,
+        6.570420021414475,
+        6.310805114221996,
+        6.226265521642338
+      ],
+      "all_search_results_identical": true,
+      "operational_failures": 0
+    },
+    {
+      "model": "w8-h8",
+      "variant": "width-kernel",
+      "comparison": "results/2026-11-07/halfkp-nnue-w8-h8-width-kernel-speed-v1.json",
+      "comparison_sha256": "1cdee25ab1fdef8f343eaa415dfc951de95d82a2dfb79c1bb2098da6465507f4",
+      "positions": 256,
+      "median_host_time_saved_percent": 5.487781747511367,
+      "paired_bootstrap_95_percent": {
+        "lower": 5.236978915479806,
+        "upper": 5.853281156454948
+      },
+      "block_medians": [
+        5.914186887377926,
+        5.680732240825915,
+        5.322734557512993,
+        4.7419522446635725
+      ],
+      "all_search_results_identical": true,
+      "operational_failures": 0
+    },
+    {
+      "model": "w8-h8",
+      "variant": "packed-fc",
+      "comparison": "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-speed-v1.json",
+      "comparison_sha256": "31f2a70e0deb75e1d1ef70c6056f52a9236b60b9357a1062d51285154fa97506",
+      "positions": 256,
+      "median_host_time_saved_percent": 2.619812956834072,
+      "paired_bootstrap_95_percent": {
+        "lower": 2.4180028465590864,
+        "upper": 2.7954770944595086
+      },
+      "block_medians": [
+        2.310621847606964,
+        2.900034989128375,
+        2.5313996937645578,
+        2.760880463684512
+      ],
+      "all_search_results_identical": true,
+      "operational_failures": 0
+    }
+  ],
+  "runtimes_for_ordinary_time_development": [
+    {
+      "model": "w8-h0",
+      "runtime": "width-kernel",
+      "manifest": "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+      "manifest_sha256": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "scope": "same-model target speed conditions passed; ordinary-time model strength still unmeasured for this runtime"
+    },
+    {
+      "model": "w16-h0",
+      "runtime": "width-kernel",
+      "manifest": "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+      "manifest_sha256": "4ec48ecbe4f0dd93b7b528ab94124aecf7542ca4628e56214a1a470560091d07",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "scope": "same-model target speed conditions passed; ordinary-time model strength still unmeasured for this runtime"
+    },
+    {
+      "model": "w16-h8",
+      "runtime": "packed-fc",
+      "manifest": "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json",
+      "manifest_sha256": "302f00f349f89379e2a1d07359fc33a16c871026c758b5b6eb37212bf783a074",
+      "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+      "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
+      "scope": "same-model target speed conditions passed; ordinary-time model strength still unmeasured for this runtime"
+    },
+    {
+      "model": "w8-h8",
+      "runtime": "packed-fc",
+      "manifest": "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json",
+      "manifest_sha256": "df8b507c232cfef334f9df56f9b50e90396bff4b762c50035816b3dafca84b28",
+      "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+      "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+      "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
+      "scope": "same-model target speed conditions passed; ordinary-time model strength still unmeasured for this runtime"
+    },
+    {
+      "model": "w8-h0-128m",
+      "runtime": "width-kernel",
+      "manifest": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+      "manifest_sha256": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "scope": "common retained width8 runtime to control data-size comparison;128m weights have no separate target fixed-node speed trial"
+    }
+  ],
+  "adopted_as_default": false,
+  "scope": "runtime choices for upcoming full1024 development comparison; no strength or final candidate selection from fixed-node timings"
+}

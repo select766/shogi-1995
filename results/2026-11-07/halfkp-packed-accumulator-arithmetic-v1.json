@@ -1,0 +1,300 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T17:09:23.227473+00:00",
+  "seed": 20261107,
+  "add_cases": 10593,
+  "subtract_cases": 10593,
+  "invalid_cache_lanes_rejected": 4,
+  "models": [
+    {
+      "path": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-v1/model.bin",
+      "sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "width": 8,
+      "hidden": 0,
+      "accumulator_lane_bounds_40slots": [
+        [
+          -13872,
+          13888
+        ],
+        [
+          -12567,
+          12913
+        ],
+        [
+          -13005,
+          13395
+        ],
+        [
+          -14175,
+          12105
+        ],
+        [
+          -15974,
+          12666
+        ],
+        [
+          -16830,
+          13570
+        ],
+        [
+          -13947,
+          13533
+        ],
+        [
+          -14006,
+          14194
+        ]
+      ],
+      "applicable": true,
+      "coefficient_roundtrips": 1024,
+      "refresh_vectors": 16,
+      "incremental_vectors": 512
+    },
+    {
+      "path": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w16-h0-v1/model.bin",
+      "sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "width": 16,
+      "hidden": 0,
+      "accumulator_lane_bounds_40slots": [
+        [
+          -12888,
+          11992
+        ],
+        [
+          -13435,
+          10445
+        ],
+        [
+          -11541,
+          11459
+        ],
+        [
+          -14042,
+          11598
+        ],
+        [
+          -12745,
+          11775
+        ],
+        [
+          -12868,
+          10092
+        ],
+        [
+          -11936,
+          13744
+        ],
+        [
+          -11815,
+          11425
+        ],
+        [
+          -11999,
+          11241
+        ],
+        [
+          -11724,
+          11516
+        ],
+        [
+          -11868,
+          10332
+        ],
+        [
+          -12849,
+          12151
+        ],
+        [
+          -12557,
+          11923
+        ],
+        [
+          -11033,
+          10367
+        ],
+        [
+          -14124,
+          11036
+        ],
+        [
+          -11748,
+          12492
+        ]
+      ],
+      "applicable": true,
+      "coefficient_roundtrips": 1024,
+      "refresh_vectors": 16,
+      "incremental_vectors": 512
+    },
+    {
+      "path": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w16-h8-v1/model.bin",
+      "sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+      "width": 16,
+      "hidden": 8,
+      "accumulator_lane_bounds_40slots": [
+        [
+          -15050,
+          10110
+        ],
+        [
+          -12686,
+          11714
+        ],
+        [
+          -12034,
+          15526
+        ],
+        [
+          -13067,
+          13533
+        ],
+        [
+          -13538,
+          13022
+        ],
+        [
+          -12390,
+          13130
+        ],
+        [
+          -11236,
+          11324
+        ],
+        [
+          -12244,
+          11236
+        ],
+        [
+          -11413,
+          12707
+        ],
+        [
+          -13232,
+          11248
+        ],
+        [
+          -13233,
+          14247
+        ],
+        [
+          -12653,
+          13267
+        ],
+        [
+          -10929,
+          9671
+        ],
+        [
+          -15657,
+          12383
+        ],
+        [
+          -12599,
+          12641
+        ],
+        [
+          -12664,
+          10296
+        ]
+      ],
+      "applicable": true,
+      "coefficient_roundtrips": 1024,
+      "refresh_vectors": 16,
+      "incremental_vectors": 512
+    },
+    {
+      "path": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-128m-v1/model.bin",
+      "sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "width": 8,
+      "hidden": 0,
+      "accumulator_lane_bounds_40slots": [
+        [
+          -17307,
+          18453
+        ],
+        [
+          -21675,
+          15125
+        ],
+        [
+          -15712,
+          16008
+        ],
+        [
+          -17168,
+          18392
+        ],
+        [
+          -20920,
+          17600
+        ],
+        [
+          -22354,
+          15526
+        ],
+        [
+          -18578,
+          16982
+        ],
+        [
+          -16580,
+          24820
+        ]
+      ],
+      "applicable": true,
+      "coefficient_roundtrips": 1024,
+      "refresh_vectors": 16,
+      "incremental_vectors": 512
+    },
+    {
+      "path": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h8-v1/model.bin",
+      "sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+      "width": 8,
+      "hidden": 8,
+      "accumulator_lane_bounds_40slots": [
+        [
+          -13013,
+          11707
+        ],
+        [
+          -12012,
+          10668
+        ],
+        [
+          -14091,
+          14509
+        ],
+        [
+          -11902,
+          10378
+        ],
+        [
+          -13956,
+          12204
+        ],
+        [
+          -13878,
+          13162
+        ],
+        [
+          -11915,
+          13925
+        ],
+        [
+          -14415,
+          14825
+        ]
+      ],
+      "applicable": true,
+      "coefficient_roundtrips": 1024,
+      "refresh_vectors": 16,
+      "incremental_vectors": 512
+    }
+  ],
+  "script_sha256": "22e16f59b162c682bcebb599f966fe28d295a15349ee37364baff617d73833db",
+  "scope": "arbitrary-precision arithmetic and model bounds study only; no C++ runtime implementation, Pentium execution, speed or strength result",
+  "condition": "Both lanes, including intermediate updates, remain in signed16 range; otherwise retain the signed32 accumulator runtime.",
+  "storage_proposal": "encode existing adjacent embedding coefficients in place as unsigned32 deltas; recover each original signed16 coefficient for independent recomputation; model file unchanged",
+  "guest_engine_changed": false,
+  "model_weights_changed": false
+}

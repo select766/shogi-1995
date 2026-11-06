@@ -1,0 +1,35 @@
+{
+  "created_at_utc": "2026-11-06T17:41:28.729304+00:00",
+  "status": "optional C++ candidate prepared; NOT compiled, executed or adopted",
+  "arithmetic_study": {
+    "path": "results/2026-11-07/halfkp-packed-accumulator-arithmetic-v1.json",
+    "sha256": "29ff5a0a57c82b96b5ceb5449c884a3697276530b01029e29e16cd62a5f1150e"
+  },
+  "implementation": "standardHalfKP width8/16 only; load-time signed16 bound on bias plus up to40 active coefficients per lane; encode adjacent embedding coefficients in place as signed-low corrected unsigned32 deltas; cache two biased signed16 lanes per32-bit word; scalar add/sub only; recover original coefficients for independent full recomputation; signed32 cache fallback otherwise",
+  "model_and_features": "unchanged raw NN03 weights/format, HalfKP indices, clipping and material residual; no new training or model selection from test",
+  "memory": "no additional embedding copy, StateInfo allocation unchanged; only firstwidth/2 cache words are used in packed mode",
+  "build_gate": "all six current timing trials and their producer must exit before any compile/native execution/guest session for this candidate",
+  "required_checks": [
+    "native C++ helper under UBSan against independent Python arbitrary-precision sums, subtraction, raw-coefficient recovery and memory representation",
+    "synthetic model range endpoints, conservative40-slot bound and32-bit fallback; switch packed/plain without resetting position; disable/reenable; existing output and FC boundary tests remain valid",
+    "static32 Pentium compile and known-opcode check, real target execution; no MMX/SSE/AVX",
+    "all five converged trained models: independent512 values, all256 same-node moves/finalnodes/completeddepth vs frozen old runtime, full EvalVerify recomputation and reload",
+    "all five models: realguest16 automatic values/RAMswap0, guest8 same-node roots and explicit accumulator_packed1/accumulator_bits16; confirm FC/output modes unchanged",
+    "after ordinary development selection identifies retained best weights, fixed-model quick256/10000nodes/64ABBA speed vs retained runtime, identical tree andops0, paired95 median saved lower>0 plus all4 block medians",
+    "only if speed supported and time remains: full1024ordinary2000ms against the retained best with the same weights; freeze final candidate before independent4096 test"
+  ],
+  "budget_policy": "main six speed trials and core full-development comparisons retain priority; optional runtime trial only if full development comparison can finish by Nov7 06UTC; no adoption from arithmetic/operation alone; withdraw active-source prototype if insufficiently verified or slower, preserving study/failure records",
+  "timing_code_and_profiles": "all currently executing frozen images/binaries and measurement scripts remain unchanged; only future unbuilt engine source and optional diagnostic test arguments prepared",
+  "execution_driver": {
+    "path": "scripts/qualify-packed-accumulator.py",
+    "sha256": "4e02a9da4aab9d4d8a78cafc64eaea7a9ed47d373b962b2b4cf803941fce8ff6",
+    "status": "syntax and live-queue entry refusal checked; full compiler/engine/guest qualification NOT executed",
+    "arguments": "--work NEW_WORK_DIRECTORY --results RESULTS_DIRECTORY",
+    "guards": "all12steps complete and identified timing producer exited; committed vendor tree matches recorded build and engine hash; each old manifest and trained weight hash matches fixed development selection plan; preserve existing candidates/work/results",
+    "manual_preflight": "quiet host, no GPU training/preprocessing/build or other VM jobs before invoking; driver qualifies correctness/RAM only, never speed/strength/adoption",
+    "entry_guard_evidence": {
+      "path": "results/2026-11-07/halfkp-packed-accumulator-driver-entry-guard-v1.json",
+      "sha256": "6fa71e53d4e75d0715a4743022e88362203466cede93af241aabd7496735cd22"
+    }
+  }
+}

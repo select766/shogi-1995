@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T18:16:36.012442+00:00",
+  "driver_sha256": "4e02a9da4aab9d4d8a78cafc64eaea7a9ed47d373b962b2b4cf803941fce8ff6",
+  "live_queue_step": 9,
+  "argv": [
+    "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+    "/home/select766/shogi/shogi-1995/scripts/qualify-packed-accumulator.py",
+    "--work",
+    "/tmp/shogi-packed-accumulator-guard-work-v1",
+    "--results",
+    "/tmp/shogi-packed-accumulator-guard-results-v1"
+  ],
+  "exit_code": 1,
+  "work_and_result_directories_not_created": true,
+  "expected_error": "all six prior timing trials must finish first",
+  "scope": "entry guard rejection only; no build, compiler, engine or guest execution; full qualification remains unexecuted"
+}

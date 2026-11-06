@@ -1,0 +1,67 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-06T17:39:40.915977+00:00",
+  "positions": 256,
+  "blocks": [
+    {
+      "block": 0,
+      "positions": 64,
+      "execution_order": [
+        "baseline",
+        "candidate"
+      ],
+      "median_host_time_saved_percent": 6.278982037198494,
+      "inputs": {
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/000-baseline.json": "f637a5e7b719327bf5f4514bc050923c45d81fe51e67072f6cebc779acd24057",
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/000-candidate.json": "2b408cd05f36a0a28130c479198b713b527eb6108e9a1870c0f6ae100a94546c"
+      }
+    },
+    {
+      "block": 1,
+      "positions": 64,
+      "execution_order": [
+        "candidate",
+        "baseline"
+      ],
+      "median_host_time_saved_percent": 6.10158037190544,
+      "inputs": {
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/001-baseline.json": "42f854345533460fe67c7cdfb618fc40ed7f5006ec37b631cf255d2434cc6435",
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/001-candidate.json": "e8aae13a600461414c55522cba024b7831366ad6e19c81fa798e62a2cc1e05c4"
+      }
+    },
+    {
+      "block": 2,
+      "positions": 64,
+      "execution_order": [
+        "baseline",
+        "candidate"
+      ],
+      "median_host_time_saved_percent": 6.143795855778772,
+      "inputs": {
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/002-baseline.json": "ee20b250eac901a3912f68c2510f6051d17033f7d4287e63f857c4cb399fd2b3",
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/002-candidate.json": "fbdca5745f81408899bd85e1262c28dfcc6f35dfb311f120d25d0c158e176020"
+      }
+    },
+    {
+      "block": 3,
+      "positions": 64,
+      "execution_order": [
+        "candidate",
+        "baseline"
+      ],
+      "median_host_time_saved_percent": 5.9066743506605786,
+      "inputs": {
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/003-baseline.json": "82ab9c9c7b1010fea5f42839d7e508cdafbe440bbfbce899df07e70f04a81ab4",
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/003-candidate.json": "d8f51084fda646b68f137d46b2d48219ee3f2b4c14ebb4323b32aee6aed6c80c"
+      }
+    }
+  ],
+  "all_block_medians_positive": true,
+  "full_comparison": {
+    "path": "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-speed-v1.json",
+    "sha256": "43de5c5f33d30ad581f0ea699050e2a5b623da013db44ba56acdf99de268d4dc"
+  },
+  "eligible_for_ordinary_time_strength_comparison": true,
+  "scope": "fixed-model Pentium fixed-node runtime diagnostic; not a strength result"
+}

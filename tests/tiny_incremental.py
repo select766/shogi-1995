@@ -20,6 +20,8 @@ def main():
     p.add_argument('--expected-kernel-width', type=int, choices=(0,8,16))
     p.add_argument('--expected-fc-packed', type=int, choices=(0,1))
     p.add_argument('--expected-fc-bits', type=int, choices=(0,32,64))
+    p.add_argument('--expected-accumulator-packed', type=int, choices=(0,1))
+    p.add_argument('--expected-accumulator-bits', type=int, choices=(16,32))
     args = p.parse_args()
     if args.output.exists():
         raise ValueError('output exists')
@@ -36,7 +38,10 @@ def main():
             expected_nodes=row.get('final_nodes',row['nodes'])
             actual_nodes=actual.get('final_nodes',actual['nodes'])
             assert actual_nodes == expected_nodes, (row['id'], expected_nodes, actual)
-            results.append({'id': row['id'], 'actual': actual['actual'], 'nodes': actual_nodes})
+            if reference.get('capture_search_diagnostics',False):
+                assert actual['completed_depth'] == row['completed_depth'], (row['id'], row, actual)
+            results.append({'id': row['id'], 'actual': actual['actual'], 'nodes': actual_nodes,
+                            'completed_depth':actual.get('completed_depth')})
         engine.send('shogi1995evalstats')
         _, lines = engine.until('info string shogi1995 accumulators ', 5)
         stats = {k: int(v) for k, v in (item.split('=') for item in lines[-1].split()[4:])}
@@ -47,6 +52,10 @@ def main():
             assert stats.get('fc_packed') == args.expected_fc_packed, stats
         if args.expected_fc_bits is not None:
             assert stats.get('fc_bits') == args.expected_fc_bits, stats
+        if args.expected_accumulator_packed is not None:
+            assert stats.get('accumulator_packed') == args.expected_accumulator_packed, stats
+        if args.expected_accumulator_bits is not None:
+            assert stats.get('accumulator_bits') == args.expected_accumulator_bits, stats
         # Reloading a model must invalidate cached accumulators, including at the current position.
         engine.send('shogi1995eval'); _, before = engine.until('info string shogi1995 eval ', 5)
         engine.send('setoption name EvalFile value ' + str(args.model.resolve()))
@@ -56,6 +65,7 @@ def main():
         assert before[-1] == after[-1], (before[-1], after[-1])
     result = {'passed': True, 'positions': len(results), 'counters': stats,
               'same_bestmoves_and_nodes': True, 'model_reload_passed': True,
+              'same_completed_depth': True if reference.get('capture_search_diagnostics',False) else None,
               'engine_sha256': hashlib.sha256(binary.read_bytes()).hexdigest(),
               'model_sha256': hashlib.sha256(args.model.read_bytes()).hexdigest(),
               'reference_sha256': hashlib.sha256(args.reference.read_bytes()).hexdigest()}

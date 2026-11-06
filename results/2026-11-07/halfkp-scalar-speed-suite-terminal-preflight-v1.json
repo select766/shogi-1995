@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T18:49:41.383871+00:00",
+  "timing_session80894_terminal_exit0": true,
+  "known_owned_processes": {
+    "493003": {
+      "state": "absent"
+    },
+    "360659": {
+      "state": "absent"
+    },
+    "440893": {
+      "state": "absent"
+    },
+    "480838": {
+      "state": "absent"
+    }
+  },
+  "gpu_compute_processes": [],
+  "gpu_usage": "0 %, 358 MiB",
+  "default_engine_lock_available": true,
+  "timing_completion_sha256": "6859b21cb88a6870f404ce6c5b71e038523f4611c6e04415814cbca28ca629b4",
+  "scope": "quiet-host preflight after all six timing comparisons; no performance claim"
+}

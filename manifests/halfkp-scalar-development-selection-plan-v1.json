@@ -1,0 +1,150 @@
+{
+  "created_at_utc": "2026-11-06T17:46:37.389869+00:00",
+  "status": "selection rules fixed; executable runtime choices await all six speed results; not started",
+  "prerequisite": {
+    "state": ".local/jobs/halfkp-scalar-speed-v1.json",
+    "pid": 493003,
+    "process_start_time": "6258900",
+    "plan_sha256": "3d3af231ac57446d21d7d5ba4dcd2cd05c685cd2df3c0c7802cfab888e82d6be",
+    "require": "all12steps complete and producer exited; no other heavy job"
+  },
+  "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+  "dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "positions": 1024,
+  "seed": 20261106,
+  "measurement": {
+    "mode": "fixed_byoyomi",
+    "milliseconds": 2000,
+    "nodes": null,
+    "block_size": 256,
+    "order": "AB/BA sequential; one VM at a time",
+    "clock": "ordinary go btime0 wtime0 byoyomi2000; NetworkDelay/NetworkDelay2 zero; no host budget rewriting"
+  },
+  "runtime_selection": "retain C30 width kernel if its exact-tree full256 fixed-node trial is operationally clean, paired95 median saved lower>0 and all4 block medians positive; for H8 use packedFC only if its same-model full256 vs retained C30 meets the same conditions. Retain general otherwise; do not claim a packedFC advantage vs general without direct evidence if C30 fails.",
+  "comparison_order": [
+    {
+      "baseline": "w8-h0 general e6",
+      "candidate": "w8-h0 retained runtime",
+      "purpose": "same64m weights ordinary-time effect of qualified CPU optimization",
+      "output": ".local/evaluation/development-halfkp-w8-h0-scalar-optimization-v1"
+    },
+    {
+      "baseline": "w8-h0 retained runtime",
+      "candidate": "w8-h0-128m retained runtime",
+      "purpose": "fixed geometry and runtime; more training data AND twice training examples, not compute-matched ablation",
+      "output": ".local/evaluation/development-halfkp-w8-h0-128m-scalar-v1"
+    },
+    {
+      "baseline": "w8-h0 retained runtime",
+      "candidate": "w8-h8 retained runtime",
+      "purpose": "compact three-layer deployment candidate versus two-layer; same64m training inputs, joint model/runtime comparison if packedFC retained",
+      "output": ".local/evaluation/development-halfkp-w8-h8-scalar-v1"
+    },
+    {
+      "baseline": "w8-h0 retained runtime",
+      "candidate": "w16-h0 retained runtime",
+      "purpose": "same64m training inputs and common width-specialized arithmetic; wider two-layer model",
+      "output": ".local/evaluation/development-halfkp-w16-h0-scalar-v1"
+    },
+    {
+      "baseline": "w8-h0 retained runtime",
+      "candidate": "w16-h8 retained runtime",
+      "purpose": "same64m training inputs; wider three-layer deployment candidate, joint model/runtime comparison if packedFC retained",
+      "output": ".local/evaluation/development-halfkp-w16-h8-scalar-v1"
+    }
+  ],
+  "models": [
+    {
+      "model": "w8-h0",
+      "data": "64m",
+      "qualified_runtimes": {
+        "width-kernel": {
+          "path": "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+          "sha256": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3",
+          "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+          "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+          "image_sha256": "8ce624219a2a9fa3cff4e3fe3cd585b3ecd3ccfe12579cef7c90d04445462bd3",
+          "source_commit": "196920bedbc33cd8fff03f069e08764af966a250"
+        }
+      }
+    },
+    {
+      "model": "w16-h0",
+      "data": "64m",
+      "qualified_runtimes": {
+        "width-kernel": {
+          "path": "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+          "sha256": "4ec48ecbe4f0dd93b7b528ab94124aecf7542ca4628e56214a1a470560091d07",
+          "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+          "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+          "image_sha256": "f5ba4996609de51e0b3f6c5a6197066bdb0535ba7449a7d91b87c3cf19f4f717",
+          "source_commit": "196920bedbc33cd8fff03f069e08764af966a250"
+        }
+      }
+    },
+    {
+      "model": "w16-h8",
+      "data": "64m",
+      "qualified_runtimes": {
+        "width-kernel": {
+          "path": "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+          "sha256": "c71da308dd5fe55c957eec334b9f9bab9bd08f2075b74dfaa98f0f94c43dc07c",
+          "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+          "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+          "image_sha256": "77be0ad6175789ec0fdc96837a0274759f77077d85dab8cb1bfcb91577c25c02",
+          "source_commit": "196920bedbc33cd8fff03f069e08764af966a250"
+        },
+        "packed-fc": {
+          "path": "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json",
+          "sha256": "302f00f349f89379e2a1d07359fc33a16c871026c758b5b6eb37212bf783a074",
+          "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+          "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+          "image_sha256": "43c30461389debb1525ae8cc68088c25bea49d307780b798dec36d0c6a7794d1",
+          "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b"
+        }
+      }
+    },
+    {
+      "model": "w8-h8",
+      "data": "64m",
+      "qualified_runtimes": {
+        "width-kernel": {
+          "path": "manifests/halfkp-nnue-w8-h8-width-kernel-v1-candidate.json",
+          "sha256": "00497ed2ff9ba4c87787c1f47a5ae5cb85fd99351b8402537367b36e90e30e02",
+          "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+          "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+          "image_sha256": "277ccb400dd1149e2b5b5621b7702221b2d0707a7f623d5edb165022000ac76b",
+          "source_commit": "196920bedbc33cd8fff03f069e08764af966a250"
+        },
+        "packed-fc": {
+          "path": "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json",
+          "sha256": "df8b507c232cfef334f9df56f9b50e90396bff4b762c50035816b3dafca84b28",
+          "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+          "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+          "image_sha256": "a3b6c885266211594267cadc8996e882abd35a69d048edb4fda18ff323fbf753",
+          "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b"
+        }
+      }
+    },
+    {
+      "model": "w8-h0-128m",
+      "data": "128m",
+      "qualified_runtimes": {
+        "width-kernel": {
+          "path": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+          "sha256": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+          "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+          "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+          "image_sha256": "b2a65670b0e357299349ed723b35792edaa292337e35a2bb07f85ebeb4b9594c",
+          "source_commit": "196920bedbc33cd8fff03f069e08764af966a250"
+        }
+      }
+    }
+  ],
+  "selection": "rank full1024 candidate agreement with all paired95 intervals and operational failures; preserve full-N repeated controls separately, never pool repeated positions as independent data. Treat close overlapping intervals as uncertain; tie favors simpler/smaller previously retained candidate. No selection by float loss, quick subsets, native NPS or fixed-node speed alone.",
+  "reporting": "archive every full measurement UTC/JST, conditions, source and measurement commits, model/runtime hashes, main feature differences; compare full candidates against original frozen material under matching conditions. New runtime vs model structure effects only attributed where controlled; model128m has2x training compute.",
+  "optional_packed_accumulator": "separate unbuilt prototype; main five comparisons take priority. May build and validate only after current timing queue exits, and may measure only retained best model after core comparisons, if full gates and full ordinary1024 fit candidate freeze.",
+  "candidate_freeze_deadline_utc": "2026-11-07T06:00:00+00:00",
+  "final_gate": "freeze one candidate before any4096 heldout test; compare fresh fixed original material, require >=+2pp, paired95lower>0 and zero operational failures; complete20 auxiliary symmetric3min+2s games,2 asymmetric tournament operational games and defaultUSI lifecycle before activation/result report. No tuning from heldout test.",
+  "new_128m_runtime_control": "Use exactly the retained width8/H0 runtime chosen with64m weights for both data-size candidates. The128m C30/general profiles have integer/native/guest correctness qualification but no separate same-weight target speed trial yet. This is a controlled data+training-compute comparison; do not transfer the64m speed percentage to128m weights or claim its independently fastest runtime."
+}
