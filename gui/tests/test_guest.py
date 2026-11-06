@@ -56,6 +56,7 @@ try:
     assert log.count('ENGINE spawn pid=')==1,log[-4000:]
     assert 'TK ERROR' not in log,log[-4000:]
     assert 'USI> go btime' in log and 'binc 1000 winc 1000' in log
+    assert 'loaded: /eval/model.bin' in log,log[-5000:]
     ai_plies=int(state.splitlines()[0].split()[-1])
     # Both mixed assignments use the same GUI/USI path, with one process per game.
     g.gui('settings');g.gui('setup human ai 0 1');g.gui('start')
