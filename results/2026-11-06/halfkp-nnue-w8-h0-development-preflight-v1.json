@@ -1,0 +1,14 @@
+{
+  "checked_at_utc": "2026-11-06T09:05:19.404267+00:00",
+  "plan_sha256": "e20007c3068c0daa7c28d6dabc167a73a1fa1627e55e24b78489cc2b77765a7d",
+  "speed_selection_result_sha256": "4b4d2e258d093f85f59c62418fe260273cd86307808b123c3caf92a247e7d29f",
+  "selected_candidate_manifest": "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+  "selected_candidate_manifest_sha256": "71724b3087e494734b5634cbb4d16ed2c6af79c543bacac15b38b8db055b4099",
+  "baseline_manifest": "manifests/halfkp-linear-v2-self-configuring-profile.json",
+  "active_project_heavy_jobs": [],
+  "gpu_compute_jobs": 0,
+  "frozen_images_verified": true,
+  "positions": 1024,
+  "milliseconds": 2000,
+  "nodes": null
+}
