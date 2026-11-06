@@ -1,0 +1,49 @@
+{
+  "verified_at_utc": "2026-11-06T12:43:31.537283+00:00",
+  "verification_commit": "76403ebf1c662e11d31183f81711bd3ae7b7281e",
+  "positions": 1024,
+  "engine_sha256": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+  "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+  "same_conditions_verified": true,
+  "old_matches": 383,
+  "new_matches": 383,
+  "different_bestmoves": 3,
+  "match_status_flips": 2,
+  "changes": [
+    {
+      "id": "hcpe-25966",
+      "expected": "6i7h",
+      "old_actual": "2i3g",
+      "new_actual": "4g4f",
+      "old_match": false,
+      "new_match": false
+    },
+    {
+      "id": "hcpe-404489",
+      "expected": "6c6d",
+      "old_actual": "6c6d",
+      "new_actual": "1c1d",
+      "old_match": true,
+      "new_match": false
+    },
+    {
+      "id": "hcpe-149267",
+      "expected": "3b2b",
+      "old_actual": "S*3a",
+      "new_actual": "3b2b",
+      "old_match": false,
+      "new_match": true
+    }
+  ],
+  "inputs": [
+    {
+      "path": "results/2026-11-06/halfkp-nnue-w8-h0-output32-v1-usi-20261106T102340603889Z-candidate.json",
+      "sha256": "699251c54d928ea2cdedc4c212ac8e75f93ac2baf88d2e42bc152c45ce5b7c33"
+    },
+    {
+      "path": "results/2026-11-06/halfkp-nnue-w8-h0-output32-v1-usi-20261106T123858912486Z-baseline.json",
+      "sha256": "e72237d36e049ad4363436ff61273044a7bf4152dbfc83b93bf3f117d7beaa42"
+    }
+  ],
+  "scope": "ordinary2000ms repeat variability on the same1024 positions; not additional independent samples"
+}

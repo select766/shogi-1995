@@ -4,7 +4,7 @@
 
 各行は完走した一回の測定。同じ `comparison_group` の行は、評価局面・標本数・時間またはノード数・共通オプション・実行環境が同じ。異なる条件の一致率を一つの成績系列として接続しない。
 
-[CSV](../results/measurement-history.csv) / [JSON](../results/measurement-history.json) / [時系列グラフ（SVG）](../results/measurement-history.svg)。グラフの横軸には `finished_at_utc`、縦軸には `accuracy_percent` を使い、`comparison_group` で系列を分ける。レーティングは未測定のため空欄。
+[CSV](../results/measurement-history.csv) / [JSON](../results/measurement-history.json) / [時系列グラフ（SVG）](../results/measurement-history.svg)。グラフの横軸には `finished_at_utc`、縦軸には `accuracy_percent` を使い、`comparison_group` で系列を分ける。補助対局のElo換算と得点率は[別の履歴](match-history.md)に記録する。この一致率表のレーティング欄は空欄。
 
 86BoxはPentium 100 MHz・RAM 32 MiB、実時間評価は通常の秒読み2秒。NetworkDelayとNetworkDelay2はともに0。nativeの固定ノード試験はホスト診断であり、Pentiumの実時間評価とは分ける。機械構成と依存物は評価計画およびassets manifestに固定する。
 
@@ -91,5 +91,8 @@
 | 11/06 21:05:20 | [halfkp-nnue-w8-h0-output32-v1-usi](../results/2026-11-06/halfkp-nnue-w8-h0-output32-v1-usi-20261106T120520256964Z-002-baseline.json) | 86box / 2000ms / development 256局面 | 87/256 | 33.98% (28.46–39.99) | `e6d5f38` | 幅8・2層非QATの同一学習済み重み、特徴量加減算版に範囲証明付き32bit出力和を追加、範囲外は64bit維持、NoPIC・非SIMD、演算速度の比較用、USI通常起動でも同じ評価ファイルを自動設定 |
 | 11/06 21:16:30 | [halfkp-nnue-w16-h0-output32-v1-usi](../results/2026-11-06/halfkp-nnue-w16-h0-output32-v1-usi-20261106T121630758099Z-002-candidate.json) | 86box / 2000ms / development 256局面 | 87/256 | 33.98% (28.46–39.99) | `fd27774` | 標準HalfKP・幅16の2層NNUE、同じqsearch済み63977434件で40epoch飽和、差分加減算と範囲証明付き32bit出力和、USI通常起動でも同じ評価ファイルを自動設定 |
 | 11/06 21:27:41 | [halfkp-nnue-w16-h0-output32-v1-usi](../results/2026-11-06/halfkp-nnue-w16-h0-output32-v1-usi-20261106T122741469745Z-003-candidate.json) | 86box / 2000ms / development 256局面 | 96/256 | 37.50% (31.80–43.57) | `fd27774` | 標準HalfKP・幅16の2層NNUE、同じqsearch済み63977434件で40epoch飽和、差分加減算と範囲証明付き32bit出力和、USI通常起動でも同じ評価ファイルを自動設定 |
+| 11/06 21:27:41 | [halfkp-nnue-w16-h0-output32-v1-usi](../results/2026-11-06/halfkp-nnue-w16-h0-output32-v1-usi-20261106T122741469745Z-candidate.json) | 86box / 2000ms / development 1024局面 | 378/1024 | 36.91% (34.01–39.91) | `fd27774` | 標準HalfKP・幅16の2層NNUE、同じqsearch済み63977434件で40epoch飽和、差分加減算と範囲証明付き32bit出力和、USI通常起動でも同じ評価ファイルを自動設定 |
+| 11/06 21:38:58 | [halfkp-nnue-w8-h0-output32-v1-usi](../results/2026-11-06/halfkp-nnue-w8-h0-output32-v1-usi-20261106T123858912486Z-003-baseline.json) | 86box / 2000ms / development 256局面 | 96/256 | 37.50% (31.80–43.57) | `e6d5f38` | 幅8・2層非QATの同一学習済み重み、特徴量加減算版に範囲証明付き32bit出力和を追加、範囲外は64bit維持、NoPIC・非SIMD、演算速度の比較用、USI通常起動でも同じ評価ファイルを自動設定 |
+| 11/06 21:38:58 | [halfkp-nnue-w8-h0-output32-v1-usi](../results/2026-11-06/halfkp-nnue-w8-h0-output32-v1-usi-20261106T123858912486Z-baseline.json) | 86box / 2000ms / development 1024局面 | 383/1024 | 37.40% (34.49–40.41) | `e6d5f38` | 幅8・2層非QATの同一学習済み重み、特徴量加減算版に範囲証明付き32bit出力和を追加、範囲外は64bit維持、NoPIC・非SIMD、演算速度の比較用、USI通常起動でも同じ評価ファイルを自動設定 |
 
 反則・異常終了・時間超過の件数、モデル・バイナリ・イメージのSHA、共通設定、対応あり比較の元になる各局面の指し手はCSV/JSONおよびリンク先の明細に保存する。
