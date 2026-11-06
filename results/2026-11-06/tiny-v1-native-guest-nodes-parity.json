@@ -1,0 +1,78 @@
+{
+  "complete": true,
+  "positions": 8,
+  "identical_fields": [
+    "expected",
+    "actual",
+    "nodes"
+  ],
+  "engine_sha256": "a1bee99073c9206fb4a0d79d0cfdf13c117af6ca45afc3e642b3e8ba9750d04b",
+  "model_sha256": "170b59715c683c684c14b928f602eae3c0d61a811186f0a7f7479a9ff556792c",
+  "rows": [
+    {
+      "id": "hcpe-695495",
+      "expected": "3a3b",
+      "actual": "3a3b",
+      "nodes": 10010,
+      "guest_last_reported_depth": 8,
+      "host_last_reported_depth": 7
+    },
+    {
+      "id": "hcpe-51572",
+      "expected": "P*3h",
+      "actual": "P*8g",
+      "nodes": 10005,
+      "guest_last_reported_depth": 7,
+      "host_last_reported_depth": 6
+    },
+    {
+      "id": "hcpe-93812",
+      "expected": "4d3e",
+      "actual": "8e8f",
+      "nodes": 10024,
+      "guest_last_reported_depth": 9,
+      "host_last_reported_depth": 8
+    },
+    {
+      "id": "hcpe-141427",
+      "expected": "2b3c",
+      "actual": "2b3c",
+      "nodes": 10012,
+      "guest_last_reported_depth": 9,
+      "host_last_reported_depth": 8
+    },
+    {
+      "id": "hcpe-248637",
+      "expected": "8d9d",
+      "actual": "8d9d",
+      "nodes": 10007,
+      "guest_last_reported_depth": 8,
+      "host_last_reported_depth": 7
+    },
+    {
+      "id": "hcpe-8022",
+      "expected": "5g5f",
+      "actual": "7h6i",
+      "nodes": 10003,
+      "guest_last_reported_depth": 8,
+      "host_last_reported_depth": 8
+    },
+    {
+      "id": "hcpe-661048",
+      "expected": "6h5g",
+      "actual": "5f5e",
+      "nodes": 10004,
+      "guest_last_reported_depth": 8,
+      "host_last_reported_depth": 7
+    },
+    {
+      "id": "hcpe-343894",
+      "expected": "7f7e",
+      "actual": "4f4e",
+      "nodes": 10026,
+      "guest_last_reported_depth": 9,
+      "host_last_reported_depth": 9
+    }
+  ],
+  "note": "Last reported depth can differ because USI info output depends on elapsed time. Host time and NPS are not Pentium performance measurements."
+}
