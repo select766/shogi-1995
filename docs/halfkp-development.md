@@ -133,3 +133,5 @@ QAT版は2026年11月6日17:07:42 JSTに100epoch・延べ6,397,743,400局面で�
 加減算版の測定終了後にビルド・対象命令検査を通過した。`tests/nnue_output_accumulation.py`は、正負の丸め境界、int32両端、積によって範囲を超えるケース、追加隠れ層、モデル切替・無効化を検査する11ケース・176局面で通過した。[整数境界と64bit切替](../results/2026-11-06/halfkp-nnue-output32-boundaries-v1.json)。学習済み512局面の整数値が一致し、256局面のbestmove・ノード数・再ロードも一致した。1,214,176回の加算値照合と、実モデルが32bit経路を選ぶことも確認した。[学習済み探索照合](../results/2026-11-06/halfkp-nnue-output32-trained-search-parity-v1.json)。
 
 実Pentiumでも8局面のbestmove・最終ノード数・完了深さが一致し、診断カウンタの`output_bits=32`で実経路を確認した。[実ゲスト照合](../results/2026-11-06/halfkp-nnue-output32-guest-nodes-parity-v1.json)。[別の固定ノード速度比較](../manifests/halfkp-nnue-output32-speed-plan-v1.json)で採否を決める。同じ学習済み重みを使い、採用済み加減算版からの追加改善として測る。32bitの利用だけを理由に高速と主張しない。
+
+この比較後は追加の演算候補を挟まず、[2層NNUEの実時間評価計画](../manifests/halfkp-nnue-w8-h0-development-plan-v1.json)に進む。重みは収束済み非QAT幅8の同一ファイル。32bit版の速度区間下限が正ならその版、そうでなければ採用済み加減算版を選ぶ。現在の最良HalfKP線形版とdevelopment全1,024局面・通常2秒・256局面のAB/BAで比較する。固定した駒得版との比較も条件照合を通して報告する。testはまだ使わない。

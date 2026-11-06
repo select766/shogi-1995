@@ -1,0 +1,46 @@
+{
+  "purpose": "first real-time development comparison of converged standard HalfKP two-layer NNUE against current best scalar HalfKP",
+  "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+  "dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "positions": 1024,
+  "sample_seed": 20261106,
+  "baseline": "manifests/halfkp-linear-v2-self-configuring-profile.json",
+  "baseline_manifest_sha256": "7cb85130e75082556b779a4cee13bd6ce4d3a425fc0ba8436c4c9a1a800b161d",
+  "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+  "training_manifest_sha256": "308dac8193fca1d0c9227fc0acdc3090c9d06437e213e2beab954f081f8c4b6e",
+  "candidate_runtime_selection": {
+    "speed_result": "results/2026-11-06/halfkp-nnue-output32-speed-v1-comparison.json",
+    "use_output32_if": "identical model and all256 search results; speedup_supported true (paired bootstrap lower bound >0)",
+    "output32": "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+    "otherwise": "manifests/halfkp-nnue-w8-h0-addsub-v1-candidate.json"
+  },
+  "mode": "fixed_byoyomi",
+  "milliseconds": 2000,
+  "nodes": null,
+  "block_size": 256,
+  "order": "AB/BA alternating; one VM at a time",
+  "common_options": {
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false,
+    "MultiPV": 1,
+    "MaxMovesToDraw": 512,
+    "EnteringKingRule": "CSARule27",
+    "NetworkDelay": 0,
+    "NetworkDelay2": 0
+  },
+  "output": ".local/evaluation/development-halfkp-nnue-w8-h0-pair-v1",
+  "start_conditions": [
+    "fixed-node speed experiment complete",
+    "no GPU training, encoding, builds, or other timing measurements",
+    "frozen engine images and model hashes verified"
+  ],
+  "reports": [
+    "fresh paired comparison with current scalar best",
+    "comparison against fixed original material development report, only if strict conditions match"
+  ],
+  "original_material_development": "results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json",
+  "selection": "development ranks candidates; +2pp qualifying gate and final test gate remain relative to fixed original material baseline; inconclusive incremental intervals are reported as such",
+  "heldout_test": "all4096 remain untouched until final candidate freeze"
+}
