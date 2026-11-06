@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "positions": 512,
+  "exact_value_matches": 512,
+  "measured_at_utc": "2026-11-06T11:04:55.878373+00:00",
+  "engine_sha256": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+  "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+  "method": "tests/tiny_parity.py; evenly spaced positions in qsearch-shuffled training validation; independent integer reference"
+}

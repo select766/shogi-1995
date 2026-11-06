@@ -1,0 +1,57 @@
+{
+  "purpose": "compare converged width16 two-layer and three-layer HalfKP models against the frozen current width8 development best",
+  "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+  "dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "positions": 1024,
+  "sample_seed": 20261106,
+  "baseline": "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+  "baseline_manifest_sha256": "71724b3087e494734b5634cbb4d16ed2c6af79c543bacac15b38b8db055b4099",
+  "mode": "fixed_byoyomi",
+  "milliseconds": 2000,
+  "nodes": null,
+  "block_size": 256,
+  "order": "AB/BA alternating; one VM at a time",
+  "common_options": {
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false,
+    "MultiPV": 1,
+    "MaxMovesToDraw": 512,
+    "EnteringKingRule": "CSARule27",
+    "NetworkDelay": 0,
+    "NetworkDelay2": 0
+  },
+  "start_conditions": [
+    "both width16 training jobs and full integer validation complete and converged",
+    "native512 integer parity and guest automatic model/RAM and eight-position fixed-node parity pass for each trained model",
+    "no GPU training, encoding, qsearch, extraction, builds, other timing measurements, or deferred heavy jobs",
+    "frozen engine images, binary, weights, data and manifest hashes verified"
+  ],
+  "reports": [
+    "fresh paired comparison with current scalar best",
+    "comparison against fixed original material development report, only if strict conditions match"
+  ],
+  "original_material_development": "results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json",
+  "selection": "rank full1024 development accuracy with timing NPS, memory, operational errors and paired95 intervals reported; both structures compare to the same frozen width8 best; +2pp and final test gate remain relative to original material; no tuning from heldout test",
+  "heldout_test": "all4096 remain untouched until final candidate freeze",
+  "created_at_utc": "2026-11-06T11:06:10.635835+00:00",
+  "candidates": [
+    {
+      "candidate_manifest": "manifests/halfkp-nnue-w16-h0-output32-v1-candidate.json",
+      "candidate_manifest_sha256": "d784b10b86a0956c8ec097d01e8996796b4369aa5edbacd63dc3db7a8b29fc75",
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "training_manifest": "manifests/halfkp-nnue-w16-h0-v1-training.json",
+      "training_manifest_sha256": "c28270405e445b6ca458bcdddee31b67cdba7a60741150e15c8542291572acf9",
+      "output": ".local/evaluation/development-halfkp-nnue-w16-h0-pair-v1"
+    },
+    {
+      "candidate_manifest": "manifests/halfkp-nnue-w16-h8-output32-v1-candidate.json",
+      "candidate_manifest_sha256": "c3c27b7d30494da8ec8e1eb053f206d1fbe9af869dd64dc5a2081d92287cdbbd",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+      "training_manifest": "manifests/halfkp-nnue-w16-h8-v1-training.json",
+      "training_manifest_sha256": "5321a3b15aa1595c5212d70ced72c043d5e7bbff15e824840ec49b8c3e623182",
+      "output": ".local/evaluation/development-halfkp-nnue-w16-h8-pair-v1"
+    }
+  ]
+}
