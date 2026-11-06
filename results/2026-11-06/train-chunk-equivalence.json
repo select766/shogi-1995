@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "resident_backward_compatible": true,
+  "single_chunk_matches_resident": true,
+  "multiple_chunks_deterministic": true,
+  "partial_last_chunk_covered": true,
+  "examples_per_run": 512,
+  "model_sha256": {
+    "reference": "e2165227e68b559f1ad5662c6d61cd953ec89c3bf6a812a775d6cfb8adbd8b62",
+    "resident": "e2165227e68b559f1ad5662c6d61cd953ec89c3bf6a812a775d6cfb8adbd8b62",
+    "single-chunk": "e2165227e68b559f1ad5662c6d61cd953ec89c3bf6a812a775d6cfb8adbd8b62",
+    "chunks-a": "3b917d7429fe68ed612bd2a27eea0c0d1b1ad44e81c482ff2ef2ccbf87b60751",
+    "chunks-b": "3b917d7429fe68ed612bd2a27eea0c0d1b1ad44e81c482ff2ef2ccbf87b60751"
+  },
+  "trainer_sha256": "5c526039661d9df80ce0645d97b5e14aa2ef32c1914f68bb37fce330a629399a",
+  "fixture_source_manifest_sha256": "6b3b953a94ea3b9e69963dff69a6fa5da4acb6eb3fae4293159decf0b625b0a8"
+}

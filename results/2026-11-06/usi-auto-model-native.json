@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "positions": 256,
+  "automatic_model_selection": true,
+  "gui_default_cannot_disable_preset_model": true,
+  "network_delays_remain_configurable": true,
+  "engine_sha256": "69a292fd0d08adeafc39bd27c8b835db137176bedf6b06e2d215affbdb98f9ce",
+  "model_sha256": "95309f2f6d24af63b192a0d1e0b5ea3c28b1d3dc2b33cb7f0567024155e9475f",
+  "scope": "native configuration-file behavior; prepared guest image requires separate USI validation"
+}

@@ -105,13 +105,19 @@ def main():
     p.add_argument('--lr', type=float, default=.003)
     p.add_argument('--qat',action='store_true',help='Train with the exported integer rounding in the forward pass')
     p.add_argument('--validation-interval',type=int,default=0,help='Additional held-out checks every N optimizer steps')
+    p.add_argument('--chunk-records',type=int,default=0,help='Keep validation on GPU and load shuffled training chunks; 0 keeps all data on GPU')
     args = p.parse_args()
     if not (1 <= args.width <= 32 and 0 <= args.hidden <= 32 and args.epochs > 0 and args.batch > 0 and args.lr > 0):
         p.error('width must be 1..32, hidden 0..32 and epochs/batch/lr positive')
     if args.validation_interval<0:p.error('validation interval must be nonnegative')
+    if args.chunk_records<0:p.error('chunk size must be nonnegative')
     if args.output.exists():
         raise RuntimeError('output already exists')
     args.output.mkdir(parents=True)
+    trainer_source=Path(__file__).read_bytes()
+    trainer_sha256=hashlib.sha256(trainer_source).hexdigest()
+    encoder_sha256=digest(ROOT/'src/shogi1995/tiny_features.py')
+    (args.output/'trainer-source.py').write_bytes(trainer_source)
     source = json.loads((args.data / 'manifest.json').read_text()); assert source['complete']
     torch.set_num_threads(4)
     os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
@@ -125,9 +131,30 @@ def main():
         for kind in ('features','targets'):
             if digest(args.data / (split + '-' + kind + '.npy')) != source['splits'][split][kind + '_sha256']:
                 raise ValueError('encoded data hash differs: ' + split + ' ' + kind)
-        x = torch.from_numpy(np.load(args.data / (split + '-features.npy'))).to(device=device, dtype=torch.int32)
-        y = torch.from_numpy(np.load(args.data / (split + '-targets.npy'))).to(device)
+        if split=='train' and args.chunk_records:
+            x=np.load(args.data/(split+'-features.npy'),mmap_mode='r')
+            y=np.load(args.data/(split+'-targets.npy'),mmap_mode='r')
+        else:
+            x = torch.from_numpy(np.load(args.data / (split + '-features.npy'))).to(device=device, dtype=torch.int32)
+            y = torch.from_numpy(np.load(args.data / (split + '-targets.npy'))).to(device)
         datasets[split] = x, y
+    ntrain=len(datasets['train'][0]);chunk_orders=[]
+    def training_batches(epoch):
+        tx,ty=datasets['train']
+        if not args.chunk_records:
+            order=torch.randperm(ntrain,device=device)
+            for indices in order.split(args.batch):yield tx[indices],ty[indices]
+            return
+        count=(ntrain+args.chunk_records-1)//args.chunk_records
+        order=np.random.default_rng(args.seed+epoch).permutation(count).tolist()
+        chunk_orders.append(order)
+        for number in order:
+            start=number*args.chunk_records;end=min(start+args.chunk_records,ntrain)
+            # Copy bounded contiguous blocks rather than allocating the full CPU/GPU cache.
+            x=torch.from_numpy(np.array(tx[start:end],copy=True)).to(device=device,dtype=torch.int32)
+            y=torch.from_numpy(np.array(ty[start:end],copy=True)).to(device)
+            indices=torch.randperm(end-start,device=device)
+            for batch in indices.split(args.batch):yield x[batch],y[batch]
     model = Tiny(args.width, args.hidden, source['inputs'],args.qat).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
     loss_fn = nn.BCEWithLogitsLoss()
@@ -145,7 +172,7 @@ def main():
     def checkpoint(epoch_fraction,total,processed):
         nonlocal best,best_epoch,best_step,last_validation_step
         val,rmse=evaluate()
-        item={'epoch':epoch_fraction,'optimizer_step':step,'examples_seen':epoch*len(tx)+processed,
+        item={'epoch':epoch_fraction,'optimizer_step':step,'examples_seen':epoch*ntrain+processed,
               'train_loss':total/processed,'validation_loss':val,'validation_clipped_rmse':rmse,
               'elapsed_seconds':time.monotonic()-started}
         history.append(item);print(json.dumps(item),flush=True)
@@ -155,16 +182,15 @@ def main():
         (args.output/'history.json').write_text(json.dumps(history,indent=2)+'\n')
         last_validation_step=step
     for epoch in range(args.epochs):
-        tx, ty = datasets['train']; order = torch.randperm(len(tx), device=device)
         total = 0.;processed=0
-        for chunk in order.split(args.batch):
-            y = ty[chunk]; logits = model(tx[chunk], y[:, 1])
+        for x,y in training_batches(epoch):
+            logits = model(x, y[:, 1])
             loss = loss_fn(logits, torch.sigmoid(y[:, 0] / 600))
             optimizer.zero_grad(set_to_none=True); loss.backward(); optimizer.step()
-            total += loss.item() * len(chunk)
-            step+=1;processed+=len(chunk)
+            total += loss.item() * len(x)
+            step+=1;processed+=len(x)
             if args.validation_interval and step%args.validation_interval==0:
-                checkpoint(epoch+processed/len(tx),total,processed)
+                checkpoint(epoch+processed/ntrain,total,processed)
         if last_validation_step!=step:checkpoint(epoch+1,total,processed)
     report = {'complete': True, 'kind': 'king-conditioned-scalar-residual', 'width': args.width,
               'hidden': args.hidden, 'seed': args.seed, 'epochs': args.epochs, 'batch': args.batch,
@@ -173,9 +199,12 @@ def main():
               'best_epoch': best_epoch, 'deterministic_algorithms': True,
               'best_optimizer_step':best_step,'quantization_aware':args.qat,'validation_interval':args.validation_interval,
               'feature_index_dtype': 'int32',
+              'chunk_records':args.chunk_records,'chunk_orders':chunk_orders,
+              'shuffle':'permuted contiguous chunks then per-chunk GPU permutation' if args.chunk_records else 'full GPU permutation',
               'training_manifest_sha256': hashlib.sha256((args.data / 'manifest.json').read_bytes()).hexdigest(),
-              'trainer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-              'feature_encoder_sha256': hashlib.sha256((ROOT / 'src/shogi1995/tiny_features.py').read_bytes()).hexdigest(),
+              'trainer_sha256':trainer_sha256,
+              'trainer_file_unchanged_at_finish':digest(Path(__file__))==trainer_sha256,
+              'feature_encoder_sha256':encoder_sha256,
               'torch': torch.__version__, 'device': torch.cuda.get_device_name(),
               'model_sha256': hashlib.sha256((args.output / 'network.bin').read_bytes()).hexdigest(),
               'model_bytes': (args.output / 'network.bin').stat().st_size,

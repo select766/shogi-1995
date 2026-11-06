@@ -27,5 +27,7 @@
 | 11/06 11:33:15 | [tiny-v6-sym-qat](../results/2026-11-06/tiny-v6-sym-qat-20261106T023315941870Z-tiny-v6-sym-qat-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 75/256 | 29.30% (24.06–35.15) | `b40cc88` | 左右対称・幅32の線形出力、量子化を含めて新規学習し途中validationで選択 |
 | 11/06 11:33:21 | [tiny-v7-sym-early](../results/2026-11-06/tiny-v7-sym-early-20261106T023321838376Z-tiny-v7-sym-early-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 91/256 | 35.55% (29.94–41.58) | `b40cc88` | 左右対称・幅32の線形出力、量子化なし学習でepoch途中のcheckpointを選択 |
 | 11/06 11:49:18 | [tiny-v7-sym-early](../results/2026-11-06/tiny-v7-sym-early-20261106T024918430625Z-tiny-v7-sym-early-86box-quick256.json) | 86box / 2000ms / quick 256局面 | 90/256 | 35.16% (29.57–41.19) | `b40cc88` | 左右対称・幅32の線形出力、量子化なし学習でepoch途中のcheckpointを選択 |
+| 11/06 12:00:28 | [tiny-v3-small](../results/2026-11-06/tiny-v3-small-20261106T030028879349Z-tiny-v3-small-86box-quick256.json) | 86box / 2000ms / quick 256局面 | 90/256 | 35.16% (29.57–41.19) | `52ab271` | 1600万局面、全玉位置特徴、幅8・隠れ8へ縮小して128乗算 |
+| 11/06 12:11:38 | [tiny-v5-sym-dense](../results/2026-11-06/tiny-v5-sym-dense-20261106T031138249268Z-tiny-v5-sym-dense-86box-quick256.json) | 86box / 2000ms / quick 256局面 | 85/256 | 33.20% (27.72–39.18) | `52ab271` | 1600万局面、左右対称95400特徴、幅16・隠れ8の256乗算 |
 
 反則・異常終了・時間超過の件数、モデル・バイナリ・イメージのSHA、共通設定、対応あり比較の元になる各局面の指し手はCSV/JSONおよびリンク先の明細に保存する。

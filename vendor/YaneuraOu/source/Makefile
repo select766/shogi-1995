@@ -607,7 +607,7 @@ else ifeq ($(TARGET_CPU),SSE2)
 	CPPFLAGS += -DUSE_SSE2 -msse2 -march=core2
 
 else ifeq ($(TARGET_CPU),PENTIUM1995)
-	CPPFLAGS += -DNO_SSE -DSHOGI1995_SINGLE_THREAD -m32 -march=pentium -mno-mmx -mno-sse -mno-sse2 -fno-threadsafe-statics
+	CPPFLAGS += -DNO_SSE -DSHOGI1995_SINGLE_THREAD -m32 -march=pentium -mno-mmx -mno-sse -mno-sse2 -fno-threadsafe-statics -fno-pic -fno-pie
 	SOURCES += shogi1995.cpp
 else ifeq ($(TARGET_CPU),NO_SSE)
 	# 32bit用。-m32は、MSYS2 MinGW-64だと無視されるので、
