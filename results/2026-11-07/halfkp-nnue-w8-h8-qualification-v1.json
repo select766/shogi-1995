@@ -1,0 +1,95 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-06T16:31:35.345792+00:00",
+  "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+  "models": [
+    {
+      "variant": "width-kernel",
+      "manifest": "manifests/halfkp-nnue-w8-h8-width-kernel-v1-candidate.json",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+      "verified_accumulators": 1185751,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14651392,
+        "swap": 0
+      },
+      "guest_eval_counters": {
+        "incremental": 67498,
+        "refresh": 10142,
+        "verified": 0,
+        "output_bits": 32,
+        "kernel_width": 8
+      }
+    },
+    {
+      "variant": "packed-fc",
+      "manifest": "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json",
+      "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+      "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+      "verified_accumulators": 1185751,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14643200,
+        "swap": 0
+      },
+      "guest_eval_counters": {
+        "incremental": 67498,
+        "refresh": 10142,
+        "verified": 0,
+        "output_bits": 32,
+        "kernel_width": 8,
+        "fc_packed": 1,
+        "fc_bits": 32
+      }
+    },
+    {
+      "variant": "output32",
+      "manifest": "manifests/halfkp-nnue-w8-h8-output32-v1-candidate.json",
+      "engine_sha256": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+      "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+      "verified_accumulators": 1185751,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14667776,
+        "swap": 0
+      },
+      "guest_eval_counters": {
+        "incremental": 67498,
+        "refresh": 10142,
+        "verified": 0,
+        "output_bits": 32
+      }
+    }
+  ],
+  "same256_bestmoves_finalnodes_completeddepths_across_runtimes": true,
+  "native_references": {
+    "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w8-h8-width-kernel-v1-native-nodes10000-quick256.json": "1ffa750d9eef0f1da673b4e0a8a03a1710564ddd28f1dcbd6c3c82e23e312b66",
+    "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w8-h8-packed-fc-v1-native-nodes10000-quick256.json": "e320804ad86ffd8941c1f48d9ff4440d3dbc3f2a57e91a4e66e83aa7588f6cbc",
+    "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w8-h8-output32-v1-native-nodes10000-quick256.json": "c4909c75caad2c93fceca7d528d8ca5acc95417f7a2bae386ec83916502f3759"
+  },
+  "artifacts": {
+    "manifests/halfkp-nnue-w8-h8-width-kernel-v1-candidate.json": "00497ed2ff9ba4c87787c1f47a5ae5cb85fd99351b8402537367b36e90e30e02",
+    "results/2026-11-07/halfkp-nnue-w8-h8-width-kernel-v1-trained-values.json": "eaec7d075a7138e1ff70aad44098d7e9dceec8a7594cf4a492fcdbc914b6a450",
+    "results/2026-11-07/halfkp-nnue-w8-h8-width-kernel-v1-trained-search-parity.json": "de66c262ad17625849bb81c166ae6a8cd15db66461930ddbbaa1bd01875d0fff",
+    "results/2026-11-07/halfkp-nnue-w8-h8-width-kernel-v1-guest-auto-model.json": "7bf43560753a7261169fffc18f262dda319c354e7ebd19139522460ba1e5e7e3",
+    "results/2026-11-07/halfkp-nnue-w8-h8-width-kernel-v1-guest-nodes-parity.json": "1b1d3672849eb692efd2a1fadbc386c5b9d485d43067fe1f5d2074fe63e3316c",
+    "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json": "df8b507c232cfef334f9df56f9b50e90396bff4b762c50035816b3dafca84b28",
+    "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-v1-trained-values.json": "1d8a8a4bd78b6cacc7ddaf54c2587bb7b1ebdf3a8b4c61c8df8b5c4636a60694",
+    "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-v1-trained-search-parity.json": "ba538a687fb60b1108b52e054a36a837c5b80dbc2a76b626bcf5696553ac9f7d",
+    "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-v1-guest-auto-model.json": "425366beb6ddac09a01bc48909956bfc444bc91244449341b23e6fc7325e87b2",
+    "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-v1-guest-nodes-parity.json": "d064c71bab4fd4dca5b97f38c339b0a4716dd73d068352dbbfada41f93e5359c",
+    "manifests/halfkp-nnue-w8-h8-output32-v1-candidate.json": "3136cdc66b258b3da0570faa029d4c987aae8d0601c922002213d6ffaba19775",
+    "results/2026-11-07/halfkp-nnue-w8-h8-output32-v1-trained-values.json": "ca578404483f4e4c95b75f63e758c6f7c30d2cbed756d49fb82ee93374ec233e",
+    "results/2026-11-07/halfkp-nnue-w8-h8-output32-v1-trained-search-parity.json": "06de06af67a73a0d8ef493ca7d1c052480c147e51326f099ffcdc904687287dc",
+    "results/2026-11-07/halfkp-nnue-w8-h8-output32-v1-guest-auto-model.json": "27f13ae9e998f72a84fd2cf95b57df336b6397f41248956fc635b54f71882454",
+    "results/2026-11-07/halfkp-nnue-w8-h8-output32-v1-guest-nodes-parity.json": "aa4cfb47f0a63675ebaca7bb6c91f87ae9c1a25229c0cfe1a3d50621368e65a9",
+    "manifests/halfkp-nnue-w8-h8-v1-training.json": "cf07c3659a1579735ac2d883bd005a9c23038c7b83791c7e1177a9c63572a51d",
+    "results/2026-11-06/halfkp-nnue-w8-h8-v1-quantization.json": "cfc39c7cbce56027f8f84c4a0020a8665cc1c50ddfa7ed239383eedda35c81e1",
+    "results/2026-11-07/halfkp-nnue-w8-h8-v1-packed-fc-arithmetic.json": "ced21505e24a95ea48653598fddc99fa16431a4ba2d2d03663894d32950deb72"
+  },
+  "adopted": false,
+  "speed_or_strength_measured": false,
+  "scope": "independent integer/native and real Pentium operation/RAM qualification; not a speed or strength result"
+}

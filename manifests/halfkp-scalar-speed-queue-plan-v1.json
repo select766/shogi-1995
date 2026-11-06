@@ -1,0 +1,298 @@
+{
+  "created_at_utc": "2026-11-06T16:33:30.414862+00:00",
+  "purpose": "execute the six frozen same-model scalar runtime timing trials after all learning/build/qualification is terminal",
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-nnue-w8-h8-attempt2-v1.json",
+    "pid": 480838,
+    "process_start_time": null,
+    "plan_sha256": "914d9e20f224af1afa0ce94e23a53fdcf125a862aae9512eb17f505b457f6fb5"
+  },
+  "prerequisite_observation": "parent already complete and PID absent at preflight; process-start tick unavailable after exit; completion/plan/input hashes pinned",
+  "code_sha256": {
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985",
+    "scripts/evaluate-pair.py": "1a8ceeec13eeebc4920bbc03646a3eeec3dd79db7ef2cafc6d5f0fa08a32a03b",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/compare-accuracy.py": "ec7f84a9eac154cfe47e60952fa10e3354572849dbfcc18ab53265cb977570d5",
+    "scripts/compare-fixed-node-speed.py": "dcbef50770e1e975b1b4c977f1ce7ac43cfeda43939b9e57d891185ba974ba4c",
+    "src/shogi1995/speed_comparison.py": "4fd7c262692c62ac7ae71d5123f23b94533ce75de8d95a60c98e02b3c219aa6e",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd"
+  },
+  "frozen_artifacts_sha256": {
+    "manifests/halfkp-nnue-width-kernel-speed-execution-plan-v1.json": "15ade85aab1ef85827088818de023a119c5eb5a0ab1957d9b4fa420397c6f17d",
+    "manifests/halfkp-nnue-packed-fc-speed-execution-plan-v1.json": "5b49fb05d96d1086c9550aa9ea18bb58569d0609ce466b07ac16a75327abf02c",
+    "manifests/halfkp-nnue-w8-h8-speed-execution-plan-v1.json": "82690a57d6a2c46d0baa0ccef4e0c77375eec93b9037bea7a99cdc3776362b6f",
+    "manifests/halfkp-nnue-w16-h0-output32-v1-candidate.json": "d784b10b86a0956c8ec097d01e8996796b4369aa5edbacd63dc3db7a8b29fc75",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-output32-v1/root.ext2": "76e4524092e7cd49b3d816d00cddbe73d38eac0e65a64cdf3b31d6ecc0cafd7d",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-output32-v1/shogi": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-output32-v1/model.bin": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+    "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json": "4ec48ecbe4f0dd93b7b528ab94124aecf7542ca4628e56214a1a470560091d07",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-width-kernel-v1/root.ext2": "f5ba4996609de51e0b3f6c5a6197066bdb0535ba7449a7d91b87c3cf19f4f717",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-width-kernel-v1/model.bin": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+    "manifests/halfkp-nnue-w16-h8-output32-v1-candidate.json": "c3c27b7d30494da8ec8e1eb053f206d1fbe9af869dd64dc5a2081d92287cdbbd",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-output32-v1/root.ext2": "3144f7f92760bd2e63921f549773883b93f46f1b7064230eb413eecb31e747a6",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-output32-v1/shogi": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-output32-v1/model.bin": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+    "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json": "302f00f349f89379e2a1d07359fc33a16c871026c758b5b6eb37212bf783a074",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-packed-fc-v1/root.ext2": "43c30461389debb1525ae8cc68088c25bea49d307780b798dec36d0c6a7794d1",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-packed-fc-v1/shogi": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-packed-fc-v1/model.bin": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+    "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json": "c71da308dd5fe55c957eec334b9f9bab9bd08f2075b74dfaa98f0f94c43dc07c",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-width-kernel-v1/root.ext2": "77be0ad6175789ec0fdc96837a0274759f77077d85dab8cb1bfcb91577c25c02",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-width-kernel-v1/model.bin": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+    "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json": "71724b3087e494734b5634cbb4d16ed2c6af79c543bacac15b38b8db055b4099",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-output32-v1/root.ext2": "d0957c7d88d3a5cc3c5f66e959ad907cffc1e84d56fedf9d3672c3a228688cd2",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-output32-v1/shogi": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-output32-v1/model.bin": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+    "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-width-kernel-v1/root.ext2": "8ce624219a2a9fa3cff4e3fe3cd585b3ecd3ccfe12579cef7c90d04445462bd3",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-width-kernel-v1/model.bin": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+    "manifests/halfkp-nnue-w8-h8-output32-v1-candidate.json": "3136cdc66b258b3da0570faa029d4c987aae8d0601c922002213d6ffaba19775",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-output32-v1/root.ext2": "3fee20a97a9712b5f220e48497826888bc49f7cff3413f43f8e4f25109a20c46",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-output32-v1/shogi": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-output32-v1/model.bin": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+    "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json": "df8b507c232cfef334f9df56f9b50e90396bff4b762c50035816b3dafca84b28",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-packed-fc-v1/root.ext2": "a3b6c885266211594267cadc8996e882abd35a69d048edb4fda18ff323fbf753",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-packed-fc-v1/shogi": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-packed-fc-v1/model.bin": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+    "manifests/halfkp-nnue-w8-h8-width-kernel-v1-candidate.json": "00497ed2ff9ba4c87787c1f47a5ae5cb85fd99351b8402537367b36e90e30e02",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-width-kernel-v1/root.ext2": "277ccb400dd1149e2b5b5621b7702221b2d0707a7f623d5edb165022000ac76b",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-width-kernel-v1/model.bin": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+    "results/2026-11-06/halfkp-nnue-width-kernel-validation-v1.json": "fb180e8f888a3cd47c7500a864f34eba5bc270dc1d9699556e652c66d16daeba",
+    "results/2026-11-06/halfkp-nnue-packed-fc-validation-v1.json": "bdc1ec9309142f1f4dd61c2ac88775620bbdfdb09216285451382e2f56ffad5e",
+    "results/2026-11-07/halfkp-nnue-w8-h8-qualification-v1.json": "1c82068945f9821188724100378a75861b4f250f598489a9379cb23066d7585b",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-qualification-v1.json": "fc7b8cc7d84c3b81c68f6165ec27852849f4061ab755c27517ac83ee7ad91def",
+    "results/2026-11-07/halfkp-scalar-speed-queue-preflight-v1.json": "dbd327d47a1a4cc0e6d5543f8dd69aadc3e13502f4ab5632c14f7f3935e55e7b"
+  },
+  "completed_inputs": {
+    "/home/select766/shogi/shogi-1995/results/2026-11-06/halfkp-nnue-width-kernel-validation-v1.json": {
+      "sha256": "fb180e8f888a3cd47c7500a864f34eba5bc270dc1d9699556e652c66d16daeba",
+      "fields": {
+        "complete": true,
+        "passed": true
+      }
+    },
+    "/home/select766/shogi/shogi-1995/results/2026-11-06/halfkp-nnue-packed-fc-validation-v1.json": {
+      "sha256": "bdc1ec9309142f1f4dd61c2ac88775620bbdfdb09216285451382e2f56ffad5e",
+      "fields": {
+        "complete": true,
+        "passed": true
+      }
+    },
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-nnue-w8-h8-qualification-v1.json": {
+      "sha256": "1c82068945f9821188724100378a75861b4f250f598489a9379cb23066d7585b",
+      "fields": {
+        "complete": true,
+        "passed": true
+      }
+    },
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-nnue-w8-h0-128m-qualification-v1.json": {
+      "sha256": "fc7b8cc7d84c3b81c68f6165ec27852849f4061ab755c27517ac83ee7ad91def",
+      "fields": {
+        "complete": true,
+        "passed": true
+      }
+    }
+  },
+  "steps": [
+    {
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-nnue-w8-h0-width-kernel-speed-v1",
+        "--block-size",
+        "64",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h0-width-kernel-speed-v1.log",
+      "description": "halfkp-nnue-w8-h0 evaluate-pair"
+    },
+    {
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-nnue-w8-h0-width-kernel-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-nnue-w8-h0-width-kernel-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h0-width-kernel-speed-summary-v1.log",
+      "description": "halfkp-nnue-w8-h0 compare-fixed-node-speed"
+    },
+    {
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w16-h0-output32-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1",
+        "--block-size",
+        "64",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w16-h0-width-kernel-speed-v1.log",
+      "description": "halfkp-nnue-w16-h0 evaluate-pair"
+    },
+    {
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w16-h0-width-kernel-speed-summary-v1.log",
+      "description": "halfkp-nnue-w16-h0 compare-fixed-node-speed"
+    },
+    {
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w16-h8-output32-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-nnue-w16-h8-width-kernel-speed-v1",
+        "--block-size",
+        "64",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w16-h8-width-kernel-speed-v1.log",
+      "description": "halfkp-nnue-w16-h8 evaluate-pair"
+    },
+    {
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-nnue-w16-h8-width-kernel-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-nnue-w16-h8-width-kernel-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-06/halfkp-nnue-w16-h8-width-kernel-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w16-h8-width-kernel-speed-summary-v1.log",
+      "description": "halfkp-nnue-w16-h8 compare-fixed-node-speed"
+    },
+    {
+      "description": "paired fixed-node Pentium diagnostic with identical width16hidden8 weights",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-nnue-w16-h8-packed-fc-speed-v1",
+        "--block-size",
+        "64",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w16-h8-packed-fc-speed-v1.log"
+    },
+    {
+      "description": "strict same-weight/search speed comparison",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-nnue-w16-h8-packed-fc-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-nnue-w16-h8-packed-fc-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-06/halfkp-nnue-w16-h8-packed-fc-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w16-h8-packed-fc-speed-summary-v1.log"
+    },
+    {
+      "description": "width8 hidden8 identical-weight width-kernel paired Pentium fixed-node trial",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h8-output32-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w8-h8-width-kernel-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-nnue-w8-h8-width-kernel-speed-v1",
+        "--block-size",
+        "64",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h8-width-kernel-speed-v1.log"
+    },
+    {
+      "description": "width8 hidden8 width-kernel strict speed comparison",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-nnue-w8-h8-width-kernel-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-nnue-w8-h8-width-kernel-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/halfkp-nnue-w8-h8-width-kernel-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h8-width-kernel-speed-summary-v1.log"
+    },
+    {
+      "description": "width8 hidden8 identical-weight packed-fc paired Pentium fixed-node trial",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h8-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-nnue-w8-h8-packed-fc-speed-v1",
+        "--block-size",
+        "64",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h8-packed-fc-speed-v1.log"
+    },
+    {
+      "description": "width8 hidden8 packed-fc strict speed comparison",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-nnue-w8-h8-packed-fc-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-nnue-w8-h8-packed-fc-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h8-packed-fc-speed-summary-v1.log"
+    }
+  ],
+  "policy": "one VM at a time, AB/BA64, quick256 go nodes10000; strict exact-tree and operational checks; compare paired95 time savings and4 block medians; no training/builds/other guest/timing jobs until queue exits; never automatically restart stopped run; all times are diagnostic, full1024ordinary2000ms selection follows"
+}

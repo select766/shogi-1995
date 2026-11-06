@@ -1,0 +1,36 @@
+{
+  "id": "halfkp-nnue-w8-h8-width-kernel-v1-usi",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+  "image_sha256": "277ccb400dd1149e2b5b5621b7702221b2d0707a7f623d5edb165022000ac76b",
+  "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+  "source_tree_sha256": "b294c6aab9f141d170f314cf02125ad72772f14d4eef45a51019d5acf768d25d",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "3542a95fa697581506058cc980d310bbc598647221160df58777215658a80748",
+  "feature_difference": "標準HalfKP幅8・隠れ8・3層、qsearch+shuffle済み63,977,434件、40epoch飽和（学習commit8848981）、同じwidth-kernel推論版",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-width-kernel-v1/root.ext2"
+  ],
+  "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+  "model_bytes": 2006572,
+  "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h8-v1/model.bin",
+  "prepared_at_utc": "2026-11-06T16:24:01.143226+00:00",
+  "preparation_commit": "c02c94247d8d611c7ad910a99b4649554deb778a",
+  "preparation_worktree_dirty": false,
+  "preparation_script_sha256": "a5f8613ef4890a731241b66e72d17ff5763baf4306e356ea77c097e11fe9f8f2",
+  "parent_manifest_sha256": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3",
+  "configured_guest_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "runtime_origin_manifest": "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+  "runtime_reused_without_rebuilding": true
+}
