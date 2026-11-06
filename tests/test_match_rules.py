@@ -11,14 +11,21 @@ KINGS = '4k4/9/9/9/9/9/9/9/4K4 b - 1'
 class RefereeTests(unittest.TestCase):
     def test_increment_is_applied_once_and_host_time_is_rounded_up(self):
         r = Referee(KINGS, initial_ms=1000, increment_ms=2000)
-        self.assertIsNone(r.accept('5i4i', 2500.01))
-        self.assertEqual(r.remaining, [499, 1000])
-        self.assertEqual(r.go_command(), 'go btime 499 wtime 1000 binc 2000 winc 2000')
+        self.assertIsNone(r.accept('5i4i', 500.01))
+        self.assertEqual(r.remaining, [2499, 1000])
+        self.assertEqual(r.go_command(), 'go btime 2499 wtime 1000 binc 2000 winc 2000')
 
-    def test_forfeit_after_remaining_plus_increment_without_extra_grace(self):
+    def test_increment_cannot_rescue_a_move_after_the_existing_deadline(self):
         r = Referee(KINGS, initial_ms=1000, increment_ms=2000)
-        self.assertEqual(r.accept('5i4i', 3000.01), {'winner':1, 'reason':'time_forfeit'})
+        self.assertEqual(r.accept('5i4i', 1000.01), {'winner':1, 'reason':'time_forfeit'})
+        self.assertEqual(r.remaining, [-1, 1000])
         self.assertEqual(len(r.moves), 0)
+
+    def test_resign_and_illegal_moves_do_not_earn_increment(self):
+        for action in ['resign', '5i5a']:
+            r = Referee(KINGS, initial_ms=1000, increment_ms=2000)
+            self.assertIsNotNone(r.accept(action, 400))
+            self.assertEqual(r.remaining, [600, 1000])
 
     def test_fourfold_repetition_includes_start_position(self):
         r = Referee(KINGS)

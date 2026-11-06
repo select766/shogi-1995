@@ -34,7 +34,7 @@ class Referee:
     def accept(self, move, host_ms):
         side = self.board.turn
         elapsed = math.ceil(host_ms)
-        self.remaining[side] += self.increment - elapsed
+        self.remaining[side] -= elapsed
         if self.remaining[side] < 0:
             return {'winner': 1 - side, 'reason': 'time_forfeit'}
         if move == 'resign':
@@ -50,6 +50,9 @@ class Referee:
         if not valid:
             return {'winner': 1 - side, 'reason': 'illegal_move'}
         self.board.push(parsed); self.moves.append(move)
+        # Fischer increment is earned after completing a move within the
+        # existing remaining time. It cannot rescue an already expired clock.
+        self.remaining[side] += self.increment
         key = position_key(self.board); self.occurrences[key] += 1
         if self.occurrences[key] >= 4:
             status = self.board.is_draw()

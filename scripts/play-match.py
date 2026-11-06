@@ -91,7 +91,7 @@ def main():
                 while outcome is None:
                     side=referee.board.turn
                     command=f'go nodes {args.nodes}' if args.nodes else referee.go_command()
-                    timeout=120 if args.nodes else (referee.remaining[side]+referee.increment)/1000+5
+                    timeout=120 if args.nodes else referee.remaining[side]/1000+5
                     try:
                         result=by_color[side].search_position(referee.position_command(),command,max(5,timeout))
                     except (TimeoutError,RuntimeError,OSError) as error:
