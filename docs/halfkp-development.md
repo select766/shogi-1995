@@ -177,3 +177,9 @@ QAT版は2026年11月6日17:07:42 JSTに100epoch・延べ6,397,743,400局面で�
 [2層の学習条件](../manifests/halfkp-nnue-w16-h0-v1-training.json)、[3層の学習条件](../manifests/halfkp-nnue-w16-h8-v1-training.json)、[2層の整数化検証](../results/2026-11-06/halfkp-nnue-w16-h0-v1-quantization.json)、[3層の整数化検証](../results/2026-11-06/halfkp-nnue-w16-h8-v1-quantization.json)。両方ともC++と独立整数参照の512局面が一致した。これらは学習・量子化の診断であり、棋力の採否は現在最良の幅8モデルを対照とするPentium上の通常2秒・development全1,024局面で決める。同じ固定実行ファイル（演算実装`e6d5f38`）を使い、モデル構造と重みだけを変える。独立testは引き続き使用しない。
 
 実ゲストの自動ロードと16局面の評価値一致、8局面の固定10,000ノード探索一致、32bit出力経路を両構造で確認した。ゲストの空きRAMは2層10,502,144 bytes、3層10,498,048 bytes、swapは両方0。ホストの全256局面でもbestmove・最終ノード数が一致し、差分更新と毎回の再計算を2層1,182,427回、3層1,186,295回照合した。[2層のゲスト起動](../results/2026-11-06/halfkp-nnue-w16-h0-v1-guest-auto-model.json)、[3層のゲスト起動](../results/2026-11-06/halfkp-nnue-w16-h8-v1-guest-auto-model.json)、[2層のゲスト探索照合](../results/2026-11-06/halfkp-nnue-w16-h0-v1-guest-nodes-parity.json)、[3層のゲスト探索照合](../results/2026-11-06/halfkp-nnue-w16-h8-v1-guest-nodes-parity.json)。[実時間比較計画](../manifests/halfkp-nnue-w16-development-plan-v1.json)を固定し、2層、3層の順に同じ幅8対照との全件交互比較を行う。
+
+2026年11月6日20:09:27 JSTに、この順次比較を開始した。[開始条件](../results/2026-11-06/halfkp-nnue-w16-development-preflight-v1.json)で競合する重い処理とGPU計算がないこと、両モデルの収束・照合と固定SHAを確認済み。測定が終わるまで棋譜抽出・qsearch・学習・ビルドを実行しない。
+
+次のデータ量比較として、[原本128百万件の前処理計画](../manifests/halfkp-128m-preprocessing-plan-v1.json)を準備した。現在の通常時間測定2件の完了後に実行する。同じ原本・seed・抽出器で再抽出し、最初の64百万件が以前のraw学習データとbyte単位で同一であること、validationの原本ファイル群・raw内容が同一であることを検証してから、全体に改めてqsearchとshuffleを適用する。学習用validation 204,662件とfloodgateの評価集合は変えず、qsearch後にも重複局面を除外する。推論構造は全development比較の結果で選び、同じ構造・学習条件の64百万件版と比較する。現時点では計画だけで、128百万件の処理・学習は未開始。
+
+拡張検証の6件の検査は通過した。正常な追加を許可し、既存学習局面の置換、validationの置換、byte破損、validationファイル群の変更、原本ブロックの変更を拒否する。内容とmanifestのハッシュを一緒に書き換えた場合も、以前の学習prefixとvalidationの保存済みハッシュとの照合で検出する。

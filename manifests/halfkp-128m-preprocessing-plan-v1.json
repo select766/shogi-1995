@@ -1,0 +1,98 @@
+{
+  "created_at_utc": "2026-11-06T11:11:52.440273+00:00",
+  "created_from_commit": "d4270f12094384e3bed206a697364030e8a3681d",
+  "purpose": "data-size experiment:128m raw samples from the same approved originals, unchanged validation/evaluation, inference geometry selected only from completed development comparisons",
+  "state": "prepared; do not execute during the width16 timing comparisons",
+  "must_wait_for": {
+    "queue_state": ".local/jobs/halfkp-nnue-w16-development-v1.json",
+    "status": "complete",
+    "comparison_outputs": [
+      ".local/evaluation/development-halfkp-nnue-w16-h0-pair-v1",
+      ".local/evaluation/development-halfkp-nnue-w16-h8-pair-v1"
+    ],
+    "require": "both full1024 ordinary2000ms comparisons operationally pass and all timing processes have exited"
+  },
+  "training_seed": 20261106,
+  "shuffle_seed": 20261107,
+  "raw_training_records": 128000000,
+  "unchanged_encoded_validation": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-features-v1/validation",
+  "validation_manifest_sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+  "frozen_evaluation": "manifests/evaluation-data.json",
+  "excluded_positions": 5220,
+  "new_training_root": "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-128m-v1",
+  "validation_setup_after_encoding": "create validation symlink to the canonical unchanged directory; retain encoded training on SSD",
+  "storage": "raw inputs on own external project storage; qsearch output and encoded features on SSD; never overwrite existing64m assets",
+  "model_experiment": "same seed, non-QAT, batch16384, initial lr0.003, minimum40epochs, same loss plateau thresholds; choose width/hidden from completed full development results; freeze each trained model and compare against its64m counterpart under normal2000ms; do not use final test for selection",
+  "code_sha256": {
+    "scripts/prepare-training.py": "347a99db0a7461ae603ca53c9a4b1f7e3470cfc8cc5304e61bcbc85227d03319",
+    "scripts/verify-training-extension.py": "2c78409e7f3d56682fe9b8884c88d94897cac5e51b9b81f7cca92a25f983b149",
+    "scripts/qsearch-shuffle.py": "2a341da43c303b934469a4f7d5afb340bf2ea7993c9dd92f609c10bc350bddf3",
+    "scripts/encode-halfkp-parallel.py": "00dfbdbe4b842d6d89682f1bddcbdc177f56631e662b79b7ad0397853bf9f0c9",
+    "src/shogi1995/halfkp_features.py": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+    "src/shogi1995/packed.py": "bc6654f1aa58923fb38a50fa2b5a3ea5855c03eff15878881d8966dfe27491a7"
+  },
+  "steps": [
+    {
+      "description": "Fresh extraction from the approved normal tanuki PSV originals; preserve existing validation files and sampling stream",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/prepare-training.py",
+        "--output",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-input-128m-v1",
+        "--train-records",
+        "128000000",
+        "--validation-records",
+        "262144",
+        "--block-size",
+        "4096"
+      ]
+    },
+    {
+      "description": "Verify original64m prefix, source blocks, unchanged raw validation and both full raw hashes",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/verify-training-extension.py",
+        "--reference-manifest",
+        "manifests/halfkp-qsearch-input-v1.json",
+        "--candidate-manifest",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-input-128m-v1/manifest.json",
+        "--expected-train-records",
+        "128000000",
+        "--output",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-128m-extension-verification-v1.json"
+      ]
+    },
+    {
+      "description": "Apply ordinary unpaired qsearch and seed20261107 global shuffle to all128m; SSD scratch/output; no student weights reused",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/qsearch-shuffle.py",
+        "--input",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-input-128m-v1/train.bin",
+        "--output",
+        "/home/select766/shogi/shogi-1995/.local/qsearch-cache/halfkp-qsearch-128m-v1",
+        "--threads",
+        "8",
+        "--seed",
+        "20261107"
+      ]
+    },
+    {
+      "description": "Encode standard HalfKP after qsearch, excluding all fixed evaluation keys and the unchanged canonical validation keys",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/encode-halfkp-parallel.py",
+        "--qsearch-manifest",
+        "/home/select766/shogi/shogi-1995/.local/qsearch-cache/halfkp-qsearch-128m-v1/manifest.json",
+        "--validation",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-features-v1/validation",
+        "--output",
+        "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-128m-v1/train",
+        "--workers",
+        "4",
+        "--chunk-records",
+        "65536"
+      ]
+    }
+  ]
+}

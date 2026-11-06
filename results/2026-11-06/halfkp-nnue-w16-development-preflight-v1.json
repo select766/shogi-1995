@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-11-06T11:09:05.813467+00:00",
+  "measurement_commit": "d4270f12094384e3bed206a697364030e8a3681d",
+  "plan_sha256": "9fd692fa58e7babdf1518ac341cb9c03ff36ee900239e2f426f0592fd7d6457c",
+  "active_project_heavy_jobs": [],
+  "gpu_compute_jobs": 0,
+  "frozen_images_binary_models_verified": true,
+  "both_candidates_converged_and_parity_passed": true,
+  "positions": 1024,
+  "milliseconds": 2000,
+  "nodes": null
+}
