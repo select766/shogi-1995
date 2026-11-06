@@ -40,6 +40,7 @@ def main():
     if args.output.exists() and not args.resume:raise ValueError('output exists; use explicit --resume')
     if not args.output.exists() and args.resume:raise ValueError('resume output does not exist')
     os.environ['CUBLAS_WORKSPACE_CONFIG']=':4096:8';torch.set_num_threads(4)
+    torch.set_float32_matmul_precision('highest')
     torch.use_deterministic_algorithms(True);torch.manual_seed(args.seed)
     if not torch.cuda.is_available():raise RuntimeError('CUDA required; no CPU fallback')
     device=torch.device('cuda');assert float((torch.ones(1,device=device)+1).item())==2
@@ -89,6 +90,7 @@ def main():
             'width':args.width,'hidden':args.hidden,'weight_layers':3 if args.hidden else 2,'quantization_aware':args.qat,
             'train_records':ntrain,'validation_records':len(datasets['validation'][0]),'identity':identity,
             'device':torch.cuda.get_device_name(),'torch':torch.__version__,'deterministic_algorithms':True,
+            'float32_matmul_precision':torch.get_float32_matmul_precision(),
             'started_at_utc':previous_report['started_at_utc'] if args.resume else datetime.now(timezone.utc).isoformat(),
             'max_epochs':args.max_epochs,
             'saturation_rule':{'window_epochs':5,'validation_loss_range_max':2e-5,'train_loss_range_max':5e-5,
