@@ -1,0 +1,38 @@
+{
+  "complete": true,
+  "started_at_utc": "2026-11-06T14:32:34.838538+00:00",
+  "input": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-input-128m-v1/train.bin",
+  "input_sha256": "6f1096a8f6d2d603853113276ff5d9bae2b83c7481675af61fc414d76a3be61f",
+  "input_records": 128000000,
+  "engine": "/home/select766/shogi/shogi-1995/.local/qsearch-tanuki/source/YaneuraOu-by-gcc",
+  "engine_sha256": "7ebff62e1cb30206bdb561ee645df608ea9bd201aa46a4874a68032b9394f495",
+  "teacher": "/home/select766/shogi/shogi-1995/.local/qsearch-tanuki/runtime/eval/nn.bin",
+  "teacher_sha256": "1141d275bceec911156801f27303dc9ff5beb24f4f59144cc069306c59e80782",
+  "teacher_release": "https://github.com/nodchip/tanuki-/releases/tag/tanuki-.halfkp_256x2-32-32.2023-05-08",
+  "teacher_fv_scale": 20,
+  "tanuki_source_commit": "cc38e5e284f44b038e9019d5bb19a0a7484bc9f1",
+  "local_patches": [
+    "FV_SCALE=20 for the published teacher",
+    "bound each stdio buffer to 1 MiB"
+  ],
+  "qsearch_semantics": "replace position by qsearch PV leaf; retain original teacher score and result with leaf-side sign; move=MOVE_NONE",
+  "options": {
+    "Threads": 8,
+    "USI_Hash": 16,
+    "EvalDir": "/home/select766/shogi/shogi-1995/.local/qsearch-tanuki/runtime/eval",
+    "KifuDir": "/home/select766/shogi/shogi-1995/.local/qsearch-cache/halfkp-qsearch-128m-v1/input",
+    "ShuffledKifuDir": "/home/select766/shogi/shogi-1995/.local/qsearch-cache/halfkp-qsearch-128m-v1/shuffled",
+    "ApplyQSearch": true,
+    "PairedShuffle": false,
+    "ShuffleSeed": 20261107,
+    "MaxOutputSamples": 0
+  },
+  "script_sha256": "2a341da43c303b934469a4f7d5afb340bf2ea7993c9dd92f609c10bc350bddf3",
+  "measurement_commit": "ed7dcec5e49ab1202a7bdb46b0834d0fcb1264e4",
+  "engine_name": "YaneuraOu NNUE 5.33 64AVX2 EVAL_LEARN",
+  "output": "/home/select766/shogi/shogi-1995/.local/qsearch-cache/halfkp-qsearch-128m-v1/shuffled/shuffled.bin",
+  "output_sha256": "70b7b72d3da88a1bdf061b171da9a6a594e546a890a36a14d4788980155c8bf5",
+  "output_records": 128000000,
+  "finished_at_utc": "2026-11-06T14:40:34.610820+00:00",
+  "elapsed_seconds": 477.025519791001
+}

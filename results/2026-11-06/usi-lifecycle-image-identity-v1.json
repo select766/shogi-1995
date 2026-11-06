@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T14:40:48.754312+00:00",
+  "scope": "Actual image/binary identity extraction only; no guest lifecycle, timing or strength measurement in this check",
+  "test_source_sha256": "b69997bf18ff3633cdc651724c3e55f9052650ce27fb50c7ce8e4e01471c5683",
+  "images": [
+    {
+      "guest_image": "/home/select766/shogi/shogi-1995/.local/baselines/material-v1/root.ext2",
+      "image_sha256": "aa4da0c51cda22432ea5a8e85509e8990f9000465647ed24956d72816592672a",
+      "engine_sha256": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+      "manifest": "config/evaluation/material-v1-frozen.json",
+      "manifest_sha256": "1d796bc42ea17ee59c3644c879437fcbfda9ff033a10be0530770b924409cc45"
+    },
+    {
+      "guest_image": "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-width-kernel-v1/root.ext2",
+      "image_sha256": "8ce624219a2a9fa3cff4e3fe3cd585b3ecd3ccfe12579cef7c90d04445462bd3",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "manifest": "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+      "manifest_sha256": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3"
+    }
+  ]
+}

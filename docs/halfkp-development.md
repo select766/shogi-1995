@@ -259,3 +259,5 @@ swapは全ブロックの開始・終了観測で0。3層版のホスト時間�
 [前処理完了後の学習開始計画](../manifests/halfkp-nnue-w8-h0-128m-after-preprocessing-plan-v1.json)は、現在の所有ジョブのPID・プロセス開始時刻・計画SHAに結び付けた。[実行制御](../scripts/run-after-job.py)は前処理stateの正常完了に加えて、そのプロセスの終了を待つ。コードと固定資料のSHA、完成した特徴量manifestの128百万件処理済み・標準HalfKP・validationの識別子を確認し、完成manifestのSHAを学習開始記録に保存する。前処理の失敗、PID再利用、入力変更を拒否し、stateとログは新規作成だけを許可する。8件の検査が通り、実際の親プロセスが生存中は後続を開始せず、終了後にだけ実行することと、同じstateでの二重起動の拒否を確認した。
 
 追加構造は[幅8・隠れ8の3層版](../manifests/halfkp-nnue-w8-h8-after-128m-plan-v1.json)の1種類に絞る。幅16・隠れ8に比べ、特徴量の重みメモリをほぼ半分にし、追加隠れ層の積和も256項から128項に減らせる。64百万件・同じvalidation・seed・最低40epochと飽和条件を維持し、幅8・隠れなしと構造の差を比較する。128百万件版の学習と整数化検証が正常終了し、プロセスが終了してから開始する。収束後に独立整数参照・同ノード探索・実ゲストの値とRAMの検証を行い、同じ採用演算で通常2秒・全developmentを比較する。学習lossや乗算数だけで採用せず、11月7日15:00 JSTの候補固定と最終評価の時間を優先する。
+
+128百万件のqsearch・シャッフルは2026年11月6日23:40:34 JSTに正常終了した。[前処理manifest](../manifests/halfkp-qsearch-128m-v1.json)の所要時間は477.03秒、出力も128,000,000件、SHAは`70b7b72d3da88a1bdf061b171da9a6a594e546a890a36a14d4788980155c8bf5`。ApplyQSearch=true・PairedShuffle=false・seed20261107を維持した。現在は4ワーカーの標準HalfKP特徴量化中で、独立testとvalidationの局面キーを除外している。GPU学習は前処理全工程の終了待ち。

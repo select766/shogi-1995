@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Exercise the real guest transport and search lifecycle, without third-party packages."""
 import argparse
+from datetime import datetime, timezone
+import hashlib
 import json
 from pathlib import Path
 import queue
@@ -12,13 +14,32 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def run(backend, timing_seconds):
-    results = ROOT / '.local/tests'
+def image_identity(image):
+    digest = hashlib.sha256()
+    with image.open('rb') as stream:
+        while data := stream.read(1024 * 1024):
+            digest.update(data)
+    binary = subprocess.check_output(['debugfs', '-R', 'cat /shogi', str(image)], stderr=subprocess.DEVNULL)
+    if not binary.startswith(b'\x7fELF'):
+        raise ValueError('guest image lacks an ELF engine')
+    return {'guest_image': str(image), 'image_sha256': digest.hexdigest(),
+            'engine_sha256': hashlib.sha256(binary).hexdigest()}
+
+
+def run(backend, timing_seconds, image=None, output=None):
+    image = (image or ROOT / '.local/images/engine-root.ext2').resolve()
+    report = {'backend': backend, 'started_at_utc': datetime.now(timezone.utc).isoformat(),
+              **image_identity(image), 'test_source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+    if output is not None and output.exists():
+        raise ValueError('preserve existing lifecycle evidence')
+    results = output.with_suffix('.logs') if output is not None else ROOT / '.local/tests'
+    if output is not None and results.exists():
+        raise ValueError('preserve existing lifecycle logs')
     results.mkdir(parents=True, exist_ok=True)
     lines = []
     inbox = queue.Queue()
     err = (results / (backend + '-stderr.log')).open('w')
-    process = subprocess.Popen([str(ROOT / 'run-shogi-1995.sh'), '--backend', backend],
+    process = subprocess.Popen([str(ROOT / 'run-shogi-1995.sh'), '--backend', backend, '--image', str(image)],
                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                stderr=err, text=True, bufsize=1)
     def reader():
@@ -39,9 +60,6 @@ def run(backend, timing_seconds):
                 raise RuntimeError(f'engine exited waiting for {prefix}; see {err.name}')
             if line.startswith(prefix):
                 return line
-    report = {'backend': backend}
-    build = json.loads((ROOT / 'manifests/build.json').read_text())
-    report['engine_sha256'] = next(f['sha256'] for f in build['files'] if f['path']=='.local/guest-root/shogi')
     try:
         start = time.monotonic()
         send('usi')
@@ -125,7 +143,10 @@ def run(backend, timing_seconds):
                 process.kill()
                 process.wait()
         err.close()
-        (results / (backend + '.json')).write_text(json.dumps(report, indent=2) + '\n')
+        report['finished_at_utc'] = datetime.now(timezone.utc).isoformat()
+        target = output if output is not None else results / (backend + '.json')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(report, indent=2) + '\n')
         (results / (backend + '-stdout.log')).write_text('\n'.join(lines) + '\n')
 
 
@@ -133,5 +154,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--backend', choices=('86box','qemu'), default='86box')
     parser.add_argument('--timing-seconds', type=float, default=.3)
+    parser.add_argument('--image', type=Path, help='Frozen candidate image; otherwise the actual default image')
+    parser.add_argument('--output', type=Path, help='Preserve lifecycle evidence at a new path')
     args = parser.parse_args()
-    run(args.backend, args.timing_seconds)
+    run(args.backend, args.timing_seconds, args.image, args.output)
