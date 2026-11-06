@@ -9,6 +9,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
 from shogi1995.statistics import paired
 from shogi1995.comparison import validate_conditions, stratified
+from shogi1995.performance import compare_performance
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('baseline',type=Path);p.add_argument('candidate',type=Path)
@@ -21,8 +22,9 @@ def main():
                   candidate_operational_pass=b['errors']==b['illegal_moves']==b['time_overruns']==0)
     result['baseline_operational_pass']=a['errors']==a['illegal_moves']==a['time_overruns']==0
     result['comparison_operational_pass']=result['baseline_operational_pass'] and result['candidate_operational_pass']
+    result['performance']=compare_performance(a['details'],b['details'])
     result['comparison_sources']={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in
-                                  ('scripts/compare-accuracy.py','src/shogi1995/comparison.py','src/shogi1995/statistics.py')}
+                                  ('scripts/compare-accuracy.py','src/shogi1995/comparison.py','src/shogi1995/statistics.py','src/shogi1995/performance.py')}
     dataset=Path(a['dataset'])
     if dataset.is_file():
         contents=dataset.read_bytes()
