@@ -1,0 +1,269 @@
+{
+  "complete": true,
+  "started_at_utc": "2026-11-06T11:41:15.890031+00:00",
+  "measurement_commit": "81e29d66a1f8721c2a7f641b1ee52228fa7f27c4",
+  "measurement_sources": {
+    "scripts/play-match.py": "cd13fa10eb979ff098d51779daef37ad26d237f157b5bbaeec9f8e0251d07b04",
+    "src/shogi1995/match_rules.py": "9208a2419f18113c5ed9f393f819dec02d3974aaba3d31a37f96410917333fd3",
+    "src/shogi1995/match_statistics.py": "61a573c78668aebe98e072c3698e538b54d67b91c69cdd6275afabda9f13f7f8",
+    "src/shogi1995/sessions.py": "998de8a8f7d29ceaf9d977443a5076069c9ee8a7ed50ea347f42c9ff614c4298",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd"
+  },
+  "baseline": {
+    "id": "halfkp-nnue-w8-h0-output32-v1-usi",
+    "complete": true,
+    "guest_diagnostics": true,
+    "search_diagnostics": true,
+    "engine_sha256": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+    "image_sha256": "d0957c7d88d3a5cc3c5f66e959ad907cffc1e84d56fedf9d3672c3a228688cd2",
+    "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
+    "source_tree_sha256": "77215fee6717d1b271128e908712212c68c29ae999fbf866ca6bf88e78611276",
+    "source_worktree_dirty": false,
+    "source_commit_binding": "committed_source_tree",
+    "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+    "build_manifest_sha256": "df4e48bb0715e9c4dd288ccc36e1840994c573daa175c4c8d219aa2021be4603",
+    "feature_difference": "\u5e458\u30fb2\u5c64\u975eQAT\u306e\u540c\u4e00\u5b66\u7fd2\u6e08\u307f\u91cd\u307f\u3001\u7279\u5fb4\u91cf\u52a0\u6e1b\u7b97\u7248\u306b\u7bc4\u56f2\u8a3c\u660e\u4ed8\u304d32bit\u51fa\u529b\u548c\u3092\u8ffd\u52a0\u3001\u7bc4\u56f2\u5916\u306f64bit\u7dad\u6301\u3001NoPIC\u30fb\u975eSIMD\u3001\u6f14\u7b97\u901f\u5ea6\u306e\u6bd4\u8f03\u7528\u3001USI\u901a\u5e38\u8d77\u52d5\u3067\u3082\u540c\u3058\u8a55\u4fa1\u30d5\u30a1\u30a4\u30eb\u3092\u81ea\u52d5\u8a2d\u5b9a",
+    "engine_options": {
+      "EvalFile": "/eval/model.bin"
+    },
+    "command": [
+      "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+      "--image",
+      "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-output32-v1/root.ext2"
+    ],
+    "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+    "model_bytes": 2006300,
+    "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-v1/model.bin",
+    "prepared_at_utc": "2026-11-06T08:34:32.312722+00:00",
+    "preparation_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
+    "preparation_worktree_dirty": true,
+    "preparation_script_sha256": "ed7b987cfe632a67edd3468d9995e49f3397207a0b30b8d1f2167c29c668518d",
+    "parent_manifest_sha256": "5fc8d57a0cf6b4635f08168fa792a02d0347f00d93ae2729da9d8da6b7b6ad0f",
+    "configured_guest_options": {
+      "EvalFile": "/eval/model.bin"
+    }
+  },
+  "candidate": {
+    "id": "halfkp-nnue-w16-h0-output32-v1-usi",
+    "complete": true,
+    "guest_diagnostics": true,
+    "search_diagnostics": true,
+    "engine_sha256": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+    "image_sha256": "76e4524092e7cd49b3d816d00cddbe73d38eac0e65a64cdf3b31d6ecc0cafd7d",
+    "source_commit": "fd27774dd62eedd1041032d804df607a601ba84d",
+    "source_tree_sha256": "77215fee6717d1b271128e908712212c68c29ae999fbf866ca6bf88e78611276",
+    "source_worktree_dirty": false,
+    "source_commit_binding": "committed_source_tree",
+    "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+    "build_manifest_sha256": "df4e48bb0715e9c4dd288ccc36e1840994c573daa175c4c8d219aa2021be4603",
+    "feature_difference": "\u6a19\u6e96HalfKP\u30fb\u5e4516\u306e2\u5c64NNUE\u3001\u540c\u3058qsearch\u6e08\u307f63977434\u4ef6\u306740epoch\u98fd\u548c\u3001\u5dee\u5206\u52a0\u6e1b\u7b97\u3068\u7bc4\u56f2\u8a3c\u660e\u4ed8\u304d32bit\u51fa\u529b\u548c\u3001USI\u901a\u5e38\u8d77\u52d5\u3067\u3082\u540c\u3058\u8a55\u4fa1\u30d5\u30a1\u30a4\u30eb\u3092\u81ea\u52d5\u8a2d\u5b9a",
+    "engine_options": {
+      "EvalFile": "/eval/model.bin"
+    },
+    "command": [
+      "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+      "--image",
+      "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-output32-v1/root.ext2"
+    ],
+    "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+    "model_bytes": 4012572,
+    "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w16-h0-v1/model.bin",
+    "prepared_at_utc": "2026-11-06T11:03:55.920910+00:00",
+    "preparation_commit": "fd27774dd62eedd1041032d804df607a601ba84d",
+    "preparation_worktree_dirty": true,
+    "preparation_script_sha256": "ed7b987cfe632a67edd3468d9995e49f3397207a0b30b8d1f2167c29c668518d",
+    "parent_manifest_sha256": "d1f1e32e2d77d64dd7d1e07511524064c2784ebc1bcd9c11c9fbb89855b4bac9",
+    "configured_guest_options": {
+      "EvalFile": "/eval/model.bin"
+    }
+  },
+  "dataset_sha256": "91b14a744f13f79e0928dc61e36aa62d37d39767af4820fdd45bd046c7088ca8",
+  "opening_ids": [
+    "hcpe-506738"
+  ],
+  "initial_ms": 180000,
+  "increment_ms": 2000,
+  "max_plies": 4,
+  "network_delay": 120,
+  "network_delay2": 1120,
+  "common_engine_options": {
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false,
+    "MultiPV": 1,
+    "MaxMovesToDraw": 512,
+    "EnteringKingRule": "CSARule27",
+    "NetworkDelay": 120,
+    "NetworkDelay2": 1120
+  },
+  "mode": "fixed_nodes_operational",
+  "nodes": 64,
+  "expected_games": 2,
+  "games": [
+    {
+      "game": 1,
+      "opening_id": "hcpe-506738",
+      "start_sfen": "ln5nl/1r1b1k1s1/3p3pp/2P1p1s2/Pp4p2/L2PP2PP/1PBS5/1KG1G4/1N6L w 2GS3Prn2p 1",
+      "candidate_color": 0,
+      "started_at_utc": "2026-11-06T11:41:15.980913+00:00",
+      "moves": [
+        {
+          "side": 1,
+          "actual": "4b3b",
+          "host_ms": 1.1203510002815165,
+          "go": "go nodes 64",
+          "time": 1,
+          "nodes": 318,
+          "nps": 318000,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "S*5b",
+          "host_ms": 1.249888002348598,
+          "go": "go nodes 64",
+          "time": 1,
+          "nodes": 477,
+          "nps": 477000,
+          "depth": 3,
+          "seldepth": 5
+        },
+        {
+          "side": 1,
+          "actual": "P*4c",
+          "host_ms": 0.8038790037971921,
+          "go": "go nodes 64",
+          "time": 1,
+          "nodes": 311,
+          "nps": 311000,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "P*4i",
+          "host_ms": 0.566257003811188,
+          "go": "go nodes 64",
+          "time": 1,
+          "nodes": 232,
+          "nps": 232000,
+          "depth": 2,
+          "seldepth": 4
+        }
+      ],
+      "remaining_ms": [
+        183997,
+        183997
+      ],
+      "outcome": {
+        "winner": null,
+        "reason": "max_plies"
+      },
+      "candidate_result": "draw",
+      "finished_at_utc": "2026-11-06T11:41:15.986616+00:00"
+    },
+    {
+      "game": 2,
+      "opening_id": "hcpe-506738",
+      "start_sfen": "ln5nl/1r1b1k1s1/3p3pp/2P1p1s2/Pp4p2/L2PP2PP/1PBS5/1KG1G4/1N6L w 2GS3Prn2p 1",
+      "candidate_color": 1,
+      "started_at_utc": "2026-11-06T11:41:16.000454+00:00",
+      "moves": [
+        {
+          "side": 1,
+          "actual": "N*7e",
+          "host_ms": 1.0356800048612058,
+          "go": "go nodes 64",
+          "time": 1,
+          "nodes": 326,
+          "nps": 326000,
+          "depth": 2,
+          "seldepth": 5
+        },
+        {
+          "side": 0,
+          "actual": "6g7f",
+          "host_ms": 0.7973469982971437,
+          "go": "go nodes 64",
+          "time": 1,
+          "nodes": 241,
+          "nps": 241000,
+          "depth": 1,
+          "seldepth": 4
+        },
+        {
+          "side": 1,
+          "actual": "R*2h",
+          "host_ms": 0.7097900015651248,
+          "go": "go nodes 64",
+          "time": 1,
+          "nodes": 319,
+          "nps": 319000,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "5h6h",
+          "host_ms": 0.986186001682654,
+          "go": "go nodes 64",
+          "time": 1,
+          "nodes": 369,
+          "nps": 369000,
+          "depth": 2,
+          "seldepth": 4
+        }
+      ],
+      "remaining_ms": [
+        183998,
+        183997
+      ],
+      "outcome": {
+        "winner": null,
+        "reason": "max_plies"
+      },
+      "candidate_result": "draw",
+      "finished_at_utc": "2026-11-06T11:41:16.005855+00:00"
+    }
+  ],
+  "score": {
+    "games": 2,
+    "wins": 0,
+    "draws": 2,
+    "losses": 0,
+    "score_rate": 0.5,
+    "completed_opening_pairs": 1,
+    "operational_failures": {
+      "baseline": {
+        "illegal_move": 0,
+        "illegal_declaration": 0,
+        "time_forfeit": 0,
+        "engine_failure": 0
+      },
+      "candidate": {
+        "illegal_move": 0,
+        "illegal_declaration": 0,
+        "time_forfeit": 0,
+        "engine_failure": 0
+      }
+    },
+    "operational_pass": true,
+    "rating_eligible": false,
+    "elo_difference_estimate": null,
+    "elo_difference_boundary": null,
+    "score_rate_95": null,
+    "elo_difference_95": null,
+    "scope": "score-to-Elo conversion against this frozen opponent and time setting; not a league rating",
+    "interval_method": "Hoeffding 95% bound on independent opening-pair scores; each pair contains both colors",
+    "limitation": "small auxiliary sample; unknown correlations across different source openings are not modeled"
+  },
+  "clock_calibration": {
+    "passed": false,
+    "skipped": "native fixed-node smoke test; no Pentium time claim"
+  },
+  "finished_at_utc": "2026-11-06T11:41:16.008488+00:00",
+  "elapsed_seconds": 0.11604393399466062
+}
