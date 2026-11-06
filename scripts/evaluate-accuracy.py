@@ -47,6 +47,14 @@ def main():
         args.backend='86box' if any(Path(token).name=='run-shogi-1995.sh' for token in command) else 'native'
         if '--backend' in command and command[command.index('--backend')+1]=='qemu':args.backend='qemu'
     artifact_hashes={}
+    if args.backend=='native' and len(command)==1 and Path(command[0]).is_file():
+        actual=hashlib.sha256(Path(command[0]).read_bytes()).hexdigest()
+        if actual!=args.engine_sha256:raise ValueError('native binary SHA does not match declared engine')
+        artifact_hashes['native_binary_sha256']=actual
+        if model_options.get('EvalFile') not in (None,'<none>'):
+            model=Path(model_options['EvalFile'])
+            if not model.is_absolute():raise ValueError('native model path must be absolute for reliable provenance')
+            artifact_hashes['native_model_sha256']=hashlib.sha256(model.read_bytes()).hexdigest()
     if '--image' in command:
         image=Path(command[command.index('--image')+1]).resolve()
         binary=subprocess.check_output(['debugfs','-R','cat /shogi',str(image)],stderr=subprocess.DEVNULL)
@@ -63,6 +71,8 @@ def main():
             'started_at_utc':datetime.now(timezone.utc).isoformat(),
             'measurement_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'measurement_worktree_dirty':bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()),
+            'measurement_sources':{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in
+                                   ('scripts/evaluate-accuracy.py','src/shogi1995/usi.py','src/bridge/main.py')},
             'backend':args.backend,'feature_difference':args.feature_difference,
             'environment':environment_identity(args.backend),
             'dataset_sha256':hashlib.sha256(args.dataset.read_bytes()).hexdigest(),
@@ -80,20 +90,24 @@ def main():
             if key in identity:report[key]=identity[key]
         for key,actual in (('model_sha256','guest_model_sha256'),('image_sha256','guest_image_sha256')):
             if key in identity and actual in report and identity[key]!=report[actual]:raise ValueError('artifact manifest mismatch: '+key)
+        if 'native_model_sha256' in report and identity.get('model_sha256')!=report['native_model_sha256']:
+            raise ValueError('native model differs from frozen manifest')
         if not report['feature_difference']:report['feature_difference']=identity.get('feature_difference','')
     if not report['feature_difference']:report['feature_difference']='変更点未記入（要追記）'
     def save():
         report.update(summary(report['details'],len(records)))
         tmp=args.output.with_suffix('.partial');tmp.write_text(json.dumps(report,indent=2)+'\n');tmp.replace(args.output)
     save();started=time.monotonic();board=cshogi.Board()
+    def memory(engine):
+        engine.send('shogi1995stats')
+        _,lines=engine.until('info string shogi1995 memory ',10)
+        return {key:int(value) for key,value in (item.split('=') for item in lines[-1].split()[4:])}
     try:
         with Engine(report['engine_command'],ROOT,str(args.output)+'.logs',{**options,**model_options}) as engine:
             report['engine_name']=engine.name
             report['advertised_options']=engine.options
             if args.guest_diagnostics:
-                engine.send('shogi1995stats')
-                _,lines=engine.until('info string shogi1995 memory ',10)
-                report['guest_memory']={key:int(value) for key,value in (item.split('=') for item in lines[-1].split()[4:])}
+                report['guest_memory']=memory(engine)
             for i,r in enumerate(records):
                 row={'id':r['id'],'sfen':r['sfen'],'expected':r['bestmove'],'match':False}
                 try:
@@ -109,6 +123,7 @@ def main():
                 report['details'].append(row)
                 report['elapsed_seconds']=time.monotonic()-started;save()
                 print(f'{i+1}/{len(records)} matches={report["matches"]} accuracy={report["accuracy"]:.4f}',flush=True)
+            if args.guest_diagnostics:report['guest_memory_end']=memory(engine)
             report['complete']=True
     finally:
         report['elapsed_seconds']=time.monotonic()-started

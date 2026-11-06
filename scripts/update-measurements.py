@@ -110,7 +110,7 @@ def main():
         'measurement_commit': measurement_commit,
         'measurement_worktree_dirty': result.get('measurement_worktree_dirty','unknown'),
         'engine_sha256': result['engine_sha256'],
-        'model_sha256': result.get('guest_model_sha256', result.get('model_sha256',manifest.get('model_sha256',''))),
+        'model_sha256': result.get('guest_model_sha256',result.get('native_model_sha256',result.get('model_sha256',manifest.get('model_sha256','')))),
         'image_sha256': result.get('guest_image_sha256', result.get('image_sha256',manifest.get('image_sha256',''))) if backend in ('86box','qemu') else '',
         'source_tree_sha256': result.get('source_tree_sha256',manifest.get('source_tree_sha256','')),
         'feature_difference': features, 'errors': result['errors'], 'illegal_moves': result['illegal_moves'],

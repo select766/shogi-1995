@@ -1,0 +1,18 @@
+{
+  "id": "material-v1",
+  "complete": true,
+  "engine_sha256": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+  "image_sha256": "aa4da0c51cda22432ea5a8e85509e8990f9000465647ed24956d72816592672a",
+  "source_commit": "06219a9",
+  "engine_options": {},
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/baselines/material-v1/root.ext2"
+  ],
+  "guest_diagnostics": true,
+  "search_diagnostics": false,
+  "feature_difference": "\u99d2\u5f97\u8a55\u4fa1\u306e\u57fa\u6e96\u7248\uff08\u5b66\u7fd2\u306a\u3057\uff09",
+  "source_commit_binding": "historical baseline; binary/image frozen before learned-evaluator experiments",
+  "source_worktree_dirty": "unknown"
+}
