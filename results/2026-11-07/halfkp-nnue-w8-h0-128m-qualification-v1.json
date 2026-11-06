@@ -1,0 +1,68 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-06T16:17:05.375016+00:00",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "models": [
+    {
+      "variant": "width-kernel",
+      "manifest": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "verified_accumulators": 1197607,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14651392,
+        "swap": 0
+      },
+      "guest_eval_counters": {
+        "incremental": 69806,
+        "refresh": 7618,
+        "verified": 0,
+        "output_bits": 32,
+        "kernel_width": 8
+      }
+    },
+    {
+      "variant": "output32",
+      "manifest": "manifests/halfkp-nnue-w8-h0-128m-output32-v1-candidate.json",
+      "engine_sha256": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "verified_accumulators": 1197607,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14667776,
+        "swap": 0
+      },
+      "guest_eval_counters": {
+        "incremental": 69806,
+        "refresh": 7618,
+        "verified": 0,
+        "output_bits": 32
+      }
+    }
+  ],
+  "same256_bestmoves_finalnodes_completeddepths_across_runtimes": true,
+  "native_references": {
+    "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w8-h0-128m-width-kernel-v1-native-nodes10000-quick256.json": "51bbce219d773dbb09c8e4ac3c6d86533463ec4b3861183997388498d7d636a3",
+    "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w8-h0-128m-output32-v1-native-nodes10000-quick256.json": "5528aa092e7e577358ca6869b6c03b893b9b622b228729923a511d3257d70858"
+  },
+  "artifacts": {
+    "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-trained-values.json": "144d35a0a001522cfef0140f3947cd935143d99415bed29bf4e2cd6f24ef3292",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-trained-search-parity.json": "225b9ebdc4902ddd0c698198266c7c4a7c42642329b56ffbea8430a9a5a50030",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-guest-auto-model.json": "58b686ffe1f26e51faa8a089d602a146c649984c59ebc9d4e31728d275d9370a",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-guest-nodes-parity.json": "45727eb29e9a8b71d727bfdae0469bbc97928f390069e61e838c37605f230b01",
+    "manifests/halfkp-nnue-w8-h0-128m-output32-v1-candidate.json": "d094b89470a7a17e07f1e611245d31d79db6065350e1fd0dc0e74e186e398f65",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-output32-v1-trained-values.json": "7b1699bd466ec0474efe25170656088ffa5f5353ea330d7cdae652d2378936bc",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-output32-v1-trained-search-parity.json": "58bce8515f7c1cfc1be38957d55f8aaf627b70ed1c4f4c88aa242c4657faca25",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-output32-v1-guest-auto-model.json": "2341117feb0bee2bd5c65b2f20c8385604095879d9b4f49659863b97c075ab24",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-output32-v1-guest-nodes-parity.json": "d58e5e003da556d983e9ed840e64f8dfba4551699d9cfcc0bdc16cde6040d0b6",
+    "manifests/halfkp-nnue-w8-h0-128m-v1-training.json": "3bf1a1538588acfe93c8250f3c321d9652e06e670fb947e19ae6f756befb812c",
+    "results/2026-11-06/halfkp-nnue-w8-h0-128m-v1-quantization.json": "ef1e56b8e15f37a296b54ffa5360d47aefb9af33a430780e3d398fe76320f77c",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-v1-completion.json": "b471024e314b0e4da4affb8d556400c9b78d4a136e814d77bb47d52fd68162ed"
+  },
+  "adopted": false,
+  "speed_or_strength_measured": false,
+  "scope": "independent integer/native and real Pentium operation/RAM qualification; timing not interpreted during GPU learning"
+}
