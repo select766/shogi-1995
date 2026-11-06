@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <limits>
 #include <vector>
+#include "shogi1995_packed_fc.h"
 
 namespace YaneuraOu { namespace Eval {
 namespace {
@@ -23,15 +24,18 @@ std::vector<int16_t> tiny_embedding,tiny_fc,tiny_out;
 std::vector<int32_t> tiny_bias,tiny_fc_bias;
 int32_t tiny_out_bias=0;
 bool tiny_output32=false;
+bool tiny_fc_packed32=false;
+std::vector<uint32_t> tiny_fc_pairs;
 unsigned tiny_generation=1;
 bool tiny_verify=false;
 uint64_t tiny_incremental_count=0,tiny_refresh_count=0,tiny_verification_count=0;
 
 void psqt_stats() {
     unsigned kernel_width=tiny_loaded && tiny_standard_halfkp && (tiny_width==8 || tiny_width==16)?tiny_width:0;
-    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu output_bits=%u kernel_width=%u\n",
+    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu output_bits=%u kernel_width=%u fc_packed=%u fc_bits=%u\n",
                 (unsigned long long)tiny_incremental_count,(unsigned long long)tiny_refresh_count,
-                (unsigned long long)tiny_verification_count,unsigned(tiny_loaded?(tiny_output32?32:64):0),kernel_width);
+                (unsigned long long)tiny_verification_count,unsigned(tiny_loaded?(tiny_output32?32:64):0),kernel_width,
+                unsigned(tiny_loaded && tiny_fc_packed32),unsigned(tiny_loaded && tiny_hidden?(tiny_fc_packed32?32:64):0));
     std::fflush(stdout);
 }
 
@@ -44,6 +48,8 @@ void psqt_options(OptionsMap& options) {
     options.add("EvalFile",Option("<none>",[](const Option& option) {
         psqt_path=std::string(option);psqt_loaded=false;tiny_loaded=false;halfkp_linear_loaded=false;
         tiny_output32=false;
+        tiny_fc_packed32=false;
+        tiny_fc_pairs.clear();
         if(++tiny_generation==0)++tiny_generation;
         return std::nullopt;
     }));
@@ -100,6 +106,26 @@ void psqt_load() {
         }
         constexpr int64_t limit=int64_t(std::numeric_limits<int32_t>::max())-128;
         tiny_output32=low>=-limit && high<=limit;
+        tiny_fc_packed32=tiny_standard_halfkp && tiny_hidden>0;
+        for(unsigned i=0;i<tiny_hidden;++i) {
+            int64_t fc_low=tiny_fc_bias[i],fc_high=tiny_fc_bias[i];
+            for(unsigned j=0;j<tiny_width*2;++j) {
+                int weight=tiny_fc[i*tiny_width*2+j];
+                if(weight < -128 || weight > 127)tiny_fc_packed32=false;
+                if(weight<0)fc_low+=int64_t(weight)*128;
+                else fc_high+=int64_t(weight)*128;
+            }
+            if(fc_low<std::numeric_limits<int32_t>::min()
+                || fc_high>int64_t(std::numeric_limits<int32_t>::max())-32)tiny_fc_packed32=false;
+        }
+        if(tiny_fc_packed32) {
+            tiny_fc_pairs.resize(tiny_hidden*tiny_width);
+            for(unsigned i=0;i<tiny_hidden;++i)
+                for(unsigned j=0;j<tiny_width;++j) {
+                    unsigned offset=i*tiny_width*2+j*2;
+                    tiny_fc_pairs[i*tiny_width+j]=PackedFC::coefficients(tiny_fc[offset],tiny_fc[offset+1]);
+                }
+        }
     }
     psqt_loaded=true;
     std::printf("info string shogi1995 %s loaded: %s\n",halfkp_linear_loaded?"HalfKP linear":tiny_loaded?"tiny network":"PSQT",psqt_path.c_str());std::fflush(stdout);
@@ -162,10 +188,20 @@ template<class Sum,unsigned Width> int tiny_correction(const int32_t* activation
     Sum output=tiny_out_bias;
     if(!tiny_hidden)
         for(unsigned j=0;j<width*2;++j)output+=activation[j]*int(tiny_out[j]);
+    std::array<PackedFC::Activation,32> pairs;
+    if(tiny_fc_packed32)
+        for(unsigned j=0;j<width;++j)pairs[j]=PackedFC::activation(activation[j*2],activation[j*2+1]);
     for(unsigned i=0;i<tiny_hidden;++i) {
-        int32_t sum=tiny_fc_bias[i];
-        for(unsigned j=0;j<width*2;++j)sum+=activation[j]*int(tiny_fc[i*width*2+j]);
-        int value=sum<=0?0:std::min(128,int((sum+32)/64));
+        int value;
+        if(tiny_fc_packed32) {
+            int32_t sum=tiny_fc_bias[i];
+            for(unsigned j=0;j<width;++j)sum+=PackedFC::dot(pairs[j],tiny_fc_pairs[i*width+j]);
+            value=sum<=0?0:std::min(128,int((sum+32)/64));
+        } else {
+            int64_t sum=tiny_fc_bias[i];
+            for(unsigned j=0;j<width*2;++j)sum+=int64_t(activation[j])*tiny_fc[i*width*2+j];
+            value=sum<=0?0:std::min(128,int((sum+32)/64));
+        }
         output+=value*int(tiny_out[i]);
     }
     return output>=0?int((output+128)/256):-int((-output+128)/256);

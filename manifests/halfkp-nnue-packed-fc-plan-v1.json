@@ -1,0 +1,25 @@
+{
+  "created_at_utc": "2026-11-06T15:13:22.030132+00:00",
+  "created_from_commit": "1edb67c0b1b4bc766162793f94a031efba34d071",
+  "status": "implementation planned; not built, measured or adopted",
+  "arithmetic_study": {
+    "path": "results/2026-11-06/halfkp-nnue-packed-fc-arithmetic-v1.json",
+    "sha256": "edb3e818cf2785ceb9fb9deacc375ed35f230a76b4c6f5f5bb0813e6cc29a885"
+  },
+  "baseline_runtime_manifest": "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+  "baseline_manifest_sha256": "c71da308dd5fe55c957eec334b9f9bab9bd08f2075b74dfaa98f0f94c43dc07c",
+  "implementation": "standardHalfKP hidden layer: pack two clipped0..128 activations and int8 coefficients into unsigned32 lanes; prepack coefficients on load; one modulo32 multiply per pair; subtract128*(a+b); no model/rounding/USI-time change",
+  "guard": "all hidden coefficients in[-128,127]; bias plus any activation-weight partial sum fits signed32, including+32 rounding; otherwise use signed64 scalar hidden sums; hidden0 never selects packed path",
+  "diagnostic": "fc_packed=1/0 and fc_bits=32/64 (0 without hidden layer); no USI tuning knob",
+  "required_checks": [
+    "native C++ pair arithmetic against independent Python integer reference, all prior boundary/random9956 cases and rejected domain checked at model selection",
+    "engine synthetic NN03 integer values covering int8 limits, clipping/rounding, coefficient-out-of-domain fallback, signed32 bound and bias overflow fallback, reload/disable",
+    "legacy static32 Pentium build and later-opcode screening; no SIMD/MMX/SSE/AVX",
+    "all512 independent trained values and full256 same10000nodes/bestmove/completeddepth against frozen width-kernel runtime, EvalVerify general recomputation and reload",
+    "guest16 automatic-model integer values/RAMswap0, guest8 same-node searches with fc_packed/fc_bits and output/kernel diagnostics",
+    "after ALL queued preprocessing/training/builds finish, fixed-node quick256/64block ABBA sameweights speed vs C30; strict node/move/depth equality, operational0, paired95 median time saving lower>0 and all4 block medians inspected",
+    "keep C30 speed experiments first in timing queue; do not claim strength from arithmetic count; only after target speed supported compare full1024 ordinary2000ms against retained best candidate"
+  ],
+  "models": "first qualified width16 hidden8 64m; qualify compactwidth8 hidden8 when its converged weights are available; retain hidden0 runtime separately",
+  "priority": "finalcandidate freeze Nov7 06UTC; independent4096 once and20normal auxiliary games take priority over optional extra tuning"
+}
