@@ -17,5 +17,7 @@
 | 11/06 10:42:28† | [material-v1](../results/2026-11-06/material-v1-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 76/256 | 29.69% (24.42–35.55) | `06219a9` | 駒得評価の基準版（学習なし） |
 | 11/06 10:43:26† | [psqt-v2](../results/2026-11-06/psqt-v2-native-nodes10000-quick256-v2.json) | native / 10000 nodes / quick 256局面 | 78/256 | 30.47% (25.15–36.36) | 未確定 | 新規学習した左右対称の駒位置・持ち駒637係数 |
 | 11/06 10:43:31† | [tiny-v1](../results/2026-11-06/tiny-v1-native-nodes10000-quick256-v2.json) | native / 10000 nodes / quick 256局面 | 72/256 | 28.12% (22.97–33.92) | `6532b40` | 新規学習の玉位置条件付き16×16ネットワーク、全特徴再加算 |
+| 11/06 11:02:09 | [tiny-v1-ancestor](../results/2026-11-06/tiny-v1-ancestor-20261106T020209466701Z-tiny-v1-ancestor-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 72/256 | 28.12% (22.97–33.92) | `e04f6fc` | tiny-v1と同じ重み、玉移動時の再計算と最大8手の祖先差分更新 |
+| 11/06 11:02:14 | [tiny-v2](../results/2026-11-06/tiny-v2-20261106T020214773163Z-tiny-v2-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 83/256 | 32.42% (26.98–38.38) | `e04f6fc` | 新規学習を1600万局面へ拡張、16×16の玉位置条件付き評価と祖先差分更新 |
 
 反則・異常終了・時間超過の件数、モデル・バイナリ・イメージのSHA、共通設定、対応あり比較の元になる各局面の指し手はCSV/JSONおよびリンク先の明細に保存する。

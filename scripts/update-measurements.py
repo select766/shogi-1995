@@ -126,7 +126,7 @@ def main():
     history = [r for r in history if r['run_id']!=row['run_id']] + [row]
     history.sort(key=lambda r:(r['finished_at_utc'],r['run_id']))
     atomic(history_path, json.dumps(history,ensure_ascii=False,indent=2)+'\n')
-    buffer = io.StringIO(newline=''); writer = csv.DictWriter(buffer,fieldnames=list(row))
+    buffer = io.StringIO(newline=''); writer = csv.DictWriter(buffer,fieldnames=list(row),lineterminator='\n')
     writer.writeheader(); writer.writerows(history)
     atomic(ROOT/'results/measurement-history.csv',buffer.getvalue())
     lines = ['# エンジンの測定履歴','',
