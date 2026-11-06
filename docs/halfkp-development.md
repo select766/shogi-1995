@@ -2,6 +2,8 @@
 
 2026年11月6日のユーザー指定により、次の順序を優先する。現在の駒得版は動作する基準として保存する。
 
+量子化診断の評価値は、`shogi1995eval`が返す内部評価単位（歩=90）。通常USIの`score cp`表示は`100 * Value / 90`へ換算される。以下の誤差・丸め境界・学習スケール600は内部単位として読む。保存済みコードの`material_cp`や一部の`*_cp`という名称も内部値を扱う。定義は[evaluate.h](../vendor/YaneuraOu/source/evaluate.h)、表示換算は[usi.cpp](../vendor/YaneuraOu/source/usi.cpp)を参照。
+
 1. 許可済みたぬき原本を本プロジェクト用に抽出し、シャッフルとqsearchを新規に適用する。train-nnueは処理方法とソースの参照に限り、加工済みデータ・学習成果物は使わない。
 2. やねうら王標準HalfKP(Friend)の特徴量を使う純線形モデルを学習する。各特徴のスカラー重みを合計し、双方の視点の差を評価値とする。持ち駒の序数を区別し、標準設定どおり金と小駒の成駒は同じカテゴリにする。入力は81×1548。標準NNUEのファイル形式・層構造との互換性を意味しない。
 3. 数分の試走で採用せず、訓練・独立validationのloss、学習率、延べ局面数を記録し、改善の飽和を確認してから評価する。lossが増えたcheckpointを漫然と使わず、学習率を下げた後の推移も調べる。時間切れなら収束したとは表記しない。
@@ -68,9 +70,9 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 
 合成重みの幅16・隠れ8を32 MiBのPentiumゲストに載せ、通常USIでの自動ロードと16局面の独立整数参照との一致を確認した。NetworkDelay類も引き続き設定でき、空きRAMは10,473,472 bytes、swap 0だった。[実ゲスト検証](../results/2026-11-06/halfkp-nnue-w16-h8-guest-operational-v1.json)、[検証専用manifest](../manifests/halfkp-nnue-w16-h8-operational-v1.json)。重みは4,013,068 bytes。これは3層構造の動作・収容確認であり、棋力候補ではない。
 
-短い学習結果に全件量子化検証器を通したところ、非QATの2層版は97局面で正常に完了した。一方、QATの3層版は97局面中1局面で浮動小数点forwardと独立整数推論が1 CPずれ、検証が失敗した。[非QAT](../results/2026-11-06/halfkp-nnue-float-quantization-smoke.json)、[QATの失敗記録](../results/2026-11-06/halfkp-nnue-qat-quantization-smoke.json)。C++と独立整数参照の一致とは別の問題であり、QATの丸め境界を修正して再検証するまではQAT版を棋力候補にしない。発見時に進行中だった幅8の非QAT本学習は、この失敗を理由とした再起動をせず完了まで継続した。
+短い学習結果に全件量子化検証器を通したところ、非QATの2層版は97局面で正常に完了した。一方、QATの3層版は97局面中1局面で浮動小数点forwardと独立整数推論が内部評価値が1ずれ、検証が失敗した。[非QAT](../results/2026-11-06/halfkp-nnue-float-quantization-smoke.json)、[QATの失敗記録](../results/2026-11-06/halfkp-nnue-qat-quantization-smoke.json)。C++と独立整数参照の一致とは別の問題であり、QATの丸め境界を修正して再検証するまではQAT版を棋力候補にしない。発見時に進行中だった幅8の非QAT本学習は、この失敗を理由とした再起動をせず完了まで継続した。
 
-この差は、出力バイアス6272（整数スケール153600）だけでも、float32では24.5 CPが24.499998 CPになることで再現した。`9d53c1c`でQAT forwardを整数スケールでの正確な計算へ変更した。学習時はfloat64で整数積和を保持し、STEで元のfloat32パラメータへ勾配を返す。ゲストの整数形式・演算を変更したものではない。正負の0.5 CP境界と全層への勾配を回帰テストに加え、GPUの学習・厳密再開・5モデル各512局面の整数照合・256局面の同ノード探索も再通過した。[再検証](../results/2026-11-06/halfkp-nnue-smoke-v2.json)。97局面の修正後QATは1点単位の差が0件で、forwardと整数推論のlossが一致した。[QAT検証器の通し試験](../results/2026-11-06/halfkp-nnue-qat-quantization-smoke-v2.json)。失敗記録は削除せず残す。
+この差は、出力バイアス6272（整数スケール153600）だけでも、float32では内部評価値24.5が24.499998になることで再現した。`9d53c1c`でQAT forwardを整数スケールでの正確な計算へ変更した。学習時はfloat64で整数積和を保持し、STEで元のfloat32パラメータへ勾配を返す。ゲストの整数形式・演算を変更したものではない。正負の内部評価値0.5の境界と全層への勾配を回帰テストに加え、GPUの学習・厳密再開・5モデル各512局面の整数照合・256局面の同ノード探索も再通過した。[再検証](../results/2026-11-06/halfkp-nnue-smoke-v2.json)。97局面の修正後QATは1点単位の差が0件で、forwardと整数推論のlossが一致した。[QAT検証器の通し試験](../results/2026-11-06/halfkp-nnue-qat-quantization-smoke-v2.json)。失敗記録は削除せず残す。
 
 学習時のモデルソースも`model-source.py`として保存し、検証器はSHAが一致する保存ソースから古いrunを再検証できる。非QATの幅8モデルは修正前後の検証器で全204,662局面のloss・誤差が一致した。[保存ソースでの再検証](../results/2026-11-06/halfkp-nnue-w8-h0-v1-quantization-frozen-source.json)。
 
@@ -97,7 +99,7 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 
 幅8・追加隠れ層なしの非QATモデルは2026年11月6日16:34:53 JSTに40epoch・延べ2,559,097,360局面で飽和条件を満たした。学習時間564.4秒、最良checkpointは34epoch。最終学習率3e-6、直近5epochの訓練loss範囲1.55e-6、validation loss範囲4.23e-6だった。学習commitは`7921e59`で、開始時に未commit差分があったため、モデル・trainer・特徴量の実SHAもmanifestに固定した。[学習manifest](../manifests/halfkp-nnue-w8-h0-v1-training.json)、[全epochの履歴](../results/2026-11-06/halfkp-nnue-w8-h0-v1-training-history.json)。
 
-全validation 204,662局面の最良checkpoint lossは0.55917149、整数化後は0.55923609だった。重みファイル2,006,300 bytes。量子化の評価値誤差RMSEは18.6225 CP、99%点50.8604 CP、最大103.6313 CPであり、量子化の影響は残る。[全validationの検証](../results/2026-11-06/halfkp-nnue-w8-h0-v1-quantization.json)。C++と独立整数参照の512局面は完全一致した。[学習済み重みの照合](../results/2026-11-06/halfkp-nnue-w8-h0-v1-trained-parity.json)。lossの改善を棋力の改善とは読み替えず、この非QAT版を保持したまま、修正済みQATで同じ幅8構造を学習して比較する。
+全validation 204,662局面の最良checkpoint lossは0.55917149、整数化後は0.55923609だった。重みファイル2,006,300 bytes。量子化の評価値誤差RMSEは18.6225 内部評価単位、99%点50.8604 内部評価単位、最大103.6313 内部評価単位であり、量子化の影響は残る。[全validationの検証](../results/2026-11-06/halfkp-nnue-w8-h0-v1-quantization.json)。C++と独立整数参照の512局面は完全一致した。[学習済み重みの照合](../results/2026-11-06/halfkp-nnue-w8-h0-v1-trained-parity.json)。lossの改善を棋力の改善とは読み替えず、この非QAT版を保持したまま、修正済みQATで同じ幅8構造を学習して比較する。
 
 学習済み2層版は、実Pentiumでも通常USIで自動ロードされ、16局面の評価値が一致した。空きRAM14,643,200 bytes、swap 0。[起動・値・メモリ](../results/2026-11-06/halfkp-nnue-w8-h0-v1-guest-auto-model.json)。固定10,000ノードの8局面はホストとbestmove・最終ノード数・完了深さが一致した。[探索照合](../results/2026-11-06/halfkp-nnue-w8-h0-v1-guest-nodes-parity.json)。ホストquick診断は97/256一致だが、Pentiumの2秒一致率とは区別する。[固定候補](../manifests/halfkp-nnue-w8-h0-v1-candidate.json)。
 
@@ -105,7 +107,7 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 
 QAT版は2026年11月6日17:07:42 JSTに100epoch・延べ6,397,743,400局面で終了した。学習commitは`4b79ba5`、開始時の未commit差分なし、所要1681.8秒。直近5epochの訓練loss範囲は3.90e-6だが、validation loss範囲は1.09e-4で、事前の上限2e-5を満たさなかった。終了理由は`max_epochs_without_saturation`、`converged=false`として保存し、採用候補にはしない。[学習manifest](../manifests/halfkp-nnue-w8-h0-qat-v1-training.json)、[全100epoch](../results/2026-11-06/halfkp-nnue-w8-h0-qat-v1-training-history.json)。
 
-最良checkpointは96epoch。全validation 204,662局面の整数lossは0.55873017、QAT forwardと整数推論の1点単位の不一致は0件だった。表示上のlogitをCPへ戻すfloat32誤差の最大値は0.000283 CP。これは丸め修正の全件診断であり、未達の収束判定を上書きしない。[診断結果](../results/2026-11-06/halfkp-nnue-w8-h0-qat-v1-quantization-diagnostic.json)。以後の最初の速度・実時間一致率測定には、収束条件を満たした非QAT版を使う。
+最良checkpointは96epoch。全validation 204,662局面の整数lossは0.55873017、QAT forwardと整数推論の1点単位の不一致は0件だった。表示上のlogitをCPへ戻すfloat32誤差の最大値は0.000283 内部評価単位。これは丸め修正の全件診断であり、未達の収束判定を上書きしない。[診断結果](../results/2026-11-06/halfkp-nnue-w8-h0-qat-v1-quantization-diagnostic.json)。以後の最初の速度・実時間一致率測定には、収束条件を満たした非QAT版を使う。
 
 | 完了日時（JST） | 構造 / 学習 | 学習commit | epoch / 延べ局面数 | 整数validation loss | 収束条件 |
 | --- | --- | --- | --- | ---: | --- |
