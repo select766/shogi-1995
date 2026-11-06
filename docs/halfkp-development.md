@@ -19,6 +19,8 @@ qsearchは公開たぬきHalfKP評価関数（2023-05-08）を用いた前処理
 
 [入力来歴の照合](../results/2026-11-06/halfkp-input-provenance-audit.json)では、trainの984ファイルとvalidationの32ファイルの分離、split内の抽出ブロック位置の一意性、抽出結果からqsearch入力へのSHA連鎖、公開教師とシャッフルシードを確認した。この記録は原本抽出と処理入力の検証であり、未完了のtrain変換や学習の完了を意味しない。
 
+trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完了した。所要約32.7分、入力との件数一致と、完了ファイルのSHAを別途照合した。[処理manifest](../manifests/halfkp-qsearch-train-v1.json)、[完了検証](../results/2026-11-06/halfkp-qsearch-complete-audit.json)。続く符号化と学習の完了とは区別する。
+
 `scripts/encode-halfkp-data.py`は変換済み末端を標準HalfKPへ符号化し、元のqsearchファイルのレコード番号も保存する。`scripts/train-halfkp-linear.py --data <trainとvalidationを含む特徴量ディレクトリ> --output <新規モデル>`で、共有したスカラー重みから双方の視点の総和の差を学習する。初期値は駒得評価と一致する重みであり、既存の学習済み重みは使わない。教師スコア/600のsigmoidに対する交差エントロピーを用い、整数推論には256倍したint32を出力する。モデルは501,568 bytes。
 
 約19 GBのtrain特徴量は、空き165 GBを確認したローカルSSDの`.local/feature-cache/halfkp-v1/train`を作業キャッシュとする。外部ディスク側の`training/halfkp-features-v1/train`はこのディレクトリへのリンク。原本・抽出レコード・qsearch結果・モデルは外部ディスクに保存し、キャッシュは固定入力とコードから再生成できる。保存先だけを変更した小規模変換で、特徴量・教師値・元インデックス・局面キーの全ハッシュが一致した。[保存先の検証](../results/2026-11-06/halfkp-ssd-cache-validation.json)。

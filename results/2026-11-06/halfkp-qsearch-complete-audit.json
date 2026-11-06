@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T05:05:29.050326+00:00",
+  "scope": "qsearch/shuffle completion, exact record count and independent output SHA verification; full leaf encoding is still running",
+  "records": 64000000,
+  "output_sha256": "d4730b573d750ac66506b7e74db3a4d34b38b19bcf6876098359c4a639aa7721",
+  "qsearch_manifest_sha256": "c92aa704ea0be21bb474c9dbff7ec5df25b1679e0c47d078458fd50063742573",
+  "input_manifest_sha256": "958881a9a4ef15f6484427c992420e9dc53d11f282d5357c66adc1ef20a24d85",
+  "independent_output_hash_verified": true,
+  "published_teacher_and_binary_match_frozen_toolchain": true,
+  "elapsed_seconds": 1961.8816620649995
+}
