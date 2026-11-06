@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "width": 8,
+  "cases": [
+    {
+      "case": "zero",
+      "accumulator_packed": 1,
+      "positions": 16,
+      "model_sha256": "f3fb5439a5380d81f1bcca5c915c6d07bd812ea8be25f1d79469f2a9a9b1566d"
+    },
+    {
+      "case": "mixed",
+      "accumulator_packed": 1,
+      "positions": 16,
+      "model_sha256": "6112ff1c094aefec095d55dc72446b899a5845ce5a9d1926c06ef311283e5c73"
+    },
+    {
+      "case": "lower-safe",
+      "accumulator_packed": 1,
+      "positions": 16,
+      "model_sha256": "007c72d31c7a77f413c37b9ec86071136dc18b5a49da372950ec3b2ed20fc6b0"
+    },
+    {
+      "case": "lower-fallback",
+      "accumulator_packed": 0,
+      "positions": 16,
+      "model_sha256": "229139fdcb73b8021f136e337e9ca0d275851dbab2061563586e8662a1b6e089"
+    },
+    {
+      "case": "upper-safe",
+      "accumulator_packed": 1,
+      "positions": 16,
+      "model_sha256": "3c502cca949dfed703a9eea6c92912e9805ca919474e308d2044647e654ad701"
+    },
+    {
+      "case": "upper-fallback",
+      "accumulator_packed": 0,
+      "positions": 16,
+      "model_sha256": "54a1cb0efe8c8b8cc2d8a848d3a1b68bc912e82b2cc539dbbebc653c4f826125"
+    },
+    {
+      "case": "minimum-bias",
+      "accumulator_packed": 1,
+      "positions": 16,
+      "model_sha256": "bc5e66279727e89a3f298fbc1f4fa2532ac2f57fbe923be1874218cf421dd6fa"
+    },
+    {
+      "case": "below-minimum-bias",
+      "accumulator_packed": 0,
+      "positions": 16,
+      "model_sha256": "9ba43b619c75c66a47835e6bdf7ee5e55316a97fdbd66391555e799a80e7c85a"
+    },
+    {
+      "case": "maximum-bias",
+      "accumulator_packed": 1,
+      "positions": 16,
+      "model_sha256": "7f32782a662662b86760b8adccee0878b2c49a5eaca116f9166f29171a0c6db9"
+    },
+    {
+      "case": "above-maximum-bias",
+      "accumulator_packed": 0,
+      "positions": 16,
+      "model_sha256": "b8405cacf9de9def09b14e44e24bda60a5fec209dd5943984a06e9520838ab3c"
+    },
+    {
+      "case": "wide-negative-coefficient",
+      "accumulator_packed": 0,
+      "positions": 16,
+      "model_sha256": "7a3300a8ad1cf24b449a9f5ddc1a072706a5440c7bbfcba65849ab7bceda3bfd"
+    },
+    {
+      "case": "wide-positive-coefficient",
+      "accumulator_packed": 0,
+      "positions": 16,
+      "model_sha256": "01d4aed1855b11d0ea49d5398bb3c5f1a09391cb5e851964be87a8f1e10c30b4"
+    },
+    {
+      "case": "int32-minimum-bias",
+      "accumulator_packed": 0,
+      "positions": 16,
+      "model_sha256": "b910bc3481bc799a4c6946efeed1ebd80df0317836437a464e62db4db34e6b4e"
+    },
+    {
+      "case": "int32-maximum-bias",
+      "accumulator_packed": 0,
+      "positions": 16,
+      "model_sha256": "b1532928f540e268ac0355760698f002c435ee20173ec96e0f2521a2816f76c7"
+    }
+  ],
+  "isready_start_position_reset_verified": true,
+  "mixed_model_switch_with_position_reinitialization": true,
+  "disable_and_reenable_passed": true,
+  "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+  "test_sha256": "1d1614ee7258a5e2d039552cbfdbaf06488419177f552794eb71f902b807274d",
+  "scope": "range guard, integer values and supported isready/position model-switch lifecycle; not speed or strength"
+}

@@ -1,6 +1,6 @@
 {
   "created_at_utc": "2026-11-06T17:41:28.729304+00:00",
-  "status": "optional C++ candidate prepared; NOT compiled, executed or adopted",
+  "status": "compiled; C++ helper/target checks and corrected width8 boundary test passed; full qualification pending after preserved test-premise stop",
   "arithmetic_study": {
     "path": "results/2026-11-07/halfkp-packed-accumulator-arithmetic-v1.json",
     "sha256": "29ff5a0a57c82b96b5ceb5449c884a3697276530b01029e29e16cd62a5f1150e"
@@ -11,7 +11,7 @@
   "build_gate": "all six current timing trials and their producer must exit before any compile/native execution/guest session for this candidate",
   "required_checks": [
     "native C++ helper under UBSan against independent Python arbitrary-precision sums, subtraction, raw-coefficient recovery and memory representation",
-    "synthetic model range endpoints, conservative40-slot bound and32-bit fallback; switch packed/plain without resetting position; disable/reenable; existing output and FC boundary tests remain valid",
+    "synthetic model range endpoints, conservative40-slot bound and32-bit fallback; switch packed/plain through the actual isready StartSFEN reset and explicit position reinitialization; disable/reenable; existing output and FC boundary tests remain valid",
     "static32 Pentium compile and known-opcode check, real target execution; no MMX/SSE/AVX",
     "all five converged trained models: independent512 values, all256 same-node moves/finalnodes/completeddepth vs frozen old runtime, full EvalVerify recomputation and reload",
     "all five models: realguest16 automatic values/RAMswap0, guest8 same-node roots and explicit accumulator_packed1/accumulator_bits16; confirm FC/output modes unchanged",
@@ -23,13 +23,22 @@
   "execution_driver": {
     "path": "scripts/qualify-packed-accumulator.py",
     "sha256": "4e02a9da4aab9d4d8a78cafc64eaea7a9ed47d373b962b2b4cf803941fce8ff6",
-    "status": "syntax and live-queue entry refusal checked; full compiler/engine/guest qualification NOT executed",
+    "status": "live-queue refusal verified; first full attempt stopped on incorrect test premise; corrected width8 recheck passed; separate second full attempt planned",
     "arguments": "--work NEW_WORK_DIRECTORY --results RESULTS_DIRECTORY",
     "guards": "all12steps complete and identified timing producer exited; committed vendor tree matches recorded build and engine hash; each old manifest and trained weight hash matches fixed development selection plan; preserve existing candidates/work/results",
     "manual_preflight": "quiet host, no GPU training/preprocessing/build or other VM jobs before invoking; driver qualifies correctness/RAM only, never speed/strength/adoption",
     "entry_guard_evidence": {
       "path": "results/2026-11-07/halfkp-packed-accumulator-driver-entry-guard-v1.json",
       "sha256": "6fa71e53d4e75d0715a4743022e88362203466cede93af241aabd7496735cd22"
+    }
+  },
+  "model_switch_test_correction": {
+    "path": "results/2026-11-07/halfkp-packed-accumulator-qualification-test-premise-stop-v1.json",
+    "reason": "isready resets classic-eval root to StartSFEN by existing design; preserve that protocol, verify reset and reinitialize positions instead of assuming preserved position",
+    "evidence_sha256": "1a5012e9e61fe5afde11e39e088c3e381ff154fe4d68ae4c2d42e6cd44deaad6",
+    "recheck": {
+      "path": "results/2026-11-07/halfkp-packed-accumulator-boundaries-w8-corrected-recheck-v1.json",
+      "sha256": "a1bd793f81c1f152434b7bed496f11d0fb60952757a0492d91e1ddcccc8d87c8"
     }
   }
 }

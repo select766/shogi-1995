@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the model-wide cache range guard, plain fallback and stale-cache invalidation."""
+"""Check the cache range guard and model switches through the actual USI lifecycle."""
 import argparse
 import hashlib
 import json
@@ -54,7 +54,10 @@ def main():
             engine.send('setoption name EvalFile value '+str(path.resolve()));engine.reset();actual_stats=stats()
             assert actual_stats.get('accumulator_packed')==packed,(name,actual_stats)
             assert actual_stats.get('accumulator_bits')==(16 if packed else 32),(name,actual_stats)
-            if last_sfen is not None:value(last_sfen,weights,False)
+            # The existing classic-evaluation isready handler loads EvalFile
+            # and replaces the root position with StartSFEN. Verify that
+            # supported lifecycle, then initialize every intended position.
+            value(cshogi.STARTING_SFEN,weights,False)
             for sfen in sfens:value(sfen,weights)
             last_sfen=sfens[-1]
             if name=='mixed':mixed=(path,weights)
@@ -62,12 +65,15 @@ def main():
                             'model_sha256':hashlib.sha256(data).hexdigest()})
         engine.send('setoption name EvalFile value <none>');engine.reset()
         assert stats()['accumulator_packed']==0 and stats()['accumulator_bits']==0
+        engine.send('shogi1995eval');_,lines=engine.until('info string shogi1995 eval ',5)
+        assert int(lines[-1].split()[-1])==0
         path,weights=mixed;engine.send('setoption name EvalFile value '+str(path.resolve()));engine.reset()
-        value(last_sfen,weights,False)
-    report={'passed':True,'width':width,'cases':results,'mixed_model_switch_without_position_reset':True,
+        value(cshogi.STARTING_SFEN,weights,False);value(last_sfen,weights)
+    report={'passed':True,'width':width,'cases':results,'isready_start_position_reset_verified':True,
+            'mixed_model_switch_with_position_reinitialization':True,
             'disable_and_reenable_passed':True,'engine_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),
             'test_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-            'scope':'range-guard, integer values and cache invalidation only; not speed or strength'}
+            'scope':'range guard, integer values and supported isready/position model-switch lifecycle; not speed or strength'}
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 

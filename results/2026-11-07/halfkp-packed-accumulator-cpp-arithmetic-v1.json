@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T18:53:23.705099+00:00",
+  "seed": 20261107,
+  "cases": 21186,
+  "undefined_behavior_sanitizer_passed": true,
+  "helper_sha256": "3f1ee08594f157b834700191bf3b9e19eb3432a09d09411a7580723b1445b6e9",
+  "test_sha256": "61b0ec7f6cae71f406257d7b652ea6c45f0e90b188c8fdbf8799dca875c04496",
+  "scope": "native C++ helper arithmetic, storage and coefficient recovery only; not Pentium execution/speed/strength"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "stopped before candidate packaging",
+  "recorded_at_utc": "2026-11-06T18:56:06.563997+00:00",
+  "outer_state": ".local/jobs/halfkp-packed-accumulator-qualification-v1.json",
+  "outer_state_sha256": "a8869f37f99b4e187c6cd7171dd7a1a60375ad4aef2d82540772493c152734dc",
+  "driver_state": ".local/validation/halfkp-packed-accumulator-v1/state.json",
+  "driver_state_sha256": "8f6bbba37c87560ef92d2446f1570b9c958d4a248596ff1aab04039b073056f9",
+  "failed_test_log": ".local/validation/halfkp-packed-accumulator-v1/halfkp-packed-accumulator-boundaries-w8-v1.log",
+  "failed_test_log_sha256": "cd75936b6e981e20f21722aa05f07b31f25608c4690f91bf7b5a447c67e36c95",
+  "cause": "test assumed isready preserves the root position; existing YaneuraOu classic-eval isready loads weights and resets root to StartSFEN",
+  "source_evidence": "vendor/YaneuraOu/source/engine/yaneuraou-engine/yaneuraou-search.cpp:240-256 at ec798ca",
+  "actual_value": 1840,
+  "new_model_startpos_reference": 1840,
+  "incorrect_test_expected_previous_position_reference": 3550,
+  "engine_binary_unchanged": true,
+  "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+  "fix": "verify the actual StartSFEN reset after each isready, then explicitly initialize all16 test SFENs again; also verify disable/reenable and supported model-switch lifecycle",
+  "reduced_numeric_cases": false,
+  "next_attempt": "new work/state/log/results directory; no automatic retry"
+}

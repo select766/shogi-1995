@@ -1,0 +1,89 @@
+{
+  "created_at_utc": "2026-11-06T18:58:05.562917+00:00",
+  "purpose": "optional packed accumulator complete correctness/RAM qualification before any new timed measurements",
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-scalar-speed-v1.json",
+    "pid": 493003,
+    "process_start_time": "6258900",
+    "plan_sha256": "3d3af231ac57446d21d7d5ba4dcd2cd05c685cd2df3c0c7802cfab888e82d6be"
+  },
+  "code_sha256": {
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985",
+    "scripts/qualify-packed-accumulator.py": "4e02a9da4aab9d4d8a78cafc64eaea7a9ed47d373b962b2b4cf803941fce8ff6",
+    "scripts/package-candidate.py": "d37993e5af64e395bd00ac5c0ffcd8c469f77034f38f44f9ac3ed83a83ed2bb0",
+    "scripts/prepare-usi-profile.py": "ed7b987cfe632a67edd3468d9995e49f3397207a0b30b8d1f2167c29c668518d",
+    "scripts/build-guest-probe.sh": "cdc0d78daa4067d7ceddbf9bfd206e7d0072325657510715a4ed4c1f12f1e7f0",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/update-measurements.py": "6cac7d767e5389e7071e6ddce4e0427b8037b842e854c4feacf7c62ce67f043b",
+    "scripts/plot-measurement-history.py": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
+    "src/shogi1995/plot_labels.py": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/shogi1995/sessions.py": "998de8a8f7d29ceaf9d977443a5076069c9ee8a7ed50ea347f42c9ff614c4298",
+    "src/shogi1995/tiny_quant.py": "27d0c39d2e6c60aeb0776aca6e590912c84f081f8c8835ae9f4529fcff118967",
+    "src/shogi1995/halfkp_features.py": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd",
+    "tests/packed_accumulator_arithmetic.py": "61b0ec7f6cae71f406257d7b652ea6c45f0e90b188c8fdbf8799dca875c04496",
+    "tests/nnue_packed_accumulator.py": "1d1614ee7258a5e2d039552cbfdbaf06488419177f552794eb71f902b807274d",
+    "tests/nnue_output_accumulation.py": "0c8a3a29cf4b60fba97d13b3f9061abd30496b048bd2fa85dc806173dd402778",
+    "tests/nnue_packed_fc.py": "64a3db21e460b69480f80c265d34c76e99f7ce643994f86be1682899ee53a103",
+    "tests/tiny_parity.py": "bc2e9400a2e0f14d98a76e2d316ebe505ce4e31e7876525143fde88b0cff0499",
+    "tests/tiny_incremental.py": "829c4015ccd47e5caa678e254b5bb198669ad0e5582183738704a15a7e95dbd4",
+    "tests/guest_auto_model.py": "03abed77d37959706764a7e6aff8544f47597d92894ad20bd1c65d652b4ca470",
+    "tests/guest_nodes_parity.py": "2e7b76fb397b7315e881e4f5eac7a1a6f1d4cb89cb853cca59c6ee13e1ff5f93"
+  },
+  "frozen_artifacts_sha256": {
+    ".local/last-engine-build.json": "6039a637146dd9a6835d10f464646ce036c43036d65b9199b9a62dc199803b71",
+    ".local/guest-root/shogi": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+    "manifests/halfkp-nnue-packed-accumulator-v1-build.json": "6039a637146dd9a6835d10f464646ce036c43036d65b9199b9a62dc199803b71",
+    "manifests/halfkp-packed-accumulator-plan-v1.json": "2e55326ed47a8c783feb85ed36540dc63dd18a5463311c624c645c7da8f83fdb",
+    "manifests/halfkp-scalar-development-selection-plan-v1.json": "4e27f9d503b386f8aae5a129aad22bbff2508f829a301e22e23e07c4de837016",
+    "results/2026-11-07/halfkp-scalar-runtime-selection-v1.json": "fbe4e1eec93870a2a1cc8ccac533b068dce3469f7a39d93b26e849cf6b18afd6"
+  },
+  "completed_inputs": {
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-scalar-speed-suite-terminal-preflight-v1.json": {
+      "sha256": "8495444012952c53211dce12115e60e74ffa3225ac053dc4d535f6ec7d6d45f5",
+      "fields": {
+        "passed": true
+      }
+    },
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-scalar-runtime-selection-v1.json": {
+      "sha256": "fbe4e1eec93870a2a1cc8ccac533b068dce3469f7a39d93b26e849cf6b18afd6",
+      "fields": {
+        "complete": true,
+        "passed": true,
+        "adopted_as_default": false
+      }
+    },
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-packed-accumulator-qualification-test-premise-stop-v1.json": {
+      "sha256": "1a5012e9e61fe5afde11e39e088c3e381ff154fe4d68ae4c2d42e6cd44deaad6",
+      "fields": {
+        "engine_binary_unchanged": true,
+        "reduced_numeric_cases": false
+      }
+    },
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-packed-accumulator-boundaries-w8-corrected-recheck-v1.json": {
+      "sha256": "a1bd793f81c1f152434b7bed496f11d0fb60952757a0492d91e1ddcccc8d87c8",
+      "fields": {
+        "passed": true,
+        "width": 8,
+        "isready_start_position_reset_verified": true
+      }
+    }
+  },
+  "steps": [
+    {
+      "description": "all-five-model packed accumulator integer/native/Pentium correctness and RAM qualification; no speed or strength claim",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/qualify-packed-accumulator.py",
+        "--work",
+        "/home/select766/shogi/shogi-1995/.local/validation/halfkp-packed-accumulator-attempt2-v1",
+        "--results",
+        "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2"
+      ],
+      "log": "/tmp/shogi-packed-accumulator-attempt2-v1-qualification-driver.log"
+    }
+  ],
+  "policy": "exclusive work/state/log/candidate paths; stop on any true error and preserve evidence; no automatic restart; no other heavy jobs during future timed comparison; ordinary development retains priority",
+  "attempt": "second explicit attempt after test-premise diagnosis and correction; same engine/weights/data/numeric cases; preserve attempt1"
+}

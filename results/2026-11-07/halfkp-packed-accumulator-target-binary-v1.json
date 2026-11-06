@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+  "elf32_static_x86": true,
+  "known_post_pentium_opcode_hits": [],
+  "scope": "build target/static format and known-opcode scan; actual target execution is checked separately"
+}
