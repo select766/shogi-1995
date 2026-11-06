@@ -1,0 +1,42 @@
+Section "Files"
+    FontPath "/usr/X11R6/lib/fonts/misc/"
+    RgbPath "/usr/X11R6/lib/X11/rgb"
+EndSection
+Section "ServerFlags"
+EndSection
+Section "Keyboard"
+    Protocol "Standard"
+    AutoRepeat 500 30
+    LeftAlt Meta
+    RightAlt ModeShift
+EndSection
+Section "Pointer"
+    Protocol "PS/2"
+    Device "/dev/psaux"
+    Emulate3Buttons
+EndSection
+Section "Monitor"
+    Identifier "Guest monitor"
+    VendorName "Generic"
+    ModelName "800x600"
+    HorizSync 30-65
+    VertRefresh 50-90
+    Modeline "800x600" 40 800 840 968 1056 600 601 605 628
+EndSection
+Section "Device"
+    Identifier "Guest VGA"
+    VendorName "Generic"
+    BoardName "SVGA"
+    VideoRam 1024
+EndSection
+Section "Screen"
+    Driver "svga"
+    Device "Guest VGA"
+    Monitor "Guest monitor"
+    Subsection "Display"
+        Depth 8
+        Modes "800x600"
+        ViewPort 0 0
+        Virtual 800 600
+    EndSubsection
+EndSection
