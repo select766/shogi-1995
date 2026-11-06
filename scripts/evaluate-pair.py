@@ -16,6 +16,30 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def aggregate(parts, sample_ids, key):
+    combined = dict(parts[0])
+    combined['sample_ids'] = sample_ids
+    combined['details'] = [row for part in parts for row in part['details']]
+    combined['complete'] = len(combined['details']) == len(sample_ids)
+    combined['elapsed_seconds'] = sum(part['elapsed_seconds'] for part in parts)
+    if parts[-1].get('finished_at_utc'):
+        combined['finished_at_utc'] = parts[-1]['finished_at_utc']
+    combined['blocks'] = [f'{i:03d}-{key}.json' for i in range(len(parts))]
+    # Each block launches its own VM. Preserve each start/end pair instead of
+    # accidentally presenting the first block's end as the final observation.
+    combined.pop('guest_memory_end', None)
+    if 'guest_memory_end' in parts[-1]:
+        combined['guest_memory_end'] = parts[-1]['guest_memory_end']
+    if any('guest_memory' in part or 'guest_memory_end' in part for part in parts):
+        combined['guest_memory_scope'] = 'independent VM per block; inspect the paired observations below'
+        combined['guest_memory_blocks'] = [
+            {'block': name, 'start': part.get('guest_memory'), 'end': part.get('guest_memory_end')}
+            for name, part in zip(combined['blocks'], parts)
+        ]
+    combined.update(summary(combined['details'], len(sample_ids)))
+    return combined
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--baseline', required=True, type=Path, help='immutable candidate manifest with command and engine_sha256')
@@ -79,15 +103,7 @@ def main():
                     raise ValueError(f'block artifact differs: {output}: {manifest_key}')
             chunks[key].append(result)
         for key in ('baseline', 'candidate'):
-            combined = dict(chunks[key][0])
-            combined['sample_ids'] = identity['sample_ids']
-            combined['details'] = [row for part in chunks[key] for row in part['details']]
-            combined['complete'] = len(combined['details']) == len(records)
-            combined['elapsed_seconds'] = sum(part['elapsed_seconds'] for part in chunks[key])
-            if chunks[key][-1].get('finished_at_utc'):
-                combined['finished_at_utc']=chunks[key][-1]['finished_at_utc']
-            combined['blocks'] = [f'{i:03d}-{key}.json' for i in range(len(chunks[key]))]
-            combined.update(summary(combined['details'], len(records)))
+            combined = aggregate(chunks[key], identity['sample_ids'], key)
             target = args.output / (key + '.json')
             temp = target.with_suffix('.partial'); temp.write_text(json.dumps(combined, indent=2) + '\n'); temp.replace(target)
             if combined['complete']:
