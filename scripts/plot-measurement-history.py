@@ -88,6 +88,9 @@ def main():
     stamp=max(datetime.fromisoformat(row['finished_at_utc']) for row in selected).isoformat()
     svg_temp=args.output.with_suffix('.svg.partial');png_temp=png.with_suffix('.png.partial')
     fig.savefig(svg_temp,format='svg',metadata={'Date':stamp,'Creator':'shogi-1995'})
+    # Matplotlib emits trailing spaces in path data; normalize generated text
+    # so a regenerated graph also passes the repository whitespace check.
+    svg_temp.write_text('\n'.join(line.rstrip() for line in svg_temp.read_text().splitlines())+'\n')
     fig.savefig(png_temp,format='png',dpi=144,metadata={'Software':'shogi-1995'})
     svg_temp.replace(args.output);png_temp.replace(png)
     plt.close(fig)

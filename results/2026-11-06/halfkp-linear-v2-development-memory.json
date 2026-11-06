@@ -1,0 +1,121 @@
+{
+  "scope": "Per-block VM memory observations; independent VM on every block",
+  "variants": {
+    "baseline": [
+      {
+        "block": "000-baseline.json",
+        "source_sha256": "79b58af14369a0d5d05dcf7634fda9fb1570e489c4b31c3038018ae4baed8f3f",
+        "start": {
+          "total": 31866880,
+          "free": 18833408,
+          "swap": 0
+        },
+        "end": {
+          "total": 31866880,
+          "free": 17457152,
+          "swap": 0
+        }
+      },
+      {
+        "block": "001-baseline.json",
+        "source_sha256": "c0df266a7c0764db792a96ae127cd8dcf8e1362978741c7b68bb7e9ef5088664",
+        "start": {
+          "total": 31866880,
+          "free": 18833408,
+          "swap": 0
+        },
+        "end": {
+          "total": 31866880,
+          "free": 17383424,
+          "swap": 0
+        }
+      },
+      {
+        "block": "002-baseline.json",
+        "source_sha256": "65fcd7004e201f861761fe8af14701a56bf5c8ce4a678d802186956f94ecb412",
+        "start": {
+          "total": 31866880,
+          "free": 18833408,
+          "swap": 0
+        },
+        "end": {
+          "total": 31866880,
+          "free": 17444864,
+          "swap": 0
+        }
+      },
+      {
+        "block": "003-baseline.json",
+        "source_sha256": "67046341cc0eb54dc24d15ff3cd436746b19c56cd00a31de3e8bc5fbc6d76e51",
+        "start": {
+          "total": 31866880,
+          "free": 18833408,
+          "swap": 0
+        },
+        "end": {
+          "total": 31866880,
+          "free": 17440768,
+          "swap": 0
+        }
+      }
+    ],
+    "candidate": [
+      {
+        "block": "000-candidate.json",
+        "source_sha256": "e87c1dcaa8f5c55ce367d80c1669130b07724f92bc5928758b4030d471cc6825",
+        "start": {
+          "total": 31866880,
+          "free": 17793024,
+          "swap": 0
+        },
+        "end": {
+          "total": 31866880,
+          "free": 16371712,
+          "swap": 0
+        }
+      },
+      {
+        "block": "001-candidate.json",
+        "source_sha256": "920d392b65112e5761f3869a958127f9f370cf0071f0252db31af33ddd22b370",
+        "start": {
+          "total": 31866880,
+          "free": 17793024,
+          "swap": 0
+        },
+        "end": {
+          "total": 31866880,
+          "free": 16355328,
+          "swap": 0
+        }
+      },
+      {
+        "block": "002-candidate.json",
+        "source_sha256": "60b1605c87f85fc66d3ee3eb8937ff48cfba75f16a633e4ba677707248f62f0c",
+        "start": {
+          "total": 31866880,
+          "free": 17793024,
+          "swap": 0
+        },
+        "end": {
+          "total": 31866880,
+          "free": 16445440,
+          "swap": 0
+        }
+      },
+      {
+        "block": "003-candidate.json",
+        "source_sha256": "f829d996ffd44928f53f46bc894d9037c2c3029aae45b582d1446629abe332f7",
+        "start": {
+          "total": 31866880,
+          "free": 17793024,
+          "swap": 0
+        },
+        "end": {
+          "total": 31866880,
+          "free": 16465920,
+          "swap": 0
+        }
+      }
+    ]
+  }
+}

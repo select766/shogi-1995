@@ -27,6 +27,7 @@ def main():
         assert one==[digest(out/'history.svg'),digest(out/'history.png')]
         assert isinstance(json.loads(registry.read_text()),list)
         assert (out/'history.plot.json').exists()
+        assert all(line==line.rstrip() for line in (out/'history.svg').read_text().splitlines())
         bad=subprocess.run(command[:-1]+[str(registry)],cwd=ROOT,capture_output=True)
         assert bad.returncode and before==[digest(csv),digest(registry)]
         report={'passed':True,'measurement_data_unchanged':True,'separate_plot_metadata':True,

@@ -1,11 +1,12 @@
 {
-  "input_sha256": "117704d48bd218cf14cbc3f0644227c2e638ab09d1578d869622f58978be6a73",
-  "plotter_sha256": "aa705ca49190ef6b21f653d68aaaab0da8cef1887fbf2e2b5e722d5c443a877b",
+  "input_sha256": "7fa4dcb5bcb0c4134d6460a51cab48b9e1b79ff22d87508132e06a372f544138",
+  "plotter_sha256": "05387c91a35e5e9a910f5c6cbfc1b3e741197058e1addee6b0655645c840806f",
   "matplotlib": "3.9.2",
   "backend": "86box",
   "include_subsets": false,
   "groups": [
-    "33ccaf2e75e7"
+    "33ccaf2e75e7",
+    "24625c57c23a"
   ],
   "points": [
     {
@@ -57,6 +58,26 @@
       "wilson95_upper_percent": "39.18296237033514",
       "source_commit": "52ab271c674b8188d7d4c4bb5b31cf732f5ae8e2",
       "result_sha256": "2c3ad6427bb487b8dd5286969391cd1eed4d2812a1a982d47949e19bfb3aca45"
+    },
+    {
+      "run_id": "halfkp-linear-v2-usi-20261106T071340731403Z-candidate",
+      "comparison_group": "24625c57c23a",
+      "finished_at_utc": "2026-11-06T07:13:40.731403+00:00",
+      "accuracy_percent": "33.10546875",
+      "wilson95_lower_percent": "30.29098160137891",
+      "wilson95_upper_percent": "36.04623927731701",
+      "source_commit": "43495b9b55937b65d382f6b816bf0fee2f891a28",
+      "result_sha256": "34e619a0e71c895a3f67a4afada10f94ceffa4c045a60ecdb898de72789f3515"
+    },
+    {
+      "run_id": "material-v1-20261106T072451072756Z-baseline",
+      "comparison_group": "24625c57c23a",
+      "finished_at_utc": "2026-11-06T07:24:51.072756+00:00",
+      "accuracy_percent": "28.7109375",
+      "wilson95_lower_percent": "26.023562972543196",
+      "wilson95_upper_percent": "31.55744368384819",
+      "source_commit": "06219a9480c5fbfd46de1cbe167ba4de4cea37e6",
+      "result_sha256": "c365a1b3261480a8737a1e99047ad510465483a71ac412c0fe74a9e6a05b1c61"
     }
   ],
   "excluded_run_ids": [
@@ -87,8 +108,10 @@
     "halfkp-linear-v2-usi-20261106T062907830923Z-001-candidate",
     "material-v1-20261106T064014984754Z-001-baseline",
     "material-v1-20261106T065121975777Z-002-baseline",
-    "halfkp-linear-v2-usi-20261106T070231076244Z-002-candidate"
+    "halfkp-linear-v2-usi-20261106T070231076244Z-002-candidate",
+    "halfkp-linear-v2-usi-20261106T071340731403Z-003-candidate",
+    "material-v1-20261106T072451072756Z-003-baseline"
   ],
-  "svg_sha256": "1f1dbfe22f43d106f70624bd9c74610f5ea7ed20db1b86f6f501384b981978aa",
-  "png_sha256": "2a4c41c65bda3defa8e7d3cc02109e882e026b84993893b9dc42000c0758eb0f"
+  "svg_sha256": "c454c9a54aeb626c851c2f4d2774f6d5945ff0cc33934cd7ede82457dab358dc",
+  "png_sha256": "52f9cb22c3f548996f450ecc177b371f626c3ab6e81d6aacd9fa0c6d0e527e48"
 }

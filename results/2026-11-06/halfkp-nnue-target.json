@@ -1,0 +1,6 @@
+{
+  "engine_sha256": "de0dc4e9ca0ed841ced359e12a7106e00d189455115427423d6bc64654550672",
+  "elf32_static_exec": true,
+  "later_instruction_candidates": [],
+  "note": "Known-opcode screening plus real Pentium guest execution; not a complete ISA proof."
+}

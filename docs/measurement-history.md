@@ -45,5 +45,9 @@
 | 11/06 15:40:14 | [material-v1](../results/2026-11-06/material-v1-20261106T064014984754Z-001-baseline.json) | 86box / 2000ms / development 256局面 | 65/256 | 25.39% (20.45–31.06) | `06219a9` | 駒得評価の基準版（学習なし） |
 | 11/06 15:51:21 | [material-v1](../results/2026-11-06/material-v1-20261106T065121975777Z-002-baseline.json) | 86box / 2000ms / development 256局面 | 75/256 | 29.30% (24.06–35.15) | `06219a9` | 駒得評価の基準版（学習なし） |
 | 11/06 16:02:31 | [halfkp-linear-v2-usi](../results/2026-11-06/halfkp-linear-v2-usi-20261106T070231076244Z-002-candidate.json) | 86box / 2000ms / development 256局面 | 86/256 | 33.59% (28.09–39.58) | `43495b9` | 標準HalfKP純線形125388係数、qsearch済み63977434局面、40epochでloss飽和確認・最良29epoch、評価時に76特徴を再加算、USI通常起動でも同じ評価ファイルを自動設定 |
+| 11/06 16:13:40 | [halfkp-linear-v2-usi](../results/2026-11-06/halfkp-linear-v2-usi-20261106T071340731403Z-003-candidate.json) | 86box / 2000ms / development 256局面 | 79/256 | 30.86% (25.52–36.77) | `43495b9` | 標準HalfKP純線形125388係数、qsearch済み63977434局面、40epochでloss飽和確認・最良29epoch、評価時に76特徴を再加算、USI通常起動でも同じ評価ファイルを自動設定 |
+| 11/06 16:13:40 | [halfkp-linear-v2-usi](../results/2026-11-06/halfkp-linear-v2-usi-20261106T071340731403Z-candidate.json) | 86box / 2000ms / development 1024局面 | 339/1024 | 33.11% (30.29–36.05) | `43495b9` | 標準HalfKP純線形125388係数、qsearch済み63977434局面、40epochでloss飽和確認・最良29epoch、評価時に76特徴を再加算、USI通常起動でも同じ評価ファイルを自動設定 |
+| 11/06 16:24:51 | [material-v1](../results/2026-11-06/material-v1-20261106T072451072756Z-003-baseline.json) | 86box / 2000ms / development 256局面 | 74/256 | 28.91% (23.70–34.74) | `06219a9` | 駒得評価の基準版（学習なし） |
+| 11/06 16:24:51 | [material-v1](../results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json) | 86box / 2000ms / development 1024局面 | 294/1024 | 28.71% (26.02–31.56) | `06219a9` | 駒得評価の基準版（学習なし） |
 
 反則・異常終了・時間超過の件数、モデル・バイナリ・イメージのSHA、共通設定、対応あり比較の元になる各局面の指し手はCSV/JSONおよびリンク先の明細に保存する。
