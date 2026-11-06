@@ -12,7 +12,7 @@ import numpy as np
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
 from shogi1995.usi import Engine
 from shogi1995.sessions import COMMON,digest
-from shogi1995.tiny_quant import load,reference
+from shogi1995 import halfkp_linear,tiny_quant
 
 
 def main():
@@ -22,7 +22,9 @@ def main():
     profile=args.profile.resolve();m=json.loads((profile/'manifest.json').read_text())
     assert digest(profile/'root.ext2')==m['image_sha256']
     assert digest(profile/'model.bin')==m['model_sha256']
-    weights=load(profile/'model.bin');records=np.memmap(args.data,dtype=cshogi.PackedSfenValue,mode='r');board=cshogi.Board()
+    with (profile/'model.bin').open('rb') as file:magic=file.read(8)
+    arithmetic=halfkp_linear if magic==b'S95HKL1\0' else tiny_quant
+    weights=arithmetic.load(profile/'model.bin');records=np.memmap(args.data,dtype=cshogi.PackedSfenValue,mode='r');board=cshogi.Board()
     started=datetime.now(timezone.utc).isoformat()
     with Engine([str(profile/'run.sh')],ROOT,args.output.with_suffix('.logs'),COMMON) as engine:
         def value(name):
@@ -36,7 +38,7 @@ def main():
         for index in np.linspace(0,len(records)-1,16,dtype=int):
             board.set_psfen(records[index]['sfen']);engine.send('position sfen '+board.sfen());engine.send('shogi1995eval')
             _,lines=engine.until('info string shogi1995 eval ',10)
-            assert int(lines[-1].split()[-1])==reference(board,weights),int(index)
+            assert int(lines[-1].split()[-1])==arithmetic.reference(board,weights),int(index)
         engine.send('shogi1995stats');_,lines=engine.until('info string shogi1995 memory ',10)
         memory={k:int(v) for k,v in (x.split('=') for x in lines[-1].split()[4:])}
         assert memory['swap']==0 and memory['total']<=32*1024*1024

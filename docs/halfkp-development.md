@@ -22,3 +22,5 @@ qsearchは公開たぬきHalfKP評価関数（2023-05-08）を用いた前処理
 既定の終了条件は、最低20 epoch、延べ10億局面、学習率が初期値の3%以下、直近5 epochでvalidation lossの範囲が2e-5以下かつ訓練lossの範囲が5e-5以下をすべて満たすこと。validationの改善が頭打ちになった際には学習率を段階的に下げる。100 epochの上限に達しても条件を満たさなければ`converged=false`とし、収束済みと称して評価しない。epoch末のcheckpointから明示的な`--resume`で継続できる。固定データ・コード・設定の照合とCPU/CUDA乱数・optimizer・schedulerの復元を行う。
 
 512局面でPython特徴量とC++の標準BonaPiece一覧が一致し、合成した整数重みによる評価値も一致した。小規模な新規qsearch・符号化・GPU学習の通し試験では、連続2 epochと1 epoch終了後の再開が、重み・optimizer・scheduler・乱数・loss・最良モデルのバイト列まで一致した。これは学習パイプラインの動作確認であり、収束した棋力候補としては扱わない。
+
+合成重みを使った実ゲストでも16局面の整数値が一致し、通常USI起動でモデルが自動ロードされた。NetworkDelayとNetworkDelay2は引き続き変更可能だった。ゲストRAMは31,866,880 bytes、空き17,788,928 bytes、swap 0。[ゲスト動作検証](../results/2026-11-06/halfkp-linear-guest-operational.json)。この検証は学習済みモデルの棋力や、負荷を排除した実時間速度を測るものではない。
