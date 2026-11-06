@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "kind": "king-conditioned-scalar-residual",
+  "width": 16,
+  "hidden": 16,
+  "seed": 20261106,
+  "epochs": 12,
+  "batch": 8192,
+  "learning_rate": 0.003,
+  "best_validation_loss": 0.6032276153564453,
+  "best_epoch": 3,
+  "deterministic_algorithms": true,
+  "training_manifest_sha256": "9e6675d61815eb9d44429b571d0c112500de1a4b05bf0a6d329e45f445e397bb",
+  "trainer_sha256": "c083305fb9c36e052be8e75f49599c8f36eaf6eb2d187b64a249df05fe8b4438",
+  "feature_encoder_sha256": "07fe50d0020db93e539cd2a10c195f6a545a514097fbf174f34f6ae8181b44e5",
+  "torch": "2.11.0+cu128",
+  "device": "NVIDIA GeForce RTX 4070",
+  "model_sha256": "170b59715c683c684c14b928f602eae3c0d61a811186f0a7f7479a9ff556792c",
+  "model_bytes": 5496252,
+  "elapsed_seconds": 7.219285096000021
+}

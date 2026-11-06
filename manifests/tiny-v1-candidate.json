@@ -1,0 +1,18 @@
+{
+  "id": "tiny-v1",
+  "complete": true,
+  "engine_sha256": "a1bee99073c9206fb4a0d79d0cfdf13c117af6ca45afc3e642b3e8ba9750d04b",
+  "image_sha256": "063c5a5abc199b870236d3f2e3b7153c46fef72b083d191807db376812ec3205",
+  "model_sha256": "170b59715c683c684c14b928f602eae3c0d61a811186f0a7f7479a9ff556792c",
+  "model_bytes": 5496252,
+  "source_tree_sha256": "cbb9e1a5bcb63d4c39a36baf0d143851008375bb5161f321fe3da5bdc35964c3",
+  "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/tiny-v1/network.bin",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/candidates/tiny-v1/root.ext2"
+  ]
+}

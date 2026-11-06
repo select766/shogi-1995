@@ -13,11 +13,19 @@
 #include <numeric>	 // for std::accumulate()
 #define SIZE_OF_ARRAY(array) (sizeof(array)/sizeof(array[0]))
 
+#if defined(SHOGI1995_SINGLE_THREAD) && MATERIAL_LEVEL == 1
+#include "shogi1995_psqt.h"
+#endif
+
 namespace YaneuraOu {
 namespace Eval {
 
 	// 駒得のみの評価関数のとき。
-	void load_eval() {}
+	void load_eval() {
+#if defined(SHOGI1995_SINGLE_THREAD) && MATERIAL_LEVEL == 1
+        psqt_load();
+#endif
+    }
 	void print_eval_stat(Position& pos) {}
 	void evaluate_with_no_return(const Position& pos) {}
 	Value evaluate(const Position& pos) { return compute_eval(pos); }
@@ -27,9 +35,16 @@ namespace Eval {
 	// これでも3990XだとR2300ぐらいある。
 	// (序盤を定跡などでうまく乗り切れれば)
 
-	void add_options(OptionsMap&, ThreadPool&) {}
+	void add_options(OptionsMap& options, ThreadPool&) {
+#if defined(SHOGI1995_SINGLE_THREAD)
+        psqt_options(options);
+#endif
+    }
 	Value compute_eval(const Position& pos) {
 		auto score = pos.state()->materialValue;
+#if defined(SHOGI1995_SINGLE_THREAD)
+        if(psqt_loaded)score=psqt_black(pos);
+#endif
 		ASSERT_LV5(pos.state()->materialValue == Eval::material(pos));
 
 		return pos.side_to_move() == BLACK ? score : -score;

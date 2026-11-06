@@ -202,6 +202,7 @@ bool USIEngine::usi_cmdexec(const std::string& cmd) {
     is >> std::skipws >> token;
 #if defined(SHOGI1995_SINGLE_THREAD)
     if(token=="shogi1995stats") { shogi1995_memory_stats(); return false; }
+    if(token=="shogi1995eval") { sync_cout << "info string shogi1995 eval " << int(engine.evaluate()) << sync_endl; return false; }
 #endif
 
 #if STOCKFISH

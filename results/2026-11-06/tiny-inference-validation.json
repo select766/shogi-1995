@@ -1,0 +1,22 @@
+{
+  "engine_sha256": "a1bee99073c9206fb4a0d79d0cfdf13c117af6ca45afc3e642b3e8ba9750d04b",
+  "synthetic_network_sha256": "189c22f06c6b6c3c94055adee91ce01b72cfb59e2716253b381f131efc1ef963",
+  "synthetic_network_integer_parity": {
+    "positions": 512,
+    "exact_value_matches": 512,
+    "passed": true
+  },
+  "psqt_integer_parity_positions": 256,
+  "psqt_integer_parity_passed": true,
+  "malformed_models_rejected": [
+    "wrong magic",
+    "truncated weights",
+    "trailing data"
+  ],
+  "target_check": {
+    "elf32_static_exec": true,
+    "later_instruction_candidates": [],
+    "note": "Known-opcode screening plus real Pentium guest execution; not a complete ISA proof."
+  },
+  "scope": "native execution of static 32bit Pentium binary; guest performance and learned model not yet tested"
+}

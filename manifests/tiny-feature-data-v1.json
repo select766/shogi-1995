@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "inputs": 171720,
+  "stride": 2120,
+  "active": 38,
+  "source_manifest_sha256": "b5730e36c517ea2bc72a105b420dce40a1f7750d238a0b924e23adeefcf67644",
+  "encoder_sha256": "07fe50d0020db93e539cd2a10c195f6a545a514097fbf174f34f6ae8181b44e5",
+  "splits": {
+    "train": {
+      "records": 2000000,
+      "features_sha256": "d5351115b8213a1e409e9ad9a2df5f3d3d90243fa84e8c966cb8ba17352745d1",
+      "targets_sha256": "8f6bae3b76e27f0ba5384b5e064d9c94ddd9b440e01e7f71a620e6ae86eb065c"
+    },
+    "validation": {
+      "records": 32768,
+      "features_sha256": "53153c54663fdd34d5f6f9610c9e3f6a23ab2243a02d10651d11ac5f8b93b395",
+      "targets_sha256": "4ac92e1b46b82ecfd605d32507b835a8f0f7061c8b358676a9806009f74b5d92"
+    }
+  },
+  "elapsed_seconds": 81.08634989300117
+}
