@@ -28,6 +28,9 @@ def main():
     p.add_argument('--validation',type=Path,help='Encoded held-out validation directory, required for train')
     p.add_argument('--exclusions',type=Path,default=Path('/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/excluded-sfen.txt'))
     args=p.parse_args()
+    # A project data path may point to an SSD working cache; resolve even a
+    # not-yet-created destination before the non-overwrite check and mkdir.
+    args.output=args.output.resolve()
     if args.output.exists():raise ValueError('output exists; preserve partial encoding')
     if (args.split=='train') != (args.validation is not None):p.error('train requires --validation; validation must omit it')
     source=json.loads(args.qsearch_manifest.read_text())
