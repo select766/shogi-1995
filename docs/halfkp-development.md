@@ -265,3 +265,7 @@ swapは全ブロックの開始・終了観測で0。3層版のホスト時間�
 標準HalfKP特徴量化は2026年11月7日00:04:57 JSTに1,458.54秒で完了した。[完成manifest](../manifests/halfkp-features-128m-v1-training.json)の学習対象は127,954,738件。validationとの重複43,832件、固定評価局面との重複1,430件を除外した。manifest SHAは`8aa100271caf06b21790d78c895bbcdf93a065c3fe36a2ddf1ada012f9613052`で、従来のvalidation 204,662件を同じディレクトリへのリンクで維持した。[前処理全工程の終了記録](../results/2026-11-06/halfkp-128m-preprocessing-completion-v1.json)を保存した。
 
 実行制御は前処理プロセスの終了と入力・コードSHAを確認し、00:04:58 JSTに幅8・2層の128百万件版の学習処理を開始した。[開始記録](../results/2026-11-06/halfkp-nnue-w8-h0-128m-start-v1.json)には完成した入力manifestのSHAと件数を保存した。学習器でも特徴量・ターゲット全体のハッシュを検証してからGPUへ渡す。最低40epochなら延べ5,118,189,520局面となり、同じ飽和条件を満たすまで学習する。小型3層版の学習は、その正常終了と全validation整数化検証の完了を待つ。
+
+実際のGPU学習は00:06:20 JSTにRTX 4070で開始した。開始commitは`ba39507`、未commit差分なし。約39 GBの特徴量はホストRAM 31 GiBを上回るため、SSD読込みがepoch時間にも影響する。40epochの条件を短縮せず、実測した学習時間と延べ学習量を残す。
+
+新しいモデルを同じ推論版で比較するため、[`package-frozen-runtime.py`](../scripts/package-frozen-runtime.py)で固定済みUSIイメージのモデルだけを差し替えられるようにした。`--runtime-manifest`・`--model`・新規の`--output`・`--name`・`--feature-difference`を指定する。元のsource commit・source tree・バイナリを保存し、準備作業のcommitと日時は別に記録する。元イメージのSHA、内蔵バイナリと旧重み、自動EvalFile設定を照合し、差替え後にもバイナリと設定の不変・新重みのSHAを検証する。既定イメージとビルド用stagingは変更しない。6件の検査で、新旧2つの実イメージでの差替え、元ファイルの不変、既存出力への再実行拒否、ハッシュ不整合・未commitソース・不正パスの拒否を確認した。パッケージ作成は動作・速度・棋力の検証とは別工程であり、新しい重みはその後に整数参照と実ゲストで検証する。
