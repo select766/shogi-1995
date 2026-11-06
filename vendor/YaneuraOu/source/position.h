@@ -190,6 +190,14 @@ struct StateInfo {
 
 	// --- evaluate
 
+#if defined(SHOGI1995_SINGLE_THREAD)
+    // Unclipped compact-network accumulators, restored automatically on undo.
+    unsigned tiny_generation;
+    int tiny_accumulator[2][32];
+    int tiny_from, tiny_to;
+    Piece tiny_before, tiny_after, tiny_captured;
+#endif
+
 #if defined(USE_PIECE_VALUE)
         // この局面での評価関数の駒割
         Value materialValue;

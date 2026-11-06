@@ -17,6 +17,16 @@ unsigned tiny_width=0,tiny_hidden=0;
 std::vector<int16_t> tiny_embedding,tiny_fc,tiny_out;
 std::vector<int32_t> tiny_bias,tiny_fc_bias;
 int32_t tiny_out_bias=0;
+unsigned tiny_generation=1;
+bool tiny_verify=false;
+uint64_t tiny_incremental_count=0,tiny_refresh_count=0,tiny_verification_count=0;
+
+void psqt_stats() {
+    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu\n",
+                (unsigned long long)tiny_incremental_count,(unsigned long long)tiny_refresh_count,
+                (unsigned long long)tiny_verification_count);
+    std::fflush(stdout);
+}
 
 template<class T> bool read_weights(FILE* file,std::vector<T>& values,size_t size) {
     values.resize(size);
@@ -25,7 +35,12 @@ template<class T> bool read_weights(FILE* file,std::vector<T>& values,size_t siz
 
 void psqt_options(OptionsMap& options) {
     options.add("EvalFile",Option("<none>",[](const Option& option) {
-        psqt_path=std::string(option);psqt_loaded=false;tiny_loaded=false;return std::nullopt;
+        psqt_path=std::string(option);psqt_loaded=false;tiny_loaded=false;
+        if(++tiny_generation==0)++tiny_generation;
+        return std::nullopt;
+    }));
+    options.add("EvalVerify",Option(false,[](const Option& option) {
+        tiny_verify=bool(option);return std::nullopt;
     }));
 }
 
@@ -59,36 +74,82 @@ void psqt_load() {
     std::printf("info string shogi1995 %s loaded: %s\n",tiny_loaded?"tiny network":"PSQT",psqt_path.c_str());std::fflush(stdout);
 }
 
-int tiny_black(const Position& pos) {
-    int32_t accumulators[2][32];
+void tiny_add(int* accumulator,int king,int feature,int count) {
+    const int16_t* weights=tiny_embedding.data()+size_t(king*2120+feature)*tiny_width;
+    for(unsigned j=0;j<tiny_width;++j)accumulator[j]+=int(weights[j])*count;
+}
+
+void tiny_board_change(int* accumulator,int king,int perspective,Piece piece,int square,int count) {
+    if(piece==NO_PIECE || type_of(piece)==KING)return;
+    int pt=int(type_of(piece));
+    int index=pt<8?pt-1:pt-2;
+    int relative=int(color_of(piece))!=perspective;
+    tiny_add(accumulator,king,(relative*13+index)*81+(perspective?80-square:square),count);
+}
+
+int tiny_hand_index(PieceType piece) {
+    return piece<=SILVER?int(piece)-1:piece==GOLD?4:piece==BISHOP?5:6;
+}
+
+void tiny_full(const Position& pos,int perspective,int king,int* accumulator) {
     constexpr PieceType types[]={PAWN,LANCE,KNIGHT,SILVER,GOLD,BISHOP,ROOK};
-    for(int perspective=0;perspective<2;++perspective) {
-        int king=int(pos.square<KING>(Color(perspective)));
-        if(perspective)king=80-king;
-        for(unsigned j=0;j<tiny_width;++j)accumulators[perspective][j]=tiny_bias[j];
-        auto add=[&](int feature,int count) {
-            const int16_t* weights=tiny_embedding.data()+size_t(king*2120+feature)*tiny_width;
-            for(unsigned j=0;j<tiny_width;++j)accumulators[perspective][j]+=int(weights[j])*count;
-        };
-        for(int square=0;square<81;++square) {
-            Piece piece=pos.piece_on(Square(square));
-            if(piece==NO_PIECE || type_of(piece)==KING)continue;
-            int pt=int(type_of(piece));
-            int index=pt<8?pt-1:pt-2;
-            int relative=int(color_of(piece))!=perspective;
-            add((relative*13+index)*81+(perspective?80-square:square),1);
+    for(unsigned j=0;j<tiny_width;++j)accumulator[j]=tiny_bias[j];
+    for(int square=0;square<81;++square)
+        tiny_board_change(accumulator,king,perspective,pos.piece_on(Square(square)),square,1);
+    for(int color=0;color<2;++color)
+        for(int pt=0;pt<7;++pt) {
+            int count=hand_count(pos.hand_of(Color(color)),types[pt]);
+            if(count)tiny_add(accumulator,king,2106+(color!=perspective)*7+pt,count);
         }
-        for(int color=0;color<2;++color)
-            for(int pt=0;pt<7;++pt) {
-                int count=hand_count(pos.hand_of(Color(color)),types[pt]);
-                if(count)add(2106+(color!=perspective)*7+pt,count);
+}
+
+int tiny_black(const Position& pos) {
+    StateInfo* state=pos.state();
+    if(state->tiny_generation!=tiny_generation) {
+        for(int perspective=0;perspective<2;++perspective) {
+            int king=int(pos.square<KING>(Color(perspective)));
+            if(perspective)king=80-king;
+            int* accumulator=state->tiny_accumulator[perspective];
+            const StateInfo* previous=state->previous;
+            bool king_moved=state->tiny_before!=NO_PIECE && type_of(state->tiny_before)==KING
+                && int(color_of(state->tiny_before))==perspective;
+            if(previous && previous->tiny_generation==tiny_generation && !king_moved) {
+                std::memcpy(accumulator,previous->tiny_accumulator[perspective],tiny_width*sizeof(int));
+                tiny_board_change(accumulator,king,perspective,state->tiny_before,state->tiny_from,-1);
+                tiny_board_change(accumulator,king,perspective,state->tiny_after,state->tiny_to,1);
+                tiny_board_change(accumulator,king,perspective,state->tiny_captured,state->tiny_to,-1);
+                int relative=int(color_of(state->tiny_after))!=perspective;
+                if(state->tiny_from<0)
+                    tiny_add(accumulator,king,2106+relative*7+tiny_hand_index(raw_type_of(state->tiny_after)),-1);
+                if(state->tiny_captured!=NO_PIECE)
+                    tiny_add(accumulator,king,2106+relative*7+tiny_hand_index(raw_type_of(state->tiny_captured)),1);
+                ++tiny_incremental_count;
+            } else {
+                tiny_full(pos,perspective,king,accumulator);
+                ++tiny_refresh_count;
             }
+        }
+        state->tiny_generation=tiny_generation;
+    }
+    if(tiny_verify) {
+        for(int perspective=0;perspective<2;++perspective) {
+            int king=int(pos.square<KING>(Color(perspective)));
+            if(perspective)king=80-king;
+            int full[32];tiny_full(pos,perspective,king,full);
+            for(unsigned j=0;j<tiny_width;++j)
+                if(full[j]!=state->tiny_accumulator[perspective][j]) {
+                    std::printf("info string accumulator mismatch perspective=%d lane=%u cached=%d full=%d\n",
+                                perspective,j,state->tiny_accumulator[perspective][j],full[j]);
+                    std::fflush(stdout);std::exit(2);
+                }
+        }
+        ++tiny_verification_count;
     }
     int32_t activation[64];
     int stm=int(pos.side_to_move());
     for(int relative=0;relative<2;++relative)
         for(unsigned j=0;j<tiny_width;++j)
-            activation[relative*tiny_width+j]=std::max(0,std::min(128,int(accumulators[stm^relative][j])));
+            activation[relative*tiny_width+j]=std::max(0,std::min(128,state->tiny_accumulator[stm^relative][j]));
     int64_t output=tiny_out_bias;
     for(unsigned i=0;i<tiny_hidden;++i) {
         int32_t sum=tiny_fc_bias[i];

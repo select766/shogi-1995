@@ -26,7 +26,11 @@ namespace Eval {
         psqt_load();
 #endif
     }
-	void print_eval_stat(Position& pos) {}
+	void print_eval_stat(Position&) {
+#if defined(SHOGI1995_SINGLE_THREAD) && MATERIAL_LEVEL == 1
+        psqt_stats();
+#endif
+    }
 	void evaluate_with_no_return(const Position& pos) {}
 	Value evaluate(const Position& pos) { return compute_eval(pos); }
 

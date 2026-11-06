@@ -1697,6 +1697,14 @@ void Position::do_move_impl(Move m, StateInfo& newSt, bool givesCheck, const T* 
     std::memcpy(static_cast<void*>(&newSt), st, offsetof(StateInfo, board_key));
 #endif
     newSt.previous = st;
+#if defined(SHOGI1995_SINGLE_THREAD)
+    newSt.tiny_generation = 0;
+    newSt.tiny_from = m.is_drop() ? -1 : int(m.from_sq());
+    newSt.tiny_to = int(m.to_sq());
+    newSt.tiny_before = m.is_drop() ? NO_PIECE : piece_on(m.from_sq());
+    newSt.tiny_after = moved_piece_after(m);
+    newSt.tiny_captured = piece_on(m.to_sq());
+#endif
     st             = &newSt;
 
     // --- 手数がらみのカウンターのインクリメント
