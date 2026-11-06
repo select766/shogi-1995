@@ -1,0 +1,347 @@
+{
+  "both_correct": 50,
+  "baseline_only": 30,
+  "candidate_only": 39,
+  "both_wrong": 137,
+  "difference": 0.03515625,
+  "bootstrap_95": {
+    "lower": -0.02734375,
+    "upper": 0.09765625
+  },
+  "replicates": 10000,
+  "seed": 20261106,
+  "limitation": "position bootstrap; unknown within-game correlation is not accounted for",
+  "baseline": ".local/evaluation/development-v7-nopic-pair-v1/000-baseline.json",
+  "candidate": ".local/evaluation/development-v7-nopic-pair-v1/000-candidate.json",
+  "baseline_accuracy": 0.3125,
+  "candidate_accuracy": 0.34765625,
+  "candidate_operational_pass": true,
+  "baseline_operational_pass": true,
+  "comparison_operational_pass": true,
+  "comparison_sources": {
+    "scripts/compare-accuracy.py": "ca42ac9c41a7a45a02afdf45a932c831e8f491f20bc09fe297126c3f504d2a79",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/statistics.py": "19a855cbb1435f99f613a0ea56931a7e9823709817f497ba7933ebe92103bcef"
+  },
+  "diagnostics": {
+    "purpose": "descriptive diagnostics; not separate acceptance tests",
+    "multiple_comparisons_adjusted": false,
+    "strata": [
+      {
+        "dimension": "abs_teacher_eval",
+        "value": "0..299",
+        "positions": 135,
+        "baseline": {
+          "total": 135,
+          "measured": 135,
+          "matches": 38,
+          "accuracy": 0.2814814814814815,
+          "wilson_95": {
+            "lower": 0.2124782079386257,
+            "upper": 0.36257667479495925
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "candidate": {
+          "total": 135,
+          "measured": 135,
+          "matches": 37,
+          "accuracy": 0.2740740740740741,
+          "wilson_95": {
+            "lower": 0.20586815032514338,
+            "upper": 0.35478181317907154
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "paired": {
+          "both_correct": 21,
+          "baseline_only": 17,
+          "candidate_only": 16,
+          "both_wrong": 81,
+          "difference": -0.007407407407407408,
+          "bootstrap_95": {
+            "lower": -0.08888888888888889,
+            "upper": 0.07407407407407407
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "abs_teacher_eval",
+        "value": "1000+",
+        "positions": 48,
+        "baseline": {
+          "total": 48,
+          "measured": 48,
+          "matches": 16,
+          "accuracy": 0.3333333333333333,
+          "wilson_95": {
+            "lower": 0.21676780694818568,
+            "upper": 0.4745989029405201
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "candidate": {
+          "total": 48,
+          "measured": 48,
+          "matches": 15,
+          "accuracy": 0.3125,
+          "wilson_95": {
+            "lower": 0.19945683446587817,
+            "upper": 0.4533307141589159
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "paired": {
+          "both_correct": 9,
+          "baseline_only": 7,
+          "candidate_only": 6,
+          "both_wrong": 26,
+          "difference": -0.020833333333333332,
+          "bootstrap_95": {
+            "lower": -0.16666666666666666,
+            "upper": 0.125
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "abs_teacher_eval",
+        "value": "300..999",
+        "positions": 73,
+        "baseline": {
+          "total": 73,
+          "measured": 73,
+          "matches": 26,
+          "accuracy": 0.3561643835616438,
+          "wilson_95": {
+            "lower": 0.25604500466575497,
+            "upper": 0.4706650250201402
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "candidate": {
+          "total": 73,
+          "measured": 73,
+          "matches": 37,
+          "accuracy": 0.5068493150684932,
+          "wilson_95": {
+            "lower": 0.39472240623307775,
+            "upper": 0.6182914018771178
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "paired": {
+          "both_correct": 20,
+          "baseline_only": 6,
+          "candidate_only": 17,
+          "both_wrong": 30,
+          "difference": 0.1506849315068493,
+          "bootstrap_95": {
+            "lower": 0.0273972602739726,
+            "upper": 0.273972602739726
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "in_check",
+        "value": "false",
+        "positions": 244,
+        "baseline": {
+          "total": 244,
+          "measured": 244,
+          "matches": 71,
+          "accuracy": 0.29098360655737704,
+          "wilson_95": {
+            "lower": 0.23758174975042573,
+            "upper": 0.3508648302311989
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "candidate": {
+          "total": 244,
+          "measured": 244,
+          "matches": 79,
+          "accuracy": 0.3237704918032787,
+          "wilson_95": {
+            "lower": 0.26818384451602123,
+            "upper": 0.38482013468417214
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "paired": {
+          "both_correct": 42,
+          "baseline_only": 29,
+          "candidate_only": 37,
+          "both_wrong": 136,
+          "difference": 0.03278688524590164,
+          "bootstrap_95": {
+            "lower": -0.03278688524590164,
+            "upper": 0.09836065573770492
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "in_check",
+        "value": "true",
+        "positions": 12,
+        "baseline": {
+          "total": 12,
+          "measured": 12,
+          "matches": 9,
+          "accuracy": 0.75,
+          "wilson_95": {
+            "lower": 0.46769466506643426,
+            "upper": 0.9110583316059453
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "candidate": {
+          "total": 12,
+          "measured": 12,
+          "matches": 10,
+          "accuracy": 0.8333333333333334,
+          "wilson_95": {
+            "lower": 0.5519691377470266,
+            "upper": 0.9530348578161463
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "paired": {
+          "both_correct": 8,
+          "baseline_only": 1,
+          "candidate_only": 2,
+          "both_wrong": 1,
+          "difference": 0.08333333333333333,
+          "bootstrap_95": {
+            "lower": -0.16666666666666666,
+            "upper": 0.3333333333333333
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "turn",
+        "value": "black",
+        "positions": 122,
+        "baseline": {
+          "total": 122,
+          "measured": 122,
+          "matches": 35,
+          "accuracy": 0.28688524590163933,
+          "wilson_95": {
+            "lower": 0.21409749424773222,
+            "upper": 0.3726841555574208
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "candidate": {
+          "total": 122,
+          "measured": 122,
+          "matches": 36,
+          "accuracy": 0.29508196721311475,
+          "wilson_95": {
+            "lower": 0.22140712952798178,
+            "upper": 0.3812675337462038
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "paired": {
+          "both_correct": 19,
+          "baseline_only": 16,
+          "candidate_only": 17,
+          "both_wrong": 70,
+          "difference": 0.00819672131147541,
+          "bootstrap_95": {
+            "lower": -0.08196721311475409,
+            "upper": 0.09836065573770492
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "turn",
+        "value": "white",
+        "positions": 134,
+        "baseline": {
+          "total": 134,
+          "measured": 134,
+          "matches": 45,
+          "accuracy": 0.3358208955223881,
+          "wilson_95": {
+            "lower": 0.2614222426198383,
+            "upper": 0.4193704566417407
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "candidate": {
+          "total": 134,
+          "measured": 134,
+          "matches": 53,
+          "accuracy": 0.39552238805970147,
+          "wilson_95": {
+            "lower": 0.31675513296250324,
+            "upper": 0.48011294838577423
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0
+        },
+        "paired": {
+          "both_correct": 31,
+          "baseline_only": 14,
+          "candidate_only": 22,
+          "both_wrong": 67,
+          "difference": 0.05970149253731343,
+          "bootstrap_95": {
+            "lower": -0.029850746268656716,
+            "upper": 0.14925373134328357
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      }
+    ]
+  }
+}
