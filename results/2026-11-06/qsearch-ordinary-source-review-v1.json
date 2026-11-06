@@ -1,0 +1,23 @@
+{
+  "reviewed_at_utc": "2026-11-06T12:28:40.089525+00:00",
+  "review_commit": "1ffeda3faba47407d48f7764be3c412810355b8b",
+  "scope": "read-only review of ordinary preprocessing code; not a new runtime experiment or proof of byte-identical full-scale regeneration",
+  "toolchain_manifest_sha256": "fbde6e38b657ae99e2d1bdb1fd4686e8e3163a4bf8158ca45c417819a83ad6a8",
+  "toolchain_source_commit": "cc38e5e284f44b038e9019d5bb19a0a7484bc9f1",
+  "source_files_sha256": {
+    "tanuki_kifu_shuffler.cpp": "a271b13f188a060c867bb2925fef0d50a57da0fa630bb2671a14f07785698488",
+    "tanuki_kifu_reader.cpp": "947cc9e4611365201b42de5a12a3f9a1216f15dbda0a8b30614c71f0afb3393c",
+    "engine/yaneuraou-engine/yaneuraou-search.cpp": "1e1565265c3e54bc49d63c9193f1ee6019b68740ba0370cca5fe919f9d989cc2",
+    "tt.cpp": "1e794736ac0ce3ce3fce59b47ff8cfdb971823bd05faf74033475189f19382f4"
+  },
+  "findings": [
+    "wrapper creates a fresh input directory containing only one original.bin symlink, so filesystem multi-file enumeration order is not part of the input order",
+    "ApplyQSearch=true and PairedShuffle=false select ordinary40-byte PSV records; paired root/leaf sampling branch is disabled",
+    "qsearch runs in parallel on records indexed in the original batch; writing to random buckets is serial and preserves this index order before shuffling",
+    "mt19937_64 uses the specified nonzero ShuffleSeed; the same generator drives bucket assignment and each bucket shuffle",
+    "qsearch disables evaluation hash and transposition-table probing; each leaf stores MOVE_NONE and retains original score/result with sign adjusted to leaf side",
+    "existing512-position repeated-seed byte-identity test is empirical small-sample evidence; completed64m output is frozen by SHA, not claimed to have been regenerated independently at full scale"
+  ],
+  "existing_smoke": "results/2026-11-06/halfkp-qsearch-smoke.json",
+  "existing_full64m_audit": "results/2026-11-06/halfkp-qsearch-complete-audit.json"
+}
