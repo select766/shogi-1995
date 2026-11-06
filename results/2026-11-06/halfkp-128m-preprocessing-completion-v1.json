@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "started_at_utc": "2026-11-06T11:30:00.034188+00:00",
+  "plan_sha256": "42e6b8657674c7baf1a49d5d5eb077c4b079b7cbcab1b903040f651158894f3b",
+  "pid": 360659,
+  "measurement_comparisons_sha256": {
+    ".local/evaluation/development-halfkp-nnue-w16-h0-pair-v1": "aa0b2eb56099d8e42d67706cf3c424688b590b8aa54ec9809f94fd3bbf82e97f",
+    ".local/evaluation/development-halfkp-nnue-w16-h8-pair-v1": "dcacc9418af8c77fccecae59cebde1a289299cef10fb10034631de9b54fd1aa1"
+  },
+  "step": 5,
+  "description": "Link the unchanged canonical validation after successful128m train encoding",
+  "log": "/tmp/shogi-halfkp-128m-step5-v1.log",
+  "child_pid": null,
+  "updated_at_utc": "2026-11-06T15:04:57.483245+00:00"
+}

@@ -261,3 +261,7 @@ swapは全ブロックの開始・終了観測で0。3層版のホスト時間�
 追加構造は[幅8・隠れ8の3層版](../manifests/halfkp-nnue-w8-h8-after-128m-plan-v1.json)の1種類に絞る。幅16・隠れ8に比べ、特徴量の重みメモリをほぼ半分にし、追加隠れ層の積和も256項から128項に減らせる。64百万件・同じvalidation・seed・最低40epochと飽和条件を維持し、幅8・隠れなしと構造の差を比較する。128百万件版の学習と整数化検証が正常終了し、プロセスが終了してから開始する。収束後に独立整数参照・同ノード探索・実ゲストの値とRAMの検証を行い、同じ採用演算で通常2秒・全developmentを比較する。学習lossや乗算数だけで採用せず、11月7日15:00 JSTの候補固定と最終評価の時間を優先する。
 
 128百万件のqsearch・シャッフルは2026年11月6日23:40:34 JSTに正常終了した。[前処理manifest](../manifests/halfkp-qsearch-128m-v1.json)の所要時間は477.03秒、出力も128,000,000件、SHAは`70b7b72d3da88a1bdf061b171da9a6a594e546a890a36a14d4788980155c8bf5`。ApplyQSearch=true・PairedShuffle=false・seed20261107を維持した。現在は4ワーカーの標準HalfKP特徴量化中で、独立testとvalidationの局面キーを除外している。GPU学習は前処理全工程の終了待ち。
+
+標準HalfKP特徴量化は2026年11月7日00:04:57 JSTに1,458.54秒で完了した。[完成manifest](../manifests/halfkp-features-128m-v1-training.json)の学習対象は127,954,738件。validationとの重複43,832件、固定評価局面との重複1,430件を除外した。manifest SHAは`8aa100271caf06b21790d78c895bbcdf93a065c3fe36a2ddf1ada012f9613052`で、従来のvalidation 204,662件を同じディレクトリへのリンクで維持した。[前処理全工程の終了記録](../results/2026-11-06/halfkp-128m-preprocessing-completion-v1.json)を保存した。
+
+実行制御は前処理プロセスの終了と入力・コードSHAを確認し、00:04:58 JSTに幅8・2層の128百万件版の学習処理を開始した。[開始記録](../results/2026-11-06/halfkp-nnue-w8-h0-128m-start-v1.json)には完成した入力manifestのSHAと件数を保存した。学習器でも特徴量・ターゲット全体のハッシュを検証してからGPUへ渡す。最低40epochなら延べ5,118,189,520局面となり、同じ飽和条件を満たすまで学習する。小型3層版の学習は、その正常終了と全validation整数化検証の完了を待つ。
