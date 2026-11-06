@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "positions": 256,
+  "same_bestmoves_final_nodes_completed_depths": true,
+  "reference_sha256": "2e2cc78590e69ba46b38d038fa321a7e98357c5dbbe4b9be05134495f8992886",
+  "candidate_reference_sha256": "b1ad4db390a9153927f9f145a4bc6c87bb676de36e4746b7f402241558b8dfad",
+  "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+  "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+  "scope": "native search equality; not Pentium speed or strength"
+}

@@ -1,5 +1,5 @@
 {
-  "input_sha256": "13d65d0d258672e3cb9f56736d2aa4a8102bcfde2e142055cc50c1fc773b5341",
+  "input_sha256": "136db0ca0729c28774758a38753fc3c061c8dee3901280dd25afc97d5894010a",
   "plotter_sha256": "05387c91a35e5e9a910f5c6cbfc1b3e741197058e1addee6b0655645c840806f",
   "matplotlib": "3.9.2",
   "backend": "86box",
@@ -121,6 +121,26 @@
       "result_sha256": "e72237d36e049ad4363436ff61273044a7bf4152dbfc83b93bf3f117d7beaa42"
     },
     {
+      "run_id": "halfkp-nnue-w16-h8-output32-v1-usi-20261106T135717743523Z-candidate",
+      "comparison_group": "24625c57c23a",
+      "finished_at_utc": "2026-11-06T13:57:17.743523+00:00",
+      "accuracy_percent": "36.5234375",
+      "wilson95_lower_percent": "33.629782422466896",
+      "wilson95_upper_percent": "39.51782729579921",
+      "source_commit": "fd27774dd62eedd1041032d804df607a601ba84d",
+      "result_sha256": "b59a818aa54995f9ea9f4384fd041e7e9cf64d2d3a9aece25c4cd21f384c044d"
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-output32-v1-usi-20261106T140827600166Z-baseline",
+      "comparison_group": "24625c57c23a",
+      "finished_at_utc": "2026-11-06T14:08:27.600166+00:00",
+      "accuracy_percent": "37.5",
+      "wilson95_lower_percent": "34.586696731601116",
+      "wilson95_upper_percent": "40.506738369399336",
+      "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
+      "result_sha256": "32696a9e0cc445b291238df03c60550b7656fc7ae4b2d5e28d6073e98672511e"
+    },
+    {
       "run_id": "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T082823212819Z-candidate",
       "comparison_group": "86a9670dafa6",
       "finished_at_utc": "2026-11-06T08:28:23.212819+00:00",
@@ -235,8 +255,12 @@
     "halfkp-nnue-w8-h0-output32-v1-usi-20261106T132346318452Z-001-baseline",
     "halfkp-nnue-w8-h0-output32-v1-usi-20261106T133455879214Z-002-baseline",
     "halfkp-nnue-w16-h8-output32-v1-usi-20261106T134607071408Z-002-candidate",
-    "halfkp-nnue-w16-h8-output32-v1-usi-20261106T135717743523Z-003-candidate"
+    "halfkp-nnue-w16-h8-output32-v1-usi-20261106T135717743523Z-003-candidate",
+    "halfkp-nnue-w8-h0-output32-v1-usi-20261106T140827600166Z-003-baseline",
+    "halfkp-nnue-w8-h0-width-kernel-v1-20261106T141207588168Z-halfkp-nnue-w8-h0-width-kernel-v1-native-nodes10000-quick256",
+    "halfkp-nnue-w16-h0-width-kernel-v1-20261106T141214540262Z-halfkp-nnue-w16-h0-width-kernel-v1-native-nodes10000-quick256",
+    "halfkp-nnue-w16-h8-width-kernel-v1-20261106T141221696442Z-halfkp-nnue-w16-h8-width-kernel-v1-native-nodes10000-quick256"
   ],
-  "svg_sha256": "e5c58db395a064a11673be84bc31c10107de195b4b688ff035a8fb94ed0e635b",
-  "png_sha256": "704bac810dccc4d0bb4fc01e7036d91425ce0466013beed776d1a454b3d2999d"
+  "svg_sha256": "bc68736e4b6c32922fbf7433084ded2823898c707c6ec87ff769b3a47d76d2bd",
+  "png_sha256": "e66b9f3026a345627539133f25db80ac8012099a811c6ccedb0045d310d14b09"
 }

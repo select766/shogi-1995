@@ -1,0 +1,163 @@
+{
+  "complete": true,
+  "passed": true,
+  "finished_at_utc": "2026-11-06T14:22:50.069195+00:00",
+  "verification_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+  "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+  "inputs": {
+    "plan": {
+      "path": "manifests/halfkp-nnue-width-kernel-plan-v1.json",
+      "sha256": "594dc856060224d76d3f7ed07b2c00e5c55f66c9b693a63ffbe150c7a78a69d5"
+    },
+    "build": {
+      "path": "manifests/halfkp-nnue-width-kernel-v1-build.json",
+      "sha256": "3542a95fa697581506058cc980d310bbc598647221160df58777215658a80748"
+    }
+  },
+  "boundaries": [
+    {
+      "width": 2,
+      "cases": 11,
+      "positions": 176,
+      "path": "results/2026-11-06/halfkp-nnue-width-kernel-boundaries-w2-v1.json",
+      "sha256": "a74debdf2c7948f6049225252964312a6376528ed0dce75f9c13fd4b67192719"
+    },
+    {
+      "width": 8,
+      "cases": 11,
+      "positions": 176,
+      "path": "results/2026-11-06/halfkp-nnue-width-kernel-boundaries-w8-v1.json",
+      "sha256": "8d2df3ee1df79033c4d3a3e30425154fedcf8b6383e82c1fa8e975aded8552df"
+    },
+    {
+      "width": 16,
+      "cases": 11,
+      "positions": 176,
+      "path": "results/2026-11-06/halfkp-nnue-width-kernel-boundaries-w16-v1.json",
+      "sha256": "f41dea7c72640c743a61712f3a566a8df2fa5c8dce5057d671728bc8ba298ca2"
+    },
+    {
+      "width": 32,
+      "cases": 11,
+      "positions": 176,
+      "path": "results/2026-11-06/halfkp-nnue-width-kernel-boundaries-w32-v1.json",
+      "sha256": "85852f17ecdc2d10394ff53084b901bb906ce0695ec957b4be40d517db8a91d3"
+    }
+  ],
+  "models": [
+    {
+      "id": "halfkp-nnue-w8-h0-width-kernel-v1",
+      "width": 8,
+      "hidden": 0,
+      "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "weights_unchanged": true,
+      "manifest": "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+      "manifest_sha256": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3",
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14651392,
+        "swap": 0
+      },
+      "verified_accumulator_positions": 1214176,
+      "checks": {
+        "trained-values": {
+          "path": "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-v1-trained-values.json",
+          "sha256": "7fd1d9f52d97b8a17f93eef15964551e14d05775773c8251da1ff59427bc9cb1"
+        },
+        "trained-search-parity": {
+          "path": "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-v1-trained-search-parity.json",
+          "sha256": "c00dbaad79a4edd052b1eed0e25a87ec644cfbbff69b7cff089e3ca3bc4d292e"
+        },
+        "native-search-equality": {
+          "path": "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-v1-native-search-equality.json",
+          "sha256": "3583de5754dd94a2e4c47834d415bc6f5c2b4ee122bbe039c110ddaa88ea84ed"
+        },
+        "guest-auto-model": {
+          "path": "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-v1-guest-auto-model.json",
+          "sha256": "6546ffa0825b70be5d661508daaf9e6d74dd7a8f0e7829206df3e5c7cbf2ad5d"
+        },
+        "guest-nodes-parity": {
+          "path": "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-v1-guest-nodes-parity.json",
+          "sha256": "8ea1d04b8411be22ea43e49e56e2e96ec6b64fe60e65c151ff2cbc2be2f94eb0"
+        }
+      }
+    },
+    {
+      "id": "halfkp-nnue-w16-h0-width-kernel-v1",
+      "width": 16,
+      "hidden": 0,
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "weights_unchanged": true,
+      "manifest": "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+      "manifest_sha256": "4ec48ecbe4f0dd93b7b528ab94124aecf7542ca4628e56214a1a470560091d07",
+      "guest_memory": {
+        "total": 31866880,
+        "free": 10481664,
+        "swap": 0
+      },
+      "verified_accumulator_positions": 1182427,
+      "checks": {
+        "trained-values": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-v1-trained-values.json",
+          "sha256": "9a2be783599c7541ab9b3563cced0334a5cc1d60d91150081182566103359519"
+        },
+        "trained-search-parity": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-v1-trained-search-parity.json",
+          "sha256": "25ef40aae3bb45b26271452a82ca59253a96f85b328c5f38b0e594af1a4b5b59"
+        },
+        "native-search-equality": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-v1-native-search-equality.json",
+          "sha256": "21870c174906506ea33c6356a0168f61d2055063b699f3b98a870c8519ed0a1b"
+        },
+        "guest-auto-model": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-v1-guest-auto-model.json",
+          "sha256": "cf732b6af723ab0bb46924f6ca29cc21c7651f1ca6372b183295a337553707c6"
+        },
+        "guest-nodes-parity": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-v1-guest-nodes-parity.json",
+          "sha256": "c2d13736f6e87f0513ad4fdeaf25d3c5025dd56b949819b337bd39b746a9e8b5"
+        }
+      }
+    },
+    {
+      "id": "halfkp-nnue-w16-h8-width-kernel-v1",
+      "width": 16,
+      "hidden": 8,
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+      "weights_unchanged": true,
+      "manifest": "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+      "manifest_sha256": "c71da308dd5fe55c957eec334b9f9bab9bd08f2075b74dfaa98f0f94c43dc07c",
+      "guest_memory": {
+        "total": 31866880,
+        "free": 10477568,
+        "swap": 0
+      },
+      "verified_accumulator_positions": 1186295,
+      "checks": {
+        "trained-values": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h8-width-kernel-v1-trained-values.json",
+          "sha256": "905dd3119e987d96d0af848df550d950b57e98fa3c9b4ee0654f46efd909ecb3"
+        },
+        "trained-search-parity": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h8-width-kernel-v1-trained-search-parity.json",
+          "sha256": "be3837bd68d76d33b2deae09794e0eadf81a06aca4407b001c90885a59cd4faf"
+        },
+        "native-search-equality": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h8-width-kernel-v1-native-search-equality.json",
+          "sha256": "2f0d251edfe7f817760feefd5f5cbe333d10e1da724323ff324eacb1ab774a49"
+        },
+        "guest-auto-model": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h8-width-kernel-v1-guest-auto-model.json",
+          "sha256": "d347d38241e9e1ca43c8da98d534f3b7d67b89ca26720ed2486fb9610d2cd9bb"
+        },
+        "guest-nodes-parity": {
+          "path": "results/2026-11-06/halfkp-nnue-w16-h8-width-kernel-v1-guest-nodes-parity.json",
+          "sha256": "a182bf1d292a526292b4cedb7326dfe71640f36e11f421381b9e3a37149e05be"
+        }
+      }
+    }
+  ],
+  "speed_measured": false,
+  "adopted": false,
+  "scope": "instruction screening, integer values, incremental/full accumulators and native/guest search equality; no target speed or strength improvement claim"
+}

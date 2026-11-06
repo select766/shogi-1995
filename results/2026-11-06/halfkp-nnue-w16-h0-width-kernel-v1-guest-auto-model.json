@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "started_at_utc": "2026-11-06T14:17:27.812020+00:00",
+  "finished_at_utc": "2026-11-06T14:18:01.270740+00:00",
+  "positions": 16,
+  "automatic_model_selection": true,
+  "model_cannot_be_silently_disabled": true,
+  "network_delays_remain_configurable": true,
+  "guest_memory": {
+    "total": 31866880,
+    "free": 10481664,
+    "swap": 0
+  },
+  "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+  "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+  "image_sha256": "f5ba4996609de51e0b3f6c5a6197066bdb0535ba7449a7d91b87c3cf19f4f717",
+  "scope": "guest USI/configuration test; not a strength measurement or ShogiHome GUI test"
+}

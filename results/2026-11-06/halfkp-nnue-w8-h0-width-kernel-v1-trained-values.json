@@ -1,0 +1,8 @@
+{
+  "positions": 512,
+  "exact_value_matches": 512,
+  "passed": true,
+  "measured_at_utc": "2026-11-06T14:10:33.523241+00:00",
+  "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+  "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887"
+}
