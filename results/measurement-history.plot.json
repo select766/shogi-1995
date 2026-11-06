@@ -1,5 +1,5 @@
 {
-  "input_sha256": "0e74f710918b306a283a2b9cc5bf87a7827f08deb80fd1adac655d74402f1704",
+  "input_sha256": "1ac13bef3c0824f33fda72145bd10704679e333d1a6b5e366532d8287c6f4245",
   "plotter_sha256": "05387c91a35e5e9a910f5c6cbfc1b3e741197058e1addee6b0655645c840806f",
   "matplotlib": "3.9.2",
   "backend": "86box",
@@ -79,6 +79,26 @@
       "wilson95_upper_percent": "31.55744368384819",
       "source_commit": "06219a9480c5fbfd46de1cbe167ba4de4cea37e6",
       "result_sha256": "c365a1b3261480a8737a1e99047ad510465483a71ac412c0fe74a9e6a05b1c61"
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-output32-v1-usi-20261106T102340603889Z-candidate",
+      "comparison_group": "24625c57c23a",
+      "finished_at_utc": "2026-11-06T10:23:40.603889+00:00",
+      "accuracy_percent": "37.40234375",
+      "wilson95_lower_percent": "34.490947395296125",
+      "wilson95_upper_percent": "40.40790516743089",
+      "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
+      "result_sha256": "699251c54d928ea2cdedc4c212ac8e75f93ac2baf88d2e42bc152c45ce5b7c33"
+    },
+    {
+      "run_id": "halfkp-linear-v2-usi-20261106T103456002393Z-baseline",
+      "comparison_group": "24625c57c23a",
+      "finished_at_utc": "2026-11-06T10:34:56.002393+00:00",
+      "accuracy_percent": "32.8125",
+      "wilson95_lower_percent": "30.005574962248012",
+      "wilson95_upper_percent": "35.74789830162761",
+      "source_commit": "43495b9b55937b65d382f6b816bf0fee2f891a28",
+      "result_sha256": "1704da107bcc8e9eecbe1139dac6eceb99d453d2d5f60c67b0177c22442a46a6"
     },
     {
       "run_id": "halfkp-nnue-w8-h0-addsub-v1-usi-20261106T082823212819Z-candidate",
@@ -176,8 +196,10 @@
     "halfkp-nnue-w8-h0-output32-v1-usi-20261106T093902464795Z-001-candidate",
     "halfkp-linear-v2-usi-20261106T095011646208Z-001-baseline",
     "halfkp-linear-v2-usi-20261106T100121089053Z-002-baseline",
-    "halfkp-nnue-w8-h0-output32-v1-usi-20261106T101230955011Z-002-candidate"
+    "halfkp-nnue-w8-h0-output32-v1-usi-20261106T101230955011Z-002-candidate",
+    "halfkp-nnue-w8-h0-output32-v1-usi-20261106T102340603889Z-003-candidate",
+    "halfkp-linear-v2-usi-20261106T103456002393Z-003-baseline"
   ],
-  "svg_sha256": "4bf9d9661719335e951b6980c981003e3a208c7bb5d44d8dc2df15b8dbdb8152",
-  "png_sha256": "bfca3979264babc88e8f085a3859cce1eac4b6e946ce03bcf5cad53261b624b1"
+  "svg_sha256": "3a05458b22896c1c04933832d0f50704c13273596b90f21f634f0b3ea98cb707",
+  "png_sha256": "14e98ed44a91e7f95a3084c5ff56d16ec9800145f593986fece98cbaa169f664"
 }
