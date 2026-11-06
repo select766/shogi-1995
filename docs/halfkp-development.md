@@ -51,3 +51,16 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 構造の比較では同じ前処理・validationを使い、十分に学習してから2秒一致率で選ぶ。演算の変更は独立した整数参照との値一致と、同ノード探索の一致を先に確かめる。候補を成績だけで小さな局面集合へ差し替えない。
 
 11月8日12:00 JSTまでに最終評価と運用確認を行えるよう、11月7日15:00 JSTを最終候補固定の目安とする。testの4096局面×2版に約6時間、20局の補助対局に最大約8時間と運用確認の時間を残す。想定より費用が増えた場合は、固定評価集合を減らさず、追加構造の数を減らす。
+
+## 線形モデルの学習結果
+
+純線形モデルは125,388係数。以下は学習・validationの診断であり、棋譜一致率や棋力の測定ではない。
+
+| 完了日時（JST） | run | 学習commit | epoch / 延べ局面数 | 最良validation loss | 採用epoch | 計算秒数 |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| 11/06 14:32:55 | [halfkp-linear-v1](../manifests/halfkp-linear-v1-training.json) | `efb4a3e` | 20 / 1,279,548,680 | 0.565455774 | 20 | 189.9 |
+| 11/06 14:42:50 | [halfkp-linear-v2](../manifests/halfkp-linear-v2-training.json) | `dd261f9` | 40 / 2,559,097,360 | 0.565455228 | 29 | 307.3 |
+
+20epoch版の後、同じデータ・seedで最低40epoch・延べ25億局面の確認学習を行った。最初の20epochはloss・学習率・更新する範囲の順序が完全一致した。追加学習による最良validation lossの改善は約5.47e-7、40epoch時点の直近5epochの範囲は訓練loss約3.26e-8、validation loss約2.40e-7だった。学習率は0.003から0.000003まで低下しており、実用上の飽和を確認した。[確認結果](../results/2026-11-06/halfkp-linear-convergence-confirmation.json)。
+
+測定候補は40epochの確認実験の最良checkpoint（29epoch）とする。保存checkpointと整数モデルは全125,388係数で対応し、validation全204,662局面で整数化の評価値誤差RMSEは約0.289、最大約0.528。C++と独立Python参照の512局面の整数値も一致した。[整数化検証](../results/2026-11-06/halfkp-linear-v2-quantization.json)、[値の照合](../results/2026-11-06/halfkp-linear-v2-trained-parity.json)。

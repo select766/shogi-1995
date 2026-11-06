@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "positions": 512,
+  "standard_halfkp_feature_multisets_match": true,
+  "integer_scores_match": true,
+  "model_sha256": "5f0d598d6179557543fb55e7fc2ee38a4709498c6f825dd9ae8650ab0f82cbbb",
+  "engine_sha256": "b23b1ad5a897252998be3dea42e152ae0589e78bea51aff9791cce20d7e865cd"
+}

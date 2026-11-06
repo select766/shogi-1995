@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T05:46:30.591414+00:00",
+  "first_20_epoch_losses_learning_rates_and_chunk_orders_identical": true,
+  "comparison_epochs": 20,
+  "confirmation_epochs": 40,
+  "confirmation_examples_seen": 2559097360,
+  "initial_validation_loss": 0.6659478950756309,
+  "best_validation_loss_20_epochs": 0.5654557744652259,
+  "best_validation_loss_confirmation": 0.5654552275814995,
+  "improvement_after_20_epochs": 5.468837264155368e-07,
+  "final_train_loss_window_range": 3.259564052005004e-08,
+  "final_validation_loss_window_range": 2.4044265911626894e-07,
+  "final_learning_rate": 3e-06,
+  "selected_best_epoch": 29,
+  "selected_model_sha256": "5f0d598d6179557543fb55e7fc2ee38a4709498c6f825dd9ae8650ab0f82cbbb",
+  "scope": "same-machine convergence and training-order confirmation; not move agreement or Elo"
+}

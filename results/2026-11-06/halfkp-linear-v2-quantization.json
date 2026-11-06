@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "positions": 204662,
+  "checkpoint_export_exact_all_weights": true,
+  "float_validation_loss": 0.565455256047929,
+  "integer_validation_loss": 0.5654552250326148,
+  "score_quantization_rmse": 0.28906029549582024,
+  "score_abs_error_p99": 0.4974025630950928,
+  "score_abs_error_max": 0.52783203125,
+  "floating_scores_outside_inference_clamp": 0,
+  "weight_min_cp": -1470.1781005859375,
+  "weight_max_cp": 1258.974609375,
+  "model_sha256": "5f0d598d6179557543fb55e7fc2ee38a4709498c6f825dd9ae8650ab0f82cbbb",
+  "checkpoint_sha256": "f90e20798c8af4be8c920d43d6d56c660cfd8fec945f99f64e333e8b644bf198",
+  "validation_manifest_sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+  "validator_sha256": "3a93cfd4e1ecae842587520f9a0e921423fd1722c8a1fa5aef3eec891ab97b88",
+  "scope": "quantization diagnostic; not move agreement or strength"
+}
