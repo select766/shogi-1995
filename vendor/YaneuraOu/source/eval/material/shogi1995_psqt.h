@@ -93,7 +93,14 @@ void psqt_load() {
 void tiny_add(int* accumulator,int king,int feature,int count) {
     int king_index=tiny_symmetric?(king%9)*5+std::min(king/9,8-king/9):king;
     const int16_t* weights=tiny_embedding.data()+size_t(king_index*(tiny_standard_halfkp?1548:2120)+feature)*tiny_width;
-    for(unsigned j=0;j<tiny_width;++j)accumulator[j]+=int(weights[j])*count;
+    // HalfKP updates add or remove one feature. Avoid one scalar IMUL per
+    // lane on the Pentium, while preserving arbitrary legacy hand counts.
+    if(count==1)
+        for(unsigned j=0;j<tiny_width;++j)accumulator[j]+=int(weights[j]);
+    else if(count==-1)
+        for(unsigned j=0;j<tiny_width;++j)accumulator[j]-=int(weights[j]);
+    else
+        for(unsigned j=0;j<tiny_width;++j)accumulator[j]+=int(weights[j])*count;
 }
 
 void tiny_board_change(int* accumulator,int king,int perspective,Piece piece,int square,int count) {
