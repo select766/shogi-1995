@@ -13,6 +13,9 @@ def row_from_match(report,run_id,result_path,result_sha256):
     if (not report['complete'] or report.get('fatal_error') or report['mode']!='guest_fischer_auxiliary'
             or report.get('backend')!='86box' or report['nodes'] is not None):
         raise ValueError('completed real-time Pentium auxiliary match required')
+    if (report.get('tournament_clock_operational')
+            or report.get('initial_by_color_ms',[report['initial_ms']]*2)!=[report['initial_ms']]*2):
+        raise ValueError('symmetric clocks required for auxiliary rating history')
     games=report['games'];expected=report['expected_games'];ids=report['opening_ids']
     if not ids or len(set(ids))!=len(ids) or expected!=len(ids)*2 or len(games)!=expected:
         raise ValueError('opening pairs or planned game count differ')

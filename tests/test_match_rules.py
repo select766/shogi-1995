@@ -9,6 +9,26 @@ KINGS = '4k4/9/9/9/9/9/9/9/4K4 b - 1'
 
 
 class RefereeTests(unittest.TestCase):
+    def test_tournament_clocks_stay_with_colors_and_increment_after_legal_moves(self):
+        clocks=[180000,600000]
+        r=Referee(KINGS,initial_by_color_ms=clocks)
+        self.assertEqual(r.go_command(),'go btime 180000 wtime 600000 binc 2000 winc 2000')
+        self.assertIsNone(r.accept('5i4i',500.01))
+        self.assertEqual(r.remaining,[181499,600000])
+        self.assertIsNone(r.accept('5a4a',1000.01))
+        self.assertEqual(r.remaining,[181499,600999])
+        self.assertEqual(clocks,[180000,600000])
+
+    def test_tournament_black_cannot_use_whites_longer_clock(self):
+        r=Referee(KINGS,initial_by_color_ms=[180000,600000])
+        self.assertEqual(r.accept('5i4i',180000.01),{'winner':1,'reason':'time_forfeit'})
+        self.assertEqual(r.remaining,[-1,600000])
+
+    def test_invalid_color_clocks_rejected(self):
+        for clocks in ([180000], [180000,0], [180000,-1], [180000,600000.0], [True,600000]):
+            with self.subTest(clocks=clocks),self.assertRaises(ValueError):
+                Referee(KINGS,initial_by_color_ms=clocks)
+
     def test_increment_is_applied_once_and_host_time_is_rounded_up(self):
         r = Referee(KINGS, initial_ms=1000, increment_ms=2000)
         self.assertIsNone(r.accept('5i4i', 500.01))

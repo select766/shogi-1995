@@ -9,11 +9,13 @@ def position_key(board):
 
 
 class Referee:
-    def __init__(self, sfen, initial_ms=180000, increment_ms=2000, max_plies=512):
+    def __init__(self, sfen, initial_ms=180000, increment_ms=2000, max_plies=512, *, initial_by_color_ms=None):
         self.board = cshogi.Board(sfen)
         self.start_sfen = sfen
         self.moves = []
-        self.remaining = [initial_ms, initial_ms]
+        self.remaining = list(initial_by_color_ms) if initial_by_color_ms is not None else [initial_ms, initial_ms]
+        if len(self.remaining)!=2 or any(type(value) is not int or value<=0 for value in self.remaining):
+            raise ValueError('two positive integer clocks required')
         self.increment = increment_ms
         self.max_plies = max_plies
         self.occurrences = Counter({position_key(self.board): 1})

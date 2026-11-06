@@ -35,6 +35,8 @@ def main():
     p.add_argument('--initial-ms',type=int,default=180000)
     p.add_argument('--increment-ms',type=int,default=2000)
     p.add_argument('--max-plies',type=int,default=512)
+    p.add_argument('--tournament-clock',action='store_true',
+                   help='Operational test: black180s, white600s, both+2s; excludes rating/history')
     p.add_argument('--network-delay',type=int,default=120)
     p.add_argument('--network-delay2',type=int,default=1120)
     p.add_argument('--native',action='store_true',help='Host fixed-node operational test only')
@@ -48,6 +50,11 @@ def main():
         p.error('invalid game settings')
     if args.nodes is not None and args.nodes<=0:
         p.error('nodes must be positive')
+    if args.tournament_clock and (args.initial_ms!=180000 or args.increment_ms!=2000 or args.max_plies!=512):
+        p.error('tournament clock fixes black180s/white600s, increment2000ms and max512plies')
+    initial_clocks=[180000,600000] if args.tournament_clock else [args.initial_ms,args.initial_ms]
+    mode=('fixed_nodes_operational' if args.nodes else
+          'tournament_asymmetric_operational' if args.tournament_clock else 'guest_fischer_auxiliary')
     records=[json.loads(line) for line in args.dataset.read_text().splitlines() if line.strip()]
     if args.openings>len(records):
         raise ValueError('not enough fixed opening positions')
@@ -61,17 +68,21 @@ def main():
                 'src/shogi1995/sessions.py','src/shogi1995/usi.py','src/bridge/main.py')},
             'baseline':json.loads(args.baseline.read_text()),'candidate':json.loads(args.candidate.read_text()),
             'dataset':str(args.dataset.resolve()),'dataset_sha256':digest(args.dataset),'opening_ids':[r['id'] for r in records[:args.openings]],
-            'initial_ms':args.initial_ms,'increment_ms':args.increment_ms,'max_plies':args.max_plies,
+            'initial_ms':None if args.tournament_clock else args.initial_ms,
+            'initial_by_color_ms':initial_clocks,'tournament_clock_operational':args.tournament_clock,
+            'increment_ms':args.increment_ms,'max_plies':args.max_plies,
             'network_delay':args.network_delay,'network_delay2':args.network_delay2,
             'common_engine_options':{**COMMON,'NetworkDelay':args.network_delay,'NetworkDelay2':args.network_delay2},
-            'mode':'fixed_nodes_operational' if args.nodes else 'guest_fischer_auxiliary',
+            'mode':mode,
             'nodes':args.nodes,'expected_games':args.openings*2,'games':[]}
     args.output.parent.mkdir(parents=True,exist_ok=True)
     def save():
-        eligible=(args.nodes is None and report['complete'] and not report.get('fatal_error')
+        eligible=(not args.tournament_clock and args.nodes is None and report['complete'] and not report.get('fatal_error')
                   and report.get('clock_calibration',{}).get('passed',False)
                   and sum('outcome' in g for g in report['games'])==report['expected_games'])
         report['score']=match_summary(report['games'],rating_enabled=eligible)
+        if args.tournament_clock:
+            report['score']['scope']='tournament asymmetric-clock operation only; not a strength or Elo measurement'
         temp=args.output.with_suffix('.partial');temp.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n');temp.replace(args.output)
     save();start=time.monotonic()
     run=ROOT/'.local/match-runs'/args.output.stem
@@ -80,7 +91,7 @@ def main():
             report['clock_calibration']=pair.calibrate(cshogi.STARTING_SFEN,native=args.native)
             save()
             if not args.native and not report['clock_calibration']['passed']:
-                raise RuntimeError('two-VM clock calibration failed; auxiliary strength games are invalid')
+                raise RuntimeError('two-VM clock calibration failed; real-time games are invalid')
             for engine in pair.engines:
                 engine.send(f'setoption name NetworkDelay value {args.network_delay}')
                 engine.send(f'setoption name NetworkDelay2 value {args.network_delay2}')
@@ -90,9 +101,11 @@ def main():
                 by_color=[pair.engines[1 if side==candidate_color else 0] for side in range(2)]
                 for engine in pair.engines:
                     engine.reset()
-                referee=Referee(opening['sfen'],args.initial_ms,args.increment_ms,args.max_plies)
+                referee=Referee(opening['sfen'],args.initial_ms,args.increment_ms,args.max_plies,
+                                initial_by_color_ms=initial_clocks)
                 game={'game':index+1,'opening_id':opening['id'],'start_sfen':opening['sfen'],
-                      'candidate_color':candidate_color,'started_at_utc':utc(),'moves':[]}
+                      'candidate_color':candidate_color,'initial_remaining_ms':list(referee.remaining),
+                      'started_at_utc':utc(),'moves':[]}
                 report['games'].append(game);save()
                 outcome=referee.terminal()
                 while outcome is None:
@@ -123,7 +136,7 @@ def main():
     finally:
         report['finished_at_utc']=utc();report['elapsed_seconds']=time.monotonic()-start;save()
     print(json.dumps(report['score'],indent=2))
-    if args.nodes is None:
+    if args.nodes is None and not args.tournament_clock:
         subprocess.run([sys.executable,str(ROOT/'scripts/update-match-history.py'),'--result',str(args.output.resolve())],cwd=ROOT,check=True)
 
 

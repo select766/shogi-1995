@@ -68,6 +68,15 @@ class MatchHistoryTests(unittest.TestCase):
             report=fixture();report.update(changes)
             with self.assertRaisesRegex(ValueError,'real-time'):row(report)
 
+    def test_tournament_asymmetry_is_never_registered_as_auxiliary_rating(self):
+        for changes in ({'mode':'tournament_asymmetric_operational'},
+                        {'initial_by_color_ms':[180000,600000]},
+                        {'tournament_clock_operational':True}):
+            report=fixture();report.update(changes)
+            with self.assertRaises(ValueError):row(report)
+        report=fixture();report['initial_by_color_ms']=[180000,180000]
+        self.assertEqual(row(report)['comparison_group'],row(fixture())['comparison_group'])
+
     def test_clock_flag_alone_cannot_certify_bad_samples(self):
         for host in (5200,float('nan')):
             report=fixture();report['clock_calibration']['samples'][0]['host_ms']=host
