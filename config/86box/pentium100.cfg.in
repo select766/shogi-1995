@@ -1,0 +1,39 @@
+[General]
+vid_renderer = qt_software
+confirm_exit = 0
+
+[Machine]
+machine = plato
+cpu_family = pentium_p54c
+cpu_speed = 100000000
+cpu_multi = 1.5
+cpu_use_dynarec = 1
+mem_size = 32768
+time_sync = utc
+
+[Video]
+gfxcard = et4000ax
+
+[Input devices]
+mouse_type = none
+
+[Ports (COM & LPT)]
+serial1_enabled = 1
+serial1_device = pipe
+serial2_enabled = 0
+lpt1_enabled = 0
+
+[Named Pipe (COM) #1]
+path = @FIFO@
+mode = 1
+reconnect = 1
+
+[Hard disks]
+hdd_01_parameters = 63, 16, 1024, 0, ide
+hdd_01_ide_channel = 0:0
+hdd_01_fn = @DISK@
+
+[Floppy and CD-ROM drives]
+fdd_01_type = 35_2hd
+fdd_01_fn = @FLOPPY@
+fdd_02_type = none

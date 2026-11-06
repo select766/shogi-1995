@@ -1,0 +1,8 @@
+{
+  "backend": "qemu",
+  "startup_seconds": 5.131828560000031,
+  "first_move": "1g1f",
+  "increment_search_stop_seconds": 0.002569731000221509,
+  "infinite_stop_seconds": 0.008464636000098835,
+  "passed": true
+}

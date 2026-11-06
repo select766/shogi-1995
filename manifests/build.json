@@ -1,0 +1,48 @@
+{
+  "upstream_commit": "3a0e4fd2394e40f72fc6e2ad5aada832b4045cd9",
+  "engine_edition": "YANEURAOU_ENGINE_MATERIAL",
+  "target": "PENTIUM1995",
+  "files": [
+    {
+      "path": ".local/guest-root/shogi",
+      "sha256": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+      "bytes": 2676952
+    },
+    {
+      "path": ".local/legacy-libc/lib/libc.a",
+      "sha256": "49862311646b2bdeb12576a97f668a9abdb7806a85c81303b04ae867bb326e2f",
+      "bytes": 2310130
+    },
+    {
+      "path": ".local/vmlinuz",
+      "sha256": "9159cf5a7ed01d9670dc64ac2c63ca1fda344875166ae0ddd8b040fdee1a43da",
+      "bytes": 399388
+    },
+    {
+      "path": ".local/images/boot.img",
+      "sha256": "b376a6aee776e4ac4748176b1e4089026d1a1655f7681a5f207c4985a87b9864",
+      "bytes": 1474560
+    },
+    {
+      "path": ".local/images/engine-root.ext2",
+      "sha256": "aa4da0c51cda22432ea5a8e85509e8990f9000465647ed24956d72816592672a",
+      "bytes": 528482304
+    },
+    {
+      "path": ".local/86box/roms-master/machines/plato/1016ax1_.bio",
+      "sha256": "e92e87a0ad95ae72c1f8a62e648adaa19196b764e0192f545f9865d2b28ea4b6",
+      "bytes": 65664
+    },
+    {
+      "path": ".local/86box/roms-master/machines/plato/1016ax1_.bi1",
+      "sha256": "6b367e784f9f3243a18ba7e386a0bb505edf25ea1ad0f91e35b568b08eb0e705",
+      "bytes": 53376
+    },
+    {
+      "path": "config/86box/pentium100.cfg.in",
+      "sha256": "fdb0380ce9f27a1a02ba8d4d8044db0e52642a40cc5438e971bd565f1530519a",
+      "bytes": 609
+    }
+  ],
+  "host_kernel": "Linux 6.8.0-138-generic x86_64 GNU/Linux"
+}

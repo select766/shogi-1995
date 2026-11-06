@@ -1,0 +1,4 @@
+{
+  "sha256": "09058e2a66ec44d57e08cccde5ab6d2a907f3abff771b561ca67840547f1ff92",
+  "note": "20-game run used the dedicated VM disk copy of this engine. The final build adds a memory diagnostic, removes unused hardware RNG code, and polls stop during qsearch; search changes are inactive during this fixed-node run."
+}

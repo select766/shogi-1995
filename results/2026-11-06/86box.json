@@ -1,0 +1,19 @@
+{
+  "backend": "86box",
+  "engine_sha256": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+  "startup_seconds": 30.370346620999953,
+  "guest_memory_bytes": {
+    "total": 31866880,
+    "free": 18853888,
+    "swap": 0
+  },
+  "first_move": "1g1f",
+  "increment_search_stop_seconds": 0.030722573000275588,
+  "move_list_512_plies": true,
+  "short_clock_seconds": 0.12233293400004186,
+  "infinite_stop_seconds": 0.023783838999406726,
+  "host_search_seconds": 10.033814455000538,
+  "guest_last_info_seconds": 10.013,
+  "guest_host_clock_ratio": 0.9979255690750625,
+  "passed": true
+}

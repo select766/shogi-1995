@@ -1,0 +1,84 @@
+{
+  "retrieved_on": "2026-11-06",
+  "roms_resolved_commit": "c4cd8da9034a8557896ff6a975ae58499a83bb80",
+  "assets": [
+    {
+      "name": "86Box-v6.0.AppImage",
+      "url": "https://github.com/86Box/86Box/releases/download/v6.0/86Box-Linux-x86_64-b9001.AppImage",
+      "bytes": 93985272,
+      "sha256": "535d3c329f8c32b601103970c86d80aa80298f345452c3524ea2f433624727a4"
+    },
+    {
+      "name": "i486-linux-musl-cross.tgz",
+      "url": "https://musl.cc/i486-linux-musl-cross.tgz",
+      "bytes": 110230922,
+      "sha256": "1b7eceb2022f4a664028dd314c5c44332b601bd271e40f0934b4bc8fd3b0fcf5"
+    },
+    {
+      "name": "musl-1.2.5.tar.gz",
+      "url": "https://musl.libc.org/releases/musl-1.2.5.tar.gz",
+      "bytes": 1080786,
+      "sha256": "a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4"
+    },
+    {
+      "name": "yaneuraou.tar.gz",
+      "url": "https://codeload.github.com/yaneurao/YaneuraOu/tar.gz/3a0e4fd2394e40f72fc6e2ad5aada832b4045cd9",
+      "bytes": 1453840,
+      "sha256": "05a7fd9f3566c417901c0c11949528a90b261ed4ce2038ed30f5c056720a538e"
+    },
+    {
+      "name": "86box-roms.tar.gz",
+      "url": "https://codeload.github.com/86Box/roms/tar.gz/c4cd8da9034a8557896ff6a975ae58499a83bb80",
+      "bytes": 110303484,
+      "sha256": "40a518e1d9100fd894dd58d8b91cd57f3bd867a82118857a886923f9de5e0f16"
+    },
+    {
+      "name": "aaa_base.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a1/aaa_base.tgz",
+      "bytes": 170199,
+      "sha256": "a50d02e0a7a891a8766f8a4ac8ca4856c0ce3a3510f410fbf06da1a10f2e0f95"
+    },
+    {
+      "name": "bash.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a1/bash.tgz",
+      "bytes": 248013,
+      "sha256": "778e987669b06c9c28a515174d9c7c5201d117c6a916c61ddbd3c945146a393d"
+    },
+    {
+      "name": "ldso.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a1/ldso.tgz",
+      "bytes": 128171,
+      "sha256": "ff679e442d753b419e824fcbc01233f19b71bb31ecadb1c31bce2b140c1c23a7"
+    },
+    {
+      "name": "shlibs.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a5/shlibs.tgz",
+      "bytes": 272376,
+      "sha256": "be50000a45a73f541eac1bb4be70cf4e11815dc254aa55ad052b5f8ed07d95b4"
+    },
+    {
+      "name": "bin.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a2/bin.tgz",
+      "bytes": 933350,
+      "sha256": "f3ffb64061aee2684a5b4e6550fd03ae4f6bf2d0d6d5d62ae0dd91306a979dbf"
+    },
+    {
+      "name": "sh_utils.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a4/sh_utils.tgz",
+      "bytes": 126450,
+      "sha256": "4054f1b3fac49e49015c2a997a240ddcefba46d1781c2853469194f742b595ab"
+    },
+    {
+      "name": "idenet.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a3/idenet.tgz",
+      "bytes": 422509,
+      "sha256": "6da54e78ef9cd858d86d85fa43ddc5d0773a1179d4204a4552a7861842450389"
+    },
+    {
+      "name": "gcc-random.cc",
+      "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-11.2.0/libstdc%2B%2B-v3/src/c%2B%2B11/random.cc",
+      "bytes": 12225,
+      "sha256": "3a8c0f8b5d935e92ac135d402923715a3b360f8c6cdf8a2e368b798a8b396b26"
+    }
+  ]
+}

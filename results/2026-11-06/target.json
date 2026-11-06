@@ -1,0 +1,5 @@
+{
+  "elf32_static_exec": true,
+  "later_instruction_candidates": [],
+  "note": "Known-opcode screening plus real Pentium guest execution; not a complete ISA proof."
+}
