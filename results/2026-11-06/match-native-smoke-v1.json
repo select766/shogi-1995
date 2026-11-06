@@ -1,0 +1,459 @@
+{
+  "complete": true,
+  "started_at_utc": "2026-11-06T02:17:39.505076+00:00",
+  "measurement_commit": "fbd17a28b4d16bf637875b8642fbdc4f31b40c33",
+  "baseline": {
+    "id": "material-v1",
+    "complete": true,
+    "engine_sha256": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+    "image_sha256": "aa4da0c51cda22432ea5a8e85509e8990f9000465647ed24956d72816592672a",
+    "source_commit": "06219a9",
+    "engine_options": {},
+    "command": [
+      "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+      "--image",
+      "/home/select766/shogi/shogi-1995/.local/baselines/material-v1/root.ext2"
+    ]
+  },
+  "candidate": {
+    "id": "tiny-v2",
+    "complete": true,
+    "guest_diagnostics": true,
+    "search_diagnostics": true,
+    "engine_sha256": "5dd0b3360f93839ce6fb0ea14e95034490d9ddced8d9c59ddf84e071dedd4508",
+    "image_sha256": "8594c1edfda8a806905c906aedfc5254b34572f8ba2bf6c3df4aa774fcbca314",
+    "model_sha256": "5049912d9ed03dc717ddc0ae4c48d65dacf73c4827b0c113c4f8b2c1d9474d12",
+    "model_bytes": 5496252,
+    "source_commit": "e04f6fca89535d94a8a48fda49560a8351f293ac",
+    "source_tree_sha256": "caf75b345f4afd0b76e315ea40090b053d4efa82de86607b128cb0c01040b727",
+    "source_worktree_dirty": false,
+    "source_commit_binding": "committed_source_tree",
+    "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/tiny-v2/network.bin",
+    "feature_difference": "\u65b0\u898f\u5b66\u7fd2\u30921600\u4e07\u5c40\u9762\u3078\u62e1\u5f35\u300116\u00d716\u306e\u7389\u4f4d\u7f6e\u6761\u4ef6\u4ed8\u304d\u8a55\u4fa1\u3068\u7956\u5148\u5dee\u5206\u66f4\u65b0",
+    "engine_options": {
+      "EvalFile": "/eval/model.bin"
+    },
+    "command": [
+      "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+      "--image",
+      "/home/select766/shogi/shogi-1995/.local/candidates/tiny-v2/root.ext2"
+    ]
+  },
+  "dataset_sha256": "91b14a744f13f79e0928dc61e36aa62d37d39767af4820fdd45bd046c7088ca8",
+  "opening_ids": [
+    "hcpe-506738"
+  ],
+  "initial_ms": 180000,
+  "increment_ms": 2000,
+  "max_plies": 16,
+  "network_delay": 120,
+  "network_delay2": 1120,
+  "mode": "fixed_nodes_operational",
+  "nodes": 128,
+  "expected_games": 2,
+  "games": [
+    {
+      "game": 1,
+      "opening_id": "hcpe-506738",
+      "start_sfen": "ln5nl/1r1b1k1s1/3p3pp/2P1p1s2/Pp4p2/L2PP2PP/1PBS5/1KG1G4/1N6L w 2GS3Prn2p 1",
+      "candidate_color": 0,
+      "started_at_utc": "2026-11-06T02:17:39.592306+00:00",
+      "moves": [
+        {
+          "side": 1,
+          "actual": "1c1d",
+          "host_ms": 0.9485739992669551,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 315,
+          "nps": 315000,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "9e9d",
+          "host_ms": 1.0937899987766286,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 338,
+          "nps": 338000,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "2c2d",
+          "host_ms": 0.8349979998456547,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 314,
+          "nps": 314000,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "P*4c",
+          "host_ms": 0.799450999693363,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 199,
+          "nps": 199000,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "4b4c",
+          "host_ms": 0.42070999916177243,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 131,
+          "nps": 131000,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "P*4d",
+          "host_ms": 0.8068450006248895,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 193,
+          "nps": 193000,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "6b4d",
+          "host_ms": 0.4637120000552386,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 158,
+          "nps": 158000,
+          "depth": 5,
+          "seldepth": 6
+        },
+        {
+          "side": 0,
+          "actual": "P*4e",
+          "host_ms": 0.8662070013087941,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 326,
+          "nps": 326000,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 1,
+          "actual": "3d4e",
+          "host_ms": 0.6455279999499908,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 171,
+          "nps": 171000,
+          "depth": 1,
+          "seldepth": 5
+        },
+        {
+          "side": 0,
+          "actual": "G*6e",
+          "host_ms": 0.7055019996187184,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 165,
+          "nps": 165000,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "4e3d",
+          "host_ms": 0.7563689996459289,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 332,
+          "nps": 332000,
+          "depth": 2,
+          "seldepth": 6
+        },
+        {
+          "side": 0,
+          "actual": "S*4a",
+          "host_ms": 0.7516599998780293,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 300,
+          "nps": 300000,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "4d6b",
+          "host_ms": 0.6148590000520926,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 197,
+          "nps": 197000,
+          "depth": 1,
+          "seldepth": 6
+        },
+        {
+          "side": 0,
+          "actual": "1i1g",
+          "host_ms": 0.5158809999556979,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 207,
+          "nps": 207000,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "2b2c",
+          "host_ms": 0.6516699995700037,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 183,
+          "nps": 183000,
+          "depth": 1,
+          "seldepth": 6
+        },
+        {
+          "side": 0,
+          "actual": "5h4g",
+          "host_ms": 0.6104109997977503,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 204,
+          "nps": 204000,
+          "depth": 2,
+          "seldepth": 3
+        }
+      ],
+      "remaining_ms": [
+        195991,
+        195992
+      ],
+      "outcome": {
+        "winner": null,
+        "reason": "max_plies"
+      },
+      "candidate_result": "draw",
+      "finished_at_utc": "2026-11-06T02:17:39.611353+00:00"
+    },
+    {
+      "game": 2,
+      "opening_id": "hcpe-506738",
+      "start_sfen": "ln5nl/1r1b1k1s1/3p3pp/2P1p1s2/Pp4p2/L2PP2PP/1PBS5/1KG1G4/1N6L w 2GS3Prn2p 1",
+      "candidate_color": 1,
+      "started_at_utc": "2026-11-06T02:17:39.629292+00:00",
+      "moves": [
+        {
+          "side": 1,
+          "actual": "4b3b",
+          "host_ms": 1.0300100002496038,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 321,
+          "nps": 321000,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "1f1e",
+          "host_ms": 0.7906139999249717,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 180,
+          "nps": 180000,
+          "depth": 1,
+          "seldepth": 4
+        },
+        {
+          "side": 1,
+          "actual": "R*3i",
+          "host_ms": 0.9601159999874653,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 311,
+          "nps": 311000,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 0,
+          "actual": "1i1f",
+          "host_ms": 0.7500669998989906,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 219,
+          "nps": 219000,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "N*9b",
+          "host_ms": 0.6016440001985757,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 225,
+          "nps": 225000,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 0,
+          "actual": "S*9h",
+          "host_ms": 0.599590999627253,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 172,
+          "nps": 172000,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "6b4d",
+          "host_ms": 0.43341400123608764,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 200,
+          "nps": 200000,
+          "depth": 3,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "G*6e",
+          "host_ms": 0.462649999462883,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 146,
+          "nps": 146000,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "8e8f",
+          "host_ms": 0.4381340004329104,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 135,
+          "nps": 135000,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 0,
+          "actual": "7g8f",
+          "host_ms": 0.4556869989755796,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 148,
+          "nps": 148000,
+          "depth": 1,
+          "seldepth": 6
+        },
+        {
+          "side": 1,
+          "actual": "3d4c",
+          "host_ms": 0.4942399991705315,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 164,
+          "nps": 164000,
+          "depth": 2,
+          "seldepth": 5
+        },
+        {
+          "side": 0,
+          "actual": "G*4f",
+          "host_ms": 0.4511980005190708,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 159,
+          "nps": 159000,
+          "depth": 1,
+          "seldepth": 4
+        },
+        {
+          "side": 1,
+          "actual": "P*4b",
+          "host_ms": 0.42251400009263307,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 150,
+          "nps": 150000,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 0,
+          "actual": "P*4e",
+          "host_ms": 0.4147790004935814,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 156,
+          "nps": 156000,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "4d3c",
+          "host_ms": 0.4222129991831025,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 147,
+          "nps": 147000,
+          "depth": 1,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "P*3d",
+          "host_ms": 0.3735209993465105,
+          "go": "go nodes 128",
+          "time": 1,
+          "nodes": 161,
+          "nps": 161000,
+          "depth": 1,
+          "seldepth": 4
+        }
+      ],
+      "remaining_ms": [
+        195992,
+        195991
+      ],
+      "outcome": {
+        "winner": null,
+        "reason": "max_plies"
+      },
+      "candidate_result": "draw",
+      "finished_at_utc": "2026-11-06T02:17:39.648935+00:00"
+    }
+  ],
+  "score": {
+    "games": 2,
+    "wins": 0,
+    "draws": 2,
+    "losses": 0,
+    "score_rate": 0.5
+  },
+  "clock_calibration": {
+    "passed": false,
+    "skipped": "native fixed-node smoke test; no Pentium time claim"
+  },
+  "finished_at_utc": "2026-11-06T02:17:39.651927+00:00",
+  "elapsed_seconds": 0.14483475599990925
+}

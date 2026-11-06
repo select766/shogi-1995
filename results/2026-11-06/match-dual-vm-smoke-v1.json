@@ -1,0 +1,509 @@
+{
+  "complete": true,
+  "started_at_utc": "2026-11-06T02:24:00.290686+00:00",
+  "measurement_commit": "1b7abc107c06ce6c1d6c14f754387fb644a31c8f",
+  "baseline": {
+    "id": "material-v1",
+    "complete": true,
+    "engine_sha256": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+    "image_sha256": "aa4da0c51cda22432ea5a8e85509e8990f9000465647ed24956d72816592672a",
+    "source_commit": "06219a9",
+    "engine_options": {},
+    "command": [
+      "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+      "--image",
+      "/home/select766/shogi/shogi-1995/.local/baselines/material-v1/root.ext2"
+    ]
+  },
+  "candidate": {
+    "id": "tiny-v2",
+    "complete": true,
+    "guest_diagnostics": true,
+    "search_diagnostics": true,
+    "engine_sha256": "5dd0b3360f93839ce6fb0ea14e95034490d9ddced8d9c59ddf84e071dedd4508",
+    "image_sha256": "8594c1edfda8a806905c906aedfc5254b34572f8ba2bf6c3df4aa774fcbca314",
+    "model_sha256": "5049912d9ed03dc717ddc0ae4c48d65dacf73c4827b0c113c4f8b2c1d9474d12",
+    "model_bytes": 5496252,
+    "source_commit": "e04f6fca89535d94a8a48fda49560a8351f293ac",
+    "source_tree_sha256": "caf75b345f4afd0b76e315ea40090b053d4efa82de86607b128cb0c01040b727",
+    "source_worktree_dirty": false,
+    "source_commit_binding": "committed_source_tree",
+    "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/tiny-v2/network.bin",
+    "feature_difference": "\u65b0\u898f\u5b66\u7fd2\u30921600\u4e07\u5c40\u9762\u3078\u62e1\u5f35\u300116\u00d716\u306e\u7389\u4f4d\u7f6e\u6761\u4ef6\u4ed8\u304d\u8a55\u4fa1\u3068\u7956\u5148\u5dee\u5206\u66f4\u65b0",
+    "engine_options": {
+      "EvalFile": "/eval/model.bin"
+    },
+    "command": [
+      "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+      "--image",
+      "/home/select766/shogi/shogi-1995/.local/candidates/tiny-v2/root.ext2"
+    ]
+  },
+  "dataset_sha256": "91b14a744f13f79e0928dc61e36aa62d37d39767af4820fdd45bd046c7088ca8",
+  "opening_ids": [
+    "hcpe-506738"
+  ],
+  "initial_ms": 180000,
+  "increment_ms": 2000,
+  "max_plies": 16,
+  "network_delay": 120,
+  "network_delay2": 1120,
+  "mode": "fixed_nodes_operational",
+  "nodes": 128,
+  "expected_games": 2,
+  "games": [
+    {
+      "game": 1,
+      "opening_id": "hcpe-506738",
+      "start_sfen": "ln5nl/1r1b1k1s1/3p3pp/2P1p1s2/Pp4p2/L2PP2PP/1PBS5/1KG1G4/1N6L w 2GS3Prn2p 1",
+      "candidate_color": 0,
+      "started_at_utc": "2026-11-06T02:25:27.400616+00:00",
+      "moves": [
+        {
+          "side": 1,
+          "actual": "1c1d",
+          "host_ms": 156.57808600008138,
+          "go": "go nodes 128",
+          "time": 123,
+          "nodes": 315,
+          "nps": 2560,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "9e9d",
+          "host_ms": 167.7341209997394,
+          "go": "go nodes 128",
+          "time": 138,
+          "nodes": 338,
+          "nps": 2449,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "2c2d",
+          "host_ms": 125.15532100042037,
+          "go": "go nodes 128",
+          "time": 98,
+          "nodes": 314,
+          "nps": 3204,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "P*4c",
+          "host_ms": 129.51708600121492,
+          "go": "go nodes 128",
+          "time": 92,
+          "nodes": 199,
+          "nps": 2163,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "4b4c",
+          "host_ms": 87.82927099855442,
+          "go": "go nodes 128",
+          "time": 52,
+          "nodes": 131,
+          "nps": 2519,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "P*4d",
+          "host_ms": 142.7364339997439,
+          "go": "go nodes 128",
+          "time": 105,
+          "nodes": 193,
+          "nps": 1838,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "6b4d",
+          "host_ms": 101.9368580000446,
+          "go": "go nodes 128",
+          "time": 59,
+          "nodes": 158,
+          "nps": 2677,
+          "depth": 5,
+          "seldepth": 6
+        },
+        {
+          "side": 0,
+          "actual": "P*4e",
+          "host_ms": 177.2904439985723,
+          "go": "go nodes 128",
+          "time": 132,
+          "nodes": 326,
+          "nps": 2469,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 1,
+          "actual": "3d4e",
+          "host_ms": 102.86400100085302,
+          "go": "go nodes 128",
+          "time": 60,
+          "nodes": 171,
+          "nps": 2850,
+          "depth": 1,
+          "seldepth": 5
+        },
+        {
+          "side": 0,
+          "actual": "G*6e",
+          "host_ms": 139.5382829996379,
+          "go": "go nodes 128",
+          "time": 95,
+          "nodes": 165,
+          "nps": 1736,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "4e3d",
+          "host_ms": 130.44301700028882,
+          "go": "go nodes 128",
+          "time": 90,
+          "nodes": 332,
+          "nps": 3688,
+          "depth": 2,
+          "seldepth": 6
+        },
+        {
+          "side": 0,
+          "actual": "S*4a",
+          "host_ms": 154.74130399888963,
+          "go": "go nodes 128",
+          "time": 115,
+          "nodes": 300,
+          "nps": 2608,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "4d6b",
+          "host_ms": 115.78142500002286,
+          "go": "go nodes 128",
+          "time": 73,
+          "nodes": 197,
+          "nps": 2698,
+          "depth": 1,
+          "seldepth": 6
+        },
+        {
+          "side": 0,
+          "actual": "1i1g",
+          "host_ms": 116.13358500108006,
+          "go": "go nodes 128",
+          "time": 78,
+          "nodes": 207,
+          "nps": 2653,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "2b2c",
+          "host_ms": 117.53792600029556,
+          "go": "go nodes 128",
+          "time": 68,
+          "nodes": 183,
+          "nps": 2691,
+          "depth": 1,
+          "seldepth": 6
+        },
+        {
+          "side": 0,
+          "actual": "5h4g",
+          "host_ms": 136.94500100064033,
+          "go": "go nodes 128",
+          "time": 94,
+          "nodes": 204,
+          "nps": 2170,
+          "depth": 2,
+          "seldepth": 3
+        }
+      ],
+      "remaining_ms": [
+        194832,
+        195059
+      ],
+      "outcome": {
+        "winner": null,
+        "reason": "max_plies"
+      },
+      "candidate_result": "draw",
+      "finished_at_utc": "2026-11-06T02:25:29.513444+00:00"
+    },
+    {
+      "game": 2,
+      "opening_id": "hcpe-506738",
+      "start_sfen": "ln5nl/1r1b1k1s1/3p3pp/2P1p1s2/Pp4p2/L2PP2PP/1PBS5/1KG1G4/1N6L w 2GS3Prn2p 1",
+      "candidate_color": 1,
+      "started_at_utc": "2026-11-06T02:25:30.360458+00:00",
+      "moves": [
+        {
+          "side": 1,
+          "actual": "4b3b",
+          "host_ms": 172.718679999889,
+          "go": "go nodes 128",
+          "time": 134,
+          "nodes": 321,
+          "nps": 2395,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "1f1e",
+          "host_ms": 102.14198800167651,
+          "go": "go nodes 128",
+          "time": 71,
+          "nodes": 180,
+          "nps": 2535,
+          "depth": 1,
+          "seldepth": 4
+        },
+        {
+          "side": 1,
+          "actual": "R*3i",
+          "host_ms": 169.5123120007338,
+          "go": "go nodes 128",
+          "time": 139,
+          "nodes": 311,
+          "nps": 2237,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 0,
+          "actual": "1i1f",
+          "host_ms": 100.32104600031744,
+          "go": "go nodes 128",
+          "time": 71,
+          "nodes": 219,
+          "nps": 3084,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "N*9b",
+          "host_ms": 127.72997699903499,
+          "go": "go nodes 128",
+          "time": 89,
+          "nodes": 225,
+          "nps": 2528,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 0,
+          "actual": "S*9h",
+          "host_ms": 96.81466700021701,
+          "go": "go nodes 128",
+          "time": 58,
+          "nodes": 172,
+          "nps": 2965,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "6b4d",
+          "host_ms": 95.289627000966,
+          "go": "go nodes 128",
+          "time": 60,
+          "nodes": 200,
+          "nps": 3333,
+          "depth": 3,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "G*6e",
+          "host_ms": 81.76803400056087,
+          "go": "go nodes 128",
+          "time": 47,
+          "nodes": 146,
+          "nps": 3106,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "8e8f",
+          "host_ms": 95.06618200066441,
+          "go": "go nodes 128",
+          "time": 57,
+          "nodes": 135,
+          "nps": 2368,
+          "depth": 1,
+          "seldepth": 3
+        },
+        {
+          "side": 0,
+          "actual": "7g8f",
+          "host_ms": 92.47574600158259,
+          "go": "go nodes 128",
+          "time": 56,
+          "nodes": 148,
+          "nps": 2642,
+          "depth": 1,
+          "seldepth": 6
+        },
+        {
+          "side": 1,
+          "actual": "3d4c",
+          "host_ms": 116.6221849998692,
+          "go": "go nodes 128",
+          "time": 77,
+          "nodes": 164,
+          "nps": 2129,
+          "depth": 2,
+          "seldepth": 5
+        },
+        {
+          "side": 0,
+          "actual": "G*4f",
+          "host_ms": 97.57394100051897,
+          "go": "go nodes 128",
+          "time": 52,
+          "nodes": 159,
+          "nps": 3057,
+          "depth": 1,
+          "seldepth": 4
+        },
+        {
+          "side": 1,
+          "actual": "P*4b",
+          "host_ms": 98.31706399927498,
+          "go": "go nodes 128",
+          "time": 57,
+          "nodes": 150,
+          "nps": 2631,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 0,
+          "actual": "P*4e",
+          "host_ms": 89.11745000114024,
+          "go": "go nodes 128",
+          "time": 51,
+          "nodes": 156,
+          "nps": 3058,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "4d3c",
+          "host_ms": 101.17898599855835,
+          "go": "go nodes 128",
+          "time": 56,
+          "nodes": 147,
+          "nps": 2625,
+          "depth": 1,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "P*3d",
+          "host_ms": 95.59566899952188,
+          "go": "go nodes 128",
+          "time": 47,
+          "nodes": 161,
+          "nps": 3425,
+          "depth": 1,
+          "seldepth": 4
+        }
+      ],
+      "remaining_ms": [
+        195240,
+        195019
+      ],
+      "outcome": {
+        "winner": null,
+        "reason": "max_plies"
+      },
+      "candidate_result": "draw",
+      "finished_at_utc": "2026-11-06T02:25:32.105863+00:00"
+    }
+  ],
+  "score": {
+    "games": 2,
+    "wins": 0,
+    "draws": 2,
+    "losses": 0,
+    "score_rate": 0.5
+  },
+  "clock_calibration": {
+    "passed": true,
+    "samples": [
+      {
+        "repeat": 0,
+        "engine": 0,
+        "requested_ms": 5000,
+        "host_ms": 5047.3387420006475,
+        "guest_ms": 5005,
+        "passed": true
+      },
+      {
+        "repeat": 0,
+        "engine": 1,
+        "requested_ms": 5000,
+        "host_ms": 5070.6518050010345,
+        "guest_ms": 5026,
+        "passed": true
+      },
+      {
+        "repeat": 1,
+        "engine": 0,
+        "requested_ms": 5000,
+        "host_ms": 5040.76580400033,
+        "guest_ms": 5008,
+        "passed": true
+      },
+      {
+        "repeat": 1,
+        "engine": 1,
+        "requested_ms": 5000,
+        "host_ms": 5054.608608001217,
+        "guest_ms": 5006,
+        "passed": true
+      },
+      {
+        "repeat": 2,
+        "engine": 0,
+        "requested_ms": 5000,
+        "host_ms": 5041.43024699988,
+        "guest_ms": 5005,
+        "passed": true
+      },
+      {
+        "repeat": 2,
+        "engine": 1,
+        "requested_ms": 5000,
+        "host_ms": 5058.848439999565,
+        "guest_ms": 5009,
+        "passed": true
+      }
+    ],
+    "criterion": "both simultaneous engines: host/request and host/guest differences each <=2% of requested duration"
+  },
+  "finished_at_utc": "2026-11-06T02:25:32.283532+00:00",
+  "elapsed_seconds": 91.99073470700023
+}

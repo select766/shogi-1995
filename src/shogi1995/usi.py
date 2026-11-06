@@ -13,8 +13,11 @@ class Engine:
         self.stderr=(self.log_dir/'stderr.log').open('a')
         self.trace=(self.log_dir/'protocol.log').open('a',buffering=1)
         self.queue=queue.Queue();self.options={};self.name=''
-        self.process=subprocess.Popen(command,cwd=cwd,stdin=subprocess.PIPE,stdout=subprocess.PIPE,
-                                      stderr=self.stderr,text=True,bufsize=1)
+        try:
+            self.process=subprocess.Popen(command,cwd=cwd,stdin=subprocess.PIPE,stdout=subprocess.PIPE,
+                                          stderr=self.stderr,text=True,bufsize=1)
+        except BaseException:
+            self.trace.close();self.stderr.close();raise
         def read():
             for line in self.process.stdout:
                 line=line.rstrip('\r\n');stamp=time.monotonic()
@@ -54,16 +57,20 @@ class Engine:
         self.send('isready');self.until('readyok',60);self.send('usinewgame')
 
     def search(self,sfen,milliseconds=2000,nodes=None,diagnostics=False):
-        self.send('position sfen '+sfen)
         command=f'go nodes {nodes}' if nodes is not None else f'go btime 0 wtime 0 byoyomi {milliseconds}'
-        started=time.monotonic();self.send(command)
-        try:ended,lines=self.until('bestmove ',max(10,milliseconds/1000+5) if nodes is None else 120)
+        timeout=max(10,milliseconds/1000+5) if nodes is None else 120
+        return self.search_position('position sfen '+sfen,command,timeout,diagnostics)
+
+    def search_position(self,position_command,go_command,timeout,diagnostics=False):
+        self.send(position_command)
+        started=time.monotonic();self.send(go_command)
+        try:ended,lines=self.until('bestmove ',timeout)
         except TimeoutError:
             self.send('stop')
             try:self.until('bestmove ',3)
             except (TimeoutError,RuntimeError):pass
             raise
-        result={'actual':lines[-1].split()[1],'host_ms':(ended-started)*1000,'go':command}
+        result={'actual':lines[-1].split()[1],'host_ms':(ended-started)*1000,'go':go_command}
         for line in lines:
             if not line.startswith('info '):continue
             for key in ('time','nodes','nps','depth','seldepth'):

@@ -47,6 +47,7 @@ def bios_escape():
 
 
 def main():
+    global RUN
     def interrupted(signum, frame):
         raise SystemExit(128 + signum)
     signal.signal(signal.SIGTERM, interrupted)
@@ -54,8 +55,11 @@ def main():
     parser.add_argument('--backend', choices=('86box', 'qemu'), default='86box')
     parser.add_argument('--boot-timeout', type=float, default=120)
     parser.add_argument('--image', type=Path, default=ROOT / '.local/images/engine-root.ext2')
+    parser.add_argument('--run-dir', type=Path, default=RUN,
+                        help='Isolated VM state, serial FIFOs, logs and lock directory')
     args = parser.parse_args()
     os.chdir(ROOT)
+    RUN = args.run_dir.resolve()
     RUN.mkdir(parents=True, exist_ok=True)
     lock = (RUN / 'engine.lock').open('w')
     try:
@@ -100,7 +104,7 @@ def main():
             (vm / '86box.cfg').write_text(config)
             for name in ('display', 'xauthority'):
                 (RUN / name).unlink(missing_ok=True)
-            process = subprocess.Popen(['xvfb-run', '-a', 'bash', 'scripts/launch-86box.sh'],
+            process = subprocess.Popen(['xvfb-run', '-a', 'bash', 'scripts/launch-86box.sh',str(RUN)],
                 stdout=log, stderr=log, start_new_session=True)
         os.set_blocking(reader, False)
         os.set_blocking(writer, False)

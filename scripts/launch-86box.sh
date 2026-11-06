@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-printf '%s\n' "$DISPLAY" > .local/run/display
-printf '%s\n' "$XAUTHORITY" > .local/run/xauthority
-exec .local/86box/app/AppRun -N -P "$PWD/.local/run/vm" \
-    -R "$PWD/.local/86box/roms-master" "$PWD/.local/run/vm/86box.cfg"
+shogi_run_dir="${1:-$PWD/.local/run}"
+printf '%s\n' "$DISPLAY" > "$shogi_run_dir/display"
+printf '%s\n' "$XAUTHORITY" > "$shogi_run_dir/xauthority"
+exec .local/86box/app/AppRun -N -P "$shogi_run_dir/vm" \
+    -R "$PWD/.local/86box/roms-master" "$shogi_run_dir/vm/86box.cfg"
