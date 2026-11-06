@@ -1,0 +1,1 @@
+{"passed": true, "rounding_and_ste_gradient": true, "positions": 1024, "maximum_score_difference": 1.0, "note": "Floating training forward may differ by one unit at ties; exported integer inference has separate exact parity tests."}

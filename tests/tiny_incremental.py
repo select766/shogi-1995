@@ -27,10 +27,12 @@ def main():
     with Engine([str(binary)], ROOT, str(args.output) + '.logs', options) as engine:
         for row in reference['details']:
             engine.reset()
-            actual = engine.search(row['sfen'], nodes=reference['nodes'])
+            actual = engine.search(row['sfen'], nodes=reference['nodes'],diagnostics=reference.get('capture_search_diagnostics',False))
             assert actual['actual'] == row['actual'], (row['id'], row['actual'], actual)
-            assert actual['nodes'] == row['nodes'], (row['id'], row['nodes'], actual)
-            results.append({'id': row['id'], 'actual': actual['actual'], 'nodes': actual['nodes']})
+            expected_nodes=row.get('final_nodes',row['nodes'])
+            actual_nodes=actual.get('final_nodes',actual['nodes'])
+            assert actual_nodes == expected_nodes, (row['id'], expected_nodes, actual)
+            results.append({'id': row['id'], 'actual': actual['actual'], 'nodes': actual_nodes})
         engine.send('shogi1995evalstats')
         _, lines = engine.until('info string shogi1995 accumulators ', 5)
         stats = {k: int(v) for k, v in (item.split('=') for item in lines[-1].split()[4:])}
