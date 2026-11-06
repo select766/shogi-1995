@@ -17,6 +17,8 @@ qsearchは公開たぬきHalfKP評価関数（2023-05-08）を用いた前処理
 
 原本からtrain 64,000,000件と別ファイル群のvalidation 262,144件を抽出する。qsearch・固定シードでの全体シャッフル後に、末端のvalidation重複および評価集合との重複を除く。trainは変換後validationとの同一局面も除く。validationの変換後は204,662件で、57,482件の同一末端重複を除いた。qsearchの入力・出力、公開教師、バイナリ、ソース差分、seedをmanifestで追跡する。
 
+[入力来歴の照合](../results/2026-11-06/halfkp-input-provenance-audit.json)では、trainの984ファイルとvalidationの32ファイルの分離、split内の抽出ブロック位置の一意性、抽出結果からqsearch入力へのSHA連鎖、公開教師とシャッフルシードを確認した。この記録は原本抽出と処理入力の検証であり、未完了のtrain変換や学習の完了を意味しない。
+
 `scripts/encode-halfkp-data.py`は変換済み末端を標準HalfKPへ符号化し、元のqsearchファイルのレコード番号も保存する。`scripts/train-halfkp-linear.py --data <trainとvalidationを含む特徴量ディレクトリ> --output <新規モデル>`で、共有したスカラー重みから双方の視点の総和の差を学習する。初期値は駒得評価と一致する重みであり、既存の学習済み重みは使わない。教師スコア/600のsigmoidに対する交差エントロピーを用い、整数推論には256倍したint32を出力する。モデルは501,568 bytes。
 
 既定の終了条件は、最低20 epoch、延べ10億局面、学習率が初期値の3%以下、直近5 epochでvalidation lossの範囲が2e-5以下かつ訓練lossの範囲が5e-5以下をすべて満たすこと。validationの改善が頭打ちになった際には学習率を段階的に下げる。100 epochの上限に達しても条件を満たさなければ`converged=false`とし、収束済みと称して評価しない。epoch末のcheckpointから明示的な`--resume`で継続できる。固定データ・コード・設定の照合とCPU/CUDA乱数・optimizer・schedulerの復元を行う。

@@ -1,0 +1,17 @@
+{
+  "verified_at_utc": "2026-11-06T04:46:56.464513+00:00",
+  "passed": true,
+  "scope": "completed raw extraction and hash chain into preprocessing; final train qsearch/encoding still pending",
+  "input_manifest_sha256": "958881a9a4ef15f6484427c992420e9dc53d11f282d5357c66adc1ef20a24d85",
+  "raw_train_records": 64000000,
+  "raw_validation_records": 262144,
+  "qsearch_validation_records": 204662,
+  "validation_source_files": 32,
+  "sampled_train_source_files": 984,
+  "source_file_groups_disjoint": true,
+  "sampled_block_offsets_unique_within_each_split": true,
+  "qsearch_inputs_match_extracted_bytes": true,
+  "qsearch_modes_and_seeds_verified": true,
+  "public_teacher_hash_verified": true,
+  "no_game_id_separation_claimed": true
+}
