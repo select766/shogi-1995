@@ -30,6 +30,7 @@ set records {}
 set promotion {}
 set lastBoard {}
 set lastHands {}
+set lastDestination -1
 set errorMessage {}
 option add *Font fixed
 option add *background #d9d9d9
@@ -107,14 +108,15 @@ proc startGame {} {
     send "new $player0 $player1 [expr $m*60] $i"
 }
 proc gameScreen {} {
-    global view lastBoard lastHands
+    global view lastBoard lastHands player0 player1 lastDestination
+    set lastDestination -1
     set view game
     foreach w [winfo children .] {destroy $w}
     frame .top
     pack .top -side top -fill x -padx 10 -pady 4
     foreach side {0 1} {
         set name [lindex {sente gote} $side]
-        caption .top.l$side $name
+        caption .top.l$side ${name}_[set player$side]
         label .top.t$side -text 05:00 -width 10 -relief sunken -font 9x15
         pack .top.l$side .top.t$side -side left -padx 7
     }
@@ -159,6 +161,8 @@ proc snapshot {fields} {
     if {$side1} {set player1 ai} else {set player1 human}
     if {$view != "game"} {return}
     foreach side {0 1} {
+        set name [lindex {sente gote} $side]
+        .top.l$side configure -bitmap [bm ${name}_[set player$side]]
         set ms [lindex $fields [expr 4+$side]]
         .top.t$side configure -text [clockText $ms]
         if {$side == $turn && $active} {set bg #fff3bd} else {set bg #d9d9d9}
@@ -182,7 +186,7 @@ proc snapshot {fields} {
     debugState $fields
 }
 proc drawBoard {} {
-    global board hands selected selectedDrop turn
+    global board hands selected selectedDrop turn lastDestination
     set c .body.board; $c delete all
     # Opponent hand, board, then sente hand. Files descend from 9 to 1.
     foreach s {1 0} {
@@ -202,6 +206,10 @@ proc drawBoard {} {
         $c create text [expr $x+21] 41 -font fixed -text [expr 9-$i]
         $c create bitmap 414 [expr $y+21] -bitmap [bm rank[expr $i+1]]
         if {$i} {$c create line $x 50 $x 428 -fill #705c36; $c create line 20 $y 398 $y -fill #705c36}
+    }
+    if {$lastDestination >= 0} {
+        set x [expr 20+($lastDestination%9)*42];set y [expr 50+($lastDestination/9)*42]
+        $c create rectangle [expr $x+1] [expr $y+1] [expr $x+41] [expr $y+41] -fill #fff2cf -outline {}
     }
     if {$selected >= 0} {
         set x [expr 20+($selected%9)*42];set y [expr 50+($selected/9)*42]
@@ -259,7 +267,8 @@ proc choosePromotion {yes} {
     if {$chosen != ""} {send "move $chosen"}
 }
 proc addRecord {fields} {
-    global records view
+    global records view lastDestination
+    set lastDestination [expr ([lindex $fields 4]-1)*9+9-[lindex $fields 3]]
     lappend records $fields
     if {$view != "game"} {return}
     set c .body.record.list
@@ -288,13 +297,14 @@ proc connectionLost {} {
     }
 }
 proc receive {} {
-    global channel records view
+    global channel records view lastDestination
     if {[eof $channel]} {connectionLost;return}
     if {[gets $channel line] < 0} {return}
     set kind [lindex $line 0]
     if {$kind == "state"} {snapshot $line} elseif {$kind == "move"} {addRecord $line} elseif {$kind == "targets"} {
         global targets;set targets [lrange $line 1 end]
     } elseif {$kind == "reset"} {
+        set lastDestination -1
         set records {};if {$view == "game"} {.body.record.list delete all}
     } elseif {$kind == "error" && $view == "game"} {.bottom.status configure -bitmap [bm illegal]}
 }

@@ -18,6 +18,8 @@ labels = {
  'credit':'Linux / Tcl・Tk   音声なし', 'blackhand':'先手の持ち駒', 'whitehand':'後手の持ち駒',
  'none':'なし', 'cancel':'キャンセル',
 }
+for side,title in [('sente','先手'),('gote','後手')]:
+ for player,label in [('human','人間'),('ai','AI')]: labels[side+'_'+player]=title+'（'+label+'）'
 for i,t in enumerate(['','歩','香','桂','銀','金','角','飛','玉','と','成香','成桂','成銀','','馬','龍']):
  if t: labels['name'+str(i)]=t
 for i,t in enumerate('一二三四五六七八九',1): labels['rank'+str(i)]=t
