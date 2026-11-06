@@ -12,3 +12,13 @@
 既存のPSQTおよびtiny-v1〜v7の試作は、qsearch未適用の原局面で学習していた。これらは前処理を修正する前の探索的な測定記録として保存し、今回指定された適切な前処理と十分な学習を済ませたHalfKP基準とは扱わない。
 
 qsearchは公開たぬきHalfKP評価関数（2023-05-08）を用いた前処理であり、配布エンジンへのその重みの流用やfine-tuneはしない。末端局面へ置換し、元と末端で手番が変わった場合は元の教師スコア・勝敗を反転する。通常の単一局面shuffleを使用し、特殊実験用のpaired/grouped生成は使わない。原本のファイル分離に加え、変換後の評価集合・validationとの同一局面も除外する。
+
+## 線形基準の学習と検証
+
+原本からtrain 64,000,000件と別ファイル群のvalidation 262,144件を抽出する。qsearch・固定シードでの全体シャッフル後に、末端のvalidation重複および評価集合との重複を除く。trainは変換後validationとの同一局面も除く。validationの変換後は204,662件で、57,482件の同一末端重複を除いた。qsearchの入力・出力、公開教師、バイナリ、ソース差分、seedをmanifestで追跡する。
+
+`scripts/encode-halfkp-data.py`は変換済み末端を標準HalfKPへ符号化し、元のqsearchファイルのレコード番号も保存する。`scripts/train-halfkp-linear.py --data <trainとvalidationを含む特徴量ディレクトリ> --output <新規モデル>`で、共有したスカラー重みから双方の視点の総和の差を学習する。初期値は駒得評価と一致する重みであり、既存の学習済み重みは使わない。教師スコア/600のsigmoidに対する交差エントロピーを用い、整数推論には256倍したint32を出力する。モデルは501,568 bytes。
+
+既定の終了条件は、最低20 epoch、延べ10億局面、学習率が初期値の3%以下、直近5 epochでvalidation lossの範囲が2e-5以下かつ訓練lossの範囲が5e-5以下をすべて満たすこと。validationの改善が頭打ちになった際には学習率を段階的に下げる。100 epochの上限に達しても条件を満たさなければ`converged=false`とし、収束済みと称して評価しない。epoch末のcheckpointから明示的な`--resume`で継続できる。固定データ・コード・設定の照合とCPU/CUDA乱数・optimizer・schedulerの復元を行う。
+
+512局面でPython特徴量とC++の標準BonaPiece一覧が一致し、合成した整数重みによる評価値も一致した。小規模な新規qsearch・符号化・GPU学習の通し試験では、連続2 epochと1 epoch終了後の再開が、重み・optimizer・scheduler・乱数・loss・最良モデルのバイト列まで一致した。これは学習パイプラインの動作確認であり、収束した棋力候補としては扱わない。

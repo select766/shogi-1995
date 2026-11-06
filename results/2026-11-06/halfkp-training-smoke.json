@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "fresh_qsearch_and_encoding": true,
+  "gpu_training": true,
+  "resume_parameters_optimizer_scheduler_rng_and_losses_identical": true,
+  "best_export_byte_identical": true,
+  "epoch_limit_not_reported_as_convergence": true,
+  "train_records": 1024,
+  "validation_records": 97,
+  "model_sha256": "ec0cb7b685915bcfd0d9c755f557e98a39738dd0e6bde68e742f7ddf02dcff58",
+  "purpose": "operational test only; not a trained strength candidate"
+}

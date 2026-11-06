@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check standard BonaPiece features and pure-linear integer scores in the engine."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -20,7 +21,7 @@ def main():
     args.output.parent.mkdir(parents=True,exist_ok=True)
     if args.model is None:
         rng=np.random.default_rng(20261106)
-        model=args.output.with_suffix('.synthetic.bin')
+        model=ROOT/'.local/tests'/(args.output.stem+'.synthetic.bin');model.parent.mkdir(parents=True,exist_ok=True)
         export(material_initial_weights()+rng.uniform(-12,12,INPUTS),model)
     else:model=args.model
     weights=load(model);records=np.memmap(args.data,dtype=cshogi.PackedSfenValue,mode='r')
@@ -36,7 +37,9 @@ def main():
             for side in range(2):assert sorted(actual[side])==sorted(expected[side]),(int(index),side)
             client.send('shogi1995eval');_,lines=client.until('info string shogi1995 eval ',5)
             assert int(lines[-1].split()[-1])==reference(board,weights),(int(index),board.sfen())
-    report={'passed':True,'positions':args.count,'standard_halfkp_feature_multisets_match':True,'integer_scores_match':True}
+    report={'passed':True,'positions':args.count,'standard_halfkp_feature_multisets_match':True,'integer_scores_match':True,
+            'model_sha256':hashlib.sha256(model.read_bytes()).hexdigest(),
+            'engine_sha256':hashlib.sha256((ROOT/'.local/guest-root/shogi').read_bytes()).hexdigest()}
     args.output.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
 
 

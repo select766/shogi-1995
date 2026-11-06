@@ -1,0 +1,38 @@
+{
+  "complete": true,
+  "started_at_utc": "2026-11-06T04:19:45.286039+00:00",
+  "input": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-input-v1/validation.bin",
+  "input_sha256": "93595c79e0cb003c4db032004b60159c675d49822aa9c9eb253bccfa8bdbf7db",
+  "input_records": 262144,
+  "engine": "/home/select766/shogi/shogi-1995/.local/qsearch-tanuki/source/YaneuraOu-by-gcc",
+  "engine_sha256": "7ebff62e1cb30206bdb561ee645df608ea9bd201aa46a4874a68032b9394f495",
+  "teacher": "/home/select766/shogi/shogi-1995/.local/qsearch-tanuki/runtime/eval/nn.bin",
+  "teacher_sha256": "1141d275bceec911156801f27303dc9ff5beb24f4f59144cc069306c59e80782",
+  "teacher_release": "https://github.com/nodchip/tanuki-/releases/tag/tanuki-.halfkp_256x2-32-32.2023-05-08",
+  "teacher_fv_scale": 20,
+  "tanuki_source_commit": "cc38e5e284f44b038e9019d5bb19a0a7484bc9f1",
+  "local_patches": [
+    "FV_SCALE=20 for the published teacher",
+    "bound each stdio buffer to 1 MiB"
+  ],
+  "qsearch_semantics": "replace position by qsearch PV leaf; retain original teacher score and result with leaf-side sign; move=MOVE_NONE",
+  "options": {
+    "Threads": 8,
+    "USI_Hash": 16,
+    "EvalDir": "/home/select766/shogi/shogi-1995/.local/qsearch-tanuki/runtime/eval",
+    "KifuDir": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-v1/raw-validation/input",
+    "ShuffledKifuDir": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-v1/raw-validation/shuffled",
+    "ApplyQSearch": true,
+    "PairedShuffle": false,
+    "ShuffleSeed": 20261106,
+    "MaxOutputSamples": 0
+  },
+  "script_sha256": "2a341da43c303b934469a4f7d5afb340bf2ea7993c9dd92f609c10bc350bddf3",
+  "measurement_commit": "d7edf8c86e66ce67873aea067e2aca8003efbe09",
+  "engine_name": "YaneuraOu NNUE 5.33 64AVX2 EVAL_LEARN",
+  "output": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-v1/raw-validation/shuffled/shuffled.bin",
+  "output_sha256": "4e8e45d808afeabe7ee1889e8cb08fb6cd97918e05d5ae92692e8b0b10d0060e",
+  "output_records": 262144,
+  "finished_at_utc": "2026-11-06T04:19:47.132278+00:00",
+  "elapsed_seconds": 1.7944960710010491
+}

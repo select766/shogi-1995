@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "split": "validation",
+  "started_at_utc": "2026-11-06T04:24:05.266498+00:00",
+  "feature_layout": "YaneuraOu HalfKP(Friend), fe_end=1548, no DISTINGUISH_GOLDS",
+  "inputs": 125388,
+  "stride": 1548,
+  "active": 38,
+  "features_dtype": "<i4",
+  "targets_dtype": "<f4",
+  "source_index_dtype": "<u4",
+  "source_qsearch_manifest": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-qsearch-v1/raw-validation/manifest.json",
+  "source_qsearch_manifest_sha256": "a005f75816b68bbb2306f7a378f640494b6baa9c050d7b57d7eae5cfcdede859",
+  "source_qsearch_output_sha256": "4e8e45d808afeabe7ee1889e8cb08fb6cd97918e05d5ae92692e8b0b10d0060e",
+  "exclusions_sha256": "5f9529a085a945858a69d0600b0ee11569d35c29f9f03b24da993ffd6a1f1570",
+  "encoder_sha256": "698eb1b3fe42f239db41da05603077fec420225231cb8fb7109dd9d91efa7601",
+  "feature_code_sha256": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+  "processed": 262144,
+  "records": 204662,
+  "rejections": {
+    "validation_duplicate": 57482
+  },
+  "features_sha256": "00d589306a66e7afc07d8a6551b1eb1c99cda70597c9fd4b40a8ead185759efb",
+  "targets_sha256": "5430137b9a2f66b9b88adb4b70936bcc1b74cf2a04de94c50b3318b9adf4260a",
+  "source_indices_sha256": "a913b25294d0b8c9eed9ce8cf34b7436fe0b32763cee711e25e9a33980cc57c8",
+  "position_keys_sha256": "fbbe93263a4daf576bde0ad3eef1fdfdc7672eb98b99156433ef42bbe25a09e0",
+  "finished_at_utc": "2026-11-06T04:24:14.409632+00:00",
+  "elapsed_seconds": 9.142395970000507
+}
