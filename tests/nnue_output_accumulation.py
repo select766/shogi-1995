@@ -23,7 +23,11 @@ def main():
     p.add_argument('--data', required=True, type=Path)
     p.add_argument('--work', required=True, type=Path)
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--width', type=int, default=2)
+    p.add_argument('--expected-kernel-width', type=int, choices=(0,8,16))
     args = p.parse_args()
+    if not 1 <= args.width <= 32:
+        p.error('width must be 1..32')
     if args.work.exists() or args.output.exists():
         raise ValueError('preserve previous attempt')
     args.work.mkdir(parents=True)
@@ -42,7 +46,7 @@ def main():
         ('hidden-product-overflow', maximum - 1, 32767, 3, 64),
     ]
     models = []
-    width = 2
+    width = args.width
     for name, bias, weight, hidden, bits in cases:
         data = b'S95NN03\0' + struct.pack('<4I', INPUTS, width, hidden, STRIDE)
         data += np.zeros((INPUTS, width), dtype='<i2').tobytes()
@@ -66,6 +70,9 @@ def main():
             stats = dict(item.split('=') for item in lines[-1].split()[4:])
             if 'output_bits' not in stats:
                 raise ValueError('build the output-accumulation implementation first')
+            if args.expected_kernel_width is not None:
+                expected = args.expected_kernel_width if int(stats['output_bits']) else 0
+                assert int(stats.get('kernel_width', -1)) == expected, stats
             return int(stats['output_bits'])
         for name, path, bits in models:
             engine.send('setoption name EvalFile value ' + str(path.resolve()))
@@ -85,6 +92,7 @@ def main():
         engine.reset()
         assert output_bits() == 0
     result = {'passed': True, 'cases': results, 'model_disable_resets_output_mode': True,
+              'width': width, 'expected_kernel_width': args.expected_kernel_width,
               'engine_sha256': hashlib.sha256(binary.read_bytes()).hexdigest(),
               'scope': 'integer boundary and model-switch validation; not speed or strength'}
     args.output.parent.mkdir(parents=True, exist_ok=True)

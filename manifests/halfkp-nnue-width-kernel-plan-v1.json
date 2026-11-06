@@ -1,0 +1,63 @@
+{
+  "created_at_utc": "2026-11-06T11:23:34.168228+00:00",
+  "purpose": "evaluate scalar compile-time width specialization for standard HalfKP on the target Pentium; preserve exact model arithmetic and format",
+  "status": "source prepared; not built, executed, or adopted",
+  "source_tree_sha256": "b294c6aab9f141d170f314cf02125ad72772f14d4eef45a51019d5acf768d25d",
+  "timing_gate": {
+    "queue_state": ".local/jobs/halfkp-nnue-w16-development-v1.json",
+    "require": "both width16 normal2000ms full1024 comparisons complete and operationally pass before build or any new guest session"
+  },
+  "implementation": "dispatch once per evaluation to width8 or16 templates for standard HalfKP; fold row strides/lane loops; general kernel for all other widths and legacy formats; EvalVerify recomputes via the general kernel",
+  "guest_diagnostic": "kernel_width=8/16 for selected standard specialized paths, otherwise0; no new USI option",
+  "required_checks": [
+    "build legacy Pentium ELF32 static binary and known-opcode screening; no SIMD/MMX/SSE/AVX",
+    "int32 head rounding/overflow and model-disable boundary suite at widths2,8,16,32 with expected kernel widths0,8,16,0",
+    "independent integer reference512 qsearch-validation positions for all three trained models",
+    "quick256/10000nodes: all bestmoves and final nodes equal each frozen general-kernel reference; EvalVerify compares all visited accumulators to full general-kernel recalculation; reload invalidates cache",
+    "real guest automatic model,16 independent values, RAM32MiB/swap0; eight same-node searches and explicit output_bits32/kernel_width check for all three models"
+  ],
+  "models": [
+    {
+      "width": 8,
+      "hidden": 0,
+      "general_candidate_manifest": "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+      "manifest_sha256": "71724b3087e494734b5634cbb4d16ed2c6af79c543bacac15b38b8db055b4099",
+      "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "general_search_reference": "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w8-h0-output32-v1-native-nodes10000-quick256.json"
+    },
+    {
+      "width": 16,
+      "hidden": 0,
+      "general_candidate_manifest": "manifests/halfkp-nnue-w16-h0-output32-v1-candidate.json",
+      "manifest_sha256": "d784b10b86a0956c8ec097d01e8996796b4369aa5edbacd63dc3db7a8b29fc75",
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "general_search_reference": "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w16-h0-output32-v1-native-nodes10000-quick256.json"
+    },
+    {
+      "width": 16,
+      "hidden": 8,
+      "general_candidate_manifest": "manifests/halfkp-nnue-w16-h8-output32-v1-candidate.json",
+      "manifest_sha256": "c3c27b7d30494da8ec8e1eb053f206d1fbe9af869dd64dc5a2081d92287cdbbd",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+      "general_search_reference": "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-nnue-w16-h8-output32-v1-native-nodes10000-quick256.json"
+    }
+  ],
+  "speed_protocol": {
+    "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+    "dataset_sha256": "60f527d8c3aa9c1ae74c9ba34d9dfadef7cc02f5d4318673c9932f80af1689c8",
+    "positions": 256,
+    "nodes": 10000,
+    "block_size": 64,
+    "order": "AB/BA alternating; one VM at a time",
+    "gate": "all preprocessing/training/builds and other timing jobs terminal; frozen hashes verified",
+    "required": "same weights, all256 bestmoves/finalnodes/completeddepths equal, operational0; paired bootstrap10000 seed20261106 median host-time saving lower95>0; inspect all4 block medians",
+    "scope": "speed for each fixed trained model; no claim that time saved directly equals strength"
+  },
+  "adoption": "retain only specialized widths supported by target speed evidence; report inconclusive or slower cases; then repeat full1024 ordinary2000ms model selection with chosen runtime before independent final test",
+  "training_extension": "128m plan remains separate; preprocessing can run after current timing queue, but cannot overlap subsequent timing speed/strength runs",
+  "test_code_sha256": {
+    "tests/nnue_output_accumulation.py": "0c8a3a29cf4b60fba97d13b3f9061abd30496b048bd2fa85dc806173dd402778",
+    "tests/tiny_incremental.py": "701eaece0e9b1176f8e1448550871699e4b32e7cef6bc02a65f7238bc24232d5",
+    "tests/guest_nodes_parity.py": "451818d31769adc9007820b77e0086a873ec0b38a4efbbbdb7b550513d2dba96"
+  }
+}

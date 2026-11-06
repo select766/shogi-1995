@@ -16,7 +16,8 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--manifest',required=True,type=Path)
     p.add_argument('--reference',required=True,type=Path);p.add_argument('--output',required=True,type=Path)
     p.add_argument('--count',type=int,default=8);p.add_argument('--automatic-model',action='store_true')
-    p.add_argument('--expected-output-bits',type=int,choices=[32,64]);args=p.parse_args()
+    p.add_argument('--expected-output-bits',type=int,choices=[32,64])
+    p.add_argument('--expected-kernel-width',type=int,choices=[0,8,16]);args=p.parse_args()
     if args.output.exists():raise ValueError('output exists')
     ref=json.loads(args.reference.read_text());manifest=json.loads(args.manifest.read_text())
     assert ref['complete'] and ref['mode']=='fixed_nodes' and ref['engine_sha256']==manifest['engine_sha256']
@@ -41,10 +42,13 @@ def main():
                 assert actual['completed_depth']==expected['completed_depth'],(expected,actual)
             rows.append({'id':expected['id'],'bestmove':actual['actual'],'nodes':actual.get('final_nodes',actual['nodes']),
                          'completed_depth':actual.get('completed_depth')})
-        if args.expected_output_bits is not None:
+        if args.expected_output_bits is not None or args.expected_kernel_width is not None:
             engine.send('shogi1995evalstats');_,lines=engine.until('info string shogi1995 accumulators ',10)
             counters={k:int(v) for k,v in (item.split('=') for item in lines[-1].split()[4:])}
-            assert counters.get('output_bits')==args.expected_output_bits,counters
+            if args.expected_output_bits is not None:
+                assert counters.get('output_bits')==args.expected_output_bits,counters
+            if args.expected_kernel_width is not None:
+                assert counters.get('kernel_width')==args.expected_kernel_width,counters
     result={'passed':True,'started_at_utc':started,'finished_at_utc':datetime.now(timezone.utc).isoformat(),
             'measurement_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'positions':len(rows),'engine_sha256':manifest['engine_sha256'],'model_sha256':manifest.get('model_sha256'),

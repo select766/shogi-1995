@@ -16,6 +16,7 @@ def main():
     p.add_argument('--model', required=True, type=Path)
     p.add_argument('--reference', required=True, type=Path)
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--expected-kernel-width', type=int, choices=(0,8,16))
     args = p.parse_args()
     if args.output.exists():
         raise ValueError('output exists')
@@ -37,6 +38,8 @@ def main():
         _, lines = engine.until('info string shogi1995 accumulators ', 5)
         stats = {k: int(v) for k, v in (item.split('=') for item in lines[-1].split()[4:])}
         assert stats['incremental'] > 1000 and stats['refresh'] > 100 and stats['verified'] > 1000, stats
+        if args.expected_kernel_width is not None:
+            assert stats.get('kernel_width') == args.expected_kernel_width, stats
         # Reloading a model must invalidate cached accumulators, including at the current position.
         engine.send('shogi1995eval'); _, before = engine.until('info string shogi1995 eval ', 5)
         engine.send('setoption name EvalFile value ' + str(args.model.resolve()))
