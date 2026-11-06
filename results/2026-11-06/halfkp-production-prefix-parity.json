@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T05:29:10.839307+00:00",
+  "accepted_rows_compared": 16382352,
+  "reference_complete": false,
+  "candidate_complete": true,
+  "prefix_hashes": {
+    "features.i4": "e6d281914d45e92b4bcf9e2fad4053df5b9064c83c3785a95f71f3eeb73d9e68",
+    "targets.f4": "275c16a2cd19f56ef1e358bbfe96619352c459f918aef7d174ab241ecdcc6bda",
+    "source-indices.u4": "de24a7c5403ff7f1c395d5d87ed0ad6f339160e472fd6781c0f684ef2fdd1bfe"
+  },
+  "reference": "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v1/train",
+  "candidate": "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v2/train",
+  "source_qsearch_output_sha256": "d4730b573d750ac66506b7e74db3a4d34b38b19bcf6876098359c4a639aa7721"
+}

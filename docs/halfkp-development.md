@@ -27,6 +27,8 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 
 逐次符号化の途中成果v1を保存し、`scripts/encode-halfkp-parallel.py`で4プロセス・入力順固定の符号化へ切り替えた。131,072件の実データで、逐次版と特徴量・教師値・元インデックス・局面キー・除外件数が一致し、ホスト処理時間は5.50秒から1.59秒だった。本データの先頭65,536件とも一致した。[並列化の検証](../results/2026-11-06/halfkp-parallel-encoding-validation.json)。完了後は`scripts/verify-halfkp-prefix.py`で、保存した逐次版のcheckpoint全範囲と照合してから学習する。v2は符号化処理の変更であり、64,000,000件のqsearch入力・順序・除外規則・学習条件を変更するものではない。
 
+全件符号化は約12.3分で完了し、validationとの重複21,861件と固定評価集合との重複705件を除いた63,977,434件になった。[確定manifest](../manifests/halfkp-training-features-v2.json)。逐次版の保存済み16,382,352行について、特徴量・教師値・qsearch出力内のインデックスの全バイトが一致した。[全prefix照合](../results/2026-11-06/halfkp-production-prefix-parity.json)。この照合後に本学習を開始した。
+
 既定の終了条件は、最低20 epoch、延べ10億局面、学習率が初期値の3%以下、直近5 epochでvalidation lossの範囲が2e-5以下かつ訓練lossの範囲が5e-5以下をすべて満たすこと。validationの改善が頭打ちになった際には学習率を段階的に下げる。100 epochの上限に達しても条件を満たさなければ`converged=false`とし、収束済みと称して評価しない。epoch末のcheckpointから明示的な`--resume`で継続できる。固定データ・コード・設定の照合とCPU/CUDA乱数・optimizer・schedulerの復元を行う。
 
 512局面でPython特徴量とC++の標準BonaPiece一覧が一致し、合成した整数重みによる評価値も一致した。小規模な新規qsearch・符号化・GPU学習の通し試験では、連続2 epochと1 epoch終了後の再開が、重み・optimizer・scheduler・乱数・loss・最良モデルのバイト列まで一致した。これは学習パイプラインの動作確認であり、収束した棋力候補としては扱わない。
