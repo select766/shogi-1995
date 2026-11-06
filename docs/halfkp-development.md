@@ -98,3 +98,13 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 幅8・追加隠れ層なしの非QATモデルは2026年11月6日16:34:53 JSTに40epoch・延べ2,559,097,360局面で飽和条件を満たした。学習時間564.4秒、最良checkpointは34epoch。最終学習率3e-6、直近5epochの訓練loss範囲1.55e-6、validation loss範囲4.23e-6だった。学習commitは`7921e59`で、開始時に未commit差分があったため、モデル・trainer・特徴量の実SHAもmanifestに固定した。[学習manifest](../manifests/halfkp-nnue-w8-h0-v1-training.json)、[全epochの履歴](../results/2026-11-06/halfkp-nnue-w8-h0-v1-training-history.json)。
 
 全validation 204,662局面の最良checkpoint lossは0.55917149、整数化後は0.55923609だった。重みファイル2,006,300 bytes。量子化の評価値誤差RMSEは18.6225 CP、99%点50.8604 CP、最大103.6313 CPであり、量子化の影響は残る。[全validationの検証](../results/2026-11-06/halfkp-nnue-w8-h0-v1-quantization.json)。C++と独立整数参照の512局面は完全一致した。[学習済み重みの照合](../results/2026-11-06/halfkp-nnue-w8-h0-v1-trained-parity.json)。lossの改善を棋力の改善とは読み替えず、この非QAT版を保持したまま、修正済みQATで同じ幅8構造を学習して比較する。
+
+学習済み2層版は、実Pentiumでも通常USIで自動ロードされ、16局面の評価値が一致した。空きRAM14,643,200 bytes、swap 0。[起動・値・メモリ](../results/2026-11-06/halfkp-nnue-w8-h0-v1-guest-auto-model.json)。固定10,000ノードの8局面はホストとbestmove・最終ノード数・完了深さが一致した。[探索照合](../results/2026-11-06/halfkp-nnue-w8-h0-v1-guest-nodes-parity.json)。ホストquick診断は97/256一致だが、Pentiumの2秒一致率とは区別する。[固定候補](../manifests/halfkp-nnue-w8-h0-v1-candidate.json)。
+
+## Pentiumの加減算更新
+
+逆アセンブルで、`tiny_add`の各laneに`weights[j] * count`のスカラー乗算が残っていた。標準HalfKPの更新はcountが+1か−1なので、`e2c242e`で加算・減算のループへ分けた。従来形式の複数枚の持ち駒を扱う一般のcountには従来の乗算を残す。AVX等の追加命令は使わない。
+
+変更後の対象命令検査と学習済み512局面の整数値照合は通過した。合成重み・学習済み重みの両方で256局面のbestmove・ノード数・再ロード結果が一致し、学習済みモデルでは1,214,176回の加算値照合も通過した。[学習済みの同ノード照合](../results/2026-11-06/halfkp-nnue-addsub-trained-search-parity-v1.json)、[対象命令](../results/2026-11-06/halfkp-nnue-addsub-target-v1.json)。実Pentiumの8局面もホストと一致した。[実ゲスト照合](../results/2026-11-06/halfkp-nnue-addsub-guest-nodes-parity-v1.json)。[同一重みの比較候補](../manifests/halfkp-nnue-w8-h0-addsub-v1-candidate.json)を固定したが、実時間の速度向上はまだ主張しない。
+
+[速度測定計画](../manifests/halfkp-nnue-addsub-speed-plan-v1.json)はquick全256局面・10,000ノード・64局面のAB/BA交互測定。同じモデル・局面・bestmove・最終ノード数・完了深さと運用異常0件を条件に、ホスト時間の削減率中央値と対応ありbootstrap区間を計算する。区間下限が0より大きいことを高速化の証拠とし、ブロック間の偏りも調べる。通常の2秒棋力測定とは分け、重い学習が終了してから速度を測る。固定ノード交互測定の伝達・再開条件・不一致拒否の3件の検査、速度比較の同一モデル・探索結果・時間条件の3件の検査は通過した。

@@ -1,5 +1,5 @@
 {
-  "input_sha256": "7fa4dcb5bcb0c4134d6460a51cab48b9e1b79ff22d87508132e06a372f544138",
+  "input_sha256": "54c6b814c77ebcd1bc2f76a4822dcc81a616fecf661d831589f1c0b12c89df93",
   "plotter_sha256": "05387c91a35e5e9a910f5c6cbfc1b3e741197058e1addee6b0655645c840806f",
   "matplotlib": "3.9.2",
   "backend": "86box",
@@ -110,7 +110,9 @@
     "material-v1-20261106T065121975777Z-002-baseline",
     "halfkp-linear-v2-usi-20261106T070231076244Z-002-candidate",
     "halfkp-linear-v2-usi-20261106T071340731403Z-003-candidate",
-    "material-v1-20261106T072451072756Z-003-baseline"
+    "material-v1-20261106T072451072756Z-003-baseline",
+    "halfkp-nnue-w8-h0-v1-20261106T074028789368Z-halfkp-nnue-w8-h0-v1-native-nodes10000-quick256",
+    "halfkp-nnue-w8-h0-addsub-v1-20261106T074825015401Z-halfkp-nnue-w8-h0-addsub-v1-native-nodes10000-quick256"
   ],
   "svg_sha256": "c454c9a54aeb626c851c2f4d2774f6d5945ff0cc33934cd7ede82457dab358dc",
   "png_sha256": "52f9cb22c3f548996f450ecc177b371f626c3ab6e81d6aacd9fa0c6d0e527e48"

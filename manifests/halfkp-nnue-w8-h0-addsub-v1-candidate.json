@@ -1,0 +1,34 @@
+{
+  "id": "halfkp-nnue-w8-h0-addsub-v1-usi",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "bdf1967af74eae0de70ad04dc98fb96b684fb550da3cfe0ddc48053b65042686",
+  "image_sha256": "84be7091fcc139cb14ae80a45149d70ad29f60e857ecd5415787168ccfce1e0d",
+  "source_commit": "e2c242e69638e55c83fdfd56c50378783785bfcb",
+  "source_tree_sha256": "9038f2a630a721f14c3598b4cdfa01656a3936ae8fac29a2604b4f9939e40f8a",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "903f11ee1cef7cc681ddbaaa5f1b2c25d65ffe9132089a68b540f92fa3062008",
+  "feature_difference": "\u5e458\u30fb2\u5c64\u975eQAT\u306e\u540c\u4e00\u5b66\u7fd2\u6e08\u307f\u91cd\u307f\u3001\u7279\u5fb4\u91cf\u00b11\u66f4\u65b0\u3092\u4e57\u7b97\u304b\u3089\u52a0\u6e1b\u7b97\u3078\u5909\u66f4\u3001NoPIC\u30fb\u975eSIMD\u3001\u6f14\u7b97\u901f\u5ea6\u306e\u6bd4\u8f03\u7528\u3001USI\u901a\u5e38\u8d77\u52d5\u3067\u3082\u540c\u3058\u8a55\u4fa1\u30d5\u30a1\u30a4\u30eb\u3092\u81ea\u52d5\u8a2d\u5b9a",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-addsub-v1/root.ext2"
+  ],
+  "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+  "model_bytes": 2006300,
+  "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-v1/model.bin",
+  "prepared_at_utc": "2026-11-06T07:44:54.934858+00:00",
+  "preparation_commit": "e2c242e69638e55c83fdfd56c50378783785bfcb",
+  "preparation_worktree_dirty": true,
+  "preparation_script_sha256": "ed7b987cfe632a67edd3468d9995e49f3397207a0b30b8d1f2167c29c668518d",
+  "parent_manifest_sha256": "8f104091534fd651dc71debd08754954526bac5827816118f5c131bfc9d39ba5",
+  "configured_guest_options": {
+    "EvalFile": "/eval/model.bin"
+  }
+}
