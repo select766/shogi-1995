@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import subprocess
 import sys
 import time
 import numpy as np
@@ -100,6 +101,10 @@ def main():
             'saturation_rule':{'window_epochs':5,'validation_loss_range_max':2e-5,'train_loss_range_max':5e-5,
                                'minimum_epochs':args.min_epochs,'minimum_examples':args.min_examples,'maximum_lr':args.lr*.03},
             'shuffle':'globally qsearch-shuffled input, then epoch-seeded chunk permutation and per-chunk GPU permutation'}
+    invocation={'started_at_utc':datetime.now(timezone.utc).isoformat(),
+                'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+                'worktree_dirty':bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip())}
+    report['invocations']=(previous_report.get('invocations',[]) if args.resume else [])+[invocation]
     if args.resume:
         for name in ('initial_validation_loss','initial_validation_rmse'):
             if name in previous_report:report[name]=previous_report[name]
