@@ -27,21 +27,21 @@ def digest(path):
 
 
 class Tiny(nn.Module):
-    def __init__(self, width=16, hidden=16):
+    def __init__(self, width=16, hidden=16, inputs=INPUTS):
         super().__init__()
-        self.width, self.hidden = width, hidden
-        self.embedding = nn.Embedding(INPUTS + 1, width, padding_idx=INPUTS)
+        self.width, self.hidden, self.inputs = width, hidden, inputs
+        self.embedding = nn.Embedding(inputs + 1, width, padding_idx=inputs)
         self.bias = nn.Parameter(torch.full((width,), .1))
-        self.fc = nn.Linear(width * 2, hidden)
-        self.out = nn.Linear(hidden, 1)
+        self.fc = nn.Linear(width * 2, hidden) if hidden else None
+        self.out = nn.Linear(hidden or width * 2, 1)
         nn.init.normal_(self.embedding.weight, std=.01)
         with torch.no_grad():
-            self.embedding.weight[INPUTS].zero_()
+            self.embedding.weight[inputs].zero_()
             self.out.weight.zero_(); self.out.bias.zero_()
 
     def forward(self, x, material):
         acc = (self.embedding(x).sum(dim=2) + self.bias).clamp(0, 1)
-        hidden = self.fc(acc.flatten(1)).clamp(0, 1)
+        hidden = self.fc(acc.flatten(1)).clamp(0, 1) if self.fc is not None else acc.flatten(1)
         return material / 600 + self.out(hidden).squeeze(1)
 
 
@@ -52,11 +52,13 @@ def export(model, path):
         if v.min() < info.min or v.max() > info.max:
             raise ValueError('quantization overflow')
         return v.astype(dtype).tobytes()
-    data = b'S95NN01\0' + struct.pack('<4I', INPUTS, model.width, model.hidden, STRIDE)
-    data += q(model.embedding.weight[:INPUTS], 128, '<i2')
+    magic=b'S95NN01\0' if model.inputs==INPUTS and model.hidden else b'S95NN02\0'
+    data = magic + struct.pack('<4I', model.inputs, model.width, model.hidden, STRIDE)
+    data += q(model.embedding.weight[:model.inputs], 128, '<i2')
     data += q(model.bias, 128, '<i4')
-    data += q(model.fc.weight, 64, '<i2')
-    data += q(model.fc.bias, 8192, '<i4')
+    if model.fc is not None:
+        data += q(model.fc.weight, 64, '<i2')
+        data += q(model.fc.bias, 8192, '<i4')
     data += q(model.out.weight, 1200, '<i2')
     data += q(model.out.bias, 153600, '<i4')
     path.write_bytes(data)
@@ -73,8 +75,8 @@ def main():
     p.add_argument('--seed', type=int, default=20261106)
     p.add_argument('--lr', type=float, default=.003)
     args = p.parse_args()
-    if not (1 <= args.width <= 32 and 1 <= args.hidden <= 32 and args.epochs > 0 and args.batch > 0 and args.lr > 0):
-        p.error('width/hidden must be 1..32 and epochs/batch/lr must be positive')
+    if not (1 <= args.width <= 32 and 0 <= args.hidden <= 32 and args.epochs > 0 and args.batch > 0 and args.lr > 0):
+        p.error('width must be 1..32, hidden 0..32 and epochs/batch/lr positive')
     if args.output.exists():
         raise RuntimeError('output already exists')
     args.output.mkdir(parents=True)
@@ -94,7 +96,7 @@ def main():
         x = torch.from_numpy(np.load(args.data / (split + '-features.npy'))).to(device=device, dtype=torch.int32)
         y = torch.from_numpy(np.load(args.data / (split + '-targets.npy'))).to(device)
         datasets[split] = x, y
-    model = Tiny(args.width, args.hidden).to(device)
+    model = Tiny(args.width, args.hidden, source['inputs']).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
     loss_fn = nn.BCEWithLogitsLoss()
     history = []; best = float('inf'); best_epoch = None; started = time.monotonic()
@@ -125,6 +127,7 @@ def main():
         (args.output / 'history.json').write_text(json.dumps(history, indent=2) + '\n')
     report = {'complete': True, 'kind': 'king-conditioned-scalar-residual', 'width': args.width,
               'hidden': args.hidden, 'seed': args.seed, 'epochs': args.epochs, 'batch': args.batch,
+              'inputs':source['inputs'],'feature_layout':source.get('feature_layout','full-king'),
               'learning_rate': args.lr, 'best_validation_loss': best,
               'best_epoch': best_epoch, 'deterministic_algorithms': True,
               'feature_index_dtype': 'int32',

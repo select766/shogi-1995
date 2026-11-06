@@ -1,11 +1,12 @@
 import sys
 from pathlib import Path
 import unittest
+import random
 import cshogi
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from shogi1995.tiny_features import encode, INPUTS, ACTIVE
+from shogi1995.tiny_features import encode, canonicalize, INPUTS, SYMMETRIC_INPUTS, ACTIVE
 
 
 class TinyFeatureTests(unittest.TestCase):
@@ -36,6 +37,23 @@ class TinyFeatureTests(unittest.TestCase):
         self.assertEqual(material, 18*90+4*315+4*405+4*495+4*540+2*855+2*990)
         self.assertEqual(len(set(x[0].tolist())), 7)
         self.assertEqual(sum(x[0] == x[0, 0]), 18)
+
+    def test_cached_remapping_equals_direct_symmetric_encoding(self):
+        board=cshogi.Board();rng=random.Random(1995)
+        for _ in range(100):
+            old,material=encode(board);new,symmetric_material=encode(board,True)
+            np.testing.assert_array_equal(canonicalize(old),new)
+            self.assertEqual(material,symmetric_material)
+            self.assertTrue(np.all((new>=0)&(new<SYMMETRIC_INPUTS)))
+            moves=list(board.legal_moves)
+            if not moves:board=cshogi.Board()
+            else:board.push(rng.choice(moves))
+
+    def test_missing_piece_padding_uses_new_sentinel(self):
+        board=cshogi.Board('4k4/9/9/9/9/9/9/9/4K4 b - 1')
+        old,_=encode(board);new,_=encode(board,True)
+        self.assertTrue(np.all(old==INPUTS));self.assertTrue(np.all(new==SYMMETRIC_INPUTS))
+        np.testing.assert_array_equal(canonicalize(old),new)
 
 
 if __name__ == '__main__':

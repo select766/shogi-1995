@@ -11,7 +11,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
-from shogi1995.tiny_features import encode, INPUTS, STRIDE, ACTIVE
+from shogi1995.tiny_features import encode, INPUTS, SYMMETRIC_INPUTS, STRIDE, ACTIVE
 
 
 def digest(path):
@@ -26,13 +26,15 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--data', required=True, type=Path)
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--symmetric',action='store_true')
     args = p.parse_args()
     if args.output.exists():
         raise RuntimeError('output already exists')
     source = json.loads((args.data / 'manifest.json').read_text())
     assert source['complete']
     args.output.mkdir(parents=True)
-    report = {'complete': False, 'inputs': INPUTS, 'stride': STRIDE, 'active': ACTIVE,
+    report = {'complete': False, 'inputs': SYMMETRIC_INPUTS if args.symmetric else INPUTS, 'stride': STRIDE, 'active': ACTIVE,
+              'feature_layout':'canonical-halfking' if args.symmetric else 'full-king',
               'source_manifest_sha256': hashlib.sha256((args.data / 'manifest.json').read_bytes()).hexdigest(),
               'encoder_sha256': hashlib.sha256((ROOT / 'src/shogi1995/tiny_features.py').read_bytes()).hexdigest(),
               'splits': {}}
@@ -46,7 +48,7 @@ def main():
         y = np.lib.format.open_memmap(args.output / (split + '-targets.npy'), mode='w+', dtype='<f4', shape=(len(records), 2))
         for i, r in enumerate(records):
             board.set_psfen(r['sfen'])
-            x[i], material = encode(board)
+            x[i], material = encode(board,args.symmetric)
             y[i] = (int(r['score']), material)
             if i % 100000 == 0:
                 print(split, i, '/', len(records), flush=True)

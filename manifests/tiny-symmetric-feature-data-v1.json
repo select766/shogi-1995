@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "feature_layout": "canonical-halfking",
+  "inputs": 95400,
+  "stride": 2120,
+  "active": 38,
+  "source_feature_manifest_sha256": "af1f63725bf0dd65679a1f4e447015f46a3f649d94c3dbfb0423d6e5180cec5f",
+  "source_manifest_sha256": "66f4faea8e47c2abbc30d89b3421aa93f370fa244594b4526b2fa197b26ad12d",
+  "remapper_sha256": "363f702d197421235093b6767f480743485680092056b463dcdabed87d3b55c6",
+  "encoder_sha256": "3f3958ff108ad9db63d082888a2115be48e5adc9debfda7803a1ae5a27327a41",
+  "splits": {
+    "train": {
+      "records": 16000000,
+      "features_sha256": "ca661fbc799b137d455a2140c10352d23e29fde1c405ca65e719e4db5da68645",
+      "targets_sha256": "a16d11403d5e41b1c6dabaaca206673c60e4f47d968984f723e09ca71e3158c7"
+    },
+    "validation": {
+      "records": 32768,
+      "features_sha256": "f62a00a05a8eb0a980a5cb0df33c8e1737ee6a81431265ba4e994bec548c8c34",
+      "targets_sha256": "4ac92e1b46b82ecfd605d32507b835a8f0f7061c8b358676a9806009f74b5d92"
+    }
+  },
+  "elapsed_seconds": 77.94740150500002
+}

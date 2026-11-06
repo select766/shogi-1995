@@ -29,7 +29,7 @@ def main():
     spec = importlib.util.spec_from_file_location('tiny_trainer', ROOT / 'scripts/train-tiny.py')
     trainer = importlib.util.module_from_spec(spec); spec.loader.exec_module(trainer)
     torch.set_num_threads(2)
-    model = trainer.Tiny(embedding.shape[1], fc.shape[0])
+    model = trainer.Tiny(embedding.shape[1], fc.shape[0], len(embedding))
     model.load_state_dict(torch.load(args.checkpoint, map_location='cpu', weights_only=True))
     features = np.load(args.data / 'validation-features.npy', mmap_mode='r')
     targets = np.load(args.data / 'validation-targets.npy')
@@ -39,7 +39,7 @@ def main():
         for start in range(0, len(features), 512):
             x = np.array(features[start:start + 512], dtype=np.int64)
             acc = np.clip(padded[x].sum(axis=2) + bias, 0, 128).reshape(len(x), -1)
-            hidden = np.clip((acc @ fc.T + fc_bias + 32) // 64, 0, 128)
+            hidden = np.clip((acc @ fc.T + fc_bias + 32) // 64, 0, 128) if len(fc) else acc
             raw = hidden @ out + out_bias[0]
             correction = np.where(raw >= 0, (raw + 128) // 256, -((-raw + 128) // 256))
             quantized.extend(np.clip(targets[start:start + len(x), 1] + correction, -12000, 12000))

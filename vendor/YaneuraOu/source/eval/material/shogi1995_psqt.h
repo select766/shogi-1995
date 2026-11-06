@@ -13,6 +13,7 @@ std::string psqt_path;
 std::array<int16_t,637> psqt_weights{};
 bool psqt_loaded=false;
 bool tiny_loaded=false;
+bool tiny_symmetric=false;
 unsigned tiny_width=0,tiny_hidden=0;
 std::vector<int16_t> tiny_embedding,tiny_fc,tiny_out;
 std::vector<int32_t> tiny_bias,tiny_fc_bias;
@@ -49,17 +50,19 @@ void psqt_load() {
     FILE* file=std::fopen(psqt_path.c_str(),"rb");
     char magic[8];uint32_t count=0;
     bool ok=file && std::fread(magic,1,8,file)==8;
-    if(ok && !std::memcmp(magic,"S95NN01\0",8)) {
+    bool version1=ok && !std::memcmp(magic,"S95NN01\0",8);
+    bool version2=ok && !std::memcmp(magic,"S95NN02\0",8);
+    if(version1 || version2) {
         uint32_t header[4];
-        ok=std::fread(header,4,4,file)==4 && header[0]==171720 && header[3]==2120
-            && header[1]>=1 && header[1]<=32 && header[2]>=1 && header[2]<=32;
+        ok=std::fread(header,4,4,file)==4 && (header[0]==171720 || (version2 && header[0]==95400)) && header[3]==2120
+            && header[1]>=1 && header[1]<=32 && header[2]<=32 && (version2 || header[2]>=1);
         if(ok) {
-            tiny_width=header[1];tiny_hidden=header[2];
+            tiny_width=header[1];tiny_hidden=header[2];tiny_symmetric=header[0]==95400;
             ok=read_weights(file,tiny_embedding,size_t(header[0])*tiny_width)
                 && read_weights(file,tiny_bias,tiny_width)
                 && read_weights(file,tiny_fc,tiny_hidden*tiny_width*2)
                 && read_weights(file,tiny_fc_bias,tiny_hidden)
-                && read_weights(file,tiny_out,tiny_hidden)
+                && read_weights(file,tiny_out,tiny_hidden?tiny_hidden:tiny_width*2)
                 && std::fread(&tiny_out_bias,4,1,file)==1;
         }
         tiny_loaded=ok;
@@ -75,7 +78,8 @@ void psqt_load() {
 }
 
 void tiny_add(int* accumulator,int king,int feature,int count) {
-    const int16_t* weights=tiny_embedding.data()+size_t(king*2120+feature)*tiny_width;
+    int king_index=tiny_symmetric?(king%9)*5+std::min(king/9,8-king/9):king;
+    const int16_t* weights=tiny_embedding.data()+size_t(king_index*2120+feature)*tiny_width;
     for(unsigned j=0;j<tiny_width;++j)accumulator[j]+=int(weights[j])*count;
 }
 
@@ -84,7 +88,9 @@ void tiny_board_change(int* accumulator,int king,int perspective,Piece piece,int
     int pt=int(type_of(piece));
     int index=pt<8?pt-1:pt-2;
     int relative=int(color_of(piece))!=perspective;
-    tiny_add(accumulator,king,(relative*13+index)*81+(perspective?80-square:square),count);
+    int oriented=perspective?80-square:square;
+    if(tiny_symmetric && king/9>4)oriented=(8-oriented/9)*9+oriented%9;
+    tiny_add(accumulator,king,(relative*13+index)*81+oriented,count);
 }
 
 int tiny_hand_index(PieceType piece) {
@@ -163,6 +169,8 @@ int tiny_black(const Position& pos) {
         for(unsigned j=0;j<tiny_width;++j)
             activation[relative*tiny_width+j]=std::max(0,std::min(128,state->tiny_accumulator[stm^relative][j]));
     int64_t output=tiny_out_bias;
+    if(!tiny_hidden)
+        for(unsigned j=0;j<tiny_width*2;++j)output+=activation[j]*int(tiny_out[j]);
     for(unsigned i=0;i<tiny_hidden;++i) {
         int32_t sum=tiny_fc_bias[i];
         for(unsigned j=0;j<tiny_width*2;++j)sum+=activation[j]*int(tiny_fc[i*tiny_width*2+j]);
