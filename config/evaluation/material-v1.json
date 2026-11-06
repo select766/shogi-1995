@@ -1,0 +1,11 @@
+{
+  "engine_id": "material-v1",
+  "engine_sha256": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+  "backend": "86box",
+  "image": ".local/baselines/material-v1/root.ext2",
+  "milliseconds": 2000,
+  "Threads": 1,
+  "USI_Hash": 2,
+  "NetworkDelay": 0,
+  "NetworkDelay2": 0
+}

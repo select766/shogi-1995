@@ -53,6 +53,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--backend', choices=('86box', 'qemu'), default='86box')
     parser.add_argument('--boot-timeout', type=float, default=120)
+    parser.add_argument('--image', type=Path, default=ROOT / '.local/images/engine-root.ext2')
     args = parser.parse_args()
     os.chdir(ROOT)
     RUN.mkdir(parents=True, exist_ok=True)
@@ -61,7 +62,7 @@ def main():
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError:
         raise RuntimeError('another shogi-1995 engine is running')
-    image = ROOT / '.local/images/engine-root.ext2'
+    image = args.image.resolve()
     if not image.exists():
         raise RuntimeError('guest image missing; run scripts/setup.sh first')
     log = (RUN / 'transport.log').open('wb')

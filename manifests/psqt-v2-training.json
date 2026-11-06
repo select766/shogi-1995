@@ -1,0 +1,25 @@
+{
+  "kind": "symmetric-psqt",
+  "training_manifest_sha256": "b5730e36c517ea2bc72a105b420dce40a1f7750d238a0b924e23adeefcf67644",
+  "alpha": 1000,
+  "train_records": 2000000,
+  "validation_records": 32768,
+  "features": 637,
+  "baseline": {
+    "rmse": 1079.3436279296875,
+    "sign_accuracy": 0.7137451171875
+  },
+  "trained": {
+    "rmse": 769.1511880394047,
+    "sign_accuracy": 0.7313232421875
+  },
+  "quantized": {
+    "rmse": 769.1196899414062,
+    "sign_accuracy": 0.73211669921875
+  },
+  "iterations": 120,
+  "solver_stop": 7,
+  "model_bytes": 1286,
+  "model_sha256": "f2b4c0c00b17f333aa886021d10612a25ec43513191b1290716e4950c1a695dc",
+  "elapsed_seconds": 39.45309470600023
+}

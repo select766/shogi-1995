@@ -5,7 +5,7 @@ image=.local/images/probe-root.ext2
 size=32M
 extra=()
 if [[ "${1:-}" == --engine ]]; then
-    image=.local/images/engine-root.ext2
+    image=${2:-.local/images/engine-root.ext2}
     size=504M
     extra=(-DSHOGI1995_ENGINE_INIT)
 fi
