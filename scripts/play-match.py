@@ -13,7 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 import cshogi
 from shogi1995.match_rules import Referee
-from shogi1995.sessions import Pair, digest
+from shogi1995.match_statistics import match_summary
+from shogi1995.sessions import Pair, digest, COMMON
 
 
 def utc():
@@ -51,21 +52,23 @@ def main():
         raise ValueError('not enough fixed opening positions')
     manifests=[args.baseline.resolve(),args.candidate.resolve()]
     report={'complete':False,'started_at_utc':utc(),'measurement_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+            'measurement_sources':{name:digest(ROOT/name) for name in (
+                'scripts/play-match.py','src/shogi1995/match_rules.py','src/shogi1995/match_statistics.py',
+                'src/shogi1995/sessions.py','src/shogi1995/usi.py','src/bridge/main.py')},
             'baseline':json.loads(args.baseline.read_text()),'candidate':json.loads(args.candidate.read_text()),
             'dataset_sha256':digest(args.dataset),'opening_ids':[r['id'] for r in records[:args.openings]],
             'initial_ms':args.initial_ms,'increment_ms':args.increment_ms,'max_plies':args.max_plies,
             'network_delay':args.network_delay,'network_delay2':args.network_delay2,
+            'common_engine_options':{**COMMON,'NetworkDelay':args.network_delay,'NetworkDelay2':args.network_delay2},
             'mode':'fixed_nodes_operational' if args.nodes else 'guest_fischer_auxiliary',
             'nodes':args.nodes,'expected_games':args.openings*2,'games':[]}
     args.output.parent.mkdir(parents=True,exist_ok=True)
     def save():
-        games=[g for g in report['games'] if 'outcome' in g]
-        wins=sum(g['candidate_result']=='win' for g in games)
-        draws=sum(g['candidate_result']=='draw' for g in games)
-        losses=sum(g['candidate_result']=='loss' for g in games)
-        report['score']={'games':len(games),'wins':wins,'draws':draws,'losses':losses,
-                         'score_rate':(wins+.5*draws)/len(games) if games else None}
-        temp=args.output.with_suffix('.partial');temp.write_text(json.dumps(report,indent=2)+'\n');temp.replace(args.output)
+        eligible=(args.nodes is None and report['complete']
+                  and report.get('clock_calibration',{}).get('passed',False)
+                  and sum('outcome' in g for g in report['games'])==report['expected_games'])
+        report['score']=match_summary(report['games'],rating_enabled=eligible)
+        temp=args.output.with_suffix('.partial');temp.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n');temp.replace(args.output)
     save();start=time.monotonic()
     run=ROOT/'.local/match-runs'/args.output.stem
     try:
