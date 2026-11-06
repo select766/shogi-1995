@@ -5,6 +5,19 @@
 #include <unistd.h>
 #include <cstdio>
 namespace YaneuraOu {
+namespace {
+int last_completed_depth=0;
+unsigned long long last_nodes=0;
+long long last_milliseconds=0;
+}
+void shogi1995_record_search(int completed_depth,unsigned long long nodes,long long milliseconds) {
+    last_completed_depth=completed_depth;last_nodes=nodes;last_milliseconds=milliseconds;
+}
+void shogi1995_search_stats() {
+    std::printf("info string shogi1995 search completed_depth=%d nodes=%llu time=%lld\n",
+                last_completed_depth,last_nodes,last_milliseconds);
+    std::fflush(stdout);
+}
 void shogi1995_memory_stats() {
     // Frozen Linux 1.2 i386 sysinfo layout, measured inside the guest.
     unsigned values[16]={};

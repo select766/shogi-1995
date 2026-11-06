@@ -47,3 +47,9 @@ PSQTは`tests/psqt_parity.py`、小型ネットワークは`tests/tiny_parity.py
 既存結果の手動登録は`scripts/update-measurements.py --result <明細JSON> --engine-manifest <manifest> --feature-difference <説明>`。旧結果には正確なUTC記録がないため、当初の出力を`--historical-output`で指定し、ファイルの更新日時から復元した概算と区別する。レコードの上書きや条件の混同を避け、同じrun IDが異なる明細を指す場合はエラーにする。
 
 グラフはCSVの`finished_at_utc`を横軸、`accuracy_percent`を縦軸にする。`comparison_group`が一致する行を同じ系列とし、Wilson区間の上下限を誤差棒に使える。レーティングはまだ測定していないため空欄。
+
+祖先参照版では最大8手前まで計算済みの加算値を探し、王手などで評価されなかった中間局面の変更も順に反映する。自玉移動を越えるときは全再計算へ戻す。null moveは盤面変更なしとして扱う。256局面の照合では差分利用1,880,634視点、全再計算395,746視点となり、評価1,142,867回で不一致0、旧版とのbestmove・ノード数も全一致だった。
+
+最終探索情報はbestmove後に`shogi1995searchstats`で問い合わせる。`completed_depth`・`final_nodes`・`final_time`を通常の間引かれたinfoとは分けて保存し、bestmoveまでのホスト実測時間に問い合わせ費用は加えない。旧基準版はこの問い合わせに未対応なので、結果に値がない場合は未取得と扱う。
+
+1,600万局面のtiny-v2は12 epochのうち、たぬきvalidation loss最小の2 epoch目を固定した。lossは0.579996で、tiny-v1の0.603228より低下した。モデル容量は同じ5,496,252 bytes。これを棋力改善とはみなさず、同一の固定HCPEと86Boxで確認する。

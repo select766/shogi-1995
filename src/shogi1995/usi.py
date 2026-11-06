@@ -53,7 +53,7 @@ class Engine:
     def reset(self):
         self.send('isready');self.until('readyok',60);self.send('usinewgame')
 
-    def search(self,sfen,milliseconds=2000,nodes=None):
+    def search(self,sfen,milliseconds=2000,nodes=None,diagnostics=False):
         self.send('position sfen '+sfen)
         command=f'go nodes {nodes}' if nodes is not None else f'go btime 0 wtime 0 byoyomi {milliseconds}'
         started=time.monotonic();self.send(command)
@@ -69,6 +69,12 @@ class Engine:
             for key in ('time','nodes','nps','depth','seldepth'):
                 m=re.search(r'\b'+key+r' (\d+)\b',line)
                 if m:result[key]=int(m[1])
+        if diagnostics:
+            self.send('shogi1995searchstats')
+            _,stats=self.until('info string shogi1995 search ',10)
+            values={key:int(value) for key,value in (item.split('=') for item in stats[-1].split()[4:])}
+            result.update(completed_depth=values['completed_depth'],final_nodes=values['nodes'],final_time=values['time'])
+            result['final_nps']=values['nodes']*1000//max(1,values['time'])
         return result
 
     def close(self):

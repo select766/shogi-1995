@@ -2443,6 +2443,12 @@ void Position::do_null_move(StateInfo& newSt, const T& tt) {
 #endif
 
 	newSt.previous = st;
+#if defined(SHOGI1995_SINGLE_THREAD)
+    // A null move changes only the perspective, never the board features.
+    newSt.tiny_from = -2;
+    newSt.tiny_to = -1;
+    newSt.tiny_before = newSt.tiny_after = newSt.tiny_captured = NO_PIECE;
+#endif
     st             = &newSt;
 
 #if STOCKFISH

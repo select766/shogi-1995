@@ -203,6 +203,7 @@ bool USIEngine::usi_cmdexec(const std::string& cmd) {
 #if defined(SHOGI1995_SINGLE_THREAD)
     if(token=="shogi1995stats") { shogi1995_memory_stats(); return false; }
     if(token=="shogi1995evalstats") { Eval::print_eval_stat(engine.get_position()); return false; }
+    if(token=="shogi1995searchstats") { shogi1995_search_stats(); return false; }
     if(token=="shogi1995eval") { sync_cout << "info string shogi1995 eval " << int(engine.evaluate()) << sync_endl; return false; }
 #endif
 

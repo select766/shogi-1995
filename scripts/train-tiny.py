@@ -91,7 +91,7 @@ def main():
         for kind in ('features','targets'):
             if digest(args.data / (split + '-' + kind + '.npy')) != source['splits'][split][kind + '_sha256']:
                 raise ValueError('encoded data hash differs: ' + split + ' ' + kind)
-        x = torch.from_numpy(np.load(args.data / (split + '-features.npy'))).to(device=device, dtype=torch.long)
+        x = torch.from_numpy(np.load(args.data / (split + '-features.npy'))).to(device=device, dtype=torch.int32)
         y = torch.from_numpy(np.load(args.data / (split + '-targets.npy'))).to(device)
         datasets[split] = x, y
     model = Tiny(args.width, args.hidden).to(device)
@@ -127,6 +127,7 @@ def main():
               'hidden': args.hidden, 'seed': args.seed, 'epochs': args.epochs, 'batch': args.batch,
               'learning_rate': args.lr, 'best_validation_loss': best,
               'best_epoch': best_epoch, 'deterministic_algorithms': True,
+              'feature_index_dtype': 'int32',
               'training_manifest_sha256': hashlib.sha256((args.data / 'manifest.json').read_bytes()).hexdigest(),
               'trainer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'feature_encoder_sha256': hashlib.sha256((ROOT / 'src/shogi1995/tiny_features.py').read_bytes()).hexdigest(),

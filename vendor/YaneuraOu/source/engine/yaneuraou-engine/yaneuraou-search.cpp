@@ -1359,6 +1359,10 @@ SKIP_SEARCH:
               << "info string elapsed_from_ponderhit = " << now() - tm.ponderhitTime << sync_endl;
 	*/
 
+#if defined(SHOGI1995_SINGLE_THREAD)
+    shogi1995_record_search(search_skipped?0:int(bestThread->completedDepth),
+                           threads.nodes_searched(),main_manager()->tm.elapsed_time());
+#endif
     std::string ponder;
 
 #if STOCKFISH

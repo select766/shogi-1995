@@ -110,19 +110,31 @@ int tiny_black(const Position& pos) {
             int king=int(pos.square<KING>(Color(perspective)));
             if(perspective)king=80-king;
             int* accumulator=state->tiny_accumulator[perspective];
-            const StateInfo* previous=state->previous;
-            bool king_moved=state->tiny_before!=NO_PIECE && type_of(state->tiny_before)==KING
-                && int(color_of(state->tiny_before))==perspective;
-            if(previous && previous->tiny_generation==tiny_generation && !king_moved) {
+            // Search can skip evaluation at check nodes. Recover from a nearby
+            // computed ancestor before falling back to a complete board scan.
+            const StateInfo* changes[8];unsigned count=0;
+            const StateInfo* previous=state;
+            while(previous && previous->tiny_generation!=tiny_generation && count<8) {
+                bool king_moved=previous->tiny_before!=NO_PIECE && type_of(previous->tiny_before)==KING
+                    && int(color_of(previous->tiny_before))==perspective;
+                if(king_moved)break;
+                changes[count++]=previous;
+                previous=previous->previous;
+            }
+            if(previous && previous->tiny_generation==tiny_generation) {
                 std::memcpy(accumulator,previous->tiny_accumulator[perspective],tiny_width*sizeof(int));
-                tiny_board_change(accumulator,king,perspective,state->tiny_before,state->tiny_from,-1);
-                tiny_board_change(accumulator,king,perspective,state->tiny_after,state->tiny_to,1);
-                tiny_board_change(accumulator,king,perspective,state->tiny_captured,state->tiny_to,-1);
-                int relative=int(color_of(state->tiny_after))!=perspective;
-                if(state->tiny_from<0)
-                    tiny_add(accumulator,king,2106+relative*7+tiny_hand_index(raw_type_of(state->tiny_after)),-1);
-                if(state->tiny_captured!=NO_PIECE)
-                    tiny_add(accumulator,king,2106+relative*7+tiny_hand_index(raw_type_of(state->tiny_captured)),1);
+                while(count) {
+                    const StateInfo* change=changes[--count];
+                    if(change->tiny_to<0)continue;
+                    tiny_board_change(accumulator,king,perspective,change->tiny_before,change->tiny_from,-1);
+                    tiny_board_change(accumulator,king,perspective,change->tiny_after,change->tiny_to,1);
+                    tiny_board_change(accumulator,king,perspective,change->tiny_captured,change->tiny_to,-1);
+                    int relative=int(color_of(change->tiny_after))!=perspective;
+                    if(change->tiny_from<0)
+                        tiny_add(accumulator,king,2106+relative*7+tiny_hand_index(raw_type_of(change->tiny_after)),-1);
+                    if(change->tiny_captured!=NO_PIECE)
+                        tiny_add(accumulator,king,2106+relative*7+tiny_hand_index(raw_type_of(change->tiny_captured)),1);
+                }
                 ++tiny_incremental_count;
             } else {
                 tiny_full(pos,perspective,king,accumulator);
