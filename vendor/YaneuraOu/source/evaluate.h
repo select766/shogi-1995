@@ -42,6 +42,9 @@ namespace Eval {
 
 	// 評価値の内訳表示(デバッグ用)
 	void print_eval_stat(Position& pos);
+#if defined(SHOGI1995_SINGLE_THREAD)
+    void print_halfkp_features(const Position& pos);
+#endif
 
 	// 評価関数パラメーターを読み込む。
 	// 時間のかかる評価関数の初期化処理はここに書くこと。

@@ -32,6 +32,20 @@ namespace Eval {
 #endif
     }
 	void evaluate_with_no_return(const Position& pos) {}
+#if defined(SHOGI1995_SINGLE_THREAD) && MATERIAL_LEVEL == 1
+    void print_halfkp_features(const Position& pos) {
+        for(int relative=0;relative<2;++relative) {
+            Color color=Color(int(pos.side_to_move())^relative);
+            int king=int(pos.square<KING>(color));
+            const auto* pieces=color==BLACK?pos.eval_list()->piece_list_fb():pos.eval_list()->piece_list_fw();
+            if(color==WHITE)king=80-king;
+            std::printf("info string shogi1995 halfkp perspective=%d",relative);
+            for(int i=0;i<PIECE_NUMBER_KING;++i)std::printf(" %d",king*int(fe_end)+int(pieces[i]));
+            std::printf("\n");
+        }
+        std::fflush(stdout);
+    }
+#endif
 	Value evaluate(const Position& pos) { return compute_eval(pos); }
 
 #if MATERIAL_LEVEL == 1 || !defined(MATERIAL_LEVEL)

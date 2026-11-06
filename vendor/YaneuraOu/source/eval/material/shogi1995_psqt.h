@@ -13,6 +13,8 @@ std::string psqt_path;
 std::array<int16_t,637> psqt_weights{};
 bool psqt_loaded=false;
 bool tiny_loaded=false;
+bool halfkp_linear_loaded=false;
+std::vector<int32_t> halfkp_linear_weights;
 bool tiny_symmetric=false;
 unsigned tiny_width=0,tiny_hidden=0;
 std::vector<int16_t> tiny_embedding,tiny_fc,tiny_out;
@@ -36,7 +38,7 @@ template<class T> bool read_weights(FILE* file,std::vector<T>& values,size_t siz
 
 void psqt_options(OptionsMap& options) {
     options.add("EvalFile",Option("<none>",[](const Option& option) {
-        psqt_path=std::string(option);psqt_loaded=false;tiny_loaded=false;
+        psqt_path=std::string(option);psqt_loaded=false;tiny_loaded=false;halfkp_linear_loaded=false;
         if(++tiny_generation==0)++tiny_generation;
         return std::nullopt;
     }));
@@ -66,6 +68,12 @@ void psqt_load() {
                 && std::fread(&tiny_out_bias,4,1,file)==1;
         }
         tiny_loaded=ok;
+    } else if(ok && !std::memcmp(magic,"S95HKL1\0",8)) {
+        static_assert(fe_end==1548,"HalfKP linear files require the standard BonaPiece layout");
+        uint32_t header[2];
+        ok=std::fread(header,4,2,file)==2 && header[0]==81*1548 && header[1]==256;
+        if(ok)ok=read_weights(file,halfkp_linear_weights,header[0]);
+        halfkp_linear_loaded=ok;
     } else if(ok) {
         ok=!std::memcmp(magic,"S95PSQ1\0",8) && std::fread(&count,4,1,file)==1 && count==637
             && std::fread(psqt_weights.data(),2,637,file)==637;
@@ -74,7 +82,7 @@ void psqt_load() {
     if(file)std::fclose(file);
     if(!ok) { std::printf("info string invalid evaluation file: %s\n",psqt_path.c_str());std::fflush(stdout);std::exit(1); }
     psqt_loaded=true;
-    std::printf("info string shogi1995 %s loaded: %s\n",tiny_loaded?"tiny network":"PSQT",psqt_path.c_str());std::fflush(stdout);
+    std::printf("info string shogi1995 %s loaded: %s\n",halfkp_linear_loaded?"HalfKP linear":tiny_loaded?"tiny network":"PSQT",psqt_path.c_str());std::fflush(stdout);
 }
 
 void tiny_add(int* accumulator,int king,int feature,int count) {
@@ -183,6 +191,16 @@ int tiny_black(const Position& pos) {
 }
 
 int psqt_black(const Position& pos) {
+    if(halfkp_linear_loaded) {
+        const auto* black=pos.eval_list()->piece_list_fb();
+        const auto* white=pos.eval_list()->piece_list_fw();
+        const auto* bw=halfkp_linear_weights.data()+int(pos.square<KING>(BLACK))*1548;
+        const auto* ww=halfkp_linear_weights.data()+(80-int(pos.square<KING>(WHITE)))*1548;
+        int64_t score=0;
+        for(int i=0;i<PIECE_NUMBER_KING;++i)score+=int64_t(bw[black[i]])-ww[white[i]];
+        int rounded=score>=0?int((score+128)/256):-int((-score+128)/256);
+        return std::max(-12000,std::min(12000,rounded));
+    }
     if(tiny_loaded)return tiny_black(pos);
     int score=0;
     for(int square=0;square<81;++square) {
