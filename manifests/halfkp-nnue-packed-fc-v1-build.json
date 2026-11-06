@@ -1,0 +1,9 @@
+{
+  "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
+  "source_tree_sha256": "2f472a9ea7f1c393484a8ab19235257a3bd4ce84a5b63e8febf56de82be5f63b",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "object_dir": "/home/select766/shogi/shogi-1995/.local/obj-pentium1995-9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d"
+}

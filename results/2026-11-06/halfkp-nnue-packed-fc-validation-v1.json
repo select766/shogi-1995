@@ -1,0 +1,128 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-06T15:26:35.187256+00:00",
+  "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+  "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
+  "counts": {
+    "hidden_boundary_cases": 72,
+    "hidden_boundary_positions": 1152,
+    "head_boundary_cases": 44,
+    "head_boundary_positions": 704,
+    "independent_trained_values": 1536,
+    "native_search_roots": 768,
+    "verified_accumulators": 3582898,
+    "guest_values": 48,
+    "guest_search_roots": 24
+  },
+  "models": [
+    {
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14643200,
+        "swap": 0
+      },
+      "guest_eval_counters": {
+        "incremental": 72023,
+        "refresh": 7203,
+        "verified": 0,
+        "output_bits": 32,
+        "kernel_width": 8,
+        "fc_packed": 0,
+        "fc_bits": 0
+      },
+      "width": 8,
+      "hidden": 0,
+      "manifest": "manifests/halfkp-nnue-w8-h0-packed-fc-v1-candidate.json",
+      "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+      "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887"
+    },
+    {
+      "guest_memory": {
+        "total": 31866880,
+        "free": 10473472,
+        "swap": 0
+      },
+      "guest_eval_counters": {
+        "incremental": 75075,
+        "refresh": 6589,
+        "verified": 0,
+        "output_bits": 32,
+        "kernel_width": 16,
+        "fc_packed": 0,
+        "fc_bits": 0
+      },
+      "width": 16,
+      "hidden": 0,
+      "manifest": "manifests/halfkp-nnue-w16-h0-packed-fc-v1-candidate.json",
+      "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63"
+    },
+    {
+      "guest_memory": {
+        "total": 31866880,
+        "free": 10469376,
+        "swap": 0
+      },
+      "guest_eval_counters": {
+        "incremental": 68499,
+        "refresh": 7815,
+        "verified": 0,
+        "output_bits": 32,
+        "kernel_width": 16,
+        "fc_packed": 1,
+        "fc_bits": 32
+      },
+      "width": 16,
+      "hidden": 8,
+      "manifest": "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json",
+      "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42"
+    }
+  ],
+  "artifacts": {
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-nnue_packed_fc-w2.json": "cee254976dfec25661aef882013be59c1a5cc7c403aa66e037fc39ff80fed66a",
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-nnue_output_accumulation-w2.json": "a42b28019db3999c587d95cdfad7fc40451a0beeda18bac59948385d8d880893",
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-nnue_packed_fc-w8.json": "bc9f7c99c27d9ee27f1c0ae9d5cc9240d76f7c6f7c2993433e942f5eeb1ab7e3",
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-nnue_output_accumulation-w8.json": "c46a89dfcbd4740adb14ff76d688c691896af731ce2c763dd2285f101e015505",
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-nnue_packed_fc-w16.json": "fcf3b297c166a53979ea9f5d7d115a83dfc934a6b673e39aa902bd57c3f9fa8e",
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-nnue_output_accumulation-w16.json": "a759f328e6d9c84a464f9294522d4d810c2596bae794675c4108da000b41cc2f",
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-nnue_packed_fc-w32.json": "9c1b50e5241795a873ba9e1e773c2b79b64b669001f956a8dcc11d17b118e044",
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-nnue_output_accumulation-w32.json": "d3fec00ef43643b6515a194eb7b76cae444f973c8baaa65954c7d4e1d41821c4",
+    "results/2026-11-06/halfkp-nnue-w8-h0-packed-fc-v1-trained-values.json": "0542dbdc833eb5433545d041cb3e29e6c0a3eeaaeeb329d639dbc0a16c2e45c6",
+    "results/2026-11-06/halfkp-nnue-w8-h0-packed-fc-v1-trained-search-parity.json": "23e6c6283d110e7232bf67e2f38dde03010aa02224904280f9aad25bf1435eb4",
+    "results/2026-11-06/halfkp-nnue-w8-h0-packed-fc-v1-native-search-equality.json": "b96d969ef202746aaaba0363a9be9019efc3c093fcf9287c9e4e56766b798245",
+    "results/2026-11-06/halfkp-nnue-w8-h0-packed-fc-v1-guest-auto-model.json": "b37552d76dc60d09666eb026fa1fe99083119b166f10c6da4912a902234103a4",
+    "results/2026-11-06/halfkp-nnue-w8-h0-packed-fc-v1-guest-nodes-parity.json": "3d7658b3f7d22789f72d803862571bcec8e467e7fdcc1e2bfccb374b5180960f",
+    "manifests/halfkp-nnue-w8-h0-packed-fc-v1-candidate.json": "7cb6f57979846dc014ead99b674d4e7779b00950b7f08b05a6aff0a0f792bffe",
+    "results/2026-11-06/halfkp-nnue-w16-h0-packed-fc-v1-trained-values.json": "29c2cc8521fdc1bebae8208d2d41e7f787e18be472bbda871a7a2c733f4d66e9",
+    "results/2026-11-06/halfkp-nnue-w16-h0-packed-fc-v1-trained-search-parity.json": "b46c65ae759562b83bb4c4e0a4a11d9f77c36bc0010333a872ccb00635040da1",
+    "results/2026-11-06/halfkp-nnue-w16-h0-packed-fc-v1-native-search-equality.json": "51c5380d570f0c52f90a3b4ee9ba56cdb1554e5dde0eace894f8f795579457b2",
+    "results/2026-11-06/halfkp-nnue-w16-h0-packed-fc-v1-guest-auto-model.json": "557a6615edfccd6f4d94d1734c484dffeaf98a600913b0ba6a7fc136af13a67c",
+    "results/2026-11-06/halfkp-nnue-w16-h0-packed-fc-v1-guest-nodes-parity.json": "295fc0296449c2eb0ef50c83852d560acba62c9bf3a1a0fe2b595d767bfe4de0",
+    "manifests/halfkp-nnue-w16-h0-packed-fc-v1-candidate.json": "e0709008973b46b11564fde6024e7a7a7009353763a061fec7f7a475dcf9608b",
+    "results/2026-11-06/halfkp-nnue-w16-h8-packed-fc-v1-trained-values.json": "7f8aca25be378942ae64da7fd4978068ec34207f8d1454a500df2f3f02a555f0",
+    "results/2026-11-06/halfkp-nnue-w16-h8-packed-fc-v1-trained-search-parity.json": "016ad7a107649b8e3d55b00b1bf52770e24b83ae8d42aceca3483a244844c187",
+    "results/2026-11-06/halfkp-nnue-w16-h8-packed-fc-v1-native-search-equality.json": "3fa2a209a62f00caeb6d3aff09b530b90a8c6f9fd6ae9b35ccea43165e8786d2",
+    "results/2026-11-06/halfkp-nnue-w16-h8-packed-fc-v1-guest-auto-model.json": "4a666a0e46ef32bca9619ddd9a20843b2d650e3edb8e599083fd65476d06186b",
+    "results/2026-11-06/halfkp-nnue-w16-h8-packed-fc-v1-guest-nodes-parity.json": "ddb301e9bb4cb9d80d54f0548e1b229a4274406b9f4be8993e8ba48ac12dd47c",
+    "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json": "302f00f349f89379e2a1d07359fc33a16c871026c758b5b6eb37212bf783a074",
+    "results/2026-11-06/halfkp-nnue-packed-fc-cpp-arithmetic-v1.json": "aae2944a0da6812ab793690f47f9cdf8a55e912a65f277f7d23277817cfd9c0e",
+    "results/2026-11-06/halfkp-nnue-packed-fc-v1-target.json": "5835ba5ce8c7f85c324c404fb32e5979a0d76a72ec2a9930fe4dbd802cd57a49",
+    "manifests/halfkp-nnue-packed-fc-v1-build.json": "81366d070067a5d5eac79f2511c478373e0f755a58050d4d0855061ab47411cc",
+    "manifests/halfkp-nnue-packed-fc-plan-v1.json": "58bfa001539853f8cff00fa056e2911a5841e7f0410a3c71c4c12725ce7d211c"
+  },
+  "test_sources": {
+    "tests/packed_fc_arithmetic.py": "16125628b18fb2f87c57a5172235f00f3f30fb8118b55e467498a8799a1aa259",
+    "tests/nnue_packed_fc.py": "64a3db21e460b69480f80c265d34c76e99f7ce643994f86be1682899ee53a103",
+    "tests/nnue_output_accumulation.py": "0c8a3a29cf4b60fba97d13b3f9061abd30496b048bd2fa85dc806173dd402778",
+    "tests/tiny_parity.py": "6f8b1645695b35dd8113ea1d2f35ad9447e39d22b8a7f29e753c753fde1b94f0",
+    "tests/tiny_incremental.py": "684191b5d1d60910e5ef173f8987995c96d88090c7508d28d64499e14b0b9bf2",
+    "tests/guest_auto_model.py": "03abed77d37959706764a7e6aff8544f47597d92894ad20bd1c65d652b4ca470",
+    "tests/guest_nodes_parity.py": "7d3042e3f91e8ef6f745972bf8524dc386c82dcf7a9cc7533317100a20f2a0ca"
+  },
+  "speed_measured": false,
+  "adopted": false,
+  "scope": "integer/native-search/Pentium-operation correctness and RAM; no speed or strength claim",
+  "execution_note": "initial boundary launcher resolved Python outside its virtual environment and failed at cshogi import, before cases ran; corrected absolute venv path, preserving first failure log /tmp/shogi-halfkp-nnue-packed-fc-v1-nnue_packed_fc-w8.log"
+}

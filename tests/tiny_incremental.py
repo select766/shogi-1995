@@ -16,6 +16,7 @@ def main():
     p.add_argument('--model', required=True, type=Path)
     p.add_argument('--reference', required=True, type=Path)
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--binary', type=Path, default=ROOT / '.local/guest-root/shogi')
     p.add_argument('--expected-kernel-width', type=int, choices=(0,8,16))
     p.add_argument('--expected-fc-packed', type=int, choices=(0,1))
     p.add_argument('--expected-fc-bits', type=int, choices=(0,32,64))
@@ -25,7 +26,7 @@ def main():
     reference = json.loads(args.reference.read_text())
     assert reference['complete'] and reference['mode'] == 'fixed_nodes'
     options = {**reference['options'], 'EvalFile': str(args.model.resolve()), 'EvalVerify': True}
-    binary = ROOT / '.local/guest-root/shogi'
+    binary = args.binary.resolve()
     results = []
     with Engine([str(binary)], ROOT, str(args.output) + '.logs', options) as engine:
         for row in reference['details']:

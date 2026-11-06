@@ -1,0 +1,68 @@
+{
+  "created_at_utc": "2026-11-06T15:26:35.199433+00:00",
+  "status": "prepared; timing not started",
+  "correctness": {
+    "path": "results/2026-11-06/halfkp-nnue-packed-fc-validation-v1.json",
+    "sha256": "bdc1ec9309142f1f4dd61c2ac88775620bbdfdb09216285451382e2f56ffad5e"
+  },
+  "baseline": {
+    "manifest": "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+    "sha256": "c71da308dd5fe55c957eec334b9f9bab9bd08f2075b74dfaa98f0f94c43dc07c"
+  },
+  "candidate": {
+    "manifest": "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json",
+    "sha256": "302f00f349f89379e2a1d07359fc33a16c871026c758b5b6eb37212bf783a074"
+  },
+  "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+  "timing_gate": "ALL queued128m andcompactwidth8hidden8 GPU training/validation, builds and guest correctness jobs terminal; execute AFTER the3-model width-kernel speed plan; verify frozen manifests/artifacts/source hashes before running",
+  "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+  "dataset_sha256": "60f527d8c3aa9c1ae74c9ba34d9dfadef7cc02f5d4318673c9932f80af1689c8",
+  "protocol": {
+    "positions": 256,
+    "nodes": 10000,
+    "block_size": 64,
+    "order": "AB/BA alternating, oneVM at a time",
+    "require": "all256 moves/finalnodes/completeddepth equal, operational0, pairedbootstrap10000 seed20261106 median host-time saved95 lower>0, inspect4 block medians"
+  },
+  "steps": [
+    {
+      "description": "paired fixed-node Pentium diagnostic with identical width16hidden8 weights",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-nnue-w16-h8-packed-fc-speed-v1",
+        "--block-size",
+        "64",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w16-h8-packed-fc-speed-v1.log"
+    },
+    {
+      "description": "strict same-weight/search speed comparison",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-nnue-w16-h8-packed-fc-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-nnue-w16-h8-packed-fc-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-06/halfkp-nnue-w16-h8-packed-fc-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w16-h8-packed-fc-speed-summary-v1.log"
+    }
+  ],
+  "code_sha256": {
+    "scripts/evaluate-pair.py": "1a8ceeec13eeebc4920bbc03646a3eeec3dd79db7ef2cafc6d5f0fa08a32a03b",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/compare-fixed-node-speed.py": "dcbef50770e1e975b1b4c977f1ce7ac43cfeda43939b9e57d891185ba974ba4c",
+    "src/shogi1995/speed_comparison.py": "4fd7c262692c62ac7ae71d5123f23b94533ce75de8d95a60c98e02b3c219aa6e"
+  },
+  "adoption": "only after speed supported, compare full1024ordinary2000ms against retained best; keep hidden0 runtime separate; newlytrainedwidth8hidden8 requires its own equality/guest and same-weight speed protocol before packed adoption"
+}

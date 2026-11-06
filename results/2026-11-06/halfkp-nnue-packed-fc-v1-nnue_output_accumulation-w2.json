@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "rounding",
+      "output_bits": 32,
+      "positions": 16,
+      "model_sha256": "51a75ea9deb1b787b299b6c8ce3a5ba7a69579808b9cb8beab1e6da0e76a66f2"
+    },
+    {
+      "case": "positive-safe",
+      "output_bits": 32,
+      "positions": 16,
+      "model_sha256": "aff7ba925558738dbb7e5db134974a1d0226c3796ff10550756e23c35123743a"
+    },
+    {
+      "case": "positive-rounding-fallback",
+      "output_bits": 64,
+      "positions": 16,
+      "model_sha256": "b45dcc828347dbd12c1199e181192256a309c17f66fc998f4051d5af55d3fb26"
+    },
+    {
+      "case": "negative-safe",
+      "output_bits": 32,
+      "positions": 16,
+      "model_sha256": "53ee7f79259b703469e90893f3bc3ffc8bd55bf10337043a97a49a8a3ec1667c"
+    },
+    {
+      "case": "negative-rounding-fallback",
+      "output_bits": 64,
+      "positions": 16,
+      "model_sha256": "c2bc485a9d5deecb0ffee44a6efc4fc2c9d4d0509a31968736f8f6d089ec892a"
+    },
+    {
+      "case": "minimum-bias",
+      "output_bits": 64,
+      "positions": 16,
+      "model_sha256": "f602ca36001a813fb44f3b9cd4c61d120a33294914bff3538e73d528a0c3e412"
+    },
+    {
+      "case": "maximum-bias",
+      "output_bits": 64,
+      "positions": 16,
+      "model_sha256": "29242f9e6b05ae81ea4935ea85fdcc48312c78415e1d4a92c0248d1218cd08f5"
+    },
+    {
+      "case": "positive-product-overflow",
+      "output_bits": 64,
+      "positions": 16,
+      "model_sha256": "fc50d2898ea04acdd89e85b5c0a1b9bc7cd24da35693635e4bdb7ae633870435"
+    },
+    {
+      "case": "negative-product-overflow",
+      "output_bits": 64,
+      "positions": 16,
+      "model_sha256": "d3999995a21ce235033f5ed2a5a2b9acb523afbb2dce06cc6f3b77a3fea8c7a1"
+    },
+    {
+      "case": "hidden-safe",
+      "output_bits": 32,
+      "positions": 16,
+      "model_sha256": "cd7cc1f9d4c9eef60943c456348cd17c4237f42c5a06049e03072caab8c797ae"
+    },
+    {
+      "case": "hidden-product-overflow",
+      "output_bits": 64,
+      "positions": 16,
+      "model_sha256": "8b9e3c4928190bcd7d50ba8fe70012db6cd824299670bd244dec168c9eefc047"
+    }
+  ],
+  "model_disable_resets_output_mode": true,
+  "width": 2,
+  "expected_kernel_width": 0,
+  "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+  "scope": "integer boundary and model-switch validation; not speed or strength"
+}
