@@ -131,6 +131,7 @@ def main():
     writer.writeheader(); writer.writerows(history)
     atomic(ROOT/'results/measurement-history.csv',buffer.getvalue())
     lines = ['# エンジンの測定履歴','',
+             '初期PSQT・tiny-v1〜v7はqsearch未適用の試作。適切な前処理と十分な学習を行うHalfKP基準とは区別する。以後の強化順序は[HalfKP開発方針](halfkp-development.md)を参照。', '',
              '各行は完走した一回の測定。同じ `comparison_group` の行は、評価局面・標本数・時間またはノード数・共通オプション・実行環境が同じ。異なる条件の一致率を一つの成績系列として接続しない。', '',
              '[CSV](../results/measurement-history.csv) / [JSON](../results/measurement-history.json) / [時系列グラフ（SVG）](../results/measurement-history.svg)。グラフの横軸には `finished_at_utc`、縦軸には `accuracy_percent` を使い、`comparison_group` で系列を分ける。レーティングは未測定のため空欄。', '',
              '86BoxはPentium 100 MHz・RAM 32 MiB、実時間評価は通常の秒読み2秒。NetworkDelayとNetworkDelay2はともに0。nativeの固定ノード試験はホスト診断であり、Pentiumの実時間評価とは分ける。機械構成と依存物は評価計画およびassets manifestに固定する。', '',

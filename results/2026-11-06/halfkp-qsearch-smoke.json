@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "positions": 512,
+  "records_preserved": true,
+  "score_and_result_sign_verified": true,
+  "move_none_verified": true,
+  "changed_positions": 205,
+  "changed_side_to_move": 141,
+  "same_seed_byte_identical": true,
+  "shuffled_sha256": "e859be0da6683e01363ab920d38525615a842feec0ada25f5058e5897f36446a",
+  "note": "initial run-a exposed empty bucket handling; corrected wrapper precreates 256 buckets"
+}

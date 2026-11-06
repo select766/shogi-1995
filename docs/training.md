@@ -1,5 +1,7 @@
 # 新規学習と候補の検証
 
+現在の優先手順は[HalfKPを基準とする強化](halfkp-development.md)。以下の初期試作はqsearch未適用だったため、指定された前処理を満たす基準とは区別する。新しい比較はシャッフル・qsearch済みデータで十分に学習したHalfKP線形モデルから始める。
+
 学習元は許可済みのたぬきPSV原本に限定する。過去のtrain-nnueの加工データ、モデル、checkpointは使わない。評価用Floodgateは教師入力に含めない。大きな出力は`/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995`に置く。
 
 ## データの準備

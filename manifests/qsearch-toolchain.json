@@ -1,0 +1,24 @@
+{
+  "source_repository": "https://github.com/select766/tanuki-",
+  "source_commit": "cc38e5e284f44b038e9019d5bb19a0a7484bc9f1",
+  "source_use": "reference code only; no experimental data, models, binaries or checkpoints copied",
+  "patched_source_tree_sha256": "210c26e03898c2848265a3a7cb644dd91fd0093909accd5bee9f8fa5c8d88db5",
+  "patch": "config/qsearch/tanuki-qsearch.patch",
+  "patch_sha256": "440affa662aa9c7b6ebfb7f4ac2e8b67cf275c995728e0699f3c2e4a882f4925",
+  "build_command": [
+    "make",
+    "evallearn",
+    "BLAS=NONE",
+    "LTOFLAGS=",
+    "-j8"
+  ],
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "binary_sha256": "7ebff62e1cb30206bdb561ee645df608ea9bd201aa46a4874a68032b9394f495",
+  "binary_architecture": "native x86_64 AVX2; preprocessing only, never the Pentium guest engine",
+  "teacher_release": "https://github.com/nodchip/tanuki-/releases/tag/tanuki-.halfkp_256x2-32-32.2023-05-08",
+  "teacher_archive_sha256": "f16dc66c529857bf08fce8cee4f1e53a6993297644100267a6ccccd62e43dbba",
+  "teacher_sha256": "1141d275bceec911156801f27303dc9ff5beb24f4f59144cc069306c59e80782",
+  "teacher_bytes": 64217066,
+  "fv_scale": 20,
+  "mode": "ApplyQSearch=true, PairedShuffle=false, ShuffleSeed=20261106"
+}

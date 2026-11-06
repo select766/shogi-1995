@@ -1,5 +1,7 @@
 # エンジンの測定履歴
 
+初期PSQT・tiny-v1〜v7はqsearch未適用の試作。適切な前処理と十分な学習を行うHalfKP基準とは区別する。以後の強化順序は[HalfKP開発方針](halfkp-development.md)を参照。
+
 各行は完走した一回の測定。同じ `comparison_group` の行は、評価局面・標本数・時間またはノード数・共通オプション・実行環境が同じ。異なる条件の一致率を一つの成績系列として接続しない。
 
 [CSV](../results/measurement-history.csv) / [JSON](../results/measurement-history.json) / [時系列グラフ（SVG）](../results/measurement-history.svg)。グラフの横軸には `finished_at_utc`、縦軸には `accuracy_percent` を使い、`comparison_group` で系列を分ける。レーティングは未測定のため空欄。
@@ -34,5 +36,7 @@
 | 11/06 12:25:58 | [tiny-v3-nopic](../results/2026-11-06/tiny-v3-nopic-20261106T032558827475Z-tiny-v3-nopic-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 84/256 | 32.81% (27.35–38.78) | `859cc2e` | tiny-v3と同じ学習重み、静的PentiumビルドからPIC処理を除去 |
 | 11/06 12:43:22 | [material-v1](../results/2026-11-06/material-v1-20261106T034322121755Z-000-baseline.json) | 86box / 2000ms / development 256局面 | 80/256 | 31.25% (25.88–37.17) | `06219a9` | 駒得評価の基準版（学習なし） |
 | 11/06 12:54:36 | [tiny-v7-nopic-usi](../results/2026-11-06/tiny-v7-nopic-usi-20261106T035436933139Z-000-candidate.json) | 86box / 2000ms / development 256局面 | 89/256 | 34.77% (29.20–40.79) | `859cc2e` | tiny-v7と同じ学習重み、静的PentiumビルドからPIC処理を除去、USI通常起動でも同じ評価ファイルを自動設定 |
+| 11/06 13:05:48 | [tiny-v7-nopic-usi](../results/2026-11-06/tiny-v7-nopic-usi-20261106T040548110864Z-001-candidate.json) | 86box / 2000ms / development 256局面 | 79/256 | 30.86% (25.52–36.77) | `859cc2e` | tiny-v7と同じ学習重み、静的PentiumビルドからPIC処理を除去、USI通常起動でも同じ評価ファイルを自動設定 |
+| 11/06 13:16:59 | [material-v1](../results/2026-11-06/material-v1-20261106T041659162931Z-001-baseline.json) | 86box / 2000ms / development 256局面 | 65/256 | 25.39% (20.45–31.06) | `06219a9` | 駒得評価の基準版（学習なし） |
 
 反則・異常終了・時間超過の件数、モデル・バイナリ・イメージのSHA、共通設定、対応あり比較の元になる各局面の指し手はCSV/JSONおよびリンク先の明細に保存する。

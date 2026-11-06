@@ -1,0 +1,40 @@
+--- a/source/eval/nnue/nnue_common.h
++++ b/source/eval/nnue/nnue_common.h
+@@ -48,7 +48,7 @@
+ 
+   // Constant used in evaluation value calculation
+   // 評価値の計算で利用する定数
+-  constexpr int FV_SCALE = 16;
++  constexpr int FV_SCALE = 20;
+   constexpr int kWeightScaleBits = 6;
+ 
+   // Size of cache line (in bytes)
+--- a/source/tanuki_kifu_shuffler.cpp
++++ b/source/tanuki_kifu_shuffler.cpp
+@@ -151,7 +151,7 @@
+                 sync_cout << "info string Failed to open paired temp output file: " << file_path << sync_endl;
+                 return;
+             }
+-            if (std::setvbuf(f, nullptr, _IOFBF, std::numeric_limits<int>::max())) {
++            if (std::setvbuf(f, nullptr, _IOFBF, (1 << 20))) {
+                 sync_cout << "info string Failed to set output buffer for paired temp file: " << file_path << sync_endl;
+                 std::fclose(f);
+                 return;
+@@ -415,7 +415,7 @@
+         sprintf(file_path, "%s/shuffled.bin", shuffled_kifu_dir.c_str());
+         output_file = std::fopen(file_path, "wb");
+ 
+-        if (std::setvbuf(output_file, nullptr, _IOFBF, std::numeric_limits<int>::max())) {
++        if (std::setvbuf(output_file, nullptr, _IOFBF, (1 << 20))) {
+             sync_cout << "info string Failed to set the output buffer: output_file_path_="
+                 << file_path << sync_endl;
+             return;
+@@ -433,7 +433,7 @@
+             return;
+         }
+ 
+-        if (std::setvbuf(input_file, nullptr, _IOFBF, std::numeric_limits<int>::max())) {
++        if (std::setvbuf(input_file, nullptr, _IOFBF, (1 << 20))) {
+             sync_cout << "info string Failed to set the output buffer: input_file="
+                 << file_path << sync_endl;
+             return;
