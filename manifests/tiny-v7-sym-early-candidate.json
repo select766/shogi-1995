@@ -1,0 +1,24 @@
+{
+  "id": "tiny-v7-sym-early",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "69a292fd0d08adeafc39bd27c8b835db137176bedf6b06e2d215affbdb98f9ce",
+  "image_sha256": "e9cefd950d3a2c79e74b056bc61c82001907e17cf5e2b9346bf423e664859df1",
+  "model_sha256": "95309f2f6d24af63b192a0d1e0b5ea3c28b1d3dc2b33cb7f0567024155e9475f",
+  "model_bytes": 6105884,
+  "source_commit": "b40cc88757f86344b9968b4c5ea6784e93db6f45",
+  "source_tree_sha256": "449d4d98393d39a5d2e10b4ee081180ffbc2076c0245e67d56c59b80e02f3657",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/tiny-v7-sym-early/network.bin",
+  "feature_difference": "\u5de6\u53f3\u5bfe\u79f0\u30fb\u5e4532\u306e\u7dda\u5f62\u51fa\u529b\u3001\u91cf\u5b50\u5316\u306a\u3057\u5b66\u7fd2\u3067epoch\u9014\u4e2d\u306echeckpoint\u3092\u9078\u629e",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/candidates/tiny-v7-sym-early/root.ext2"
+  ]
+}

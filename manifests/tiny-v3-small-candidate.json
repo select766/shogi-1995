@@ -1,0 +1,24 @@
+{
+  "id": "tiny-v3-small",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "69a292fd0d08adeafc39bd27c8b835db137176bedf6b06e2d215affbdb98f9ce",
+  "image_sha256": "77471920cb6be91a606ea87e88b2d7f2be7d7fb87db5566cbed799077d95d40e",
+  "model_sha256": "4019be207d18fc74b4d2b9fafed0822190b3b9c7488f3db3f780a1b83d3b9017",
+  "model_bytes": 2747884,
+  "source_commit": "52ab271c674b8188d7d4c4bb5b31cf732f5ae8e2",
+  "source_tree_sha256": "449d4d98393d39a5d2e10b4ee081180ffbc2076c0245e67d56c59b80e02f3657",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/tiny-v3-small/network.bin",
+  "feature_difference": "1600\u4e07\u5c40\u9762\u3001\u5168\u7389\u4f4d\u7f6e\u7279\u5fb4\u3001\u5e458\u30fb\u96a0\u308c8\u3078\u7e2e\u5c0f\u3057\u3066128\u4e57\u7b97",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/candidates/tiny-v3-small/root.ext2"
+  ]
+}

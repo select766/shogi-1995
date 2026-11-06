@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "positions": 256,
+  "counters": {
+    "incremental": 1839068,
+    "refresh": 385602,
+    "verified": 1116862
+  },
+  "same_bestmoves_and_nodes": true,
+  "model_reload_passed": true,
+  "engine_sha256": "69a292fd0d08adeafc39bd27c8b835db137176bedf6b06e2d215affbdb98f9ce",
+  "model_sha256": "c72d73cd8b31c4d528a9fdfcefb41beff32509069037e285e525078ff7fe8667",
+  "reference_sha256": "6e2fa95789d1a921ad59b59fda90dfc8717d849403a6a41ac351649ad10f79d5"
+}

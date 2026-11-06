@@ -1,0 +1,19 @@
+{
+  "both_correct": 48,
+  "baseline_only": 28,
+  "candidate_only": 43,
+  "both_wrong": 137,
+  "difference": 0.05859375,
+  "bootstrap_95": {
+    "lower": -0.00390625,
+    "upper": 0.125
+  },
+  "replicates": 10000,
+  "seed": 20261106,
+  "limitation": "position bootstrap; unknown within-game correlation is not accounted for",
+  "baseline": ".local/evaluation/material-v1-native-nodes10000-quick256.json",
+  "candidate": ".local/evaluation/tiny-v7-sym-early-native-nodes10000-quick256.json",
+  "baseline_accuracy": 0.296875,
+  "candidate_accuracy": 0.35546875,
+  "candidate_operational_pass": true
+}
