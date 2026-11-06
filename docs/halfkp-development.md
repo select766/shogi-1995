@@ -74,3 +74,5 @@ trainのqsearch・シャッフルは11月6日14:03:46 JSTに64,000,000件で完�
 測定候補は40epochの確認実験の最良checkpoint（29epoch）とする。保存checkpointと整数モデルは全125,388係数で対応し、validation全204,662局面で整数化の評価値誤差RMSEは約0.289、最大約0.528。C++と独立Python参照の512局面の整数値も一致した。[整数化検証](../results/2026-11-06/halfkp-linear-v2-quantization.json)、[値の照合](../results/2026-11-06/halfkp-linear-v2-trained-parity.json)。
 
 学習済み候補も実ゲストで、固定10,000ノードの8局面のbestmove・最終ノード数・完了深さがホストと一致した。[探索照合](../results/2026-11-06/halfkp-linear-v2-guest-nodes-parity.json)。自動ロードの16局面も整数値が一致し、NetworkDelay設定は独立に変更できた。ゲスト空きRAMは17,788,928 bytes、swap 0。[USI検証](../results/2026-11-06/halfkp-linear-v2-guest-auto-model.json)。ホスト固定ノード診断はquickで80/256一致。これはPentiumの2秒一致率と区別し、棋力はゲスト実時間で比較する。
+
+developmentの最初の256局面を2秒で交互測定した結果は、基準80/256、HalfKP線形モデル86/256だった。差は+2.34 ppだが、対応あり95%区間は−4.30〜+8.98 ppで改善は未確定。反則・異常終了・時間超過はいずれも0件。これは全1,024局面のうち1ブロックの途中結果であり、採用判断には使わず全件測定を継続する。[最初のブロックの比較](../results/2026-11-06/halfkp-linear-v2-first-block-comparison.json)。

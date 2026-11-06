@@ -1,0 +1,375 @@
+{
+  "both_correct": 46,
+  "baseline_only": 34,
+  "candidate_only": 40,
+  "both_wrong": 136,
+  "difference": 0.0234375,
+  "bootstrap_95": {
+    "lower": -0.04296875,
+    "upper": 0.08984375
+  },
+  "replicates": 10000,
+  "seed": 20261106,
+  "limitation": "position bootstrap; unknown within-game correlation is not accounted for",
+  "baseline": ".local/evaluation/development-halfkp-linear-v2-pair-v1/000-baseline.json",
+  "candidate": ".local/evaluation/development-halfkp-linear-v2-pair-v1/000-candidate.json",
+  "baseline_accuracy": 0.3125,
+  "candidate_accuracy": 0.3359375,
+  "candidate_operational_pass": true,
+  "baseline_operational_pass": true,
+  "comparison_operational_pass": true,
+  "comparison_sources": {
+    "scripts/compare-accuracy.py": "ca42ac9c41a7a45a02afdf45a932c831e8f491f20bc09fe297126c3f504d2a79",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/statistics.py": "a101cb0590d05d6a8115c8915e182b83d9b7dfc0948896b5a285160199c3671d"
+  },
+  "diagnostics": {
+    "purpose": "descriptive diagnostics; not separate acceptance tests",
+    "multiple_comparisons_adjusted": false,
+    "strata": [
+      {
+        "dimension": "abs_teacher_eval",
+        "value": "0..299",
+        "positions": 135,
+        "baseline": {
+          "total": 135,
+          "measured": 135,
+          "matches": 38,
+          "accuracy": 0.2814814814814815,
+          "wilson_95": {
+            "lower": 0.2124782079386257,
+            "upper": 0.36257667479495925
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "candidate": {
+          "total": 135,
+          "measured": 135,
+          "matches": 45,
+          "accuracy": 0.3333333333333333,
+          "wilson_95": {
+            "lower": 0.2593972328490745,
+            "upper": 0.4164920844901004
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "paired": {
+          "both_correct": 21,
+          "baseline_only": 17,
+          "candidate_only": 24,
+          "both_wrong": 73,
+          "difference": 0.05185185185185185,
+          "bootstrap_95": {
+            "lower": -0.037037037037037035,
+            "upper": 0.14814814814814814
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "abs_teacher_eval",
+        "value": "1000+",
+        "positions": 48,
+        "baseline": {
+          "total": 48,
+          "measured": 48,
+          "matches": 16,
+          "accuracy": 0.3333333333333333,
+          "wilson_95": {
+            "lower": 0.21676780694818568,
+            "upper": 0.4745989029405201
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "candidate": {
+          "total": 48,
+          "measured": 48,
+          "matches": 16,
+          "accuracy": 0.3333333333333333,
+          "wilson_95": {
+            "lower": 0.21676780694818568,
+            "upper": 0.4745989029405201
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "paired": {
+          "both_correct": 10,
+          "baseline_only": 6,
+          "candidate_only": 6,
+          "both_wrong": 26,
+          "difference": 0.0,
+          "bootstrap_95": {
+            "lower": -0.14583333333333334,
+            "upper": 0.14583333333333334
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "abs_teacher_eval",
+        "value": "300..999",
+        "positions": 73,
+        "baseline": {
+          "total": 73,
+          "measured": 73,
+          "matches": 26,
+          "accuracy": 0.3561643835616438,
+          "wilson_95": {
+            "lower": 0.25604500466575497,
+            "upper": 0.4706650250201402
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "candidate": {
+          "total": 73,
+          "measured": 73,
+          "matches": 25,
+          "accuracy": 0.3424657534246575,
+          "wilson_95": {
+            "lower": 0.24394867339318554,
+            "upper": 0.45673374007231865
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "paired": {
+          "both_correct": 15,
+          "baseline_only": 11,
+          "candidate_only": 10,
+          "both_wrong": 37,
+          "difference": -0.0136986301369863,
+          "bootstrap_95": {
+            "lower": -0.136986301369863,
+            "upper": 0.1095890410958904
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "in_check",
+        "value": "false",
+        "positions": 244,
+        "baseline": {
+          "total": 244,
+          "measured": 244,
+          "matches": 71,
+          "accuracy": 0.29098360655737704,
+          "wilson_95": {
+            "lower": 0.23758174975042573,
+            "upper": 0.3508648302311989
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "candidate": {
+          "total": 244,
+          "measured": 244,
+          "matches": 77,
+          "accuracy": 0.3155737704918033,
+          "wilson_95": {
+            "lower": 0.26050221695580356,
+            "upper": 0.37636241243974766
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "paired": {
+          "both_correct": 38,
+          "baseline_only": 33,
+          "candidate_only": 39,
+          "both_wrong": 134,
+          "difference": 0.02459016393442623,
+          "bootstrap_95": {
+            "lower": -0.045081967213114756,
+            "upper": 0.0942622950819672
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "in_check",
+        "value": "true",
+        "positions": 12,
+        "baseline": {
+          "total": 12,
+          "measured": 12,
+          "matches": 9,
+          "accuracy": 0.75,
+          "wilson_95": {
+            "lower": 0.46769466506643426,
+            "upper": 0.9110583316059453
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "candidate": {
+          "total": 12,
+          "measured": 12,
+          "matches": 9,
+          "accuracy": 0.75,
+          "wilson_95": {
+            "lower": 0.46769466506643426,
+            "upper": 0.9110583316059453
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "paired": {
+          "both_correct": 8,
+          "baseline_only": 1,
+          "candidate_only": 1,
+          "both_wrong": 2,
+          "difference": 0.0,
+          "bootstrap_95": {
+            "lower": -0.25,
+            "upper": 0.25
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "turn",
+        "value": "black",
+        "positions": 122,
+        "baseline": {
+          "total": 122,
+          "measured": 122,
+          "matches": 35,
+          "accuracy": 0.28688524590163933,
+          "wilson_95": {
+            "lower": 0.21409749424773222,
+            "upper": 0.3726841555574208
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "candidate": {
+          "total": 122,
+          "measured": 122,
+          "matches": 27,
+          "accuracy": 0.22131147540983606,
+          "wilson_95": {
+            "lower": 0.1567911528788155,
+            "upper": 0.3028463891740769
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "paired": {
+          "both_correct": 15,
+          "baseline_only": 20,
+          "candidate_only": 12,
+          "both_wrong": 75,
+          "difference": -0.06557377049180328,
+          "bootstrap_95": {
+            "lower": -0.1557377049180328,
+            "upper": 0.02459016393442623
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "dimension": "turn",
+        "value": "white",
+        "positions": 134,
+        "baseline": {
+          "total": 134,
+          "measured": 134,
+          "matches": 45,
+          "accuracy": 0.3358208955223881,
+          "wilson_95": {
+            "lower": 0.2614222426198383,
+            "upper": 0.4193704566417407
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "candidate": {
+          "total": 134,
+          "measured": 134,
+          "matches": 59,
+          "accuracy": 0.44029850746268656,
+          "wilson_95": {
+            "lower": 0.35907319291050943,
+            "upper": 0.524851425002792
+          },
+          "errors": 0,
+          "illegal_moves": 0,
+          "time_overruns": 0,
+          "resignations": 0,
+          "declarations": 0
+        },
+        "paired": {
+          "both_correct": 31,
+          "baseline_only": 14,
+          "candidate_only": 28,
+          "both_wrong": 61,
+          "difference": 0.1044776119402985,
+          "bootstrap_95": {
+            "lower": 0.014925373134328358,
+            "upper": 0.19402985074626866
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      }
+    ]
+  }
+}
