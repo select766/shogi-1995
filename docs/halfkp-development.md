@@ -253,3 +253,7 @@ swapは全ブロックの開始・終了観測で0。3層版のホスト時間�
 [128百万件・幅8・2層の学習計画](../manifests/halfkp-nnue-w8-h0-128m-training-plan-v1.json)を固定した。新しい初期値から、seed20261106・非QAT・同じ最低40epochとloss飽和条件で学習する。前処理ジョブが全工程を正常終了した後に限り開始し、完成した学習manifestのSHAを開始記録に残す。全validationで選択checkpointと整数化を検証する。約128百万件を40epoch学習するため、延べ学習量は約51億件となる。64百万件版との比較は学習データ量と計算量の両方を増やす実験で、計算量を揃えた比較とは扱わない。
 
 [幅固定演算の速度比較の実行計画](../manifests/halfkp-nnue-width-kernel-speed-execution-plan-v1.json)では、3モデルそれぞれの新旧固定候補・重みSHA・コマンドと出力先を固定した。前処理・学習・検証・ビルドの終了後に、同一重みでquick256局面・10,000ノード・64局面AB/BAを測定する。bestmove・最終ノード数・完了深さの全件一致と運用正常を条件に、対応あり時間短縮率の95%区間下限と4ブロックの結果で採否を決める。重みの優劣は、その後に同じ採用演算を使う全development・通常2秒の比較で判断する。独立testは候補確定まで使用しない。
+
+128百万件の原本抽出は1,418.64秒で終了し、2026年11月6日23:32:34 JSTに[拡張内容の検証](../results/2026-11-06/halfkp-128m-extension-verification-v1.json)を通過した。旧64百万件の先頭部分はbyte単位で同一、raw validation 262,144件と抽出元ブロックの順序も保存されていた。[新しい原本抽出manifest](../manifests/halfkp-qsearch-input-128m-v1.json)を保存済み。後続のqsearch・シャッフル・特徴量化は別工程として継続中。
+
+[前処理完了後の学習開始計画](../manifests/halfkp-nnue-w8-h0-128m-after-preprocessing-plan-v1.json)は、現在の所有ジョブのPID・プロセス開始時刻・計画SHAに結び付けた。[実行制御](../scripts/run-after-job.py)は前処理stateの正常完了に加えて、そのプロセスの終了を待つ。コードと固定資料のSHA、完成した特徴量manifestの128百万件処理済み・標準HalfKP・validationの識別子を確認し、完成manifestのSHAを学習開始記録に保存する。前処理の失敗、PID再利用、入力変更を拒否し、stateとログは新規作成だけを許可する。8件の検査が通り、実際の親プロセスが生存中は後続を開始せず、終了後にだけ実行することと、同じstateでの二重起動の拒否を確認した。

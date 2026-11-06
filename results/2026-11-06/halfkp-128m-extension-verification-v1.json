@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T14:32:34.782938+00:00",
+  "reference_manifest_sha256": "958881a9a4ef15f6484427c992420e9dc53d11f282d5357c66adc1ef20a24d85",
+  "candidate_manifest_sha256": "9e6a2b48fc242356007601e7e622f46141dcd05aabf5115705a4009d1599980c",
+  "reference_records": 64000000,
+  "extended_records": 128000000,
+  "original_training_prefix_sha256": "b9c69f376296dd8ae831eeef7c9e351d03f1369e87ab412188ddf4375d647ebc",
+  "extended_training_sha256": "6f1096a8f6d2d603853113276ff5d9bae2b83c7481675af61fc414d76a3be61f",
+  "unchanged_validation_records": 262144,
+  "unchanged_validation_sha256": "93595c79e0cb003c4db032004b60159c675d49822aa9c9eb253bccfa8bdbf7db",
+  "source_block_prefix_preserved": true,
+  "scope": "raw original-only extraction identity and byte integrity; qsearch/shuffle and leaf exclusions are separate required stages",
+  "verifier_sha256": "2c78409e7f3d56682fe9b8884c88d94897cac5e51b9b81f7cca92a25f983b149"
+}

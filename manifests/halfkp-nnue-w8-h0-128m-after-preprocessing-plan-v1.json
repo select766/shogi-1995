@@ -1,0 +1,91 @@
+{
+  "created_at_utc": "2026-11-06T14:34:31.458006+00:00",
+  "parent_training_plan": "manifests/halfkp-nnue-w8-h0-128m-training-plan-v1.json",
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-128m-after-width16-v1.json",
+    "pid": 360659,
+    "process_start_time": "4421258",
+    "plan_sha256": "42e6b8657674c7baf1a49d5d5eb077c4b079b7cbcab1b903040f651158894f3b"
+  },
+  "code_sha256": {
+    "scripts/train-halfkp-nnue.py": "83195742ad4501df6ca1b227fbccd03223d4d3153cb2b11b195d2ad7ba235d67",
+    "scripts/validate-halfkp-nnue.py": "8e67bb3ccb371c8a1a203692e6debd08e69471b8615a677f9cff84dd8cc57073",
+    "src/shogi1995/halfkp_features.py": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+    "src/shogi1995/halfkp_network.py": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023",
+    "src/shogi1995/tiny_quant.py": "27d0c39d2e6c60aeb0776aca6e590912c84f081f8c8835ae9f4529fcff118967",
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985"
+  },
+  "frozen_artifacts_sha256": {
+    "manifests/halfkp-nnue-w8-h0-128m-training-plan-v1.json": "f7ec866a7ffdb083c5fab89b1ca23d5c334af837a278e3f430bbe20443a5f8cb",
+    "manifests/halfkp-128m-after-width16-plan-v1.json": "42e6b8657674c7baf1a49d5d5eb077c4b079b7cbcab1b903040f651158894f3b",
+    "manifests/halfkp-qsearch-input-128m-v1.json": "9e6a2b48fc242356007601e7e622f46141dcd05aabf5115705a4009d1599980c",
+    "results/2026-11-06/halfkp-128m-extension-verification-v1.json": "31eef7ddc8d17de708bfc47a8b8a78857676f89a1a42869b25f0bf6738a0e46d"
+  },
+  "completed_inputs": {
+    "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-128m-v1/train/manifest.json": {
+      "fields": {
+        "complete": true,
+        "split": "train",
+        "inputs": 125388,
+        "active": 38,
+        "processed": 128000000,
+        "validation_manifest_sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+        "encoder_sha256": "00dfbdbe4b842d6d89682f1bddcbdc177f56631e662b79b7ad0397853bf9f0c9",
+        "feature_code_sha256": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7"
+      }
+    },
+    "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-features-v1/validation/manifest.json": {
+      "sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+      "fields": {
+        "complete": true,
+        "split": "validation",
+        "records": 204662
+      }
+    },
+    "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/training/halfkp-128m-extension-verification-v1.json": {
+      "sha256": "31eef7ddc8d17de708bfc47a8b8a78857676f89a1a42869b25f0bf6738a0e46d",
+      "fields": {
+        "passed": true,
+        "extended_records": 128000000,
+        "source_block_prefix_preserved": true
+      }
+    }
+  },
+  "steps": [
+    {
+      "description": "train from fresh initialization to unchanged saturation rule",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/train-halfkp-nnue.py",
+        "--data",
+        "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-128m-v1",
+        "--output",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-128m-v1",
+        "--width",
+        "8",
+        "--hidden",
+        "0",
+        "--seed",
+        "20261106",
+        "--max-epochs",
+        "100"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h0-128m-v1-training.log"
+    },
+    {
+      "description": "validate exact selected checkpoint and full integer validation after convergence",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/validate-halfkp-nnue.py",
+        "--model",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-128m-v1",
+        "--validation",
+        "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-128m-v1/validation",
+        "--output",
+        "results/2026-11-06/halfkp-nnue-w8-h0-128m-v1-quantization.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h0-128m-v1-quantization.log"
+    }
+  ],
+  "policy": "no timing measurements while preprocessing, GPU training or validation live; no automatic restart on observation timeout; stop and investigate failed saturation/validation"
+}
