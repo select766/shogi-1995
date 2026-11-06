@@ -175,3 +175,5 @@ QAT版は2026年11月6日17:07:42 JSTに100epoch・延べ6,397,743,400局面で�
 | 幅16・隠れ8・3層 | 14 | 0.55807267 | 0.55853504 | 4,013,068 | 39.6211 |
 
 [2層の学習条件](../manifests/halfkp-nnue-w16-h0-v1-training.json)、[3層の学習条件](../manifests/halfkp-nnue-w16-h8-v1-training.json)、[2層の整数化検証](../results/2026-11-06/halfkp-nnue-w16-h0-v1-quantization.json)、[3層の整数化検証](../results/2026-11-06/halfkp-nnue-w16-h8-v1-quantization.json)。両方ともC++と独立整数参照の512局面が一致した。これらは学習・量子化の診断であり、棋力の採否は現在最良の幅8モデルを対照とするPentium上の通常2秒・development全1,024局面で決める。同じ固定実行ファイル（演算実装`e6d5f38`）を使い、モデル構造と重みだけを変える。独立testは引き続き使用しない。
+
+実ゲストの自動ロードと16局面の評価値一致、8局面の固定10,000ノード探索一致、32bit出力経路を両構造で確認した。ゲストの空きRAMは2層10,502,144 bytes、3層10,498,048 bytes、swapは両方0。ホストの全256局面でもbestmove・最終ノード数が一致し、差分更新と毎回の再計算を2層1,182,427回、3層1,186,295回照合した。[2層のゲスト起動](../results/2026-11-06/halfkp-nnue-w16-h0-v1-guest-auto-model.json)、[3層のゲスト起動](../results/2026-11-06/halfkp-nnue-w16-h8-v1-guest-auto-model.json)、[2層のゲスト探索照合](../results/2026-11-06/halfkp-nnue-w16-h0-v1-guest-nodes-parity.json)、[3層のゲスト探索照合](../results/2026-11-06/halfkp-nnue-w16-h8-v1-guest-nodes-parity.json)。[実時間比較計画](../manifests/halfkp-nnue-w16-development-plan-v1.json)を固定し、2層、3層の順に同じ幅8対照との全件交互比較を行う。
