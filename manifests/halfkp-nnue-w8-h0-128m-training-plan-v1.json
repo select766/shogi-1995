@@ -1,0 +1,77 @@
+{
+  "created_at_utc": "2026-11-06T14:30:40.291740+00:00",
+  "created_from_commit": "455888b3b997617a8f9f7e347afd1d3c18fbb5cf",
+  "status": "prepared; preprocessing must finish before execution",
+  "choice": "width8 hidden0 retained after all three full1024 development comparisons; non-QAT; no final test used",
+  "preprocessing": {
+    "state": ".local/jobs/halfkp-128m-after-width16-v1.json",
+    "required_status": "complete",
+    "plan": "manifests/halfkp-128m-after-width16-plan-v1.json",
+    "plan_sha256": "42e6b8657674c7baf1a49d5d5eb077c4b079b7cbcab1b903040f651158894f3b",
+    "require": "worker terminal, raw prefix/validation verified, full ordinary qsearch/shuffle/encoding complete"
+  },
+  "validation_manifest_sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+  "data_manifest_policy": "record completed train manifest hash before launch; trainer verifies feature/target hashes and exclusion-validation identity",
+  "code_sha256": {
+    "scripts/train-halfkp-nnue.py": "83195742ad4501df6ca1b227fbccd03223d4d3153cb2b11b195d2ad7ba235d67",
+    "scripts/validate-halfkp-nnue.py": "8e67bb3ccb371c8a1a203692e6debd08e69471b8615a677f9cff84dd8cc57073",
+    "src/shogi1995/halfkp_features.py": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+    "src/shogi1995/halfkp_network.py": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023",
+    "src/shogi1995/tiny_quant.py": "27d0c39d2e6c60aeb0776aca6e590912c84f081f8c8835ae9f4529fcff118967"
+  },
+  "training": {
+    "seed": 20261106,
+    "width": 8,
+    "hidden": 0,
+    "qat": false,
+    "batch": 16384,
+    "chunk_records": 2000000,
+    "learning_rate": 0.003,
+    "minimum_epochs": 40,
+    "minimum_examples": 2500000000,
+    "max_epochs": 100,
+    "plateau_window": 5,
+    "train_loss_range_max": 5e-05,
+    "validation_loss_range_max": 2e-05,
+    "maximum_lr": 9e-05
+  },
+  "compute_note": "128m raw yields fewer encoded rows after exclusions; minimum40epochs uses approximately5.1b examples, twice the64m comparison training; data-size and total training compute both increase, not a compute-matched ablation",
+  "steps": [
+    {
+      "description": "train from fresh initialization to unchanged saturation rule",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/train-halfkp-nnue.py",
+        "--data",
+        "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-128m-v1",
+        "--output",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-128m-v1",
+        "--width",
+        "8",
+        "--hidden",
+        "0",
+        "--seed",
+        "20261106",
+        "--max-epochs",
+        "100"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h0-128m-v1-training.log"
+    },
+    {
+      "description": "validate exact selected checkpoint and full integer validation after convergence",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/validate-halfkp-nnue.py",
+        "--model",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-128m-v1",
+        "--validation",
+        "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-128m-v1/validation",
+        "--output",
+        "results/2026-11-06/halfkp-nnue-w8-h0-128m-v1-quantization.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h0-128m-v1-quantization.log"
+    }
+  ],
+  "execution_policy": "no timing measurements while preprocessing, GPU training or validation live; no automatic restart on observation timeout; stop and investigate failed saturation/validation",
+  "strength_protocol": "freeze model and verify independent integer/native/guest parity; compare64m and128m weights using identical qualified runtime, full1024 development, ordinary2000ms, block256 AB/BA; only after selection use independent4096 test once"
+}

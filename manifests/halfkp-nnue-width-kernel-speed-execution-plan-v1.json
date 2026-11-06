@@ -1,0 +1,162 @@
+{
+  "created_at_utc": "2026-11-06T14:30:40.291740+00:00",
+  "parent_plan_sha256": "594dc856060224d76d3f7ed07b2c00e5c55f66c9b693a63ffbe150c7a78a69d5",
+  "status": "prepared; no speed measured yet",
+  "validation": {
+    "path": "results/2026-11-06/halfkp-nnue-width-kernel-validation-v1.json",
+    "sha256": "fb180e8f888a3cd47c7500a864f34eba5bc270dc1d9699556e652c66d16daeba"
+  },
+  "timing_gate": "all128m preprocessing, GPU training/validation, builds, other VM/timing jobs terminal; verify frozen hashes immediately before execution",
+  "protocol": {
+    "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+    "dataset_sha256": "60f527d8c3aa9c1ae74c9ba34d9dfadef7cc02f5d4318673c9932f80af1689c8",
+    "positions": 256,
+    "nodes": 10000,
+    "block_size": 64,
+    "order": "AB/BA alternating; one VM at a time",
+    "gate": "all preprocessing/training/builds and other timing jobs terminal; frozen hashes verified",
+    "required": "same weights, all256 bestmoves/finalnodes/completeddepths equal, operational0; paired bootstrap10000 seed20261106 median host-time saving lower95>0; inspect all4 block medians",
+    "scope": "speed for each fixed trained model; no claim that time saved directly equals strength"
+  },
+  "runs": [
+    {
+      "model": "halfkp-nnue-w8-h0",
+      "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "baseline": {
+        "manifest": "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+        "sha256": "71724b3087e494734b5634cbb4d16ed2c6af79c543bacac15b38b8db055b4099"
+      },
+      "candidate": {
+        "manifest": "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+        "sha256": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3"
+      },
+      "steps": [
+        {
+          "argv": [
+            "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+            "scripts/evaluate-pair.py",
+            "--baseline",
+            "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+            "--candidate",
+            "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+            "--dataset",
+            "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+            "--output",
+            ".local/evaluation/halfkp-nnue-w8-h0-width-kernel-speed-v1",
+            "--block-size",
+            "64",
+            "--nodes",
+            "10000"
+          ],
+          "log": "/tmp/shogi-halfkp-nnue-w8-h0-width-kernel-speed-v1.log"
+        },
+        {
+          "argv": [
+            "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+            "scripts/compare-fixed-node-speed.py",
+            ".local/evaluation/halfkp-nnue-w8-h0-width-kernel-speed-v1/baseline.json",
+            ".local/evaluation/halfkp-nnue-w8-h0-width-kernel-speed-v1/candidate.json",
+            "--output",
+            "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-speed-v1.json"
+          ],
+          "log": "/tmp/shogi-halfkp-nnue-w8-h0-width-kernel-speed-summary-v1.log"
+        }
+      ]
+    },
+    {
+      "model": "halfkp-nnue-w16-h0",
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "baseline": {
+        "manifest": "manifests/halfkp-nnue-w16-h0-output32-v1-candidate.json",
+        "sha256": "d784b10b86a0956c8ec097d01e8996796b4369aa5edbacd63dc3db7a8b29fc75"
+      },
+      "candidate": {
+        "manifest": "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+        "sha256": "4ec48ecbe4f0dd93b7b528ab94124aecf7542ca4628e56214a1a470560091d07"
+      },
+      "steps": [
+        {
+          "argv": [
+            "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+            "scripts/evaluate-pair.py",
+            "--baseline",
+            "manifests/halfkp-nnue-w16-h0-output32-v1-candidate.json",
+            "--candidate",
+            "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+            "--dataset",
+            "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+            "--output",
+            ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1",
+            "--block-size",
+            "64",
+            "--nodes",
+            "10000"
+          ],
+          "log": "/tmp/shogi-halfkp-nnue-w16-h0-width-kernel-speed-v1.log"
+        },
+        {
+          "argv": [
+            "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+            "scripts/compare-fixed-node-speed.py",
+            ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/baseline.json",
+            ".local/evaluation/halfkp-nnue-w16-h0-width-kernel-speed-v1/candidate.json",
+            "--output",
+            "results/2026-11-06/halfkp-nnue-w16-h0-width-kernel-speed-v1.json"
+          ],
+          "log": "/tmp/shogi-halfkp-nnue-w16-h0-width-kernel-speed-summary-v1.log"
+        }
+      ]
+    },
+    {
+      "model": "halfkp-nnue-w16-h8",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+      "baseline": {
+        "manifest": "manifests/halfkp-nnue-w16-h8-output32-v1-candidate.json",
+        "sha256": "c3c27b7d30494da8ec8e1eb053f206d1fbe9af869dd64dc5a2081d92287cdbbd"
+      },
+      "candidate": {
+        "manifest": "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+        "sha256": "c71da308dd5fe55c957eec334b9f9bab9bd08f2075b74dfaa98f0f94c43dc07c"
+      },
+      "steps": [
+        {
+          "argv": [
+            "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+            "scripts/evaluate-pair.py",
+            "--baseline",
+            "manifests/halfkp-nnue-w16-h8-output32-v1-candidate.json",
+            "--candidate",
+            "manifests/halfkp-nnue-w16-h8-width-kernel-v1-candidate.json",
+            "--dataset",
+            "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+            "--output",
+            ".local/evaluation/halfkp-nnue-w16-h8-width-kernel-speed-v1",
+            "--block-size",
+            "64",
+            "--nodes",
+            "10000"
+          ],
+          "log": "/tmp/shogi-halfkp-nnue-w16-h8-width-kernel-speed-v1.log"
+        },
+        {
+          "argv": [
+            "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+            "scripts/compare-fixed-node-speed.py",
+            ".local/evaluation/halfkp-nnue-w16-h8-width-kernel-speed-v1/baseline.json",
+            ".local/evaluation/halfkp-nnue-w16-h8-width-kernel-speed-v1/candidate.json",
+            "--output",
+            "results/2026-11-06/halfkp-nnue-w16-h8-width-kernel-speed-v1.json"
+          ],
+          "log": "/tmp/shogi-halfkp-nnue-w16-h8-width-kernel-speed-summary-v1.log"
+        }
+      ]
+    }
+  ],
+  "code_sha256": {
+    "scripts/evaluate-pair.py": "1a8ceeec13eeebc4920bbc03646a3eeec3dd79db7ef2cafc6d5f0fa08a32a03b",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/compare-fixed-node-speed.py": "dcbef50770e1e975b1b4c977f1ce7ac43cfeda43939b9e57d891185ba974ba4c",
+    "src/shogi1995/speed_comparison.py": "4fd7c262692c62ac7ae71d5123f23b94533ce75de8d95a60c98e02b3c219aa6e"
+  },
+  "adoption": "retain only specialized widths supported by target speed evidence; report inconclusive or slower cases; then repeat full1024 ordinary2000ms model selection with chosen runtime before independent final test"
+}
