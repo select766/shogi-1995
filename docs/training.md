@@ -97,3 +97,11 @@ GPUへ全データを載せられない規模向けに`--chunk-records`を追加
 `scripts/prepare-usi-profile.py --manifest <固定候補> --output <新規保存先>`は、候補イメージをコピーし、ゲストの`/engine_options.txt`でEvalFileだけを固定する。エンジン・モデルの実バイトが変わっていないことを照合し、ShogiHomeから選べる`run.sh`を作る。現在の既定イメージには手を加えない。設定ファイルは実行ファイルと同じディレクトリから読まれるため、ゲストでは`/`へ置く。
 
 EvalFileをクライアントから送らない起動でも、実ゲストの16局面で参照値と一致し、モデルが有効だった。NetworkDelayとNetworkDelay2は引き続き独立して変更でき、双方を変更してからisreadyを送っても維持された。[ゲストの設定検証](../results/2026-11-06/usi-auto-model-guest.json)。これはUSIの検証であり、学習版のShogiHome画面操作や棋力の確認とは区別する。
+
+## 履歴の描画
+
+`requirements-plotting.txt`を専用venvに入れると、測定の完走後に時系列のSVG・PNGも更新する。描画はVM終了後の集計段階で行い、思考時間には含めない。手動更新は`scripts/plot-measurement-history.py`。既定は86Boxの全件測定だけを対象とし、32局面のsmokeや256局面ブロックなど元集合の一部分は除く。異なる比較条件は別パネルにし、各点にWilson 95%区間を付ける。
+
+描画のメタデータは`measurement-history.plot.json`に保存し、履歴本体の`measurement-history.json`と分離する。入力のCSV・JSONが変わらないこと、二度の描画でSVG・PNGが一致すること、入力を上書きする保存先を拒否することを検証した。描画の失敗では測定結果・表・CSVを破棄しない。図の区間だけで改善を確定せず、採用判断には対応あり比較を使う。
+
+描画ライブラリ追加時の依存解決でNumPyが更新されたため、評価用の固定依存を含むrequirementsから入れ直し、NumPy 1.26.4・cshogi 1.1.0・SciPy 1.17.1を維持した。進行中プロセスは元のNumPyを保持していることを確認し、形式のサイズ・合法手生成・21件の検査も再確認した。描画メタデータの保存名の衝突は修正し、コミット済み履歴と原測定明細から復元した履歴の全ハッシュと数値を照合した。

@@ -2,7 +2,7 @@
 
 各行は完走した一回の測定。同じ `comparison_group` の行は、評価局面・標本数・時間またはノード数・共通オプション・実行環境が同じ。異なる条件の一致率を一つの成績系列として接続しない。
 
-[CSV](../results/measurement-history.csv) / [JSON](../results/measurement-history.json)。グラフの横軸には `finished_at_utc`、縦軸には `accuracy_percent` を使い、`comparison_group` で系列を分ける。レーティングは未測定のため空欄。
+[CSV](../results/measurement-history.csv) / [JSON](../results/measurement-history.json) / [時系列グラフ（SVG）](../results/measurement-history.svg)。グラフの横軸には `finished_at_utc`、縦軸には `accuracy_percent` を使い、`comparison_group` で系列を分ける。レーティングは未測定のため空欄。
 
 86BoxはPentium 100 MHz・RAM 32 MiB、実時間評価は通常の秒読み2秒。NetworkDelayとNetworkDelay2はともに0。nativeの固定ノード試験はホスト診断であり、Pentiumの実時間評価とは分ける。機械構成と依存物は評価計画およびassets manifestに固定する。
 
@@ -29,5 +29,10 @@
 | 11/06 11:49:18 | [tiny-v7-sym-early](../results/2026-11-06/tiny-v7-sym-early-20261106T024918430625Z-tiny-v7-sym-early-86box-quick256.json) | 86box / 2000ms / quick 256局面 | 90/256 | 35.16% (29.57–41.19) | `b40cc88` | 左右対称・幅32の線形出力、量子化なし学習でepoch途中のcheckpointを選択 |
 | 11/06 12:00:28 | [tiny-v3-small](../results/2026-11-06/tiny-v3-small-20261106T030028879349Z-tiny-v3-small-86box-quick256.json) | 86box / 2000ms / quick 256局面 | 90/256 | 35.16% (29.57–41.19) | `52ab271` | 1600万局面、全玉位置特徴、幅8・隠れ8へ縮小して128乗算 |
 | 11/06 12:11:38 | [tiny-v5-sym-dense](../results/2026-11-06/tiny-v5-sym-dense-20261106T031138249268Z-tiny-v5-sym-dense-86box-quick256.json) | 86box / 2000ms / quick 256局面 | 85/256 | 33.20% (27.72–39.18) | `52ab271` | 1600万局面、左右対称95400特徴、幅16・隠れ8の256乗算 |
+| 11/06 12:25:47 | [material-nopic-v1](../results/2026-11-06/material-nopic-v1-20261106T032547540093Z-material-nopic-v1-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 76/256 | 29.69% (24.42–35.55) | `859cc2e` | 駒得評価のみ、静的PentiumビルドからPIC処理を除去 |
+| 11/06 12:25:53 | [tiny-v7-nopic](../results/2026-11-06/tiny-v7-nopic-20261106T032553408899Z-tiny-v7-nopic-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 91/256 | 35.55% (29.94–41.58) | `859cc2e` | tiny-v7と同じ学習重み、静的PentiumビルドからPIC処理を除去 |
+| 11/06 12:25:58 | [tiny-v3-nopic](../results/2026-11-06/tiny-v3-nopic-20261106T032558827475Z-tiny-v3-nopic-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 84/256 | 32.81% (27.35–38.78) | `859cc2e` | tiny-v3と同じ学習重み、静的PentiumビルドからPIC処理を除去 |
+| 11/06 12:43:22 | [material-v1](../results/2026-11-06/material-v1-20261106T034322121755Z-000-baseline.json) | 86box / 2000ms / development 256局面 | 80/256 | 31.25% (25.88–37.17) | `06219a9` | 駒得評価の基準版（学習なし） |
+| 11/06 12:54:36 | [tiny-v7-nopic-usi](../results/2026-11-06/tiny-v7-nopic-usi-20261106T035436933139Z-000-candidate.json) | 86box / 2000ms / development 256局面 | 89/256 | 34.77% (29.20–40.79) | `859cc2e` | tiny-v7と同じ学習重み、静的PentiumビルドからPIC処理を除去、USI通常起動でも同じ評価ファイルを自動設定 |
 
 反則・異常終了・時間超過の件数、モデル・バイナリ・イメージのSHA、共通設定、対応あり比較の元になる各局面の指し手はCSV/JSONおよびリンク先の明細に保存する。

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "versions": {
+    "numpy": "1.26.4",
+    "cshogi": "1.1.0",
+    "scipy": "1.17.1",
+    "matplotlib": "3.9.2",
+    "contourpy": "1.3.3"
+  },
+  "packed_sfen_bytes": 40,
+  "hcpe_bytes": 38,
+  "starting_legal_moves": 30
+}

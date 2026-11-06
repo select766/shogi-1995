@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "measurement_data_unchanged": true,
+  "separate_plot_metadata": true,
+  "deterministic_svg_and_png": true,
+  "invalid_output_path_rejected": true,
+  "registry_rows_verified": 24,
+  "all_evidence_hashes_and_scores_verified": true,
+  "automatic_update_and_locking_passed": true
+}

@@ -1,0 +1,34 @@
+{
+  "id": "tiny-v3-nopic-usi",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "5696f777a4df99b2e2d8f9ea4ef7c4919b65b262696cdf7a172eb433edfe8adc",
+  "image_sha256": "125a5258fdf7cd5d424c013bbfbf6f15ad7bcf274295fabc892104428814acaa",
+  "source_commit": "859cc2e8f757d2c978feeea6846141349fdf41cf",
+  "source_tree_sha256": "ab31291f44d07f13eeead64da1cc76e956621f4cf1b81d8789292892c6020ada",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "63a5b6b85f263cdf819f90bab784bc04fc8c92cd0cdab8fe71dde53c2e31bb09",
+  "feature_difference": "tiny-v3\u3068\u540c\u3058\u5b66\u7fd2\u91cd\u307f\u3001\u9759\u7684Pentium\u30d3\u30eb\u30c9\u304b\u3089PIC\u51e6\u7406\u3092\u9664\u53bb\u3001USI\u901a\u5e38\u8d77\u52d5\u3067\u3082\u540c\u3058\u8a55\u4fa1\u30d5\u30a1\u30a4\u30eb\u3092\u81ea\u52d5\u8a2d\u5b9a",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/profiles/tiny-v3-nopic-self-configuring/root.ext2"
+  ],
+  "model_sha256": "4019be207d18fc74b4d2b9fafed0822190b3b9c7488f3db3f780a1b83d3b9017",
+  "model_bytes": 2747884,
+  "model_origin": "/home/select766/shogi/shogi-1995/.local/candidates/tiny-v3-small/model.bin",
+  "prepared_at_utc": "2026-11-06T03:32:12.959679+00:00",
+  "preparation_commit": "859cc2e8f757d2c978feeea6846141349fdf41cf",
+  "preparation_worktree_dirty": true,
+  "preparation_script_sha256": "ed7b987cfe632a67edd3468d9995e49f3397207a0b30b8d1f2167c29c668518d",
+  "parent_manifest_sha256": "8decce862e88d768122282d1b309d2ee986e65e059b67245c1e41afabe0f8b1f",
+  "configured_guest_options": {
+    "EvalFile": "/eval/model.bin"
+  }
+}

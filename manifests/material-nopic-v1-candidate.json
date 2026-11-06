@@ -1,0 +1,21 @@
+{
+  "id": "material-nopic-v1",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "5696f777a4df99b2e2d8f9ea4ef7c4919b65b262696cdf7a172eb433edfe8adc",
+  "image_sha256": "fd84a7d6d76b246148306bc38288ba1153f5c2a7d2d8071f4a303448846a18e7",
+  "source_commit": "859cc2e8f757d2c978feeea6846141349fdf41cf",
+  "source_tree_sha256": "ab31291f44d07f13eeead64da1cc76e956621f4cf1b81d8789292892c6020ada",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "63a5b6b85f263cdf819f90bab784bc04fc8c92cd0cdab8fe71dde53c2e31bb09",
+  "feature_difference": "\u99d2\u5f97\u8a55\u4fa1\u306e\u307f\u3001\u9759\u7684Pentium\u30d3\u30eb\u30c9\u304b\u3089PIC\u51e6\u7406\u3092\u9664\u53bb",
+  "engine_options": {},
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/candidates/material-nopic-v1/root.ext2"
+  ]
+}

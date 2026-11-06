@@ -6,6 +6,7 @@ import fcntl
 from datetime import datetime, timedelta, timezone
 import hashlib
 import io
+import importlib.util
 import json
 from pathlib import Path
 import subprocess
@@ -131,7 +132,7 @@ def main():
     atomic(ROOT/'results/measurement-history.csv',buffer.getvalue())
     lines = ['# エンジンの測定履歴','',
              '各行は完走した一回の測定。同じ `comparison_group` の行は、評価局面・標本数・時間またはノード数・共通オプション・実行環境が同じ。異なる条件の一致率を一つの成績系列として接続しない。', '',
-             '[CSV](../results/measurement-history.csv) / [JSON](../results/measurement-history.json)。グラフの横軸には `finished_at_utc`、縦軸には `accuracy_percent` を使い、`comparison_group` で系列を分ける。レーティングは未測定のため空欄。', '',
+             '[CSV](../results/measurement-history.csv) / [JSON](../results/measurement-history.json) / [時系列グラフ（SVG）](../results/measurement-history.svg)。グラフの横軸には `finished_at_utc`、縦軸には `accuracy_percent` を使い、`comparison_group` で系列を分ける。レーティングは未測定のため空欄。', '',
              '86BoxはPentium 100 MHz・RAM 32 MiB、実時間評価は通常の秒読み2秒。NetworkDelayとNetworkDelay2はともに0。nativeの固定ノード試験はホスト診断であり、Pentiumの実時間評価とは分ける。機械構成と依存物は評価計画およびassets manifestに固定する。', '',
              '日時の†は、旧結果ファイルの更新日時と所要時間から復元した概算。以後は開始・終了UTCを測定器自身が記録する。ソースコミットが未特定の旧試作は「未確定」とし、実行ファイル・モデル・ソースツリーのSHAで追跡する。測定器のコミットとソースのコミットはCSVに別々に記録する。', '',
              '| 測定終了日時（JST） | エンジン | 条件 / 集合 | 一致数 | 一致率（Wilson 95%） | ソースcommit | 主な機能差分 |',
@@ -147,6 +148,12 @@ def main():
         lines.append(f"| {stamp} | [{r['engine_id']}]({target}) | {condition} | {r['matches']}/{r['positions']} | {interval} | {commit} | {feature} |")
     lines += ['', '反則・異常終了・時間超過の件数、モデル・バイナリ・イメージのSHA、共通設定、対応あり比較の元になる各局面の指し手はCSV/JSONおよびリンク先の明細に保存する。', '']
     atomic(ROOT/'docs/measurement-history.md','\n'.join(lines))
+    # The renderer takes the same lock and reads one immutable CSV snapshot.
+    fcntl.flock(lock,fcntl.LOCK_UN)
+    if importlib.util.find_spec('matplotlib') is not None:
+        plotted=subprocess.run([sys.executable,str(ROOT/'scripts/plot-measurement-history.py')],cwd=ROOT,capture_output=True,text=True)
+        if plotted.returncode:
+            print('plot update failed; measurement tables remain available: '+plotted.stderr,file=sys.stderr)
     print(f"updated measurement history: {row['run_id']} ({len(history)} runs)")
 
 

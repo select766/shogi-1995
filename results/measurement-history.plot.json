@@ -1,0 +1,85 @@
+{
+  "input_sha256": "905049ceef177ac3d1f4d9a39309d31dacd7d9a4fa1dc3f44c0bce43fb50f593",
+  "plotter_sha256": "aa705ca49190ef6b21f653d68aaaab0da8cef1887fbf2e2b5e722d5c443a877b",
+  "matplotlib": "3.9.2",
+  "backend": "86box",
+  "include_subsets": false,
+  "groups": [
+    "33ccaf2e75e7"
+  ],
+  "points": [
+    {
+      "run_id": "material-v1-quick256",
+      "comparison_group": "33ccaf2e75e7",
+      "finished_at_utc": "2026-11-06T01:36:29.613769+00:00",
+      "accuracy_percent": "31.25",
+      "wilson95_lower_percent": "25.884588878587177",
+      "wilson95_upper_percent": "37.169805737383",
+      "source_commit": "06219a9480c5fbfd46de1cbe167ba4de4cea37e6",
+      "result_sha256": "10630bf22a15e887cc0a5d2bf8f447f224ad162a8b54c8307a1eb593b7861c24"
+    },
+    {
+      "run_id": "tiny-v2-20261106T021551626893Z-tiny-v2-86box-quick256",
+      "comparison_group": "33ccaf2e75e7",
+      "finished_at_utc": "2026-11-06T02:15:51.626893+00:00",
+      "accuracy_percent": "32.03125",
+      "wilson95_lower_percent": "26.617385334096994",
+      "wilson95_upper_percent": "37.97640950620776",
+      "source_commit": "e04f6fca89535d94a8a48fda49560a8351f293ac",
+      "result_sha256": "f38b44163af8b48441d10e389164e102e94d9ff8d531f9cc7193dab2b81811b7"
+    },
+    {
+      "run_id": "tiny-v7-sym-early-20261106T024918430625Z-tiny-v7-sym-early-86box-quick256",
+      "comparison_group": "33ccaf2e75e7",
+      "finished_at_utc": "2026-11-06T02:49:18.430625+00:00",
+      "accuracy_percent": "35.15625",
+      "wilson95_lower_percent": "29.5661910800322",
+      "wilson95_upper_percent": "41.18520465761086",
+      "source_commit": "b40cc88757f86344b9968b4c5ea6784e93db6f45",
+      "result_sha256": "f7fb86831cfc3d1bed3176b57ee93c5d0a5a21a98f92b30151ed4d19c8f62a54"
+    },
+    {
+      "run_id": "tiny-v3-small-20261106T030028879349Z-tiny-v3-small-86box-quick256",
+      "comparison_group": "33ccaf2e75e7",
+      "finished_at_utc": "2026-11-06T03:00:28.879349+00:00",
+      "accuracy_percent": "35.15625",
+      "wilson95_lower_percent": "29.5661910800322",
+      "wilson95_upper_percent": "41.18520465761086",
+      "source_commit": "52ab271c674b8188d7d4c4bb5b31cf732f5ae8e2",
+      "result_sha256": "46b11638ea94d8b3de3aac2907c16c1751145a7c975aad16b4ad5f27929a3db2"
+    },
+    {
+      "run_id": "tiny-v5-sym-dense-20261106T031138249268Z-tiny-v5-sym-dense-86box-quick256",
+      "comparison_group": "33ccaf2e75e7",
+      "finished_at_utc": "2026-11-06T03:11:38.249268+00:00",
+      "accuracy_percent": "33.203125",
+      "wilson95_lower_percent": "27.71993280647148",
+      "wilson95_upper_percent": "39.18296237033514",
+      "source_commit": "52ab271c674b8188d7d4c4bb5b31cf732f5ae8e2",
+      "result_sha256": "2c3ad6427bb487b8dd5286969391cd1eed4d2812a1a982d47949e19bfb3aca45"
+    }
+  ],
+  "excluded_run_ids": [
+    "material-v1-smoke32",
+    "psqt-v2-smoke32",
+    "tiny-v1-smoke32",
+    "material-v1-native-nodes10000-quick256",
+    "psqt-v2-native-nodes10000-quick256-v2",
+    "tiny-v1-native-nodes10000-quick256-v2",
+    "tiny-v1-ancestor-20261106T020209466701Z-tiny-v1-ancestor-native-nodes10000-quick256",
+    "tiny-v2-20261106T020214773163Z-tiny-v2-native-nodes10000-quick256",
+    "tiny-v1-ancestor-20261106T020437624490Z-tiny-v1-ancestor-86box-quick32",
+    "tiny-v3-small-20261106T022730550025Z-tiny-v3-small-native-nodes10000-quick256",
+    "tiny-v4-sym-linear-20261106T022736434124Z-tiny-v4-sym-linear-native-nodes10000-quick256",
+    "tiny-v5-sym-dense-20261106T022742222343Z-tiny-v5-sym-dense-native-nodes10000-quick256",
+    "tiny-v6-sym-qat-20261106T023315941870Z-tiny-v6-sym-qat-native-nodes10000-quick256",
+    "tiny-v7-sym-early-20261106T023321838376Z-tiny-v7-sym-early-native-nodes10000-quick256",
+    "material-nopic-v1-20261106T032547540093Z-material-nopic-v1-native-nodes10000-quick256",
+    "tiny-v7-nopic-20261106T032553408899Z-tiny-v7-nopic-native-nodes10000-quick256",
+    "tiny-v3-nopic-20261106T032558827475Z-tiny-v3-nopic-native-nodes10000-quick256",
+    "material-v1-20261106T034322121755Z-000-baseline",
+    "tiny-v7-nopic-usi-20261106T035436933139Z-000-candidate"
+  ],
+  "svg_sha256": "1f1dbfe22f43d106f70624bd9c74610f5ea7ed20db1b86f6f501384b981978aa",
+  "png_sha256": "2a4c41c65bda3defa8e7d3cc02109e882e026b84993893b9dc42000c0758eb0f"
+}
