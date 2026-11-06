@@ -37,6 +37,8 @@ USIエンジンの実行ファイルとして、次の絶対パスを登録す�
 | USI_OwnBook | false |
 | USI_Ponder | false |
 
+学習モデル用の出力32bit版・幅固定版・隠れ層packed版の3つの固定バイナリでも、この既定Hash・Threads・最大手数・入玉規則を維持していることを[USI応答で確認](../results/2026-11-07/halfkp-runtime-default-options-v1.json)した。Hash 4 MiBへの設定も受理された。棋譜一致率の主測定とモデルごとの実ゲストRAM検証ではHash 2 MiBを使う。
+
 大会の持ち時間は先手3分、後手10分、双方1手ごとに2秒加算。ShogiHomeで設定し、対局側から残り時間と加算をUSIのbtime/wtime/binc/wincで送る。
 
 ブリッジは持ち時間を書き換えず、思考期限を計算して独自にstopを追加送信することもしない。時間管理はやねうら王の`NetworkDelay`／`NetworkDelay2`を使用する。初版にあった200 msの余裕を引いた自動stopは廃止した。受信したstopから3秒以内にbestmoveが返らない場合の異常検出は残している。
