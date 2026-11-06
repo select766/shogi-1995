@@ -1,0 +1,1 @@
+run_id,finished_at_utc,comparison_group,candidate_id,opponent_id,source_commit,measurement_commit,feature_difference,score_percent,elo_difference,elo95_lower,elo95_upper,elo_boundary,elo95_lower_boundary,elo95_upper_boundary,result_path,result_sha256
