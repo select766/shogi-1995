@@ -24,7 +24,7 @@ def main():
     out.mkdir(parents=True)
     model=ROOT/'.local/guest-root/eval/model.bin';model.parent.mkdir(exist_ok=True)
     shutil.copyfile(args.model,model)
-    shutil.copyfile(ROOT/'.local/guest-root/shogi',out/'shogi')
+    shutil.copy2(ROOT/'.local/guest-root/shogi',out/'shogi')
     shutil.copyfile(args.model,out/'model.bin')
     subprocess.run(['bash','scripts/build-guest-probe.sh','--engine',str(out/'root.ext2')],cwd=ROOT,check=True)
     h=hashlib.sha256()

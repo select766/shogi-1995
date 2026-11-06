@@ -1,0 +1,24 @@
+{
+  "positions": 32768,
+  "model_sha256": "170b59715c683c684c14b928f602eae3c0d61a811186f0a7f7479a9ff556792c",
+  "material": {
+    "target_clipped_rmse": 1079.3436279296875,
+    "sign_accuracy": 0.686920166015625,
+    "teacher_cross_entropy": 0.6967110633850098
+  },
+  "floating": {
+    "target_clipped_rmse": 792.7484932495624,
+    "sign_accuracy": 0.744415283203125,
+    "teacher_cross_entropy": 0.6032276153564453
+  },
+  "quantized": {
+    "target_clipped_rmse": 793.0936051836832,
+    "sign_accuracy": 0.741363525390625,
+    "teacher_cross_entropy": 0.6034226417541504
+  },
+  "quantization_drift": {
+    "rmse": 24.655135470174237,
+    "absolute_p99": 67.32697265624999,
+    "absolute_max": 112.71173095703125
+  }
+}

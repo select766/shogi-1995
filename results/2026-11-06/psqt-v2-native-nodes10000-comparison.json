@@ -1,0 +1,19 @@
+{
+  "both_correct": 51,
+  "baseline_only": 25,
+  "candidate_only": 27,
+  "both_wrong": 153,
+  "difference": 0.0078125,
+  "bootstrap_95": {
+    "lower": -0.046875,
+    "upper": 0.0625
+  },
+  "replicates": 10000,
+  "seed": 20261106,
+  "limitation": "position bootstrap; unknown within-game correlation is not accounted for",
+  "baseline": ".local/evaluation/material-v1-native-nodes10000-quick256.json",
+  "candidate": ".local/evaluation/psqt-v2-native-nodes10000-quick256-v2.json",
+  "baseline_accuracy": 0.296875,
+  "candidate_accuracy": 0.3046875,
+  "candidate_operational_pass": true
+}

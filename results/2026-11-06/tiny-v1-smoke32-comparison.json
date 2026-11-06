@@ -1,0 +1,19 @@
+{
+  "both_correct": 5,
+  "baseline_only": 7,
+  "candidate_only": 2,
+  "both_wrong": 18,
+  "difference": -0.15625,
+  "bootstrap_95": {
+    "lower": -0.34375,
+    "upper": 0.03125
+  },
+  "replicates": 10000,
+  "seed": 20261106,
+  "limitation": "position bootstrap; unknown within-game correlation is not accounted for",
+  "baseline": ".local/evaluation/baseline-smoke32-v2.json",
+  "candidate": ".local/evaluation/tiny-v1-smoke32.json",
+  "baseline_accuracy": 0.375,
+  "candidate_accuracy": 0.21875,
+  "candidate_operational_pass": true
+}
