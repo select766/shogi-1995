@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <cstdint>
+#include <limits>
 #include <vector>
 
 namespace YaneuraOu { namespace Eval {
@@ -21,14 +22,15 @@ unsigned tiny_width=0,tiny_hidden=0;
 std::vector<int16_t> tiny_embedding,tiny_fc,tiny_out;
 std::vector<int32_t> tiny_bias,tiny_fc_bias;
 int32_t tiny_out_bias=0;
+bool tiny_output32=false;
 unsigned tiny_generation=1;
 bool tiny_verify=false;
 uint64_t tiny_incremental_count=0,tiny_refresh_count=0,tiny_verification_count=0;
 
 void psqt_stats() {
-    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu\n",
+    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu output_bits=%u\n",
                 (unsigned long long)tiny_incremental_count,(unsigned long long)tiny_refresh_count,
-                (unsigned long long)tiny_verification_count);
+                (unsigned long long)tiny_verification_count,unsigned(tiny_loaded?(tiny_output32?32:64):0));
     std::fflush(stdout);
 }
 
@@ -40,6 +42,7 @@ template<class T> bool read_weights(FILE* file,std::vector<T>& values,size_t siz
 void psqt_options(OptionsMap& options) {
     options.add("EvalFile",Option("<none>",[](const Option& option) {
         psqt_path=std::string(option);psqt_loaded=false;tiny_loaded=false;halfkp_linear_loaded=false;
+        tiny_output32=false;
         if(++tiny_generation==0)++tiny_generation;
         return std::nullopt;
     }));
@@ -86,6 +89,17 @@ void psqt_load() {
     if(ok)ok=std::fgetc(file)==EOF;
     if(file)std::fclose(file);
     if(!ok) { std::printf("info string invalid evaluation file: %s\n",psqt_path.c_str());std::fflush(stdout);std::exit(1); }
+    if(tiny_loaded) {
+        // Every head activation is in [0,128]. Include every possible partial
+        // sum and reserve space for the final absolute-value rounding.
+        int64_t low=tiny_out_bias,high=tiny_out_bias;
+        for(int16_t weight:tiny_out) {
+            if(weight<0)low+=int64_t(weight)*128;
+            else high+=int64_t(weight)*128;
+        }
+        constexpr int64_t limit=int64_t(std::numeric_limits<int32_t>::max())-128;
+        tiny_output32=low>=-limit && high<=limit;
+    }
     psqt_loaded=true;
     std::printf("info string shogi1995 %s loaded: %s\n",halfkp_linear_loaded?"HalfKP linear":tiny_loaded?"tiny network":"PSQT",psqt_path.c_str());std::fflush(stdout);
 }
@@ -132,6 +146,19 @@ void tiny_full(const Position& pos,int perspective,int king,int* accumulator) {
             int count=hand_count(pos.hand_of(Color(color)),types[pt]);
             if(count)tiny_add(accumulator,king,2106+(color!=perspective)*7+pt,count);
         }
+}
+
+template<class Sum> int tiny_correction(const int32_t* activation) {
+    Sum output=tiny_out_bias;
+    if(!tiny_hidden)
+        for(unsigned j=0;j<tiny_width*2;++j)output+=activation[j]*int(tiny_out[j]);
+    for(unsigned i=0;i<tiny_hidden;++i) {
+        int32_t sum=tiny_fc_bias[i];
+        for(unsigned j=0;j<tiny_width*2;++j)sum+=activation[j]*int(tiny_fc[i*tiny_width*2+j]);
+        int value=sum<=0?0:std::min(128,int((sum+32)/64));
+        output+=value*int(tiny_out[i]);
+    }
+    return output>=0?int((output+128)/256):-int((-output+128)/256);
 }
 
 int tiny_black(const Position& pos) {
@@ -202,16 +229,7 @@ int tiny_black(const Position& pos) {
     for(int relative=0;relative<2;++relative)
         for(unsigned j=0;j<tiny_width;++j)
             activation[relative*tiny_width+j]=std::max(0,std::min(128,state->tiny_accumulator[stm^relative][j]));
-    int64_t output=tiny_out_bias;
-    if(!tiny_hidden)
-        for(unsigned j=0;j<tiny_width*2;++j)output+=activation[j]*int(tiny_out[j]);
-    for(unsigned i=0;i<tiny_hidden;++i) {
-        int32_t sum=tiny_fc_bias[i];
-        for(unsigned j=0;j<tiny_width*2;++j)sum+=activation[j]*int(tiny_fc[i*tiny_width*2+j]);
-        int value=sum<=0?0:std::min(128,int((sum+32)/64));
-        output+=value*int(tiny_out[i]);
-    }
-    int correction=output>=0?int((output+128)/256):-int((-output+128)/256);
+    int correction=tiny_output32?tiny_correction<int32_t>(activation):tiny_correction<int64_t>(activation);
     int black=pos.state()->materialValue+(stm?-correction:correction);
     return std::max(-12000,std::min(12000,black));
 }
