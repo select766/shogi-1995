@@ -48,9 +48,10 @@ def main():
     p.add_argument('--output', required=True, type=Path)
     p.add_argument('--block-size', type=int, default=256)
     p.add_argument('--milliseconds', type=int, default=2000)
+    p.add_argument('--nodes', type=int, help='Fixed-node speed diagnostic; not the real-time strength metric')
     args = p.parse_args()
-    if args.block_size <= 0 or args.milliseconds <= 0:
-        p.error('block size and time must be positive')
+    if args.block_size <= 0 or args.milliseconds <= 0 or (args.nodes is not None and args.nodes <= 0):
+        p.error('block size, time and any node limit must be positive')
     variants = {key: json.loads(path.read_text()) for key, path in (('baseline', args.baseline), ('candidate', args.candidate))}
     manifest_paths={'baseline':args.baseline.resolve(),'candidate':args.candidate.resolve()}
     records = [json.loads(line) for line in args.dataset.read_text().splitlines() if line.strip()]
@@ -60,6 +61,8 @@ def main():
     identity = {'dataset_sha256': digest(args.dataset), 'sample_ids': [r['id'] for r in records],
                 'baseline_manifest_sha256': digest(args.baseline), 'candidate_manifest_sha256': digest(args.candidate),
                 'block_size': args.block_size, 'milliseconds': args.milliseconds}
+    if args.nodes is not None:
+        identity['nodes'] = args.nodes
     identity_path = args.output / 'identity.json'
     if identity_path.exists():
         if json.loads(identity_path.read_text()) != identity:
@@ -87,6 +90,8 @@ def main():
                     command.append('--guest-diagnostics')
                 if variant.get('search_diagnostics'):
                     command.append('--search-diagnostics')
+                if args.nodes is not None:
+                    command += ['--nodes', str(args.nodes)]
                 with output.with_suffix('.console.log').open('w') as log:
                     subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, check=True)
             result = json.loads(output.read_text())
@@ -96,7 +101,7 @@ def main():
             if (result['dataset_sha256'] != identity['dataset_sha256'] or result['sample_ids'] != expected_ids
                     or result['engine_sha256'] != variant['engine_sha256'] or result['engine_id'] != variant['id']
                     or result['engine_command'] != variant['command'] or result['model_options'] != variant.get('engine_options', {})
-                    or result['milliseconds'] != args.milliseconds or result['nodes'] is not None):
+                    or result['milliseconds'] != args.milliseconds or result['nodes'] != args.nodes):
                 raise ValueError(f'block identity mismatch: {output}')
             for manifest_key, result_key in (('image_sha256','guest_image_sha256'),('model_sha256','guest_model_sha256')):
                 if manifest_key in variant and result.get(result_key)!=variant[manifest_key]:
