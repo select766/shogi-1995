@@ -1,0 +1,94 @@
+{
+  "created_at_utc": "2026-11-06T14:37:31.717687+00:00",
+  "purpose": "memory-constrained three-layer experiment: width8 hidden8, narrower than the evaluated width16 hidden8;64m data held fixed against width8 hidden0",
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-nnue-w8-h0-128m-v1.json",
+    "pid": 440893,
+    "process_start_time": "5534902",
+    "plan_sha256": "0a93d3c2f6c5962807e803b2c32928f6d5666169ccb4cf799d15bacc0c691aa3"
+  },
+  "code_sha256": {
+    "scripts/train-halfkp-nnue.py": "83195742ad4501df6ca1b227fbccd03223d4d3153cb2b11b195d2ad7ba235d67",
+    "scripts/validate-halfkp-nnue.py": "8e67bb3ccb371c8a1a203692e6debd08e69471b8615a677f9cff84dd8cc57073",
+    "src/shogi1995/halfkp_features.py": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+    "src/shogi1995/halfkp_network.py": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023",
+    "src/shogi1995/tiny_quant.py": "27d0c39d2e6c60aeb0776aca6e590912c84f081f8c8835ae9f4529fcff118967",
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985"
+  },
+  "frozen_artifacts_sha256": {
+    "manifests/halfkp-nnue-w8-h0-128m-after-preprocessing-plan-v1.json": "0a93d3c2f6c5962807e803b2c32928f6d5666169ccb4cf799d15bacc0c691aa3"
+  },
+  "completed_inputs": {
+    "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v2/train/manifest.json": {
+      "sha256": "61128b71a90b2e63469749c27e00c4987439cb0d550ecc2642ad038e0e9d45d0",
+      "fields": {
+        "complete": true,
+        "records": 63977434
+      }
+    },
+    "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v2/validation/manifest.json": {
+      "sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+      "fields": {
+        "complete": true,
+        "records": 204662
+      }
+    },
+    "/home/select766/shogi/shogi-1995/results/2026-11-06/halfkp-nnue-w8-h0-128m-v1-quantization.json": {
+      "fields": {
+        "passed": true,
+        "converged": true,
+        "positions": 204662,
+        "checkpoint_export_exact_all_weights": true
+      }
+    }
+  },
+  "training": {
+    "seed": 20261106,
+    "width": 8,
+    "hidden": 8,
+    "qat": false,
+    "batch": 16384,
+    "learning_rate": 0.003,
+    "minimum_epochs": 40,
+    "minimum_examples": 2500000000,
+    "max_epochs": 100,
+    "plateau": "unchanged5epoch train range<=5e-5,val range<=2e-5,lr<=initial*0.03"
+  },
+  "steps": [
+    {
+      "description": "train compact width8 hidden8 from fresh initialization to the unchanged plateau rule",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/train-halfkp-nnue.py",
+        "--data",
+        "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v2",
+        "--output",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h8-v1",
+        "--width",
+        "8",
+        "--hidden",
+        "8",
+        "--seed",
+        "20261106",
+        "--max-epochs",
+        "100"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h8-v1-training.log"
+    },
+    {
+      "description": "validate converged selected checkpoint and all204662 integer validation positions",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/validate-halfkp-nnue.py",
+        "--model",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h8-v1",
+        "--validation",
+        "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v2/validation",
+        "--output",
+        "results/2026-11-06/halfkp-nnue-w8-h8-v1-quantization.json"
+      ],
+      "log": "/tmp/shogi-halfkp-nnue-w8-h8-v1-quantization.log"
+    }
+  ],
+  "policy": "one additional geometry only; preserve Nov7 15:00JST candidate-freeze target and final4096/20games budget; no timing while GPU jobs live; qualify native and guest integer/search/RAM before full1024 normal2000ms comparison against width8 hidden0 using the same adopted runtime; never tune on final test"
+}
