@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "pid": 480838,
+  "started_at_utc": "2026-11-06T16:10:10.342459+00:00",
+  "plan_sha256": "914d9e20f224af1afa0ce94e23a53fdcf125a862aae9512eb17f505b457f6fb5",
+  "completed_prerequisite_sha256": "b471024e314b0e4da4affb8d556400c9b78d4a136e814d77bb47d52fd68162ed",
+  "completed_inputs": {
+    "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v2/train/manifest.json": {
+      "sha256": "61128b71a90b2e63469749c27e00c4987439cb0d550ecc2642ad038e0e9d45d0",
+      "records": 63977434
+    },
+    "/home/select766/shogi/shogi-1995/.local/feature-cache/halfkp-v2/validation/manifest.json": {
+      "sha256": "e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16",
+      "records": 204662
+    },
+    "/home/select766/shogi/shogi-1995/results/2026-11-06/halfkp-nnue-w8-h0-128m-v1-quantization.json": {
+      "sha256": "ef1e56b8e15f37a296b54ffa5360d47aefb9af33a430780e3d398fe76320f77c",
+      "records": null
+    }
+  },
+  "execution_started_at_utc": "2026-11-06T16:10:10.343097+00:00",
+  "step": 2,
+  "description": "validate converged selected checkpoint and all204662 integer validation positions",
+  "log": "/tmp/shogi-halfkp-nnue-w8-h8-v1-quantization.log",
+  "child_pid": null,
+  "updated_at_utc": "2026-11-06T16:21:04.876758+00:00"
+}

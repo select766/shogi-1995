@@ -1,0 +1,60 @@
+{
+  "measured_at_utc": "2026-11-06T16:21:28.461797+00:00",
+  "commit": "577da53a30f7402f4cda5064e19044731545f4d3",
+  "script_sha256": "0a9f57216e6b832523d83508f775d3428342d2e675c425d0805cdc90373f0d42",
+  "scope": "integer arithmetic feasibility; no C++ implementation, target instruction proof, speed or strength claim",
+  "seed": 20261106,
+  "pair_cases": 9956,
+  "pair_exact": true,
+  "invalid_inputs_rejected": 4,
+  "max_low_product": 32640,
+  "max_middle_coefficient": 65280,
+  "lane_base": 65536,
+  "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+  "width": 8,
+  "hidden": 8,
+  "fc_min": -33,
+  "fc_max": 34,
+  "bias_min": -4784,
+  "bias_max": 9952,
+  "fc_all_int8": true,
+  "fc_partial_sum_bounds": [
+    [
+      -18864,
+      8656
+    ],
+    [
+      -1780,
+      12044
+    ],
+    [
+      -2134,
+      8874
+    ],
+    [
+      -5413,
+      10843
+    ],
+    [
+      -2720,
+      27360
+    ],
+    [
+      -5012,
+      12524
+    ],
+    [
+      -10033,
+      11343
+    ],
+    [
+      -3067,
+      14085
+    ]
+  ],
+  "applicable_to_model": true,
+  "activation_vectors": 260,
+  "verified_model_dots": 2080,
+  "guest_engine_changed": false,
+  "model_weights_changed": false
+}
