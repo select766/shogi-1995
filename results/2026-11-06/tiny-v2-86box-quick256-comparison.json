@@ -1,0 +1,19 @@
+{
+  "both_correct": 47,
+  "baseline_only": 33,
+  "candidate_only": 35,
+  "both_wrong": 141,
+  "difference": 0.0078125,
+  "bootstrap_95": {
+    "lower": -0.0546875,
+    "upper": 0.0703125
+  },
+  "replicates": 10000,
+  "seed": 20261106,
+  "limitation": "position bootstrap; unknown within-game correlation is not accounted for",
+  "baseline": ".local/evaluation/material-v1-quick256.json",
+  "candidate": ".local/evaluation/tiny-v2-86box-quick256.json",
+  "baseline_accuracy": 0.3125,
+  "candidate_accuracy": 0.3203125,
+  "candidate_operational_pass": true
+}
