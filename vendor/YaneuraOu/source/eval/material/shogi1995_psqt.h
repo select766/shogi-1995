@@ -16,6 +16,7 @@ bool tiny_loaded=false;
 bool halfkp_linear_loaded=false;
 std::vector<int32_t> halfkp_linear_weights;
 bool tiny_symmetric=false;
+bool tiny_standard_halfkp=false;
 unsigned tiny_width=0,tiny_hidden=0;
 std::vector<int16_t> tiny_embedding,tiny_fc,tiny_out;
 std::vector<int32_t> tiny_bias,tiny_fc_bias;
@@ -54,12 +55,16 @@ void psqt_load() {
     bool ok=file && std::fread(magic,1,8,file)==8;
     bool version1=ok && !std::memcmp(magic,"S95NN01\0",8);
     bool version2=ok && !std::memcmp(magic,"S95NN02\0",8);
-    if(version1 || version2) {
+    bool version3=ok && !std::memcmp(magic,"S95NN03\0",8);
+    if(version1 || version2 || version3) {
         uint32_t header[4];
-        ok=std::fread(header,4,4,file)==4 && (header[0]==171720 || (version2 && header[0]==95400)) && header[3]==2120
-            && header[1]>=1 && header[1]<=32 && header[2]<=32 && (version2 || header[2]>=1);
+        ok=std::fread(header,4,4,file)==4
+            && (version3?(header[0]==125388 && header[3]==1548):
+                         ((header[0]==171720 || (version2 && header[0]==95400)) && header[3]==2120))
+            && header[1]>=1 && header[1]<=32 && header[2]<=32 && (version2 || version3 || header[2]>=1);
         if(ok) {
             tiny_width=header[1];tiny_hidden=header[2];tiny_symmetric=header[0]==95400;
+            tiny_standard_halfkp=version3;
             ok=read_weights(file,tiny_embedding,size_t(header[0])*tiny_width)
                 && read_weights(file,tiny_bias,tiny_width)
                 && read_weights(file,tiny_fc,tiny_hidden*tiny_width*2)
@@ -87,7 +92,7 @@ void psqt_load() {
 
 void tiny_add(int* accumulator,int king,int feature,int count) {
     int king_index=tiny_symmetric?(king%9)*5+std::min(king/9,8-king/9):king;
-    const int16_t* weights=tiny_embedding.data()+size_t(king_index*2120+feature)*tiny_width;
+    const int16_t* weights=tiny_embedding.data()+size_t(king_index*(tiny_standard_halfkp?1548:2120)+feature)*tiny_width;
     for(unsigned j=0;j<tiny_width;++j)accumulator[j]+=int(weights[j])*count;
 }
 
@@ -108,6 +113,11 @@ int tiny_hand_index(PieceType piece) {
 void tiny_full(const Position& pos,int perspective,int king,int* accumulator) {
     constexpr PieceType types[]={PAWN,LANCE,KNIGHT,SILVER,GOLD,BISHOP,ROOK};
     for(unsigned j=0;j<tiny_width;++j)accumulator[j]=tiny_bias[j];
+    if(tiny_standard_halfkp) {
+        const auto* pieces=perspective==0?pos.eval_list()->piece_list_fb():pos.eval_list()->piece_list_fw();
+        for(int i=0;i<PIECE_NUMBER_KING;++i)tiny_add(accumulator,king,int(pieces[i]),1);
+        return;
+    }
     for(int square=0;square<81;++square)
         tiny_board_change(accumulator,king,perspective,pos.piece_on(Square(square)),square,1);
     for(int color=0;color<2;++color)
@@ -140,6 +150,15 @@ int tiny_black(const Position& pos) {
                 while(count) {
                     const StateInfo* change=changes[--count];
                     if(change->tiny_to<0)continue;
+                    if(tiny_standard_halfkp) {
+                        const auto& dirty=change->dirtyPiece;
+                        for(int i=0;i<dirty.dirty_num;++i) {
+                            if(dirty.pieceNo[i]>=PIECE_NUMBER_KING)continue;
+                            tiny_add(accumulator,king,int(dirty.changed_piece[i].old_piece.from[perspective]),-1);
+                            tiny_add(accumulator,king,int(dirty.changed_piece[i].new_piece.from[perspective]),1);
+                        }
+                        continue;
+                    }
                     tiny_board_change(accumulator,king,perspective,change->tiny_before,change->tiny_from,-1);
                     tiny_board_change(accumulator,king,perspective,change->tiny_after,change->tiny_to,1);
                     tiny_board_change(accumulator,king,perspective,change->tiny_captured,change->tiny_to,-1);

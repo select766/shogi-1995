@@ -2,13 +2,15 @@
 import struct
 import numpy as np
 from .tiny_features import encode, INPUTS, SYMMETRIC_INPUTS, STRIDE
+from .halfkp_features import encode as halfkp_encode, INPUTS as HALFKP_INPUTS, STRIDE as HALFKP_STRIDE
 
 
 def load(path):
     data = path.read_bytes()
-    assert data[:8] in (b'S95NN01\0',b'S95NN02\0')
+    assert data[:8] in (b'S95NN01\0',b'S95NN02\0',b'S95NN03\0')
     inputs, width, hidden, stride = struct.unpack_from('<4I', data, 8)
-    assert inputs in (INPUTS,SYMMETRIC_INPUTS) and stride == STRIDE
+    if data[:8]==b'S95NN03\0':assert inputs==HALFKP_INPUTS and stride==HALFKP_STRIDE
+    else:assert inputs in (INPUTS,SYMMETRIC_INPUTS) and stride == STRIDE
     assert 1<=width<=32 and 0<=hidden<=32
     if data[:8]==b'S95NN01\0':assert inputs==INPUTS and hidden>0
     offset = 24
@@ -29,6 +31,8 @@ def reference(board, weights):
     embedding, bias, fc, fc_bias, out, out_bias = weights
     inputs=len(embedding)
     features, material = encode(board,inputs==SYMMETRIC_INPUTS)
+    # The legacy encoder above supplies only baseline material for NN03.
+    if inputs==HALFKP_INPUTS:features=halfkp_encode(board)
     acc = []
     for perspective in features:
         valid = perspective[perspective != inputs]
