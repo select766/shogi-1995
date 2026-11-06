@@ -38,5 +38,6 @@
 | 11/06 12:54:36 | [tiny-v7-nopic-usi](../results/2026-11-06/tiny-v7-nopic-usi-20261106T035436933139Z-000-candidate.json) | 86box / 2000ms / development 256局面 | 89/256 | 34.77% (29.20–40.79) | `859cc2e` | tiny-v7と同じ学習重み、静的PentiumビルドからPIC処理を除去、USI通常起動でも同じ評価ファイルを自動設定 |
 | 11/06 13:05:48 | [tiny-v7-nopic-usi](../results/2026-11-06/tiny-v7-nopic-usi-20261106T040548110864Z-001-candidate.json) | 86box / 2000ms / development 256局面 | 79/256 | 30.86% (25.52–36.77) | `859cc2e` | tiny-v7と同じ学習重み、静的PentiumビルドからPIC処理を除去、USI通常起動でも同じ評価ファイルを自動設定 |
 | 11/06 13:16:59 | [material-v1](../results/2026-11-06/material-v1-20261106T041659162931Z-001-baseline.json) | 86box / 2000ms / development 256局面 | 65/256 | 25.39% (20.45–31.06) | `06219a9` | 駒得評価の基準版（学習なし） |
+| 11/06 14:54:16 | [halfkp-linear-v2](../results/2026-11-06/halfkp-linear-v2-20261106T055416615380Z-halfkp-linear-v2-native-nodes10000-quick256.json) | native / 10000 nodes / quick 256局面 | 80/256 | 31.25% (25.88–37.17) | `43495b9` | 標準HalfKP純線形125388係数、qsearch済み63977434局面、40epochでloss飽和確認・最良29epoch、評価時に76特徴を再加算 |
 
 反則・異常終了・時間超過の件数、モデル・バイナリ・イメージのSHA、共通設定、対応あり比較の元になる各局面の指し手はCSV/JSONおよびリンク先の明細に保存する。
