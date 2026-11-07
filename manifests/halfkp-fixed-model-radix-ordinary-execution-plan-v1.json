@@ -1,0 +1,90 @@
+{
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-fixed-model-radix-speed-v1.json",
+    "pid": 812760,
+    "process_start_time": "10273877",
+    "plan_sha256": "a1783c664ecccc083e7227699c484286e01bf29c807053d7d8efc1c67b1e71f8"
+  },
+  "code_sha256": {
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985",
+    "scripts/evaluate-pair.py": "1a8ceeec13eeebc4920bbc03646a3eeec3dd79db7ef2cafc6d5f0fa08a32a03b",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/compare-accuracy.py": "ec7f84a9eac154cfe47e60952fa10e3354572849dbfcc18ab53265cb977570d5",
+    "scripts/update-measurements.py": "6cac7d767e5389e7071e6ddce4e0427b8037b842e854c4feacf7c62ce67f043b",
+    "scripts/plot-measurement-history.py": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
+    "src/shogi1995/plot_labels.py": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
+    "src/shogi1995/statistics.py": "a101cb0590d05d6a8115c8915e182b83d9b7dfc0948896b5a285160199c3671d",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf",
+    "src/shogi1995/provenance.py": "bdc87dcc8dedd6513407084c78480e60a90a3ce9a8f250c08ab9a2c23df6cc3e",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/shogi1995/actions.py": "a7471126e86a817f1f716a66c1ce51d4e7319f060ef5475912a9d2885c1cbc84",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd"
+  },
+  "frozen_artifacts_sha256": {
+    "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+    "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json": "4efdca6e326b23125b4be5edf2e69e9a143327f82a8149695381958365ac329b",
+    "manifests/halfkp-model-frozen-20261107-1000.json": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+    ".local/frozen-models/halfkp-20261107-1000/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/root.ext2": "b2a65670b0e357299349ed723b35792edaa292337e35a2bb07f85ebeb4b9594c",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/root.ext2": "ff97d675938e376fe81bc657b7759a08fbcda0b1c0b73db4e61d4673abdb9e30",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/shogi": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282"
+  },
+  "completed_inputs": {
+    "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-blocks-v1.json": {
+      "sha256": "df440b87d751e65d5ee537fc120ba0d68a4fce2cb897e86796fda2885159fbd3",
+      "fields": {
+        "complete": true,
+        "passed": true,
+        "eligible_for_ordinary_time_strength_comparison": true
+      }
+    }
+  },
+  "steps": [
+    {
+      "description": "quiet host and completed speed producer preflight plus deadline window",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "-c",
+        "import datetime,fcntl,json,subprocess\nfrom pathlib import Path\ns=json.loads(Path('.local/jobs/halfkp-fixed-model-radix-speed-v1.json').read_text());assert s['status']=='complete' and s['child_pid'] is None\nassert not Path('/proc/812760').exists(),'radix speed producer must exit'\nassert datetime.datetime.now(datetime.timezone.utc)<datetime.datetime(2026,11,7,4,20,tzinfo=datetime.timezone.utc),'reserve at least100minutes before runtime cutoff'\ncompute=subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader,nounits'],text=True).strip();assert not compute,compute\nlock=Path('.local/run/engine.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)\nr={'passed':True,'verified_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'radix_speed_producer_absent':True,'gpu_compute_processes':[],'default_engine_lock_available':True,'scope':'full1024 ordinary2000ms sameD42 C30 vs C30+radix only'}\nwith Path('results/2026-11-07/halfkp-fixed-model-radix-ordinary-preflight-v1.json').open('x') as f:json.dump(r,f,indent=2);f.write('\\n')\nprint(json.dumps(r))\n"
+      ],
+      "log": "/tmp/shogi-fixed-radix-ordinary-preflight-v1.log"
+    },
+    {
+      "description": "full1024normal2sblock256ABBA C30 vs C30+radix sameD42",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+        "--output",
+        ".local/evaluation/development-halfkp-fixed-w8-h0-128m-radix-v1",
+        "--block-size",
+        "256",
+        "--milliseconds",
+        "2000"
+      ],
+      "log": "/tmp/shogi-fixed-radix-ordinary-v1.log"
+    },
+    {
+      "description": "preserve complete paired comparison",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "-c",
+        "from pathlib import Path;import json;p=Path('.local/evaluation/development-halfkp-fixed-w8-h0-128m-radix-v1/comparison.json');x=json.loads(p.read_text());assert sum(x[k] for k in ('both_correct','baseline_only','candidate_only','both_wrong'))==1024;Path('results/2026-11-07/development-halfkp-fixed-w8-h0-128m-radix-v1-comparison.json').open('x').write(p.read_text())"
+      ],
+      "log": "/tmp/shogi-fixed-radix-ordinary-archive-v1.log"
+    }
+  ],
+  "policy": "FrozenD42 model and retained C30 vs C30+radix output arithmetic only. Full1024 normal go btime0 wtime0 byoyomi2000,NetworkDelay/2zero,block256ABBA. No heldout. No compilation/native engines/training/otherVM/heavy jobs while timing. Hold measurement HEAD/scripts/plan/profiles/images fixed. Fullpaired agreement+CI+operations before selection; speed is not strength. Runtime exploration ends06UTC, expectedfinish05:37UTC. If timing unusually delayed, preserve partial results and stop by cutoff; incomplete trial excluded. Do not pool repeated controls or select their historical maximum.",
+  "created_at_utc": "2026-11-07T04:07:26.968649+00:00",
+  "purpose": "Full1024 ordinary2000ms strength: C30 vs C30+exact radix-head only, SAME frozen D42 model"
+}

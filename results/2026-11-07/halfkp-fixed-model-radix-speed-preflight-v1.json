@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T03:45:27.262040+00:00",
+  "qualification_producer_absent": true,
+  "gpu_compute_processes": [],
+  "default_engine_lock_available": true,
+  "scope": "fixed model C30 vs C30+radix target fixed-node speed entry"
+}

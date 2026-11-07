@@ -1,0 +1,68 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-07T04:06:17.169383+00:00",
+  "positions": 256,
+  "blocks": [
+    {
+      "block": 0,
+      "positions": 64,
+      "execution_order": [
+        "baseline",
+        "candidate"
+      ],
+      "median_host_time_saved_percent": 0.31961230487910774,
+      "inputs": {
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/000-baseline.json": "88251f1132825b6b4bcf48271ddc77a223e20d44e495a4a7669cef9f0bbc6822",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/000-candidate.json": "05b31b903d5ead56a701e5bf14214628dce4c2ede69834dca4bfbf2c0ad46a0f"
+      }
+    },
+    {
+      "block": 1,
+      "positions": 64,
+      "execution_order": [
+        "candidate",
+        "baseline"
+      ],
+      "median_host_time_saved_percent": 0.2655391686376296,
+      "inputs": {
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/001-baseline.json": "11335755ad064d6e233070cfa507a27bdb6aface745ab19402e6c32abe3eb164",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/001-candidate.json": "ff43b3dff021316d8dcedc2c763ec8aa1b3ad61797638a76b650a1ec1597a1c7"
+      }
+    },
+    {
+      "block": 2,
+      "positions": 64,
+      "execution_order": [
+        "baseline",
+        "candidate"
+      ],
+      "median_host_time_saved_percent": 0.35930387744236847,
+      "inputs": {
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/002-baseline.json": "3d8f8f81cf660c0209ccb145afe0b4bdbcb4a3ccf32240c7b11fa3085260a28b",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/002-candidate.json": "547c6f52a9fd763d4a658692baf7545037dc9fe1462bd725c961d70d040ca246"
+      }
+    },
+    {
+      "block": 3,
+      "positions": 64,
+      "execution_order": [
+        "candidate",
+        "baseline"
+      ],
+      "median_host_time_saved_percent": 0.09114625568740764,
+      "inputs": {
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/003-baseline.json": "a6039e60321ee860fec5733dcecdf47fe90240318a316654382ee8eec35989c1",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/003-candidate.json": "d109530adf3922a839c5748737b59885e0d03394e2089289c3743de800065fe6"
+      }
+    }
+  ],
+  "all_block_medians_positive": true,
+  "full_comparison": {
+    "path": "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-v1.json",
+    "sha256": "5677b6890238ffb6faee42a2c47913ec59daf5b6fe50799f337e2ae418386367"
+  },
+  "eligible_for_ordinary_time_strength_comparison": true,
+  "auditor_sha256": "879e5c4155e6d17a577204c30b13db8c2fa36dd44cc19965cf37167cecfdc023",
+  "scope": "fixed-model Pentium fixed-node runtime diagnostic; not a strength result"
+}

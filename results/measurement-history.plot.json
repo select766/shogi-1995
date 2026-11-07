@@ -1,5 +1,5 @@
 {
-  "input_sha256": "9ec77447f378994e29f9531eebf1c0c059ee54b8dd8862005f098898ff18e87c",
+  "input_sha256": "271e7b30bd4a12f657914015aaed8955ed6d7a7da2e5f6cdc9f2d0bf72dc8718",
   "plotter_sha256": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
   "label_layout_sha256": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
   "matplotlib": "3.9.2",
@@ -442,7 +442,7 @@
       "result_sha256": "e586f437102998dfd01fd30905598141d080e999dbfa621254f07050da0d989c",
       "label_offset_points": [
         6,
-        6
+        -14
       ]
     },
     {
@@ -456,7 +456,7 @@
       "result_sha256": "b23e6bc4439202a78e4c659cf56178961f388242ed25ed0005b053213fb072b7",
       "label_offset_points": [
         6,
-        -14
+        6
       ]
     },
     {
@@ -469,8 +469,8 @@
       "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
       "result_sha256": "069ddcd8d36910a0d4092f9f254b721223636f6f15b9a6360b2ab74a447e97be",
       "label_offset_points": [
-        6,
-        6
+        -18,
+        -14
       ]
     },
     {
@@ -483,7 +483,7 @@
       "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
       "result_sha256": "97527e4dcff5a649e1a962cc75829fc57d6df8535fcf3a779f68b151782c17d0",
       "label_offset_points": [
-        -18,
+        6,
         -14
       ]
     },
@@ -498,7 +498,7 @@
       "result_sha256": "2f4a7cab99345ae2ae1a77beba95202075eb1e24b6d9c0d03ebebc48e2e6fc5d",
       "label_offset_points": [
         6,
-        6
+        -14
       ]
     },
     {
@@ -511,7 +511,7 @@
       "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
       "result_sha256": "2d54130ec7c1ec29747495385359705e1fca9a19799270a31395eea47a8e8a53",
       "label_offset_points": [
-        6,
+        -18,
         -14
       ]
     },
@@ -525,8 +525,8 @@
       "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
       "result_sha256": "47b1c760512c024c2ff1878e2a3dc958bb8d170a030e838eebadd75642cf7f9e",
       "label_offset_points": [
-        -18,
-        -14
+        6,
+        6
       ]
     },
     {
@@ -597,6 +597,34 @@
       "label_offset_points": [
         6,
         -14
+      ]
+    },
+    {
+      "run_id": "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T040332630927Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-07T04:03:32.630927+00:00",
+      "accuracy_percent": "37.5",
+      "wilson95_lower_percent": "31.795501653541773",
+      "wilson95_upper_percent": "43.574094757105016",
+      "source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+      "result_sha256": "36daccdeee20ba134f0e0b2c2ab50e0bb27de7b69b356bba01e4ef31ab6219a7",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T040612970663Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-07T04:06:12.970663+00:00",
+      "accuracy_percent": "37.5",
+      "wilson95_lower_percent": "31.795501653541773",
+      "wilson95_upper_percent": "43.574094757105016",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "1854225418b388bf7a7cdc0159b87b4e1f898e22407009bc65c7209893dcbea4",
+      "label_offset_points": [
+        -18,
+        6
       ]
     }
   ],
@@ -796,8 +824,16 @@
     "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T031659173023Z-002-candidate",
     "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T032809611057Z-003-candidate",
     "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T033919877370Z-003-baseline",
-    "halfkp-fixed-w8-h0-128m-radix-v1-native-20261107T034200591443Z-native-reference"
+    "halfkp-fixed-w8-h0-128m-radix-v1-native-20261107T034200591443Z-native-reference",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T034801892600Z-000-baseline",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T035038066306Z-000-candidate",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T035310463588Z-001-candidate",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T035543604923Z-001-baseline",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T035817938980Z-002-baseline",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T040052000141Z-002-candidate",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T040332630927Z-003-candidate",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T040612970663Z-003-baseline"
   ],
-  "svg_sha256": "99393addcd40a5ddab610a6da2079cfe8a73d5e77c908eb04e2f725087d5f31a",
-  "png_sha256": "374e69d7b9c331d8fb1fa8a8f2e5c7ee29dfc100ae87c309ad876a0356c3bec5"
+  "svg_sha256": "35cd27f8f7f2094c372d72e23dcb6e593292d3410d308012d386c152d8d97a29",
+  "png_sha256": "200fb4132bda2bc86e43598c1ce47bce373b2ecf3e76277376660573af362b3d"
 }
