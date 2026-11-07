@@ -15,6 +15,7 @@ bash scripts/setup.sh > /tmp/shogi-1995-setup.log 2>&1
 ./run-shogi-1995.sh
 ```
 
+- [ゲスト内の将棋GUI（Tcl/Tk）](gui/README.md)
 - [起動とShogiHomeへの登録](docs/runtime.md)
 - [取り込み元と移植差分](docs/upstream.md)
 - [検証結果と制限](docs/validation.md)

@@ -1,0 +1,32 @@
+NoGrabServer
+RandomPlacement
+DecorateTransients
+TitleFont "fixed"
+MenuFont "fixed"
+IconFont "fixed"
+ResizeFont "fixed"
+Color {
+    BorderColor "gray40"
+    DefaultBackground "gray85"
+    DefaultForeground "black"
+    TitleBackground "gray75"
+    TitleForeground "black"
+    MenuBackground "gray85"
+    MenuForeground "black"
+}
+Button1 = : root : f.menu "apps"
+Button3 = : root : f.menu "apps"
+Button1 = : title : f.move
+Button2 = : title : f.iconify
+Button3 = : title : f.menu "window"
+menu "apps" {
+    "Applications" f.title
+    "Shogi 1995" f.exec "/usr/local/bin/shogi-gui &"
+    "Terminal" f.exec "/usr/X11R6/bin/xterm &"
+}
+menu "window" {
+    "Window" f.title
+    "Move" f.move
+    "Resize" f.resize
+    "Close" f.delete
+}

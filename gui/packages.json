@@ -1,0 +1,42 @@
+[
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/x6/x312cfg.tgz",
+    "name": "x312cfg.tgz",
+    "sha256": "04499f71ddd5ebd73bbc747faddde1943e1a4c0598d4753ac4761df4b76db08b"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/x14/x312svga.tgz",
+    "name": "x312svga.tgz",
+    "sha256": "70959f5f9c19b6e427af4e12cf4f43ea836e97e0bceec28e7193bf540165817b"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/x9/x312lib.tgz",
+    "name": "x312lib.tgz",
+    "sha256": "d916f177b3f3e1dd01a585149da15df7191eff42800f2298d6396d9d002804dd"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/x15/x312vga.tgz",
+    "name": "x312vga.tgz",
+    "sha256": "2018278d345bb5ca137aeee0e2e0e6ec015618408592ac19c849a56e8efec2a7"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/x7/x312bin.tgz",
+    "name": "x312bin.tgz",
+    "sha256": "ffb552d438577c9b029fe6ceb73b1c5c3f1a0836a051bb9b60a427bf058dab53"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/x5/x312fnt.tgz",
+    "name": "x312fnt.tgz",
+    "sha256": "f9accd1e2d187b23dd78f8dd4210d7881694535525b326884d2b5764e2de79c9"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/tcl1/tcl.tgz",
+    "name": "tcl.tgz",
+    "sha256": "da0462cd9774494ca794452f96224a06be528c88e450ecff19d623d1d35cd95d"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/tcl1/tk.tgz",
+    "name": "tk.tgz",
+    "sha256": "1d474bf7f2345c50da89ea877b0247031b109ce07a6898a4c66f19c12015f1b5"
+  }
+]
