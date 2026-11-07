@@ -1,0 +1,34 @@
+{
+  "id": "halfkp-fixed-w8-h0-128m-counter-v1-usi",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "a5c037e75d09eee21c507398c2c47d13c3a4185e26a76ca66ad4d48df73674fb",
+  "image_sha256": "3cd77e7043b756b3928ea8c65399fe80fb6c188c0e419e64bf7e2247cd5e5696",
+  "source_commit": "38b9aaf0ae21ca4389e87edff9aa5f596dc49d10",
+  "source_tree_sha256": "a3874e091f20db0aa2a18e490cdc03dce480a961ffdc482cbc2fff6b9e33377c",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "42158b52b2c126b1137a2cef1fe9558ca3f72eee2bd132dbb77a72b117c53961",
+  "feature_difference": "\u56fa\u5b9a\u3057\u305f\u6a19\u6e96HalfKP\u30fb\u5e458\u30fb\u96a0\u308c0\u30fb128\u767e\u4e07\u4ef6\u306e\u540c\u4e00\u91cd\u307f\u300116bit packed\u52a0\u7b97\u5024\u3092\u7dad\u6301\u3057\u3001\u5358\u4e00\u30b9\u30ec\u30c3\u30c9\u5c02\u7528\u306e\u5168\u5e45uint64\u30ce\u30fc\u30c9\u30ab\u30a6\u30f3\u30bf\u3078\u5909\u66f4\u3002\u901a\u5e38\u69cb\u6210\u306fatomic\u3092\u7dad\u6301\u3001USI\u901a\u5e38\u8d77\u52d5\u3067\u3082\u540c\u3058\u8a55\u4fa1\u30d5\u30a1\u30a4\u30eb\u3092\u81ea\u52d5\u8a2d\u5b9a",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-counter-v1/root.ext2"
+  ],
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "model_bytes": 2006300,
+  "model_origin": "/home/select766/shogi/shogi-1995/.local/frozen-models/halfkp-20261107-1000/model.bin",
+  "prepared_at_utc": "2026-11-07T01:35:50.133251+00:00",
+  "preparation_commit": "38b9aaf0ae21ca4389e87edff9aa5f596dc49d10",
+  "preparation_worktree_dirty": true,
+  "preparation_script_sha256": "ed7b987cfe632a67edd3468d9995e49f3397207a0b30b8d1f2167c29c668518d",
+  "parent_manifest_sha256": "e049e1ffe9bc345b8dd149c50796e53942110d2538c9b141a38582642806d818",
+  "configured_guest_options": {
+    "EvalFile": "/eval/model.bin"
+  }
+}

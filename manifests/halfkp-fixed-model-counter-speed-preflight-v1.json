@@ -1,0 +1,20 @@
+{
+  "purpose": "fixed-model isolated node-counter target-speed prerequisite",
+  "files": {
+    "manifests/halfkp-model-frozen-20261107-1000.json": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+    "manifests/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-candidate.json": "16c2a416316f24d3c3b067a27a33b2c14c9f63c56815fa5d2046d0b3f12545de",
+    "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json": "27a2f11d45925d8e6e4f53134af4381db0aad43bd3141d7755222ddb520407e6",
+    "results/2026-11-07/halfkp-fixed-model-counter-qualification-v1.json": "644b758a9a2dc850bd7faaca1df8079bfdc70172bca67c3d82ec34d5f50af47c"
+  },
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+  "dataset_sha256": "60f527d8c3aa9c1ae74c9ba34d9dfadef7cc02f5d4318673c9932f80af1689c8",
+  "profiles": [
+    "manifests/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-candidate.json",
+    "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json"
+  ],
+  "model_shape": [
+    8,
+    0
+  ]
+}

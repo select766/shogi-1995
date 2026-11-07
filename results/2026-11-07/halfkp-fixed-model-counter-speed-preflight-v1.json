@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "complete": true,
+  "pid": 757802,
+  "process_start_time": "9555321",
+  "plan_sha256": "3af7acf47fbf75beae3b7df7664915cfca84c618c647460d769f9e5c16335bea",
+  "finished_at_utc": "2026-11-07T01:45:41.261546+00:00",
+  "artifacts": {
+    "manifests/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-candidate.json": {
+      "image_sha256": "21c4878ef8bc96261cdc6b0efec144a801a1ef2878af7bed4c9b9f4974ffb905",
+      "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+    },
+    "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json": {
+      "image_sha256": "3cd77e7043b756b3928ea8c65399fe80fb6c188c0e419e64bf7e2247cd5e5696",
+      "engine_sha256": "a5c037e75d09eee21c507398c2c47d13c3a4185e26a76ca66ad4d48df73674fb",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+    }
+  },
+  "vm_lock_free": true,
+  "gpu_compute_pids": [],
+  "model_frozen_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+}

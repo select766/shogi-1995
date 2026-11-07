@@ -421,3 +421,11 @@ swapは全ブロックの開始・終了観測で0。3層版のホスト時間�
 [全件の速度比較](../results/2026-11-07/halfkp-fixed-w8-h0-128m-packed-accumulator-speed-v1.json)と[4ブロックの照合](../results/2026-11-07/halfkp-fixed-w8-h0-128m-packed-accumulator-speed-blocks-v1.json)を保存した。各ブロックの中央値は2.4022%、2.1307%、2.1843%、2.5979%ですべて正。速度条件を満たした推論候補として保持する。通常2秒での一致率改善はまだ確認していない。
 
 この測定のプロセス終了とVMロック解放を[確認](../results/2026-11-07/halfkp-fixed-model-cache-speed-terminal-preflight-v1.json)してから、単一スレッド用カウンタの実C++検査へ進んだ。[UBSan検証](../results/2026-11-07/halfkp-single-thread-counter-ubsan-v1.json)では通常のatomic型選択と単一スレッド型選択の両構成で各10,396ケース、32bit繰上がりと64bit巡回を通過した。探索中の読み書きの[所有関係も照合](../results/2026-11-07/halfkp-single-thread-counter-access-review-v1.json)した。エンジンとしてのビルド・探索・実ゲスト・速度の検証はこれからであり、カウンタの候補は未採用。
+
+カウンタ版をcommit `38b9aaf`からビルドした。[ビルド記録](../manifests/halfkp-fixed-w8-h0-128m-counter-v1-build.json)のバイナリSHAは`a5c037e7…`、vendor tree SHAは`a3874e09…`。[静的検査](../results/2026-11-07/halfkp-single-thread-counter-target-v1.json)でELF32・既知の後代命令なしを確認し、2つの`do_move`にあったカウンタのx87変換命令は計8箇所から0になった。
+
+[実行検証のまとめ](../results/2026-11-07/halfkp-fixed-model-counter-qualification-v1.json)では512評価値と、従来版との256局面の指し手・最終ノード数・完了深さが一致し、差分更新を1,197,607回照合した。大きなノード制限4,294,967,297から明示stopで戻り、リセット後の小さい制限でも正常に探索した。実ゲストの自動ロード16評価値・同一バイナリとの8探索も一致し、swapは0。USIの開始・停止・512手の履歴処理を通過し、2秒指定のホスト実測は2.029秒だった。
+
+最初のゲストノード照合には誤って旧版のnative参照を指定したため、[同一バイナリSHAの開始条件で停止](../results/2026-11-07/halfkp-counter-guest-parity-reference-stop-v1.json)した。ゲスト起動前に止まっており、検査を変えずに新版自身の全256局面native参照を生成した。その参照も従来版と全件一致し、別保存先での実ゲスト8局面の照合が通過した。
+
+カウンタ版の構造・重みは固定済みモデルのまま。[次の速度計画](../manifests/halfkp-fixed-model-counter-speed-execution-plan-v1.json)では、速度条件を満たしたpacked加算値を両版で維持し、atomic64から単一スレッド用uint64への変更を比較する。命令削減やnativeの動作検証から速度・棋力の向上を断定せず、対象CPUの全256局面の速度と、その後の通常時間の全developmentで確認する。

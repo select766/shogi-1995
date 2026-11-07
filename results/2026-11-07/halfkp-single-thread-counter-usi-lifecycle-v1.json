@@ -1,0 +1,23 @@
+{
+  "backend": "86box",
+  "started_at_utc": "2026-11-07T01:41:54.906222+00:00",
+  "guest_image": "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-counter-v1/root.ext2",
+  "image_sha256": "3cd77e7043b756b3928ea8c65399fe80fb6c188c0e419e64bf7e2247cd5e5696",
+  "engine_sha256": "a5c037e75d09eee21c507398c2c47d13c3a4185e26a76ca66ad4d48df73674fb",
+  "test_source_sha256": "b69997bf18ff3633cdc651724c3e55f9052650ce27fb50c7ce8e4e01471c5683",
+  "startup_seconds": 30.39850652500172,
+  "guest_memory_bytes": {
+    "total": 31866880,
+    "free": 14655488,
+    "swap": 0
+  },
+  "first_move": "2g2f",
+  "increment_search_stop_seconds": 0.018920059999800287,
+  "move_list_512_plies": true,
+  "short_clock_seconds": 0.1304883299890207,
+  "movetime_2000_seconds": 2.029284746007761,
+  "bridge_added_stop_during_movetime": false,
+  "infinite_stop_seconds": 0.02961265300109517,
+  "passed": true,
+  "finished_at_utc": "2026-11-07T01:42:30.785465+00:00"
+}

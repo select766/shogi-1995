@@ -1,0 +1,95 @@
+{
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-fixed-model-counter-speed-preflight-v1.json",
+    "pid": 757802,
+    "process_start_time": "9555321",
+    "plan_sha256": "3af7acf47fbf75beae3b7df7664915cfca84c618c647460d769f9e5c16335bea"
+  },
+  "code_sha256": {
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985",
+    "scripts/evaluate-pair.py": "1a8ceeec13eeebc4920bbc03646a3eeec3dd79db7ef2cafc6d5f0fa08a32a03b",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/compare-fixed-node-speed.py": "dcbef50770e1e975b1b4c977f1ce7ac43cfeda43939b9e57d891185ba974ba4c",
+    "scripts/audit-speed-blocks.py": "879e5c4155e6d17a577204c30b13db8c2fa36dd44cc19965cf37167cecfdc023",
+    "src/shogi1995/statistics.py": "a101cb0590d05d6a8115c8915e182b83d9b7dfc0948896b5a285160199c3671d",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd"
+  },
+  "frozen_artifacts_sha256": {
+    "manifests/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-candidate.json": "16c2a416316f24d3c3b067a27a33b2c14c9f63c56815fa5d2046d0b3f12545de",
+    "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json": "27a2f11d45925d8e6e4f53134af4381db0aad43bd3141d7755222ddb520407e6",
+    "manifests/halfkp-model-frozen-20261107-1000.json": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+    ".local/frozen-models/halfkp-20261107-1000/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+  },
+  "completed_inputs": {
+    "results/2026-11-07/halfkp-fixed-model-counter-qualification-v1.json": {
+      "sha256": "644b758a9a2dc850bd7faaca1df8079bfdc70172bca67c3d82ec34d5f50af47c",
+      "fields": {
+        "complete": true,
+        "passed": true,
+        "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+      }
+    },
+    "results/2026-11-07/halfkp-fixed-w8-h0-128m-packed-accumulator-speed-blocks-v1.json": {
+      "sha256": "a3ef28f5a4b062daffe622075401b140f3652a0459a66c49bc8f54bc3a837e09",
+      "fields": {
+        "complete": true,
+        "passed": true,
+        "eligible_for_ordinary_time_strength_comparison": true
+      }
+    }
+  },
+  "steps": [
+    {
+      "description": "same frozen model and packed cache; isolate plain uint64 single-thread counter vs atomic64, quick256 fixed10000 nodes block64ABBA",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-counter-speed-v1",
+        "--block-size",
+        "64",
+        "--milliseconds",
+        "2000",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-fixed-model-counter-speed-v1.log"
+    },
+    {
+      "description": "full256 paired speed summary, operation/runtime only",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-counter-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-counter-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/halfkp-fixed-w8-h0-128m-counter-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-fixed-model-counter-speed-summary-v1.log"
+    },
+    {
+      "description": "audit exact tree/full256, all4 block medians and confidence gate",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/audit-speed-blocks.py",
+        "--directory",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-counter-speed-v1",
+        "--comparison",
+        "results/2026-11-07/halfkp-fixed-w8-h0-128m-counter-speed-v1.json",
+        "--output",
+        "results/2026-11-07/halfkp-fixed-w8-h0-128m-counter-speed-blocks-v1.json"
+      ],
+      "log": "/tmp/shogi-fixed-model-counter-speed-block-audit-v1.log"
+    }
+  ],
+  "policy": "Fixed geometry8/0 and exact model SHA d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff. One VM at a time; no other heavy work/native engines/builds/training during target timing. Measurement code and frozen profiles/images immutable. Lightweight edits to a separate unbuilt runtime candidate may proceed, with dirty source status recorded; they do not change the frozen running binaries. Speed requires all256 exact moves/finalnodes/completeddepth and ops0, paired95median saved lower>0, all4blockmedianspositive. No strength/adoption claim from nodes/speed alone; full1024ordinary2s evaluation follows for the retained runtime. Runtime/search exploration ends06UTC; no model/weights/shape changes. This trial controls the counter change while both variants retain the same packed cache. Do not multiply medians from separate speed trials into a total gain."
+}

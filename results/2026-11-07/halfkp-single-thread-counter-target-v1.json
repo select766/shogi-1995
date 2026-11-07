@@ -1,0 +1,18 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-07T01:32:36.035561+00:00",
+  "engine_sha256": "a5c037e75d09eee21c507398c2c47d13c3a4185e26a76ca66ad4d48df73674fb",
+  "build_manifest": "manifests/halfkp-fixed-w8-h0-128m-counter-v1-build.json",
+  "build_manifest_sha256": "42158b52b2c126b1137a2cef1fe9558ca3f72eee2bd132dbb77a72b117c53961",
+  "elf32_static_x86": true,
+  "known_post_pentium_opcode_hits": [],
+  "counter_object_sha256": "f11cf9dace50f5d6270e1a01c061df76486096406f48465928e9eb63a1aa4437",
+  "counter_functions": [
+    "00005310 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, YaneuraOu::Search::Stack*)>:",
+    "000053f0 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, bool, YaneuraOu::Search::Stack*)>:"
+  ],
+  "counter_x87_sites_before": 8,
+  "counter_x87_sites_after": [],
+  "scope": "static compiled-code check only; native/guest correctness and speed are separate"
+}

@@ -1,0 +1,45 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-07T01:45:37.227152+00:00",
+  "profile": "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json",
+  "source_commit": "38b9aaf0ae21ca4389e87edff9aa5f596dc49d10",
+  "engine_sha256": "a5c037e75d09eee21c507398c2c47d13c3a4185e26a76ca66ad4d48df73674fb",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "frozen_model_manifest_sha256": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+  "native_value_positions": 512,
+  "native_search_positions": 256,
+  "verified_accumulators": 1197607,
+  "guest_values": 16,
+  "guest_roots": 8,
+  "guest_memory": {
+    "total": 31866880,
+    "free": 14630912,
+    "swap": 0
+  },
+  "native_reference": {
+    "path": "results/2026-11-07/halfkp-fixed-w8-h0-128m-counter-v1-native-20261107T013938267218Z-native-reference.json",
+    "sha256": "96f621bba0f44328450eeec738ab688e82c0f346170aa6f84cb56f21a0b117d6"
+  },
+  "proofs": {
+    "results/2026-11-07/halfkp-single-thread-counter-ubsan-v1.json": "25aeda7e2ad31659f64e55b2991e208e53d9e440edaa26a2807068f978584c64",
+    "results/2026-11-07/halfkp-single-thread-counter-target-v1.json": "37796f41ffb399af03e4eef2c6e89de1caeeb3d0f8623e39a7a6cdbaf8fd9b4d",
+    "results/2026-11-07/halfkp-single-thread-counter-values-v1.json": "cc9b3660695c315c7e8e87a2505730f915824692fd6d4b9f9f5bf1bb79b57402",
+    "results/2026-11-07/halfkp-single-thread-counter-native-search-v1.json": "27111784e30a5df5763827ed68eb0bb56bb55f181c6d08803cf4f7e815606141",
+    "results/2026-11-07/halfkp-counter-limits-candidate-v1.json": "497daee67dbd72161799d4b4408597109b3265544c4e796314aaecd5294d719a",
+    "results/2026-11-07/halfkp-single-thread-counter-guest-values-v1.json": "2df0f97be62ecfc0dac7d91b8def53f1bab3d2ad08380e0deb77ea67a3a2f04d",
+    "results/2026-11-07/halfkp-single-thread-counter-guest-nodes-attempt2-v1.json": "00f468cb76500387a9fe2c67d76d42d3ad69c2d43e19856e05577cd5a2d4f116",
+    "results/2026-11-07/halfkp-single-thread-counter-usi-lifecycle-v1.json": "261de5286497efb33dac367fadf6fca183a1dccbfa2c4906777ed537729f1e4d"
+  },
+  "test_sources": {
+    "tests/single_thread_counter.cpp": "c8811f653d8fd23654500d441da40cec7b36a8379b5fb0824f6fac8983aa2138",
+    "tests/node_counter_limits.py": "b8d5ad37bb0550b4d375e33e0f99c501d6c8e3a10e0da71830cb193106e37853",
+    "tests/tiny_parity.py": "bc2e9400a2e0f14d98a76e2d316ebe505ce4e31e7876525143fde88b0cff0499",
+    "tests/tiny_incremental.py": "829c4015ccd47e5caa678e254b5bb198669ad0e5582183738704a15a7e95dbd4",
+    "tests/guest_auto_model.py": "03abed77d37959706764a7e6aff8544f47597d92894ad20bd1c65d652b4ca470",
+    "tests/guest_nodes_parity.py": "2e7b76fb397b7315e881e4f5eac7a1a6f1d4cb89cb853cca59c6ee13e1ff5f93",
+    "tests/usi_smoke.py": "b69997bf18ff3633cdc651724c3e55f9052650ce27fb50c7ce8e4e01471c5683"
+  },
+  "precondition_stop_preserved": "results/2026-11-07/halfkp-counter-guest-parity-reference-stop-v1.json",
+  "scope": "counter correctness, same-node search, target operation and RAM; counter speed and ordinary-time strength remain unmeasured"
+}
