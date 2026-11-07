@@ -1,0 +1,146 @@
+{
+  "engine_id": "gnushogi-1.2p03-old",
+  "engine_sha256": "297084fcbaefa8261a5fb5e3ee5c07c473e4b92510e0cbcd59784f0c54fd9c6a",
+  "model_options": {},
+  "started_at_utc": "2026-11-07T06:51:31.648183+00:00",
+  "measurement_commit": "45dcb0b6ff51fec4cd41f0156477d27ea53a3ea8",
+  "measurement_worktree_dirty": true,
+  "measurement_sources": {
+    "scripts/evaluate-accuracy.py": "1336e34977a4906ee8a307fd1fc1cfec72b3a71fc9c4bb488c329b992fde8c36",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/shogi1995/actions.py": "a7471126e86a817f1f716a66c1ce51d4e7319f060ef5475912a9d2885c1cbc84",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd"
+  },
+  "backend": "qemu",
+  "feature_difference": "1995 GNU Shogi, fixed 2s; historical node-based timeout, see adapter report",
+  "environment": {
+    "signature": "2dbb35f021e4114fe71923f9c36ef5a180cbc03509f1d01f5a32bfad15b55fa2",
+    "components": {
+      "manifests/assets.json": "a889e6a550339dbfd2d43d8867dfb87c4bd8877234d14374fd8427a08c2b06e3"
+    }
+  },
+  "dataset_sha256": "60f527d8c3aa9c1ae74c9ba34d9dfadef7cc02f5d4318673c9932f80af1689c8",
+  "dataset": "/home/select766/shogi/shogi-1995/.local/evaluation-data-repro/quick.jsonl",
+  "sample_ids": [
+    "hcpe-695495",
+    "hcpe-51572",
+    "hcpe-93812",
+    "hcpe-141427"
+  ],
+  "offset": 0,
+  "capture_search_diagnostics": false,
+  "mode": "fixed_byoyomi",
+  "milliseconds": 2000,
+  "nodes": null,
+  "options": {
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false,
+    "MultiPV": 1,
+    "MaxMovesToDraw": 512,
+    "EnteringKingRule": "CSARule27",
+    "NetworkDelay": 0,
+    "NetworkDelay2": 0
+  },
+  "engine_command": [
+    "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+    "/tmp/shogi-1995-historical/repo/historical/usi.py",
+    "--backend",
+    "qemu",
+    "--compiler",
+    "old"
+  ],
+  "complete": true,
+  "details": [
+    {
+      "id": "hcpe-695495",
+      "sfen": "ln1g2g1l/1p2k1S2/p1spp3p/5pPp1/9/P4R3/3PPP2P/L3K4/1NS2G2L w RG2NP2bs4p 1",
+      "expected": "3a3b",
+      "match": true,
+      "actual": "3a3b",
+      "host_ms": 2103.355076003936,
+      "go": "go btime 0 wtime 0 byoyomi 2000",
+      "time": 2010,
+      "nodes": 204047,
+      "depth": 4,
+      "action": "move",
+      "legal": true,
+      "time_overrun": false
+    },
+    {
+      "id": "hcpe-51572",
+      "sfen": "ln3k2l/1r1sg1s2/p1ppppngp/1P3b3/4PP3/2P1R1G2/P1NP3+pP/1SG2B3/L2K2SNL w 2P2p 1",
+      "expected": "P*3h",
+      "match": false,
+      "actual": "3c4e",
+      "host_ms": 2104.974878995563,
+      "go": "go btime 0 wtime 0 byoyomi 2000",
+      "time": 2010,
+      "nodes": 202788,
+      "depth": 6,
+      "action": "move",
+      "legal": true,
+      "time_overrun": false
+    },
+    {
+      "id": "hcpe-93812",
+      "sfen": "ln3k1nl/2r1gsg2/3p1ppp1/p4b2p/1p2pS3/P1s6/1PSPPP2P/2GBG2R1/LNK4NL w 2P2p 1",
+      "expected": "4d3e",
+      "match": false,
+      "actual": "7f7g+",
+      "host_ms": 2093.299941989244,
+      "go": "go btime 0 wtime 0 byoyomi 2000",
+      "time": 2000,
+      "nodes": 190629,
+      "depth": 6,
+      "action": "move",
+      "legal": true,
+      "time_overrun": false
+    },
+    {
+      "id": "hcpe-141427",
+      "sfen": "lnp5l/1pg1k1gs1/p2ppp+N1p/r1s3b2/9/2G2P3/PBNPP2pP/3K2S2/L1S2G2L w RN2P3p 1",
+      "expected": "2b3c",
+      "match": true,
+      "actual": "2b3c",
+      "host_ms": 2090.4011050006375,
+      "go": "go btime 0 wtime 0 byoyomi 2000",
+      "time": 2000,
+      "nodes": 142424,
+      "depth": 5,
+      "action": "move",
+      "legal": true,
+      "time_overrun": false
+    }
+  ],
+  "image_sha256": "5001862140195f83db0850d43b339a77db1d7fdab0bba44a44e67b84ac984f92",
+  "source_commit": "45dcb0b6ff51fec4cd41f0156477d27ea53a3ea8",
+  "total": 4,
+  "measured": 4,
+  "matches": 2,
+  "accuracy": 0.5,
+  "wilson_95": {
+    "lower": 0.15003898915214947,
+    "upper": 0.8499610108478506
+  },
+  "errors": 0,
+  "illegal_moves": 0,
+  "time_overruns": 0,
+  "resignations": 0,
+  "declarations": 0,
+  "engine_name": "GNU Shogi 1.2p03 GCC 2.7.0 adapter",
+  "advertised_options": {
+    "Threads": "option name Threads type spin default 1 min 1 max 1",
+    "USI_Hash": "option name USI_Hash type spin default 2 min 2 max 2",
+    "USI_OwnBook": "option name USI_OwnBook type check default false",
+    "USI_Ponder": "option name USI_Ponder type check default false",
+    "MultiPV": "option name MultiPV type spin default 1 min 1 max 1",
+    "MaxMovesToDraw": "option name MaxMovesToDraw type spin default 512 min 512 max 512",
+    "EnteringKingRule": "option name EnteringKingRule type combo default CSARule27 var CSARule27",
+    "NetworkDelay": "option name NetworkDelay type spin default 0 min 0 max 0",
+    "NetworkDelay2": "option name NetworkDelay2 type spin default 0 min 0 max 0"
+  },
+  "elapsed_seconds": 13.866652553988388,
+  "finished_at_utc": "2026-11-07T06:51:45.681933+00:00"
+}

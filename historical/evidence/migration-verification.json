@@ -1,0 +1,36 @@
+{
+  "scope": "repository migration and reproducible source build; not a strength measurement",
+  "build_command": "bash historical/setup.sh --offline",
+  "source_archives": "historical/assets.json",
+  "build_input_hashes": {
+    "assets.json": "ac24028a900f11901fb884d22644cb926a309efddefd00565e445d089ba85443",
+    "compatibility.patch": "bd8b511a1dac5f5073447ff23db45f1d6156a38080dbf7558e8f901452294306",
+    "relay.c": "7e3e2f967e74c38191af1b6377c7b9e0e68a83dfeb255a1eae13d14b0727574e",
+    "prepare.py": "7629e1d6fd37c4fa1b38b9641d58eec735187ffe2c091501dd8c38c2301030b5",
+    "setup.sh": "96b93f8c784ccacccd9dc3618e82a0ac5e6916d42042ff5a5cc6a1ab8668d2af",
+    "build-modern-objects.sh": "d395eca2620313f0cc857b2ded6e316c5f8c8293ddb82bf0dbc9707430da8ef6",
+    "guest-build.sh": "379636aadbb51126c408cd875e148d66e25a73d64eadab9c1385d79c39e32dff",
+    "guest-build.py": "ea8b9956c85bebfe0098ac4d9ce463e59d8288b04f29f73fbfae6a04455f4e39",
+    "write-manifests.py": "e6fb5767de6e6aaf9c9a752cbb8b4fba9c18a7f341209e5b8f33770e4b5039d1"
+  },
+  "variants": {
+    "old": {
+      "compiler": "GCC 2.7.0",
+      "engine_sha256": "297084fcbaefa8261a5fb5e3ee5c07c473e4b92510e0cbcd59784f0c54fd9c6a",
+      "matches_pre_migration_binary": true
+    },
+    "modern": {
+      "compiler": "GCC 11.4.0",
+      "engine_sha256": "c06ebe2180cb06287cfe9d7a300994e0fd00fe5d9fae9454f4a8e820ba1ff5bc",
+      "matches_pre_migration_binary": true
+    }
+  },
+  "protocol_checks": 8,
+  "accuracy_positions": 2,
+  "accuracy_completed": true,
+  "match_games": 2,
+  "match_plies": 8,
+  "match_completed": true,
+  "backend": "qemu diagnostics",
+  "generated_files_gitignored": true
+}

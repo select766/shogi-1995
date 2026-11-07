@@ -1,0 +1,130 @@
+--- a/src/genmove.c
++++ b/src/genmove.c
+@@ -40,7 +40,7 @@
+ static short InCheck = false, GenerateAllMoves = false;     
+ static short check_determined = false;
+ 
+-static short INCscore = 0;
++static short movegen_INCscore = 0;
+ 
+ short deepsearchcut = true;
+ short tas = false, taxs = false, ssa = false;
+@@ -266,7 +266,7 @@
+       node->reply = 0;
+       node->flags = local_flag;
+       node->score = s;
+-      node->INCscore = INCscore;
++      node->INCscore = movegen_INCscore;
+       if ( GenerateAllMoves )
+         {
+ 	  (*TrP)++, node++;
+@@ -441,7 +441,7 @@
+ 	    /* opponent has moved to TOsquare */
+ 	    s++;
+           if ( (boardu = board[u]) == king ) {
+-	      s += 20; INCscore -= 18;
++	      s += 20; movegen_INCscore -= 18;
+ 	      *local_flag |= check; /* move threatens opponents king */ 
+ 	  }
+ #ifdef TESUJIBONUS
+@@ -480,7 +480,7 @@
+       };
+   } while (u != t);
+ 
+-  INCscore += s;
++  movegen_INCscore += s;
+ 
+   return(s);
+ }
+@@ -539,7 +539,7 @@
+     return;
+   }
+ 
+-  INCscore = 0;
++  movegen_INCscore = 0;
+        
+ #ifdef HISTORY
+ #ifdef DEBUG
+@@ -566,11 +566,11 @@
+   if ( piece != king && !in_opening_stage ) {
+     if ( distance(t,EnemyKing) <= 1 ) {
+       /* bonus for square near enemy king */
+-      s += 15; INCscore += 2;
++      s += 15; movegen_INCscore += 2;
+       local_flag |= kingattack; 
+     } else if ( distance(t,OwnKing) <= 1 ) {
+       /* bonus for square near own king */
+-      s += 10; INCscore++;
++      s += 10; movegen_INCscore++;
+       local_flag |= kingattack; 
+     }                                   
+   }
+@@ -652,7 +652,7 @@
+         {
+           /* bonus for promotions */
+           s++; 
+-          INCscore += value[stage][promoted[piece]] - value[stage][piece];
++          movegen_INCscore += value[stage][promoted[piece]] - value[stage][piece];
+         }
+       else
+         {
+@@ -671,10 +671,10 @@
+ 	        consider_last = true;
+                 if ( piece == pawn || piece == bishop || piece == rook ) {
+ 	   	  local_flag |= stupid;
+-		  INCscore -= 20;
++		  movegen_INCscore -= 20;
+ 		} else {
+ 		  local_flag |= questionable;
+-		  INCscore -= 10;
++		  movegen_INCscore -= 10;
+ 		}
+ 	      }
+         }
+--- a/src/dspcom.c
++++ b/src/dspcom.c
+@@ -1,3 +1,4 @@
++#include <time.h> /* modern libc requires the ctime prototype */
+ /*
+  * dspcom.c - C source for GNU SHOGI
+  *
+@@ -1599,6 +1600,19 @@
+ 	  xshogi = 1;
+ #endif
+ 	}
++      else if (strcmp(s, "adapterstate") == 0)
++        {
++          int ar, ac, ap, aside, sq;
++          printf("\nGNU_STATE side=%d gamecnt=%d board=", opponent, GameCnt);
++          for(ar=8; ar>=0; ar--) for(ac=0; ac<9; ac++) {
++            sq=locn(ar,ac);
++            printf("%d,", board[sq] * (color[sq] == white ? -1 : 1));
++          }
++          printf(" hand=");
++          for(aside=0; aside<2; aside++) for(ap=pawn; ap<=rook; ap++)
++            printf("%d,", Captured[aside][ap]);
++          printf("\n"); fflush(stdout);
++        }
+       else if (strcmp (s, "post") == 0)
+ 	 flag.post = !flag.post;
+       else if (strcmp (s, CP[129]) == 0) /* noop */ ;	/*alg*/
+--- a/src/nondsp.c
++++ b/src/nondsp.c
+@@ -67,6 +67,7 @@
+ void
+ Initialize (void)
+ {
++  setbuf(stdout, NULL); /* pipe/serial protocol output */
+   mycnt1 = mycnt2 = 0;
+ #if defined XSHOGI && !defined THINK_C && !defined MSDOS
+ #ifndef SYSV
+@@ -420,6 +421,9 @@
+ void
+ OutputMove (void)
+ {
++  printf("\nGNU_RESULT move=%s time_cs=%ld nodes=%ld depth=%d\n",
++         mvstr[0][0] ? mvstr[0] : "resign", et, NodeCnt, Sdepth);
++  fflush(stdout);
+ #ifdef DEBUG11
+   if (1)
+     {

@@ -1,0 +1,53 @@
+{
+  "old": {
+    "timed_positions": 4,
+    "legal_moves": 4,
+    "host_ms_range": [
+      2429.3400199967436,
+      2620.6665089994203
+    ],
+    "guest_ms_range": [
+      2210,
+      2390
+    ],
+    "overruns_above_2200ms": 4,
+    "depth4_guest_ms_mean": 7395,
+    "depth4_nodes": [
+      11405,
+      11405
+    ],
+    "depth4_bestmoves": [
+      "6g6f",
+      "6g6f"
+    ],
+    "stop_ms": [
+      2064.752322010463
+    ]
+  },
+  "modern": {
+    "timed_positions": 4,
+    "legal_moves": 4,
+    "host_ms_range": [
+      2247.69124899467,
+      2433.659500995418
+    ],
+    "guest_ms_range": [
+      2010,
+      2220
+    ],
+    "overruns_above_2200ms": 4,
+    "depth4_guest_ms_mean": 5095,
+    "depth4_nodes": [
+      11384,
+      11384
+    ],
+    "depth4_bestmoves": [
+      "6g6f",
+      "6g6f"
+    ],
+    "stop_ms": [
+      1329.4684720021905
+    ]
+  },
+  "depth4_old_over_modern_time_ratio": 1.451422963689892
+}

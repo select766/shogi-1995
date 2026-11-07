@@ -1,0 +1,20 @@
+{
+  "engine_id": "gnushogi-1.2p03-old",
+  "engine_sha256": "297084fcbaefa8261a5fb5e3ee5c07c473e4b92510e0cbcd59784f0c54fd9c6a",
+  "image_sha256": "5001862140195f83db0850d43b339a77db1d7fdab0bba44a44e67b84ac984f92",
+  "source_commit": "45dcb0b6ff51fec4cd41f0156477d27ea53a3ea8",
+  "source_archive_url": "https://ftp.gnu.org/gnu/gnushogi/gnushogi-1.2p03.tar.gz",
+  "source_archive_sha256": "3e30ef3457dc676f58868a3078dc6ab6e6f5c7058eccd87b14a813fcc000c6b3",
+  "compiler": "GCC 2.7.0",
+  "flags": "-O2 -funroll-loops -m486",
+  "runtime": "Linux 1.2.13 / libc5.0.9; 1995 GCC driver/binutils link both builds",
+  "adapter_sha256": "5d3732cb0893962b8a9a25972d463fef65f2f23f07c67fb2ea66df05ed3a00ab",
+  "relay_source_sha256": "7e3e2f967e74c38191af1b6377c7b9e0e68a83dfeb255a1eae13d14b0727574e",
+  "guest_kernel_sha256": "9159cf5a7ed01d9670dc64ac2c63ca1fda344875166ae0ddd8b040fdee1a43da",
+  "notes": [
+    "fixed historical table sizes; USI_Hash=2 is compatibility-only, NOT a 2MiB allocation",
+    "no opening book, no pondering",
+    "time poll 1000 nodes and Sdepth>2 permit overruns; no hidden margin or automatic host stop",
+    "source changes: local symbol rename, time.h, unbuffered output, output-only result/state instrumentation"
+  ]
+}

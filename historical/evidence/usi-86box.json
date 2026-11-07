@@ -1,0 +1,134 @@
+[
+  {
+    "compiler": "old",
+    "position": "position startpos",
+    "actual": "7g7f",
+    "host_ms": 2429.3400199967436,
+    "go": "go btime 0 wtime 0 byoyomi 2000",
+    "time": 2210,
+    "nodes": 4129,
+    "depth": 4
+  },
+  {
+    "compiler": "old",
+    "position": "position startpos moves 7g7f 3c3d",
+    "actual": "8h2b+",
+    "host_ms": 2507.6455129892565,
+    "go": "go btime 0 wtime 0 byoyomi 2000",
+    "time": 2270,
+    "nodes": 4725,
+    "depth": 4
+  },
+  {
+    "compiler": "old",
+    "position": "position startpos moves 7g7f",
+    "actual": "3a3b",
+    "host_ms": 2620.6665089994203,
+    "go": "go btime 0 wtime 0 byoyomi 2000",
+    "time": 2390,
+    "nodes": 3026,
+    "depth": 4
+  },
+  {
+    "compiler": "old",
+    "position": "position sfen ln4g1l/1r2gsks1/p1pppp3/1p2b1pp1/P4G1np/5P3/1PBPP1P1P/2SK1S1RL/LN2G2N1 w 2p 42",
+    "actual": "5d7f",
+    "host_ms": 2556.6532680095406,
+    "go": "go btime 0 wtime 0 byoyomi 2000",
+    "time": 2350,
+    "nodes": 10123,
+    "depth": 4
+  },
+  {
+    "compiler": "old",
+    "fixed_depth": 4,
+    "repeat": 0,
+    "actual": "6g6f",
+    "host_ms": 7624.868237006012,
+    "go": "go depth 4",
+    "time": 7390,
+    "nodes": 11405,
+    "depth": 4
+  },
+  {
+    "compiler": "old",
+    "fixed_depth": 4,
+    "repeat": 1,
+    "actual": "6g6f",
+    "host_ms": 7635.622293004417,
+    "go": "go depth 4",
+    "time": 7400,
+    "nodes": 11405,
+    "depth": 4
+  },
+  {
+    "compiler": "old",
+    "stop_ms": 2064.752322010463
+  },
+  {
+    "compiler": "modern",
+    "position": "position startpos",
+    "actual": "7g7f",
+    "host_ms": 2433.659500995418,
+    "go": "go btime 0 wtime 0 byoyomi 2000",
+    "time": 2200,
+    "nodes": 5789,
+    "depth": 5
+  },
+  {
+    "compiler": "modern",
+    "position": "position startpos moves 7g7f 3c3d",
+    "actual": "8h2b+",
+    "host_ms": 2247.69124899467,
+    "go": "go btime 0 wtime 0 byoyomi 2000",
+    "time": 2010,
+    "nodes": 6652,
+    "depth": 4
+  },
+  {
+    "compiler": "modern",
+    "position": "position startpos moves 7g7f",
+    "actual": "3a3b",
+    "host_ms": 2259.4637389993295,
+    "go": "go btime 0 wtime 0 byoyomi 2000",
+    "time": 2030,
+    "nodes": 3930,
+    "depth": 4
+  },
+  {
+    "compiler": "modern",
+    "position": "position sfen ln4g1l/1r2gsks1/p1pppp3/1p2b1pp1/P4G1np/5P3/1PBPP1P1P/2SK1S1RL/LN2G2N1 w 2p 42",
+    "actual": "5d7f",
+    "host_ms": 2429.2174659931334,
+    "go": "go btime 0 wtime 0 byoyomi 2000",
+    "time": 2220,
+    "nodes": 11122,
+    "depth": 4
+  },
+  {
+    "compiler": "modern",
+    "fixed_depth": 4,
+    "repeat": 0,
+    "actual": "6g6f",
+    "host_ms": 5332.943766989047,
+    "go": "go depth 4",
+    "time": 5100,
+    "nodes": 11384,
+    "depth": 4
+  },
+  {
+    "compiler": "modern",
+    "fixed_depth": 4,
+    "repeat": 1,
+    "actual": "6g6f",
+    "host_ms": 5326.062282998464,
+    "go": "go depth 4",
+    "time": 5090,
+    "nodes": 11384,
+    "depth": 4
+  },
+  {
+    "compiler": "modern",
+    "stop_ms": 1329.4684720021905
+  }
+]

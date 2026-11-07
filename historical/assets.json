@@ -1,0 +1,82 @@
+{
+  "assets": [
+    {
+      "name": "aaa_base.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a1/aaa_base.tgz",
+      "bytes": 170199,
+      "sha256": "a50d02e0a7a891a8766f8a4ac8ca4856c0ce3a3510f410fbf06da1a10f2e0f95"
+    },
+    {
+      "name": "bash.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a1/bash.tgz",
+      "bytes": 248013,
+      "sha256": "778e987669b06c9c28a515174d9c7c5201d117c6a916c61ddbd3c945146a393d"
+    },
+    {
+      "name": "ldso.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a1/ldso.tgz",
+      "bytes": 128171,
+      "sha256": "ff679e442d753b419e824fcbc01233f19b71bb31ecadb1c31bce2b140c1c23a7"
+    },
+    {
+      "name": "shlibs.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a5/shlibs.tgz",
+      "bytes": 272376,
+      "sha256": "be50000a45a73f541eac1bb4be70cf4e11815dc254aa55ad052b5f8ed07d95b4"
+    },
+    {
+      "name": "bin.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a2/bin.tgz",
+      "bytes": 933350,
+      "sha256": "f3ffb64061aee2684a5b4e6550fd03ae4f6bf2d0d6d5d62ae0dd91306a979dbf"
+    },
+    {
+      "name": "sh_utils.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a4/sh_utils.tgz",
+      "bytes": 126450,
+      "sha256": "4054f1b3fac49e49015c2a997a240ddcefba46d1781c2853469194f742b595ab"
+    },
+    {
+      "name": "idenet.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/a3/idenet.tgz",
+      "bytes": 422509,
+      "sha256": "6da54e78ef9cd858d86d85fa43ddc5d0773a1179d4204a4552a7861842450389"
+    },
+    {
+      "name": "binutils.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/d1/binutils.tgz",
+      "bytes": 739348,
+      "sha256": "486eae7ae0642ca0f2cff4cdfa5c00028d9ac3fc329632eb887e418f4d14a4c2"
+    },
+    {
+      "name": "gmake.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/d1/gmake.tgz",
+      "bytes": 174581,
+      "sha256": "c489406561fd24a12be48bfbc5d8621b64f63d3b699d590fa0fbfc381c373ad8"
+    },
+    {
+      "name": "gcc270.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/d2/gcc270.tgz",
+      "bytes": 1163159,
+      "sha256": "92f36191ba99fb7bf68d3c66169fb1142ca94df46586aa838ef6c658935bca2e"
+    },
+    {
+      "name": "libc.tgz",
+      "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/d6/libc.tgz",
+      "bytes": 588129,
+      "sha256": "23fb71fea211310c7d45c466ca1b1e14857bb8a6858e8e2d7ae15e68181527d8"
+    },
+    {
+      "name": "gnushogi-1.2p03.tar.gz",
+      "url": "https://ftp.gnu.org/gnu/gnushogi/gnushogi-1.2p03.tar.gz",
+      "bytes": 188078,
+      "sha256": "3e30ef3457dc676f58868a3078dc6ab6e6f5c7058eccd87b14a813fcc000c6b3"
+    },
+    {
+      "name": "linux-1.2.13.tar.gz",
+      "url": "https://cdn.kernel.org/pub/linux/kernel/v1.2/linux-1.2.13.tar.gz",
+      "bytes": 2354612,
+      "sha256": "ed46880d26d70ff7772cf47acd35a565deb24c0d2d5018ec8dc134cc32a3a39e"
+    }
+  ]
+}

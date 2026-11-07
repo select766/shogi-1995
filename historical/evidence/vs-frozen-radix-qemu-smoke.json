@@ -1,0 +1,227 @@
+{
+  "complete": true,
+  "mode": "fixed_depth_smoke",
+  "backend": "diagnostic",
+  "commands": [
+    [
+      "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+      "/tmp/shogi-1995-historical/repo/historical/usi.py",
+      "--backend",
+      "qemu",
+      "--compiler",
+      "old",
+      "--run-root",
+      "/tmp/shogi-1995-historical/repo/historical/results/vs-frozen-radix-qemu-smoke/gnu-vms"
+    ],
+    [
+      "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+      "--image",
+      "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/root.ext2",
+      "--run-dir",
+      "/tmp/shogi-1995-historical/repo/historical/results/vs-frozen-radix-qemu-smoke/candidate-vm",
+      "--backend",
+      "qemu"
+    ]
+  ],
+  "engine_options": [
+    {},
+    {
+      "EvalFile": "/eval/model.bin"
+    }
+  ],
+  "opening": [
+    "7g7f",
+    "3c3d"
+  ],
+  "start_sfen": "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL b - 1",
+  "milliseconds": 2000,
+  "grace_ms": 200,
+  "games": [
+    {
+      "a_color": 0,
+      "moves": [
+        {
+          "side": 0,
+          "actual": "8h2b+",
+          "host_ms": 134.92801500251517,
+          "go": "go depth 2",
+          "time": 10,
+          "nodes": 194,
+          "depth": 2
+        },
+        {
+          "side": 1,
+          "actual": "8b2b",
+          "host_ms": 64.13208399317227,
+          "go": "go depth 2",
+          "time": 41,
+          "nodes": 330,
+          "nps": 8048,
+          "depth": 2,
+          "seldepth": 4
+        },
+        {
+          "side": 0,
+          "actual": "B*4e",
+          "host_ms": 170.7843110052636,
+          "go": "go depth 2",
+          "time": 30,
+          "nodes": 1159,
+          "depth": 2
+        },
+        {
+          "side": 1,
+          "actual": "B*5e",
+          "host_ms": 35.263440004200675,
+          "go": "go depth 2",
+          "time": 13,
+          "nodes": 344,
+          "nps": 26461,
+          "depth": 2,
+          "seldepth": 12
+        },
+        {
+          "side": 0,
+          "actual": "4e6c+",
+          "host_ms": 176.61115700320806,
+          "go": "go depth 2",
+          "time": 10,
+          "nodes": 921,
+          "depth": 2
+        },
+        {
+          "side": 1,
+          "actual": "5e9i+",
+          "host_ms": 33.26115400705021,
+          "go": "go depth 2",
+          "time": 3,
+          "nodes": 111,
+          "nps": 37000,
+          "depth": 2,
+          "seldepth": 10
+        },
+        {
+          "side": 0,
+          "actual": "6c8a",
+          "host_ms": 202.37686400651,
+          "go": "go depth 2",
+          "time": 20,
+          "nodes": 2180,
+          "depth": 2
+        },
+        {
+          "side": 1,
+          "actual": "L*6b",
+          "host_ms": 49.39702599949669,
+          "go": "go depth 2",
+          "time": 26,
+          "nodes": 1224,
+          "nps": 47076,
+          "depth": 2,
+          "seldepth": 8
+        }
+      ],
+      "outcome": {
+        "winner": null,
+        "reason": "max_plies"
+      },
+      "a_result": "draw"
+    },
+    {
+      "a_color": 1,
+      "moves": [
+        {
+          "side": 0,
+          "actual": "5i6h",
+          "host_ms": 39.48073700303212,
+          "go": "go depth 2",
+          "time": 15,
+          "nodes": 806,
+          "nps": 53733,
+          "depth": 2,
+          "seldepth": 5
+        },
+        {
+          "side": 1,
+          "actual": "2b8h+",
+          "host_ms": 135.04654999997,
+          "go": "go depth 2",
+          "time": 0,
+          "nodes": 189,
+          "depth": 2
+        },
+        {
+          "side": 0,
+          "actual": "7i8h",
+          "host_ms": 22.401791997253895,
+          "go": "go depth 2",
+          "time": 3,
+          "nodes": 126,
+          "nps": 42000,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "B*3c",
+          "host_ms": 191.6000789933605,
+          "go": "go depth 2",
+          "time": 40,
+          "nodes": 1565,
+          "depth": 2
+        },
+        {
+          "side": 0,
+          "actual": "6i7h",
+          "host_ms": 30.608330998802558,
+          "go": "go depth 2",
+          "time": 7,
+          "nodes": 292,
+          "nps": 41714,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "3a3b",
+          "host_ms": 240.71264399390202,
+          "go": "go depth 2",
+          "time": 70,
+          "nodes": 4032,
+          "depth": 2
+        },
+        {
+          "side": 0,
+          "actual": "2g2f",
+          "host_ms": 31.86180400371086,
+          "go": "go depth 2",
+          "time": 10,
+          "nodes": 475,
+          "nps": 47500,
+          "depth": 2,
+          "seldepth": 3
+        },
+        {
+          "side": 1,
+          "actual": "5a5b",
+          "host_ms": 208.69780900829937,
+          "go": "go depth 2",
+          "time": 10,
+          "nodes": 945,
+          "depth": 2
+        }
+      ],
+      "outcome": {
+        "winner": null,
+        "reason": "max_plies"
+      },
+      "a_result": "draw"
+    }
+  ],
+  "note": "Two color-swapped games from one opening; no independent-sample Elo claim.",
+  "score_a": {
+    "win": 0,
+    "draw": 2,
+    "loss": 0
+  }
+}

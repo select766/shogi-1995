@@ -1,0 +1,8 @@
+{
+  "backend": "86box",
+  "compiler": "gcc270",
+  "sfen": "4k4/9/9/9/9/9/9/9/4K4 b RBGSNLP 1",
+  "requested_ms": 2000,
+  "observation": "no bestmove within 30 seconds; test sent explicit stop; minimum-depth and node-poll controls are not a hard deadline",
+  "log": "results/usi-86box-old/protocol.log"
+}

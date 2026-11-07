@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/d1/binutils.tgz",
+    "bytes": 739348,
+    "sha256": "486eae7ae0642ca0f2cff4cdfa5c00028d9ac3fc329632eb887e418f4d14a4c2"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/d1/gmake.tgz",
+    "bytes": 174581,
+    "sha256": "c489406561fd24a12be48bfbc5d8621b64f63d3b699d590fa0fbfc381c373ad8"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/d2/gcc270.tgz",
+    "bytes": 1163159,
+    "sha256": "92f36191ba99fb7bf68d3c66169fb1142ca94df46586aa838ef6c658935bca2e"
+  },
+  {
+    "url": "https://slackware.uk/slackware/slackware-3.0/disk1/slakware/d6/libc.tgz",
+    "bytes": 588129,
+    "sha256": "23fb71fea211310c7d45c466ca1b1e14857bb8a6858e8e2d7ae15e68181527d8"
+  }
+]

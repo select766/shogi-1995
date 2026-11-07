@@ -1,0 +1,68 @@
+[
+  {
+    "compiler": "old",
+    "history": "7g7f 3c3d",
+    "actual": "8h2b+",
+    "host_ms": 135.3454779891763,
+    "go": "go depth 2",
+    "time": 10,
+    "nodes": 194,
+    "depth": 2
+  },
+  {
+    "compiler": "old",
+    "history": "7g7f 3c3d 8h2b+ 3a2b B*5e",
+    "actual": "B*5d",
+    "host_ms": 185.59920600091573,
+    "go": "go depth 2",
+    "time": 30,
+    "nodes": 1358,
+    "depth": 2
+  },
+  {
+    "compiler": "old",
+    "actual": "7g7f",
+    "host_ms": 2102.843768996536,
+    "go": "go movetime 2000",
+    "time": 2010,
+    "nodes": 135853,
+    "depth": 7
+  },
+  {
+    "compiler": "old",
+    "noninteger_time_rejected": true
+  },
+  {
+    "compiler": "modern",
+    "history": "7g7f 3c3d",
+    "actual": "8h2b+",
+    "host_ms": 138.65374799934216,
+    "go": "go depth 2",
+    "time": 10,
+    "nodes": 194,
+    "depth": 2
+  },
+  {
+    "compiler": "modern",
+    "history": "7g7f 3c3d 8h2b+ 3a2b B*5e",
+    "actual": "B*5d",
+    "host_ms": 174.93849100719672,
+    "go": "go depth 2",
+    "time": 30,
+    "nodes": 1358,
+    "depth": 2
+  },
+  {
+    "compiler": "modern",
+    "actual": "7g7f",
+    "host_ms": 2108.1766360002803,
+    "go": "go movetime 2000",
+    "time": 2020,
+    "nodes": 141042,
+    "depth": 7
+  },
+  {
+    "compiler": "modern",
+    "noninteger_time_rejected": true
+  }
+]

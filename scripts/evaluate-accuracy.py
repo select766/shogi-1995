@@ -19,6 +19,7 @@ from shogi1995.provenance import environment_identity
 
 def main():
     p=argparse.ArgumentParser()
+    p.add_argument('--no-history',action='store_true',help='Do not update shared measurement history')
     p.add_argument('--dataset',required=True,type=Path);p.add_argument('--output',required=True,type=Path)
     p.add_argument('--engine-command',required=True,help='JSON array of argv strings, never evaluated as a shell')
     p.add_argument('--engine-id',required=True);p.add_argument('--engine-sha256',required=True)
@@ -128,7 +129,7 @@ def main():
     finally:
         report['elapsed_seconds']=time.monotonic()-started
         report['finished_at_utc']=datetime.now(timezone.utc).isoformat();save()
-        if report['complete']:
+        if report['complete'] and not args.no_history:
             subprocess.run([sys.executable,str(ROOT/'scripts/update-measurements.py'),'--result',str(args.output.resolve())],cwd=ROOT,check=True)
     print(json.dumps({k:v for k,v in report.items() if k not in ('details','sample_ids')},indent=2))
 

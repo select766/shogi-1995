@@ -23,3 +23,5 @@ bash scripts/setup.sh > /tmp/shogi-1995-setup.log 2>&1
 ゲストの初回起動には約30秒かかります。ShogiHome側のエンジン起動待ち時間を十分に取ってください。QEMUによる診断は`./run-shogi-1995.sh --backend qemu`で行えますが、性能比較には86Boxを使います。
 
 新規学習と候補モデルの検証手順は[学習・検証の手順](docs/training.md)を参照してください。主評価は固定したHCPE局面を86Box上で通常の2秒指定で探索し、収録手との一致率を比較します。
+
+- [1995年版GNU Shogiとの比較・再現ビルド](historical/README.md) / [選定と検証結果](docs/historical-engine-validation.md)
