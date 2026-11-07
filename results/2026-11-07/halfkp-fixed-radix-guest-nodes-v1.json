@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "started_at_utc": "2026-11-07T03:42:35.205218+00:00",
+  "finished_at_utc": "2026-11-07T03:43:21.680587+00:00",
+  "measurement_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+  "positions": 8,
+  "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "automatic_model_selection": true,
+  "guest_eval_counters": {
+    "incremental": 69806,
+    "refresh": 7618,
+    "verified": 0,
+    "output_bits": 32,
+    "kernel_width": 8,
+    "fc_packed": 0,
+    "fc_bits": 0,
+    "accumulator_packed": 0,
+    "accumulator_bits": 32,
+    "head_radix": 1,
+    "head_verified": 0
+  },
+  "reference_sha256": "ecfeaaf06a8b0f4d3fdbccdf77c35607b02f37c737845a65ac7e79f01110ad02",
+  "rows": [
+    {
+      "id": "hcpe-695495",
+      "bestmove": "3a3b",
+      "nodes": 10004,
+      "completed_depth": 8
+    },
+    {
+      "id": "hcpe-51572",
+      "bestmove": "P*3e",
+      "nodes": 10001,
+      "completed_depth": 7
+    },
+    {
+      "id": "hcpe-93812",
+      "bestmove": "7f7g+",
+      "nodes": 10021,
+      "completed_depth": 7
+    },
+    {
+      "id": "hcpe-141427",
+      "bestmove": "2b3c",
+      "nodes": 10002,
+      "completed_depth": 8
+    },
+    {
+      "id": "hcpe-248637",
+      "bestmove": "8d9d",
+      "nodes": 10018,
+      "completed_depth": 7
+    },
+    {
+      "id": "hcpe-8022",
+      "bestmove": "4g5f",
+      "nodes": 10023,
+      "completed_depth": 7
+    },
+    {
+      "id": "hcpe-661048",
+      "bestmove": "5f5e",
+      "nodes": 10008,
+      "completed_depth": 5
+    },
+    {
+      "id": "hcpe-343894",
+      "bestmove": "4f4e",
+      "nodes": 10015,
+      "completed_depth": 9
+    }
+  ],
+  "scope": "search parity; host timing/NPS are not Pentium performance measurements"
+}

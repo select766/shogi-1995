@@ -1,0 +1,48 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-07T03:44:32.594120+00:00",
+  "profile": "/home/select766/shogi/shogi-1995/manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+  "source_identity": {
+    "source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+    "source_tree_sha256": "01c94314460598d02917c4037b19069434ad0ff3071aee800cc3212951147a05",
+    "source_worktree_dirty": false,
+    "source_commit_binding": "committed_source_tree"
+  },
+  "build": {
+    "source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+    "source_tree_sha256": "01c94314460598d02917c4037b19069434ad0ff3071aee800cc3212951147a05",
+    "source_worktree_dirty": false,
+    "source_commit_binding": "committed_source_tree",
+    "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+    "object_dir": "/home/select766/shogi/shogi-1995/.local/obj-pentium1995-9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+    "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656"
+  },
+  "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+  "image_sha256": "ff97d675938e376fe81bc657b7759a08fbcda0b1c0b73db4e61d4673abdb9e30",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "native_values": 512,
+  "native_search_positions": 256,
+  "verified_heads": 1197607,
+  "guest_memory": {
+    "total": 31866880,
+    "free": 14671872,
+    "swap": 0
+  },
+  "elf32_static_x86": true,
+  "known_post_pentium_opcode_hits": [],
+  "artifacts": {
+    "results/2026-11-07/halfkp-fixed-radix-head-ubsan-v1.json": "e806363cf5798097901756f7f51083d87dbc1fcd10f0cc2ec7415d2e3e75cec0",
+    "/home/select766/shogi/shogi-1995/manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json": "4efdca6e326b23125b4be5edf2e69e9a143327f82a8149695381958365ac329b",
+    "results/2026-11-07/halfkp-fixed-radix-values-v1.json": "255aee98e2661e13552a3354d6428fc4c9fab8c6c86cb1539378a876b64cb8f0",
+    "results/2026-11-07/halfkp-fixed-radix-native-lifecycle-v1.json": "0b044a0a077f32a35d8a13305f126c1ac122351a43256c9c1be5754a7c0a62ee",
+    "results/2026-11-07/halfkp-fixed-radix-native-search-v1.json": "ea5f4352278c604ad0182c00d771ed5fc68aa0ee7657f5b5f6329c42acebac9b",
+    ".local/validation/halfkp-fixed-radix-v1/native-reference.json": "ecfeaaf06a8b0f4d3fdbccdf77c35607b02f37c737845a65ac7e79f01110ad02",
+    "results/2026-11-07/halfkp-fixed-radix-guest-values-v1.json": "a63adff17eb29296dea692cd8c2fe981a6fdcae68731c2cdd91db204d876107e",
+    "results/2026-11-07/halfkp-fixed-radix-guest-nodes-v1.json": "376b8c4f206b0d4e0cb16c8edff39bb43a737c52aeee29418ba1355489492551",
+    "results/2026-11-07/halfkp-fixed-radix-guest-lifecycle-v1.json": "0c09ab935a7c1e15f7d91b7883cf725398e2634977cfea1cda91917f7c4e8bd4",
+    "results/2026-11-07/halfkp-fixed-radix-usi-lifecycle-v1.json": "9845adf8ccb9cf4ba44588cb46d2babce1ded8eeb517b9aa930f80a44ada413d"
+  },
+  "driver_sha256": "0df080de9b3f67fbaa31c30b4173949ee5ff62a4acd424a8b43d80a00d4b0062",
+  "scope": "correctness, real guest operation and RAM only; speed and ordinary strength unmeasured"
+}

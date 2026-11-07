@@ -1,0 +1,23 @@
+{
+  "backend": "86box",
+  "started_at_utc": "2026-11-07T03:43:57.137487+00:00",
+  "guest_image": "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/root.ext2",
+  "image_sha256": "ff97d675938e376fe81bc657b7759a08fbcda0b1c0b73db4e61d4673abdb9e30",
+  "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+  "test_source_sha256": "b69997bf18ff3633cdc651724c3e55f9052650ce27fb50c7ce8e4e01471c5683",
+  "startup_seconds": 30.223214373007067,
+  "guest_memory_bytes": {
+    "total": 31866880,
+    "free": 14692352,
+    "swap": 0
+  },
+  "first_move": "2g2f",
+  "increment_search_stop_seconds": 0.02463348300079815,
+  "move_list_512_plies": true,
+  "short_clock_seconds": 0.1322289660020033,
+  "movetime_2000_seconds": 2.0271496810019016,
+  "bridge_added_stop_during_movetime": false,
+  "infinite_stop_seconds": 0.02049213700229302,
+  "passed": true,
+  "finished_at_utc": "2026-11-07T03:44:32.588515+00:00"
+}

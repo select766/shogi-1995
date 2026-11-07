@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "positions": 256,
+  "counters": {
+    "incremental": 2022655,
+    "refresh": 364029,
+    "verified": 1197607,
+    "output_bits": 32,
+    "kernel_width": 8,
+    "fc_packed": 0,
+    "fc_bits": 0,
+    "accumulator_packed": 0,
+    "accumulator_bits": 32,
+    "head_radix": 1,
+    "head_verified": 1197607
+  },
+  "same_bestmoves_and_nodes": true,
+  "model_reload_passed": true,
+  "same_completed_depth": true,
+  "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "reference_sha256": "96f621bba0f44328450eeec738ab688e82c0f346170aa6f84cb56f21a0b117d6"
+}

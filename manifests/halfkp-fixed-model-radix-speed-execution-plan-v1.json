@@ -1,0 +1,113 @@
+{
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-fixed-model-counter-ordinary-v1.json",
+    "pid": 769485,
+    "process_start_time": "9700121",
+    "plan_sha256": "e56a02aca6f76e8074dda6d17c2749fa6d23eb9af312b9a274c342eb7f39cb1e"
+  },
+  "code_sha256": {
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985",
+    "scripts/evaluate-pair.py": "1a8ceeec13eeebc4920bbc03646a3eeec3dd79db7ef2cafc6d5f0fa08a32a03b",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/compare-accuracy.py": "ec7f84a9eac154cfe47e60952fa10e3354572849dbfcc18ab53265cb977570d5",
+    "scripts/update-measurements.py": "6cac7d767e5389e7071e6ddce4e0427b8037b842e854c4feacf7c62ce67f043b",
+    "scripts/plot-measurement-history.py": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
+    "src/shogi1995/plot_labels.py": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
+    "src/shogi1995/statistics.py": "a101cb0590d05d6a8115c8915e182b83d9b7dfc0948896b5a285160199c3671d",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf",
+    "src/shogi1995/provenance.py": "bdc87dcc8dedd6513407084c78480e60a90a3ce9a8f250c08ab9a2c23df6cc3e",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/shogi1995/actions.py": "a7471126e86a817f1f716a66c1ce51d4e7319f060ef5475912a9d2885c1cbc84",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd",
+    "scripts/compare-fixed-node-speed.py": "dcbef50770e1e975b1b4c977f1ce7ac43cfeda43939b9e57d891185ba974ba4c",
+    "scripts/audit-speed-blocks.py": "879e5c4155e6d17a577204c30b13db8c2fa36dd44cc19965cf37167cecfdc023",
+    "src/shogi1995/speed_comparison.py": "4fd7c262692c62ac7ae71d5123f23b94533ce75de8d95a60c98e02b3c219aa6e"
+  },
+  "frozen_artifacts_sha256": {
+    "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+    "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json": "4efdca6e326b23125b4be5edf2e69e9a143327f82a8149695381958365ac329b",
+    "manifests/halfkp-model-frozen-20261107-1000.json": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+    ".local/frozen-models/halfkp-20261107-1000/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/root.ext2": "b2a65670b0e357299349ed723b35792edaa292337e35a2bb07f85ebeb4b9594c",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/root.ext2": "ff97d675938e376fe81bc657b7759a08fbcda0b1c0b73db4e61d4673abdb9e30",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/shogi": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl": "60f527d8c3aa9c1ae74c9ba34d9dfadef7cc02f5d4318673c9932f80af1689c8"
+  },
+  "completed_inputs": {
+    "results/2026-11-07/halfkp-fixed-model-radix-qualification-v1.json": {
+      "fields": {
+        "complete": true,
+        "passed": true,
+        "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+        "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+      },
+      "sha256": "3656947863636cac55a8196416d57f91e9527df530ca20c1d457e7d99c764b7e"
+    }
+  },
+  "steps": [
+    {
+      "description": "quiet host and exited Radix qualification producer preflight",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "-c",
+        "import datetime,fcntl,json,subprocess\nfrom pathlib import Path\ns=json.loads(Path('.local/validation/halfkp-fixed-radix-v1/state.json').read_text());assert s['status']=='complete' and s['pid']==810582\nassert not Path('/proc/810582').exists(),'radix qualification producer must exit'\ncompute=subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader,nounits'],text=True).strip();assert not compute,compute\nlock=Path('.local/run/engine.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)\nr={'passed':True,'verified_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'qualification_producer_absent':True,'gpu_compute_processes':[],'default_engine_lock_available':True,'scope':'fixed model C30 vs C30+radix target fixed-node speed entry'}\nwith Path('results/2026-11-07/halfkp-fixed-model-radix-speed-preflight-v1.json').open('x') as f:json.dump(r,f,indent=2);f.write('\\n')\nprint(json.dumps(r))\n"
+      ],
+      "log": "/tmp/shogi-fixed-radix-speed-preflight-v1.log"
+    },
+    {
+      "description": "sameD42 C30 vs C30+radix head, quick256 fixed10000nodes/block64ABBA",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/quick.jsonl",
+        "--output",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1",
+        "--block-size",
+        "64",
+        "--milliseconds",
+        "2000",
+        "--nodes",
+        "10000"
+      ],
+      "log": "/tmp/shogi-fixed-radix-speed-v1.log"
+    },
+    {
+      "description": "full paired speed summary",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/compare-fixed-node-speed.py",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/baseline.json",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-v1.json"
+      ],
+      "log": "/tmp/shogi-fixed-radix-speed-summary-v1.log"
+    },
+    {
+      "description": "full exact-tree and4block speed gate audit",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/audit-speed-blocks.py",
+        "--directory",
+        ".local/evaluation/halfkp-fixed-w8-h0-128m-radix-speed-v1",
+        "--comparison",
+        "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-v1.json",
+        "--output",
+        "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-blocks-v1.json"
+      ],
+      "log": "/tmp/shogi-fixed-radix-speed-blocks-v1.log"
+    }
+  ],
+  "policy": "FrozenD42 width8/H0 model unchanged. C30 vs C30+radix-head only; no packed-cache/packedFC/counter prototype. Prerequisite ordinary job already complete, additional completed_inputs qualification must pass and actual qualification producer must have exited before speed. One target VM, no other heavy/native/build/training/VM work while timing. Hold measurement HEAD/scripts/plans/images. All256 exact moves/finalnodes/completeddepth,ops0,paired95savedlower>0+4positiveblockmedians required before full1024ordinary2s comparison. Speed is not strength. Runtime exploration ends06UTC; do not start normal if cannot finish before cutoff.",
+  "created_at_utc": "2026-11-07T03:44:40.070848+00:00",
+  "purpose": "Same fixed model and retained C30 runtime: isolate exact radix256 output-head arithmetic on target P100"
+}

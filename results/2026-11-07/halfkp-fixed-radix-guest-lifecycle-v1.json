@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T03:43:57.096254+00:00",
+  "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "test_sha256": "403dcf306f4ca72c4a0bcc43de92371724ae3bebb91d62391bf20525cfa8544a",
+  "cases": [
+    {
+      "case": "frozen",
+      "head_radix": 1,
+      "positions": 16,
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+    }
+  ],
+  "guest_automatic_selection": true,
+  "native_disable_and_reenable_passed": false,
+  "guest_model_cannot_be_silently_disabled": true,
+  "reload_passed": true,
+  "independent_integer_values": true,
+  "scope": "loaded-head dispatch, fallback and USI model-switch correctness; not speed or strength",
+  "image_sha256": "ff97d675938e376fe81bc657b7759a08fbcda0b1c0b73db4e61d4673abdb9e30"
+}

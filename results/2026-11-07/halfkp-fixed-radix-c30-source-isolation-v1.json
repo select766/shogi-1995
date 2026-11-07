@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T03:43:01.799905+00:00",
+  "baseline_source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+  "candidate_source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+  "changed_source_files": [
+    "vendor/YaneuraOu/source/eval/material/shogi1995_fixed_radix_head.h",
+    "vendor/YaneuraOu/source/eval/material/shogi1995_psqt.h"
+  ],
+  "build": {
+    "source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+    "source_tree_sha256": "01c94314460598d02917c4037b19069434ad0ff3071aee800cc3212951147a05",
+    "source_worktree_dirty": false,
+    "source_commit_binding": "committed_source_tree",
+    "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+    "object_dir": "/home/select766/shogi/shogi-1995/.local/obj-pentium1995-9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+    "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656"
+  },
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "scope": "Source isolation proof: exact C30 vendor tree except new arithmetic header and dispatch/evaluation/verification/diagnostics in psqt. Prior packed cache/FC/counter changes withdrawn from active source."
+}
