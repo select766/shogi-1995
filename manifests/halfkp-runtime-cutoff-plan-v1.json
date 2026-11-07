@@ -1,0 +1,12 @@
+{
+  "deadline_utc": "2026-11-07T05:59:00+00:00",
+  "exploration_end_utc": "2026-11-07T06:00:00+00:00",
+  "owned_job_state": ".local/jobs/halfkp-fixed-model-radix-ordinary-v1.json",
+  "owned_pid": 823660,
+  "owned_process_start_time": "10407412",
+  "owned_plan_sha256": "80091a6897ec6644edb58a6927253e0808ff2825806ccc60e858370c231cfe00",
+  "guard_state": ".local/jobs/halfkp-runtime-cutoff-v1.json",
+  "guard_source_archive": "results/2026-11-07/halfkp-runtime-deadline-stop-source-v1.py",
+  "guard_source_sha256": "ffda5aec6480557289308ea9aa56406035348ab759bc0ade55fb3ad16cc3df59",
+  "policy": "At14:59JST signal only exact owned live trial identified by PID/start/plan; if already exited do not signal. Preserve partial trial/receipt; incomplete trial excluded from runtime selection."
+}

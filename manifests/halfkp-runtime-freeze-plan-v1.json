@@ -1,0 +1,113 @@
+{
+  "created_at_utc": "2026-11-07T04:15:20.989314+00:00",
+  "execute_at_utc": "2026-11-07T05:59:30+00:00",
+  "deadline_utc": "2026-11-07T06:00:00+00:00",
+  "selector_sha256": "9c2d5639e659d90a4cf13726d020b1ba5030046ff09f308c7df13461c8c58bee",
+  "model_manifest": "manifests/halfkp-model-frozen-20261107-1000.json",
+  "conditions_manifest": "manifests/halfkp-model-freeze-plan-v1.json",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "frozen_inputs_sha256": {
+    "manifests/halfkp-model-frozen-20261107-1000.json": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+    "manifests/halfkp-model-freeze-plan-v1.json": "ae09afaf9d061437e491916769a20d84553feb5256704b07d9d6570d3ff74cbb",
+    "manifests/halfkp-fixed-model-runtime-selection-plan-v1.json": "16e388fc761a89456cd8fb24b86226c7995c4b78c4339af0d0c71e274e7f12d8",
+    "scripts/freeze-halfkp-model.py": "acd03e432695c98911782a6aff2ae62d44a838a95dc4df83a54016de08224d10",
+    "src/shogi1995/statistics.py": "a101cb0590d05d6a8115c8915e182b83d9b7dfc0948896b5a285160199c3671d",
+    "manifests/halfkp-nnue-w8-h0-128m-v1-training.json": "3bf1a1538588acfe93c8250f3c321d9652e06e670fb947e19ae6f756befb812c",
+    "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261106T215411494758Z-candidate.json": "3854281c7f6cd3091976ec115def00252d68a59f8df76315bde16db0c3a4a28e",
+    "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+    "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json": "27a2f11d45925d8e6e4f53134af4381db0aad43bd3141d7755222ddb520407e6",
+    "results/2026-11-07/halfkp-fixed-model-counter-qualification-v1.json": "644b758a9a2dc850bd7faaca1df8079bfdc70172bca67c3d82ec34d5f50af47c",
+    "results/2026-11-07/halfkp-fixed-w8-h0-128m-counter-speed-blocks-v1.json": "f273ef8737d29371bf5c7e23a6914880bc3c6a2771a119e13bef318f6c5d9fb9",
+    "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json": "4efdca6e326b23125b4be5edf2e69e9a143327f82a8149695381958365ac329b",
+    "results/2026-11-07/halfkp-fixed-model-radix-qualification-v1.json": "3656947863636cac55a8196416d57f91e9527df530ca20c1d457e7d99c764b7e",
+    "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-blocks-v1.json": "df440b87d751e65d5ee537fc120ba0d68a4fce2cb897e86796fda2885159fbd3",
+    ".local/evaluation/development-halfkp-fixed-w8-h0-128m-counter-v1/baseline.json": "22d1425603f0d7947d5df21e71455a439c745814d4af6b100aab03f11d11109b",
+    ".local/evaluation/development-halfkp-fixed-w8-h0-128m-counter-v1/candidate.json": "ba11d02a7715066526aeeb9b18e3eb1903d2d43725c18d49958f6bac89f4ec9b",
+    ".local/evaluation/development-halfkp-fixed-w8-h0-128m-counter-v1/comparison.json": "8d1722e946a12e3c1d65b58a9665e99aeaa5995a7bd01baf6c17f89b0f3d7391",
+    ".local/evaluation/development-halfkp-fixed-w8-h0-128m-counter-v1/identity.json": "cfa935d63eb195a5329c9b1cab79eddc26c902f6bbe4d529385d05cbbd1fdb9a"
+  },
+  "profiles": {
+    "c30": {
+      "path": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+      "priority": 0,
+      "qualification": []
+    },
+    "counter-cache": {
+      "path": "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json",
+      "priority": 1,
+      "qualification": [
+        {
+          "path": "results/2026-11-07/halfkp-fixed-model-counter-qualification-v1.json",
+          "fields": {
+            "complete": true,
+            "passed": true,
+            "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+            "engine_sha256": "a5c037e75d09eee21c507398c2c47d13c3a4185e26a76ca66ad4d48df73674fb"
+          }
+        },
+        {
+          "path": "results/2026-11-07/halfkp-fixed-w8-h0-128m-counter-speed-blocks-v1.json",
+          "fields": {
+            "complete": true,
+            "passed": true,
+            "eligible_for_ordinary_time_strength_comparison": true,
+            "positions": 256
+          }
+        }
+      ]
+    },
+    "radix": {
+      "path": "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+      "priority": 2,
+      "qualification": [
+        {
+          "path": "results/2026-11-07/halfkp-fixed-model-radix-qualification-v1.json",
+          "fields": {
+            "complete": true,
+            "passed": true,
+            "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+            "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656"
+          }
+        },
+        {
+          "path": "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-blocks-v1.json",
+          "fields": {
+            "complete": true,
+            "passed": true,
+            "eligible_for_ordinary_time_strength_comparison": true,
+            "positions": 256
+          }
+        }
+      ]
+    }
+  },
+  "fallback": {
+    "runtime": "c30",
+    "path": "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261106T215411494758Z-candidate.json"
+  },
+  "trials": [
+    {
+      "id": "counter-cache-ordinary",
+      "directory": ".local/evaluation/development-halfkp-fixed-w8-h0-128m-counter-v1",
+      "state": ".local/jobs/halfkp-fixed-model-counter-ordinary-v1.json",
+      "pid": 769485,
+      "process_start_time": "9700121",
+      "plan_sha256": "e56a02aca6f76e8074dda6d17c2749fa6d23eb9af312b9a274c342eb7f39cb1e",
+      "baseline": "c30",
+      "candidate": "counter-cache"
+    },
+    {
+      "id": "radix-ordinary",
+      "directory": ".local/evaluation/development-halfkp-fixed-w8-h0-128m-radix-v1",
+      "state": ".local/jobs/halfkp-fixed-model-radix-ordinary-v1.json",
+      "pid": 823660,
+      "process_start_time": "10407412",
+      "plan_sha256": "80091a6897ec6644edb58a6927253e0808ff2825806ccc60e858370c231cfe00",
+      "baseline": "c30",
+      "candidate": "radix"
+    }
+  ],
+  "receipt": ".local/jobs/halfkp-runtime-freeze-v1.json",
+  "output": "manifests/halfkp-runtime-frozen-20261107-1500.json",
+  "rule": "Follow fixed runtime-selection policy. Latest complete observation per unique engine from completed and exited full paired normal-time trials, never maximum/pooling repeated controls. Rank matches desc, exact ties prefer incumbentC30 then priorcounter then newlyregisteredradix. Heldout never read. At14:59 cutoff guard stops any unusually delayed owned trial; at14:59:30 freeze from eligible completed evidence before15JST."
+}

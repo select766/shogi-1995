@@ -1,0 +1,148 @@
+{
+  "created_at_utc": "2026-11-07T05:41:05.753885+00:00",
+  "purpose": "Final validation only after the actual15JST runtime freeze; no model/runtime exploration or selection after test",
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-runtime-freeze-v1.json",
+    "pid": 828195,
+    "process_start_time": "10467762",
+    "plan_sha256": "8cb57efc4a4f70180486a024338e8468e6e6440aebe44509553a2cb751d75569"
+  },
+  "code_sha256": {
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985",
+    "scripts/evaluate-pair.py": "1a8ceeec13eeebc4920bbc03646a3eeec3dd79db7ef2cafc6d5f0fa08a32a03b",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/compare-accuracy.py": "ec7f84a9eac154cfe47e60952fa10e3354572849dbfcc18ab53265cb977570d5",
+    "scripts/update-measurements.py": "6cac7d767e5389e7071e6ddce4e0427b8037b842e854c4feacf7c62ce67f043b",
+    "scripts/plot-measurement-history.py": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
+    "src/shogi1995/plot_labels.py": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
+    "src/shogi1995/statistics.py": "a101cb0590d05d6a8115c8915e182b83d9b7dfc0948896b5a285160199c3671d",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf",
+    "src/shogi1995/provenance.py": "bdc87dcc8dedd6513407084c78480e60a90a3ce9a8f250c08ab9a2c23df6cc3e",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/shogi1995/actions.py": "a7471126e86a817f1f716a66c1ce51d4e7319f060ef5475912a9d2885c1cbc84",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd",
+    "scripts/play-match.py": "1b50ea72a2d01a4c98896ee9c671020f646dffd4c58097ff70c91a2d1aed53ca",
+    "scripts/update-match-history.py": "af689735190ef261064c0d53706c72017c0912f81aa0c5e3b6430d45fe5b2177",
+    "src/shogi1995/match_rules.py": "ec79a7db515f4826b7774b51994b1af9e4d80a1c205175c60564b159fd409a35",
+    "src/shogi1995/match_statistics.py": "61a573c78668aebe98e072c3698e538b54d67b91c69cdd6275afabda9f13f7f8",
+    "src/shogi1995/sessions.py": "998de8a8f7d29ceaf9d977443a5076069c9ee8a7ed50ea347f42c9ff614c4298"
+  },
+  "frozen_artifacts_sha256": {
+    "config/evaluation/material-v1-frozen.json": "1d796bc42ea17ee59c3644c879437fcbfda9ff033a10be0530770b924409cc45",
+    "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json": "4efdca6e326b23125b4be5edf2e69e9a143327f82a8149695381958365ac329b",
+    "manifests/halfkp-model-frozen-20261107-1000.json": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+    "manifests/halfkp-runtime-freeze-plan-v1.json": "8cb57efc4a4f70180486a024338e8468e6e6440aebe44509553a2cb751d75569",
+    "scripts/freeze-halfkp-runtime.py": "9c2d5639e659d90a4cf13726d020b1ba5030046ff09f308c7df13461c8c58bee",
+    "config/evaluation/tournament-startpos-v1.jsonl": "5426646213ce7d582745cf376629434e4b290b08ab953a9984618acc56e7e60c",
+    "/home/select766/shogi/shogi-1995/.local/baselines/material-v1/root.ext2": "aa4da0c51cda22432ea5a8e85509e8990f9000465647ed24956d72816592672a",
+    "/home/select766/shogi/shogi-1995/.local/baselines/material-v1/shogi": "6445ce90db082cdadaa3c6c0952c3c5063afa7933ea6b7d8385d4f415f9ecc36",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/root.ext2": "ff97d675938e376fe81bc657b7759a08fbcda0b1c0b73db4e61d4673abdb9e30",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/shogi": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-v1/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/test.jsonl": "0bfcd7f9f9633d213d5d98e2aa9478b4823079f7c7eac4384ac7eaeec5b39c07",
+    "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/match.jsonl": "91b14a744f13f79e0928dc61e36aa62d37d39767af4820fdd45bd046c7088ca8"
+  },
+  "completed_inputs": {
+    "manifests/halfkp-runtime-frozen-20261107-1500.json": {
+      "fields": {
+        "complete": true,
+        "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+        "selector_sha256": "9c2d5639e659d90a4cf13726d020b1ba5030046ff09f308c7df13461c8c58bee",
+        "plan_sha256": "8cb57efc4a4f70180486a024338e8468e6e6440aebe44509553a2cb751d75569"
+      }
+    }
+  },
+  "steps": [
+    {
+      "description": "actual frozen finalist, fresh output and quiet host preflight",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "-c",
+        "import datetime,fcntl,hashlib,json,subprocess\nfrom pathlib import Path\nf=json.loads(Path('manifests/halfkp-runtime-frozen-20261107-1500.json').read_text())\nassert f['complete'] and f['plan_sha256']=='8cb57efc4a4f70180486a024338e8468e6e6440aebe44509553a2cb751d75569' and f['selector_sha256']=='9c2d5639e659d90a4cf13726d020b1ba5030046ff09f308c7df13461c8c58bee'\nassert datetime.datetime.fromisoformat(f['frozen_at_utc'])<datetime.datetime(2026,11,7,6,0,tzinfo=datetime.timezone.utc)\nassert f['selected']['profile']=='manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json'\nassert f['selected']['engine_sha256']=='700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656' and f['model_sha256']=='d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff'\nassert not Path('/proc/823660').exists() and not Path('/proc/828195').exists()\nassert not Path('.local/evaluation/final-heldout-4096-v1').exists(),'never repeat a started heldout trial'\nassert not subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader,nounits'],text=True).strip()\nlock=Path('.local/run/engine.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)\nr={'passed':True,'verified_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'runtime_freeze_sha256':hashlib.sha256(Path('manifests/halfkp-runtime-frozen-20261107-1500.json').read_bytes()).hexdigest(),'selected_profile':f['selected']['profile'],'development_producer_and_selector_absent':True,'gpu_compute_processes':[],'default_engine_lock_available':True,'scope':'fixed finalist only; independent4096 once vs freshly measured original material, then20aux+2asym'}\nwith Path('results/2026-11-07/final-verification-entry-preflight-v1.json').open('x') as out:json.dump(r,out,indent=2);out.write('\\n')\nprint(json.dumps(r))\n"
+      ],
+      "log": "/tmp/shogi-final-verification-preflight-v1.log"
+    },
+    {
+      "description": "independent4096 ordinary2000ms fresh original material vs fixed finalist,block256ABBA; once only",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/evaluate-pair.py",
+        "--baseline",
+        "config/evaluation/material-v1-frozen.json",
+        "--candidate",
+        "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/test.jsonl",
+        "--output",
+        ".local/evaluation/final-heldout-4096-v1",
+        "--block-size",
+        "256",
+        "--milliseconds",
+        "2000"
+      ],
+      "log": "/tmp/shogi-final-heldout-4096-v1.log"
+    },
+    {
+      "description": "archive full comparison and gate >=2pp/paired95lower>0/ops0; never retune from test",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "-c",
+        "import datetime,hashlib,json\nfrom pathlib import Path\nd=Path('.local/evaluation/final-heldout-4096-v1');a=json.loads((d/'baseline.json').read_text());b=json.loads((d/'candidate.json').read_text());c=json.loads((d/'comparison.json').read_text())\nfor x in [a,b]:\n assert x['complete'] and x['measured']==4096 and x['total']==4096 and len(x['details'])==4096\n assert x['backend']=='86box' and x['mode']=='fixed_byoyomi' and x['milliseconds']==2000 and x['nodes'] is None\n assert all(x[k]==0 for k in ['errors','illegal_moves','time_overruns'])\n assert x['options']['Threads']==1 and x['options']['USI_Hash']==2 and x['options']['NetworkDelay']==0 and x['options']['NetworkDelay2']==0 and x['options']['MaxMovesToDraw']==512 and x['options']['EnteringKingRule']=='CSARule27'\nassert c['comparison_operational_pass']\nwith Path('results/2026-11-07/final-heldout-4096-v1-comparison.json').open('x') as out:out.write((d/'comparison.json').read_text())\npassed=c['difference']>=.02 and c['bootstrap_95']['lower']>0\nr={'complete':True,'adoption_pass':passed,'verified_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'positions':4096,'baseline_matches':a['matches'],'candidate_matches':b['matches'],'difference_pp':c['difference']*100,'paired95_pp':{k:v*100 for k,v in c['bootstrap_95'].items()},'comparison_sha256':hashlib.sha256((d/'comparison.json').read_bytes()).hexdigest(),'no_retuning_after_test':True,'scope':'one independent test of fixed model/runtime vs fresh original material; not an Elo estimate'}\nwith Path('results/2026-11-07/final-heldout-4096-v1-adoption-gate.json').open('x') as out:json.dump(r,out,indent=2);out.write('\\n')\nprint(json.dumps(r))\nif not passed:raise RuntimeError('heldout adoption gate not met; preserve results, do not retune or deploy')\n"
+      ],
+      "log": "/tmp/shogi-final-heldout-gate-v1.log"
+    },
+    {
+      "description": "20real P100 auxiliarygames,10fixed openings colorswapped,3min+2s both,paired VM clocks calibrated",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/play-match.py",
+        "--baseline",
+        "config/evaluation/material-v1-frozen.json",
+        "--candidate",
+        "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/match.jsonl",
+        "--openings",
+        "10",
+        "--initial-ms",
+        "180000",
+        "--increment-ms",
+        "2000",
+        "--max-plies",
+        "512",
+        "--network-delay",
+        "120",
+        "--network-delay2",
+        "1120",
+        "--output",
+        ".local/evaluation/final-auxiliary-20-v1.json"
+      ],
+      "log": "/tmp/shogi-final-auxiliary-20-v1.log"
+    },
+    {
+      "description": "2real asymmetric tournament-clock operationalgames from startpos,colorswapped,3min/10min+2s; no Elo",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "scripts/play-match.py",
+        "--baseline",
+        "config/evaluation/material-v1-frozen.json",
+        "--candidate",
+        "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+        "--dataset",
+        "config/evaluation/tournament-startpos-v1.jsonl",
+        "--openings",
+        "1",
+        "--tournament-clock",
+        "--network-delay",
+        "120",
+        "--network-delay2",
+        "1120",
+        "--output",
+        ".local/evaluation/final-tournament-operational-2-v1.json"
+      ],
+      "log": "/tmp/shogi-final-tournament-operational-2-v1.log"
+    }
+  ],
+  "policy": "ModelD42 fixed before10JST. Runtime freeze must actually complete by15JST and select the expected qualified radix profile; preflight refuses any discrepancy before heldout. No test use for retuning/reselection. Full4096 original material freshly measured, never saved development baseline. No extraheavy/native/build/otherVM/training during timing; only the two calibrated VMs inside actualgame runner are concurrent. Keep measurement HEAD/code/plans/images fixed through validation. If any gate/step fails preserve state/log/results and stop, no automatic overwrite/restart. Deployment/default image remains unchanged until adoption and real operation pass; then backup+atomic switch and actual defaultUSI/restart checks separately."
+}

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T04:07:42.603455+00:00",
+  "radix_speed_producer_absent": true,
+  "gpu_compute_processes": [],
+  "default_engine_lock_available": true,
+  "scope": "full1024 ordinary2000ms sameD42 C30 vs C30+radix only"
+}

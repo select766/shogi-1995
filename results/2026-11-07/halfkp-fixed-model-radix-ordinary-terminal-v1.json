@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T05:38:15.042319+00:00",
+  "ordinary_job_complete": true,
+  "producer_and_child_absent": true,
+  "vm_lock_free": true,
+  "gpu_compute_pids": [],
+  "positions": 1024,
+  "baseline_matches": 399,
+  "candidate_matches": 401,
+  "delta_pp": 0.1953125,
+  "paired95_pp": [
+    0.0,
+    0.48828125
+  ],
+  "runtime_selection_preview": {
+    "selected": {
+      "runtime": "radix",
+      "profile": "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+      "profile_sha256": "4efdca6e326b23125b4be5edf2e69e9a143327f82a8149695381958365ac329b",
+      "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+      "image_sha256": "ff97d675938e376fe81bc657b7759a08fbcda0b1c0b73db4e61d4673abdb9e30",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+      "source_tree_sha256": "01c94314460598d02917c4037b19069434ad0ff3071aee800cc3212951147a05",
+      "matches": 401,
+      "positions": 1024,
+      "accuracy": 0.3916015625,
+      "wilson_95": {
+        "lower": 0.3621637722499568,
+        "upper": 0.42184961026653156
+      },
+      "finished_at_utc": "2026-11-07T05:26:00.003803+00:00",
+      "evidence": {
+        "path": "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T052600003803Z-candidate.json",
+        "sha256": "3b8cd0f506b8bfe98c0b88344cd4248de252d0805937728d93e7064431678afc"
+      },
+      "trial": "radix-ordinary",
+      "priority": 2
+    },
+    "ranked_eligible": [
+      {
+        "runtime": "radix",
+        "profile": "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+        "profile_sha256": "4efdca6e326b23125b4be5edf2e69e9a143327f82a8149695381958365ac329b",
+        "engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+        "image_sha256": "ff97d675938e376fe81bc657b7759a08fbcda0b1c0b73db4e61d4673abdb9e30",
+        "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+        "source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+        "source_tree_sha256": "01c94314460598d02917c4037b19069434ad0ff3071aee800cc3212951147a05",
+        "matches": 401,
+        "positions": 1024,
+        "accuracy": 0.3916015625,
+        "wilson_95": {
+          "lower": 0.3621637722499568,
+          "upper": 0.42184961026653156
+        },
+        "finished_at_utc": "2026-11-07T05:26:00.003803+00:00",
+        "evidence": {
+          "path": "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T052600003803Z-candidate.json",
+          "sha256": "3b8cd0f506b8bfe98c0b88344cd4248de252d0805937728d93e7064431678afc"
+        },
+        "trial": "radix-ordinary",
+        "priority": 2
+      },
+      {
+        "runtime": "counter-cache",
+        "profile": "manifests/halfkp-fixed-w8-h0-128m-counter-v1-candidate.json",
+        "profile_sha256": "27a2f11d45925d8e6e4f53134af4381db0aad43bd3141d7755222ddb520407e6",
+        "engine_sha256": "a5c037e75d09eee21c507398c2c47d13c3a4185e26a76ca66ad4d48df73674fb",
+        "image_sha256": "3cd77e7043b756b3928ea8c65399fe80fb6c188c0e419e64bf7e2247cd5e5696",
+        "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+        "source_commit": "38b9aaf0ae21ca4389e87edff9aa5f596dc49d10",
+        "source_tree_sha256": "a3874e091f20db0aa2a18e490cdc03dce480a961ffdc482cbc2fff6b9e33377c",
+        "matches": 400,
+        "positions": 1024,
+        "accuracy": 0.390625,
+        "wilson_95": {
+          "lower": 0.3612041296556177,
+          "upper": 0.42086342747813626
+        },
+        "finished_at_utc": "2026-11-07T03:28:09.611057+00:00",
+        "evidence": {
+          "path": "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T032809611057Z-candidate.json",
+          "sha256": "ba11d02a7715066526aeeb9b18e3eb1903d2d43725c18d49958f6bac89f4ec9b"
+        },
+        "trial": "counter-cache-ordinary",
+        "priority": 1
+      },
+      {
+        "runtime": "c30",
+        "profile": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+        "profile_sha256": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+        "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+        "image_sha256": "b2a65670b0e357299349ed723b35792edaa292337e35a2bb07f85ebeb4b9594c",
+        "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+        "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+        "source_tree_sha256": "b294c6aab9f141d170f314cf02125ad72772f14d4eef45a51019d5acf768d25d",
+        "matches": 399,
+        "positions": 1024,
+        "accuracy": 0.3896484375,
+        "wilson_95": {
+          "lower": 0.3602446120613147,
+          "upper": 0.4198771196897049
+        },
+        "finished_at_utc": "2026-11-07T05:37:10.851123+00:00",
+        "evidence": {
+          "path": "/home/select766/shogi/shogi-1995/results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T053710851123Z-baseline.json",
+          "sha256": "53c94cb03d4988c40ce166b17aca581d52f02eca18f7d95bdb7bb39460193966"
+        },
+        "trial": "radix-ordinary",
+        "priority": 0
+      }
+    ],
+    "excluded_trials": [],
+    "completed_comparisons": [
+      {
+        "trial": "counter-cache-ordinary",
+        "path": "/home/select766/shogi/shogi-1995/.local/evaluation/development-halfkp-fixed-w8-h0-128m-counter-v1/comparison.json",
+        "sha256": "8d1722e946a12e3c1d65b58a9665e99aeaa5995a7bd01baf6c17f89b0f3d7391",
+        "paired": {
+          "both_correct": 393,
+          "baseline_only": 8,
+          "candidate_only": 7,
+          "both_wrong": 616,
+          "difference": -0.0009765625,
+          "bootstrap_95": {
+            "lower": -0.0087890625,
+            "upper": 0.0068359375
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      },
+      {
+        "trial": "radix-ordinary",
+        "path": "/home/select766/shogi/shogi-1995/.local/evaluation/development-halfkp-fixed-w8-h0-128m-radix-v1/comparison.json",
+        "sha256": "783d4d9b899877dfc635a81b953127249ee5e86ff73b6539238945979bc45cfb",
+        "paired": {
+          "both_correct": 399,
+          "baseline_only": 0,
+          "candidate_only": 2,
+          "both_wrong": 623,
+          "difference": 0.001953125,
+          "bootstrap_95": {
+            "lower": 0.0,
+            "upper": 0.0048828125
+          },
+          "replicates": 10000,
+          "seed": 20261106,
+          "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+        }
+      }
+    ],
+    "limitation": "Development point-estimate selection; overlapping paired intervals do not establish a gain. Unknown within-game correlation is not accounted for. Repeated controls are not pooled or maximized."
+  },
+  "scope": "Completed full ordinary comparison and read-only provisional selection. Actual immutable runtime freeze remains scheduled14:59:30JST; no heldout read or measurement."
+}

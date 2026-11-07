@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T04:16:56.890613+00:00",
+  "selector_sha256": "9c2d5639e659d90a4cf13726d020b1ba5030046ff09f308c7df13461c8c58bee",
+  "plan_sha256": "8cb57efc4a4f70180486a024338e8468e6e6440aebe44509553a2cb751d75569",
+  "actual_complete_prior_pair": {
+    "c30_matches": 401,
+    "counter_matches": 400,
+    "selected": "c30"
+  },
+  "actual_running_trial_excluded": [
+    {
+      "trial": "radix-ordinary",
+      "reason": "paired trial producer has not completed and exited"
+    }
+  ],
+  "corrupted_real_report_cases_rejected": [
+    "guest_model_sha256",
+    "source_commit",
+    "guest_image_sha256",
+    "matches",
+    "complete",
+    "time options",
+    "sample IDs",
+    "detail order"
+  ],
+  "synthetic_latest_replaces_higher_old_score": true,
+  "synthetic_older_reinsert_does_not_replace_latest": true,
+  "scope": "lightweight selection and metadata guard tests only; no engine/compiler/VM/heldout execution"
+}
