@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T03:40:14.206909+00:00",
+  "ordinary_job_complete": true,
+  "producer_and_child_absent": true,
+  "vm_lock_free": true,
+  "gpu_compute_pids": [],
+  "selected_incumbent": "C30 width8/H0 same frozen D42",
+  "baseline_matches": 401,
+  "candidate_matches": 400,
+  "positions": 1024,
+  "delta_pp": -0.09765625,
+  "paired95_pp": [
+    -0.87890625,
+    0.68359375
+  ],
+  "decision": "Keep C30; next isolate radix-head arithmetic on C30, withdrawing active packed-cache/counter prototype while retaining all sources and results in history."
+}

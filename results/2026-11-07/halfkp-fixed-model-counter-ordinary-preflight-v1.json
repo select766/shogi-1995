@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T02:09:49.706720+00:00",
+  "counter_speed_producer_absent": true,
+  "gpu_compute_processes": [],
+  "default_engine_lock_available": true,
+  "scope": "entry full1024 ordinary2000ms same frozen model runtime comparison"
+}

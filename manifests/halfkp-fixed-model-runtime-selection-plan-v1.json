@@ -1,0 +1,26 @@
+{
+  "created_at_utc": "2026-11-07T02:14:24.536501+00:00",
+  "purpose": "Finalize runtime only by15JST, keeping the model fixed since09:58JST",
+  "exploration_end_utc": "2026-11-07T06:00:00+00:00",
+  "model_manifest": "manifests/halfkp-model-frozen-20261107-1000.json",
+  "model_manifest_sha256": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "development_dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "positions": 1024,
+  "ordinary_go": "go btime 0 wtime 0 byoyomi 2000",
+  "baseline_profile": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+  "current_trial_plan": "manifests/halfkp-fixed-model-counter-ordinary-execution-plan-v1.json",
+  "current_trial_plan_sha256": "e56a02aca6f76e8074dda6d17c2749fa6d23eb9af312b9a274c342eb7f39cb1e",
+  "rules": [
+    "No model, weights, quantization or network shape changes.",
+    "New arithmetic requires independent value checks, exact fixed-node native/guest results, mode diagnostics, RAM and operational verification.",
+    "A runtime trial must complete its full normal-time paired1024 comparison before06UTC to enter runtime selection. Partial blocks, native NPS, fixed-node speed, or a complete candidate with incomplete control do not qualify as a completed runtime trial.",
+    "Speed qualification requires exact moves/finalnodes/completeddepth for256 positions, operation errors0, paired95 median host-time-saved lower>0 and all4 block medians positive.",
+    "Current C30 historical full1024 score401 is fallback evidence if no new full trial completes. For a runtime measured repeatedly in completed paired trials, use its most recent complete observation, not the maximum across repeats, and do not pool repeated controls.",
+    "Among eligible unique runtime binaries, choose the highest full-development agreement point estimate. On an exact tie retain the incumbent runtime. Always disclose paired confidence intervals; selecting a point estimate does not prove a statistically established gain.",
+    "At06UTC stop further exploration. Preserve incomplete trial files and identify any cutoff stop as an intentional user deadline, not an engine failure. Only signal an explicitly owned process after verifying PID/start time.",
+    "Freeze selected profile, engine/image/model SHA, source commit/tree and full report/comparison SHA. Align final active source/default build with the selected runtime; rejected prototypes remain in history, not active as default.",
+    "Only after runtime selection run the independent4096 test once against fresh original material. Do not use heldout observations for selecting or tuning runtime. Final games/operation checks remain pending project verification."
+  ],
+  "next_candidate": "Radix-head source is unbuilt/unexecuted. Proceed only if qualification, target speed and full1024 ordinary comparison can fit before06UTC; otherwise retain the strongest completed runtime."
+}

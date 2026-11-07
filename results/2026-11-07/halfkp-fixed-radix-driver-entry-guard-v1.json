@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T02:25:10.681981+00:00",
+  "driver_sha256": "bc123c58416d9dff180b5a715fc387d58189c65c1d03f15df8c72b29244da589",
+  "argv": [
+    ".local/venv/bin/python",
+    "scripts/qualify-fixed-radix-head.py",
+    "--work",
+    ".local/validation/halfkp-fixed-radix-entry-guard-v1",
+    "--results",
+    ".local/validation/halfkp-fixed-radix-entry-guard-v1/results"
+  ],
+  "exit_code": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"/home/select766/shogi/shogi-1995/scripts/qualify-fixed-radix-head.py\", line 208, in <module>\n    main()\n  File \"/home/select766/shogi/shogi-1995/scripts/qualify-fixed-radix-head.py\", line 39, in main\n    raise ValueError('full ordinary trial must complete before radix qualification')\nValueError: full ordinary trial must complete before radix qualification\n",
+  "work_not_created": true,
+  "scope": "Current active ordinary trial rejected at entry before compiler/engine/VM launch; full qualification not executed"
+}

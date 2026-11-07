@@ -1,5 +1,5 @@
 {
-  "input_sha256": "5faddbf18a953d96929fa91ace8159ed9fc44a5e116a74ae55a30ae14639d820",
+  "input_sha256": "ebba114e0130c9dbb3222732f3a5c92f10702d60649eedd8d147a340a40d804d",
   "plotter_sha256": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
   "label_layout_sha256": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
   "matplotlib": "3.9.2",
@@ -288,6 +288,34 @@
       "result_sha256": "2faf2fc3e45936c2670380ce302fd2ff30537ad829624403e15fa3eaa16776cd",
       "label_offset_points": [
         6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T032809611057Z-candidate",
+      "comparison_group": "24625c57c23a",
+      "finished_at_utc": "2026-11-07T03:28:09.611057+00:00",
+      "accuracy_percent": "39.0625",
+      "wilson95_lower_percent": "36.12041296556177",
+      "wilson95_upper_percent": "42.086342747813624",
+      "source_commit": "38b9aaf0ae21ca4389e87edff9aa5f596dc49d10",
+      "result_sha256": "ba11d02a7715066526aeeb9b18e3eb1903d2d43725c18d49958f6bac89f4ec9b",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T033919877370Z-baseline",
+      "comparison_group": "24625c57c23a",
+      "finished_at_utc": "2026-11-07T03:39:19.877370+00:00",
+      "accuracy_percent": "39.16015625",
+      "wilson95_lower_percent": "36.216377224995675",
+      "wilson95_upper_percent": "42.184961026653156",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "22d1425603f0d7947d5df21e71455a439c745814d4af6b100aab03f11d11109b",
+      "label_offset_points": [
+        -18,
         6
       ]
     },
@@ -759,8 +787,16 @@
     "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi-20261107T015956319340Z-002-baseline",
     "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T020230448543Z-002-candidate",
     "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T020509787113Z-003-candidate",
-    "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi-20261107T020747539709Z-003-baseline"
+    "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi-20261107T020747539709Z-003-baseline",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T022058726275Z-000-baseline",
+    "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T023209287455Z-000-candidate",
+    "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T024320007669Z-001-candidate",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T025430435669Z-001-baseline",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T030540958051Z-002-baseline",
+    "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T031659173023Z-002-candidate",
+    "halfkp-fixed-w8-h0-128m-counter-v1-usi-20261107T032809611057Z-003-candidate",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T033919877370Z-003-baseline"
   ],
-  "svg_sha256": "2199ae32d7441087ac3d63f6171f8b7757ead2b3d2d6b74bd49a7b3b55bec862",
-  "png_sha256": "3782c5b8b7eff6422a100e4838cb5a294b5d03875f2e34654c661142381fb913"
+  "svg_sha256": "99393addcd40a5ddab610a6da2079cfe8a73d5e77c908eb04e2f725087d5f31a",
+  "png_sha256": "374e69d7b9c331d8fb1fa8a8f2e5c7ee29dfc100ae87c309ad876a0356c3bec5"
 }
