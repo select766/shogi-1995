@@ -6,7 +6,6 @@
 //#include <vector>
 
 #include "config.h"
-#include "single_thread_counter.h"
 
 #include "history.h"
 #include "misc.h"
@@ -515,7 +514,7 @@ protected:
 	// nodes           : 探索したnode数。do_move()で(自分で)カウントする。
     // tbHits          : tablebaseにhitした回数。将棋では使わない。
     // bestMoveChanges : bestMoveが反復深化のなかで変化した回数。📝 派生classのほうで。
-    SearchNodeCounter nodes /*, tbHits, bestMoveChanges*/;
+    std::atomic<uint64_t> nodes /*, tbHits, bestMoveChanges*/;
 
 	// 📝 派生class側で。
 #if STOCKFISH

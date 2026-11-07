@@ -327,8 +327,7 @@ private:
 
 	// Threadクラスの特定のメンバー変数を足し合わせたものを返す。
 	// 💡 nodesの集計に用いる。
-	template<class Counter>
-	uint64_t accumulate(Counter Search::Worker::* member) const {
+	uint64_t accumulate(std::atomic<uint64_t> Search::Worker::* member) const {
 
 		uint64_t sum = 0;
 		for (auto&& th : threads)

@@ -7,9 +7,9 @@
   "source_sha256": {
     "vendor/YaneuraOu/source/eval/material/shogi1995_fixed_radix_head.h": "ca3b85b90406020cf9e334fa7b35fe90dccd322c1c9e7d176ecfb313168c8832",
     "tests/fixed_radix_head.cpp": "1408cdd09be85f019917986029e21830f3cde4c50950812ebf36e4e0a0968885",
-    "vendor/YaneuraOu/source/eval/material/shogi1995_psqt.h": "f0575d1c5f210df3bd8ea8a31b0f71fba1b0972c57a52d6d15c713db5d663225",
+    "vendor/YaneuraOu/source/eval/material/shogi1995_psqt.h": "0b2b1e64c253f26704551d005697c0a8c8c2e95e2bfe78a363253cf451696237",
     "tests/fixed_radix_lifecycle.py": "403dcf306f4ca72c4a0bcc43de92371724ae3bebb91d62391bf20525cfa8544a",
-    "scripts/qualify-fixed-radix-head.py": "bc123c58416d9dff180b5a715fc387d58189c65c1d03f15df8c72b29244da589"
+    "scripts/qualify-fixed-radix-head.py": "0df080de9b3f67fbaa31c30b4173949ee5ff62a4acd424a8b43d80a00d4b0062"
   },
   "change": "Exactly the same fixed linear head dot product, computed using radix256 coefficient residuals and grouped common terms. No coefficient, embedding, activation, quantization scale, network geometry or model-file bytes change.",
   "identity": "C_j=256*floor((w_j+128)/256), r_j=w_j-C_j. Pair packed32 high16 gives a_even*(r_even+128)+a_odd*(r_odd+128). Re-add grouped(C_j-128)*a_j to recover the original dot exactly.",
@@ -50,13 +50,17 @@
     "tests/fixed_radix_lifecycle.py native:16 coefficient mutants+bias mutant select generic head and independently match16 positions each; exact model selects radix; disable/re-enable clears/restores flag. Guest: automatic head_radix1 and independent16 values, reload passed; launcher pins EvalFile, so an attempted disable must preserve the selected model and mode1. Native tests verify actual disable/re-enable.",
     "EvalVerify additionally compares every radix raw output against an independent int64 dot using loaded weights; head_verified counter proves this path actually ran during full256 native verification."
   ],
-  "speed_gate": "same retained runtime except head arithmetic, quick256 nodes10000 block64ABBA; all exact tree/ops0 and paired95median saved lower>0+all4positive blocks",
-  "strength_gate": "full1024ordinary2000ms against retained same-model runtime, complete before06UTC for adoption; no selection from quick subsets or native NPS",
+  "speed_gate": "C30 vs C30+radix head only, quick256 nodes10000 block64ABBA; exact tree/ops0 and paired95median saved lower>0+all4positive blocks",
+  "strength_gate": "full1024ordinary2000ms vs retainedC30 identicalD42, complete before06UTC for adoption",
   "prerequisite": "No compilation/native engine/additional VM during active counter-speed68204 or subsequent ordinary-time timing. Keep running images/profiles/measurement code unchanged. Candidate-only source edits do not modify active binaries.",
-  "integration_baseline": "Decide from actual counter-speed results: keep counter only if qualified and retained. Radix must be measured against the actual retained runtime; do not silently bundle an unaccepted counter change.",
+  "integration_baseline": "C30 retained after complete401vs400 ordinary comparison. Active vendor restored from196920b, then only radix header and psqt dispatch/verification/diagnostics added. Packed-cache, packedFC and single-thread-counter prototypes removed from active source; preserved in3beffee/history.",
   "exploration_end_utc": "2026-11-07T06:00:00+00:00",
   "integration_prepared_at_utc": "2026-11-07T02:05:40.428668+00:00",
   "additional_prepared_at_utc": "2026-11-07T02:12:39.056437+00:00",
   "qualification_driver": "scripts/qualify-fixed-radix-head.py",
-  "entry_guard_proof": "results/2026-11-07/halfkp-fixed-radix-driver-entry-guard-v1.json"
+  "entry_guard_proof": "results/2026-11-07/halfkp-fixed-radix-driver-entry-guard-v1.json",
+  "baseline_profile": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+  "baseline_source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+  "baseline_updated_at_utc": "2026-11-07T03:41:06.791100+00:00",
+  "entry_guard_proof_scope": "Historical driver before C30 isolation; archived rejection proof remains unchanged. Source changed only expected accumulator mode and feature description, so fresh source SHA recorded."
 }
