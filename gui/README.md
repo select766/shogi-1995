@@ -2,9 +2,11 @@
 
 Slackware 3.0 / Linux 1.2.13 / Pentium / RAM 32 MiB上で動く、Tcl 7.4・Tk 4.0のウィンドウアプリです。XFree86 3.1.2とtwmを使います。対局ルール、時計、USI通信はC製の小さな子プロセスが担当します。ホストから盤面を描画したり、ホスト上でAIを動かしたりしません。
 
-## 作業の分離
+## 配置と実行環境
 
-専用ブランチ `feature/guest-shogi-gui`、専用worktreeに実装しています。エンジン側のソース、測定履歴、ビルド出力、VM、ロック、ログは変更しません。GUIの成果物とVMは、このworktreeの `.local/gui/` 内だけに置きます。CPU・メモリ・ディスク等のホスト資源は共有します。
+GUIは専用ブランチでの開発後、メインの `/home/select766/shogi/shogi-1995` に統合しました。ソースは `gui/`、GUI専用の成果物・ディスク・VM・ロック・ログは `.local/gui/` に置きます。エンジンのUSIブリッジ用VMとは分離し、CPU・メモリ・ディスク等のホスト資源は共有します。旧worktreeは移行前の控えとして残していますが、通常起動は依存しません。
+
+移行時は動作確認済みのGUI用エンジン・モデル・ディスクを同じ内容でコピーしました。コピー元・イメージSHA-256は `.local/gui/migration.json` に記録しています。エンジン開発の最終候補の採用・既定イメージ切替は、別途その検証手順に従って行います。
 
 ゲストからのエンジン起動はLinux 1.2向けのfork/exec経路を用意し、古いOSで互換libcのTLS状態を子へ持ち越す問題を避けています。この対応もGUI側だけに閉じています。
 
@@ -12,9 +14,10 @@ Slackware 3.0 / Linux 1.2.13 / Pentium / RAM 32 MiB上で動く、Tcl 7.4・Tk 4
 
 ## 初回ビルド
 
-既存エンジン環境のセットアップが完了していることが前提です。以下はGUIのworktree内で実行します。
+既存エンジン環境のセットアップが完了していることが前提です。以下はメインの作業ディレクトリで実行します。
 
 ```bash
+cd /home/select766/shogi/shogi-1995
 export SHOGI_GUI_DEPS=/home/select766/shogi/shogi-1995
 bash gui/build-image.sh
 python3 gui/install-launcher.py --deps "$SHOGI_GUI_DEPS"
