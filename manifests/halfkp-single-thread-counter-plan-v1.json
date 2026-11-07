@@ -1,0 +1,38 @@
+{
+  "created_at_utc": "2026-11-07T01:09:42.255261+00:00",
+  "status": "source prepared; UBSan unit tests passed ordinary/single each10396 cases; engine build/native/guest/speed still pending",
+  "frozen_model": "manifests/halfkp-model-frozen-20261107-1000.json",
+  "frozen_model_manifest_sha256": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "width": 8,
+  "hidden": 0,
+  "prerequisite": {
+    "state": ".local/jobs/halfkp-fixed-model-cache-speed-v1.json",
+    "plan_sha256": "bf86ec42b381260884552d3796e0b8e8458101d1a9969669886666905ba75660",
+    "require": "all3 steps terminal successfully and process exited before any compilation/native engine/additional VM"
+  },
+  "source_sha256": {
+    "vendor/YaneuraOu/source/single_thread_counter.h": "837e120f9518db5069fca52a4f6a183931c6f06cf151ac8e18fab8e5c8efb722",
+    "vendor/YaneuraOu/source/search.h": "fb0d5a0731edd0e7e805117a26314ae841ea6a7423224a8697909de3ba123b94",
+    "vendor/YaneuraOu/source/thread.h": "5e314837056dfdde518fdc373f26f5d11bd9bc33a2dea6720065684a2ea9037f",
+    "tests/single_thread_counter.cpp": "c8811f653d8fd23654500d441da40cec7b36a8379b5fb0824f6fac8983aa2138",
+    "tests/node_counter_limits.py": "b8d5ad37bb0550b4d375e33e0f99c501d6c8e3a10e0da71830cb193106e37853"
+  },
+  "change": "Only SHOGI1995_SINGLE_THREAD selects fulluint64 plain counter load/store/assignment/conversion. Ordinary builds retain std::atomic<uint64_t>. ThreadPool summation accepts the corresponding counter type. No width, feature, activation, quantization, embedding or model bytes change.",
+  "correctness_gates": [
+    "compile tests/single_thread_counter.cpp with UBSan in ordinary and SHOGI1995_SINGLE_THREAD modes;10396 protocol/random cases plus explicit32carry and64wrap",
+    "commit source before engine build; build PENTIUM1995, staticELF32 and known unsupported-opcode screen",
+    "audit compiled do_move overloads: eliminate the8 counter x87 conversion sites without claiming a speedup from static instruction counts",
+    "512 independent integer values with the frozen model;256 fixed10000-node exact bestmoves/finalnodes/completeddepth and EvalVerify using the prevalidated same-model reference",
+    "new immutable candidate with package-candidate.py --model .local/frozen-models/halfkp-20261107-1000/model.bin; prepare self-configuring USI profile; verify actual model SHA remains frozen",
+    "16 real guest automatic-load values,8 same-node roots, RAM/swap and stop/node-limit/USI lifecycle",
+    "tests/node_counter_limits.py: native small limits1/15/16/17/1024, go nodes4294967297 must remain searching until explicit stop, then reset and small-node restart; operation only, no native speed claim"
+  ],
+  "speed_gates": "same frozen model, quick256/nodes10000/block64 ABBA; exact tree and ops0, paired95median saved lower>0 and all4 block medians positive; no other heavy work during timing",
+  "baseline_policy": "Cache speed qualifies (2.3017%, paired95[2.2034,2.4343], all4 positive and exact256). Compare cache+counter against the retained cache profile272e for controlled counter change, keeping exact model d42 fixed. Ordinary-time strength comparison will use full1024, retaining C30 and all complete runtime observations.",
+  "strength_gate": "Use full1024 ordinary2000ms with both NetworkDelay values zero against retained same-model runtime. Speed/operation counts alone do not establish strength. Keep uncertainty explicit; final independent4096 remains unused during tuning.",
+  "runtime_exploration_end_utc": "2026-11-07T06:00:00+00:00",
+  "unit_proof": "results/2026-11-07/halfkp-single-thread-counter-ubsan-v1.json",
+  "cache_speed_result": "results/2026-11-07/halfkp-fixed-w8-h0-128m-packed-accumulator-speed-v1.json",
+  "cache_speed_audit": "results/2026-11-07/halfkp-fixed-w8-h0-128m-packed-accumulator-speed-blocks-v1.json"
+}

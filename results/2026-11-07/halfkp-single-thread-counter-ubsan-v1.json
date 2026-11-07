@@ -1,0 +1,59 @@
+{
+  "complete": true,
+  "passed": true,
+  "verified_at_utc": "2026-11-07T01:26:26.190281+00:00",
+  "source_sha256": {
+    "vendor/YaneuraOu/source/single_thread_counter.h": "837e120f9518db5069fca52a4f6a183931c6f06cf151ac8e18fab8e5c8efb722",
+    "tests/single_thread_counter.cpp": "c8811f653d8fd23654500d441da40cec7b36a8379b5fb0824f6fac8983aa2138"
+  },
+  "runs": [
+    {
+      "configuration": "ordinary",
+      "argv": [
+        "g++",
+        "-std=c++17",
+        "-O2",
+        "-g",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=all",
+        "-Ivendor/YaneuraOu/source",
+        "tests/single_thread_counter.cpp",
+        "-o",
+        ".local/tests/single-thread-counter-v1/ordinary"
+      ],
+      "binary_sha256": "fe51bbd7b4bdf130b609cb2dd1d6c686541db2c0c74ee756bd00e54cc65361a0",
+      "result": {
+        "passed": true,
+        "cases": 10396,
+        "unsigned32_carry": true,
+        "unsigned64_wrap": true
+      },
+      "stderr": ""
+    },
+    {
+      "configuration": "single",
+      "argv": [
+        "g++",
+        "-std=c++17",
+        "-O2",
+        "-g",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=all",
+        "-DSHOGI1995_SINGLE_THREAD",
+        "-Ivendor/YaneuraOu/source",
+        "tests/single_thread_counter.cpp",
+        "-o",
+        ".local/tests/single-thread-counter-v1/single"
+      ],
+      "binary_sha256": "fe51bbd7b4bdf130b609cb2dd1d6c686541db2c0c74ee756bd00e54cc65361a0",
+      "result": {
+        "passed": true,
+        "cases": 10396,
+        "unsigned32_carry": true,
+        "unsigned64_wrap": true
+      },
+      "stderr": ""
+    }
+  ],
+  "scope": "native UBSan counter protocol/carry/wrap correctness only; engine and target speed not yet verified"
+}

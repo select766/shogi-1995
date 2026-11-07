@@ -1,5 +1,5 @@
 {
-  "input_sha256": "d2afcd89c8767e8eaa86081fe64dcb30d8f74726bd8e33bf6283a4daac8d3c0e",
+  "input_sha256": "4be7e89d6045fc186795e3d6b493fd24172cce267379d222c0c895d924e369ad",
   "plotter_sha256": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
   "label_layout_sha256": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
   "matplotlib": "3.9.2",
@@ -343,8 +343,8 @@
       "source_commit": "e2c242e69638e55c83fdfd56c50378783785bfcb",
       "result_sha256": "e4009c967481de4c46a35ca9ab5f2c29fc05400f03b881fc7c18785579049239",
       "label_offset_points": [
-        6,
-        -14
+        -18,
+        6
       ]
     },
     {
@@ -455,7 +455,7 @@
       "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
       "result_sha256": "97527e4dcff5a649e1a962cc75829fc57d6df8535fcf3a779f68b151782c17d0",
       "label_offset_points": [
-        6,
+        -18,
         -14
       ]
     },
@@ -470,7 +470,7 @@
       "result_sha256": "2f4a7cab99345ae2ae1a77beba95202075eb1e24b6d9c0d03ebebc48e2e6fc5d",
       "label_offset_points": [
         6,
-        -14
+        6
       ]
     },
     {
@@ -484,7 +484,7 @@
       "result_sha256": "2d54130ec7c1ec29747495385359705e1fca9a19799270a31395eea47a8e8a53",
       "label_offset_points": [
         6,
-        6
+        -14
       ]
     },
     {
@@ -497,7 +497,7 @@
       "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
       "result_sha256": "47b1c760512c024c2ff1878e2a3dc958bb8d170a030e838eebadd75642cf7f9e",
       "label_offset_points": [
-        6,
+        -18,
         -14
       ]
     },
@@ -512,6 +512,34 @@
       "result_sha256": "730ddee460c1529c20aea597e7c1d6b96cf13faf8475652f96576e4bb039b252",
       "label_offset_points": [
         6,
+        20
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi-20261107T012226658446Z-candidate",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-07T01:22:26.658446+00:00",
+      "accuracy_percent": "37.5",
+      "wilson95_lower_percent": "31.795501653541773",
+      "wilson95_upper_percent": "43.574094757105016",
+      "source_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+      "result_sha256": "f61988e887e42732c4fda43c4ef4ce9ea1a2789d0dcd6a9ce3aca8a4b61ecf33",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T012506934343Z-baseline",
+      "comparison_group": "86a9670dafa6",
+      "finished_at_utc": "2026-11-07T01:25:06.934343+00:00",
+      "accuracy_percent": "37.5",
+      "wilson95_lower_percent": "31.795501653541773",
+      "wilson95_upper_percent": "43.574094757105016",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "result_sha256": "4c65f092b0914d3e592608fdfb54f7dc1f3a061fc5215468bff7784ab2bcea2b",
+      "label_offset_points": [
+        -18,
         6
       ]
     }
@@ -686,8 +714,16 @@
     "halfkp-nnue-w8-h0-width-kernel-v1-usi-20261107T001953255975Z-001-baseline",
     "halfkp-nnue-w8-h0-width-kernel-v1-usi-20261107T003109079578Z-002-baseline",
     "halfkp-nnue-w16-h0-width-kernel-v1-usi-20261107T004219843119Z-002-candidate",
-    "halfkp-nnue-w16-h0-width-kernel-v1-usi-20261107T005330667081Z-003-candidate"
+    "halfkp-nnue-w16-h0-width-kernel-v1-usi-20261107T005330667081Z-003-candidate",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T010703041733Z-000-baseline",
+    "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi-20261107T010936586895Z-000-candidate",
+    "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi-20261107T011207347115Z-001-candidate",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T011441834804Z-001-baseline",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T011716336075Z-002-baseline",
+    "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi-20261107T011948818890Z-002-candidate",
+    "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi-20261107T012226658446Z-003-candidate",
+    "halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261107T012506934343Z-003-baseline"
   ],
-  "svg_sha256": "950c266a178c49eb97e4cf92062d2451efd5155a44f3733803195aac481a85fd",
-  "png_sha256": "77a8c86b1d6d3faeacad3be4ff8e0e928ae18489ec281125e02d7e1c978b5862"
+  "svg_sha256": "41a6b1b1183364a856c1fa8dfad8ed67e5145edbf0f16722435862cb8820ff67",
+  "png_sha256": "c8fa1f9a5455a53001693cf3947f49225ed9429a2608173fd67aa2b8870c73f0"
 }

@@ -1,0 +1,196 @@
+{
+  "positions": 256,
+  "identical_model_and_search_results": true,
+  "median_host_time_saved_percent": 2.301685198573533,
+  "paired_bootstrap_95_percent": {
+    "lower": 2.2033801973739275,
+    "upper": 2.4343457931878643
+  },
+  "speedup_supported": true,
+  "replicates": 10000,
+  "seed": 20261106,
+  "performance": {
+    "baseline": {
+      "host_ms": {
+        "count": 256,
+        "minimum": 984.0087049960857,
+        "p10": 1174.4220300024608,
+        "median": 1473.852518996864,
+        "p90": 1798.5554024926387,
+        "maximum": 2326.3397720002104
+      },
+      "nps": {
+        "count": 256,
+        "minimum": 4387.0,
+        "p10": 5696.5,
+        "median": 6979.5,
+        "p90": 8826.0,
+        "maximum": 10613.0
+      },
+      "nodes": {
+        "count": 256,
+        "minimum": 10000.0,
+        "p10": 10003.0,
+        "median": 10013.0,
+        "p90": 10025.0,
+        "maximum": 10056.0
+      },
+      "depth": {
+        "count": 256,
+        "minimum": 2.0,
+        "p10": 6.0,
+        "median": 8.0,
+        "p90": 9.0,
+        "maximum": 11.0
+      },
+      "final_nps": {
+        "count": 256,
+        "minimum": 4387.0,
+        "p10": 5695.0,
+        "median": 6977.5,
+        "p90": 8826.0,
+        "maximum": 10613.0
+      },
+      "final_nodes": {
+        "count": 256,
+        "minimum": 10000.0,
+        "p10": 10003.0,
+        "median": 10013.0,
+        "p90": 10025.0,
+        "maximum": 10056.0
+      },
+      "completed_depth": {
+        "count": 256,
+        "minimum": 2.0,
+        "p10": 5.0,
+        "median": 7.0,
+        "p90": 9.0,
+        "maximum": 10.0
+      },
+      "host_minus_final_guest_ms": {
+        "count": 256,
+        "minimum": 30.24821598804556,
+        "p10": 37.23211099981563,
+        "median": 39.97856900183251,
+        "p90": 43.80789049703162,
+        "maximum": 51.54022800014354
+      }
+    },
+    "candidate": {
+      "host_ms": {
+        "count": 256,
+        "minimum": 962.849574003485,
+        "p10": 1137.9802330047823,
+        "median": 1429.6018589957384,
+        "p90": 1750.5843190010637,
+        "maximum": 2326.2740790087264
+      },
+      "nps": {
+        "count": 256,
+        "minimum": 4378.0,
+        "p10": 5856.5,
+        "median": 7190.0,
+        "p90": 9130.0,
+        "maximum": 10855.0
+      },
+      "nodes": {
+        "count": 256,
+        "minimum": 10000.0,
+        "p10": 10003.0,
+        "median": 10013.0,
+        "p90": 10025.0,
+        "maximum": 10056.0
+      },
+      "depth": {
+        "count": 256,
+        "minimum": 2.0,
+        "p10": 6.0,
+        "median": 8.0,
+        "p90": 9.0,
+        "maximum": 11.0
+      },
+      "final_nps": {
+        "count": 256,
+        "minimum": 4376.0,
+        "p10": 5854.5,
+        "median": 7187.5,
+        "p90": 9126.0,
+        "maximum": 10855.0
+      },
+      "final_nodes": {
+        "count": 256,
+        "minimum": 10000.0,
+        "p10": 10003.0,
+        "median": 10013.0,
+        "p90": 10025.0,
+        "maximum": 10056.0
+      },
+      "completed_depth": {
+        "count": 256,
+        "minimum": 2.0,
+        "p10": 5.0,
+        "median": 7.0,
+        "p90": 9.0,
+        "maximum": 10.0
+      },
+      "host_minus_final_guest_ms": {
+        "count": 256,
+        "minimum": 29.61943500302732,
+        "p10": 38.556916491594166,
+        "median": 40.149190998636186,
+        "p90": 43.245099999941885,
+        "maximum": 50.73708000336774
+      }
+    },
+    "paired_candidate_over_baseline": {
+      "nps": {
+        "count": 256,
+        "minimum": 0.9979484841577387,
+        "p10": 1.0129623390902491,
+        "median": 1.0248023643784698,
+        "p90": 1.0377911137659006,
+        "maximum": 1.056312592349368
+      },
+      "final_nps": {
+        "count": 256,
+        "minimum": 0.9974925917483474,
+        "p10": 1.0130836484886596,
+        "median": 1.0250776289157313,
+        "p90": 1.0374470809986311,
+        "maximum": 1.0556558857330487
+      },
+      "final_nodes": {
+        "count": 256,
+        "minimum": 1.0,
+        "p10": 1.0,
+        "median": 1.0,
+        "p90": 1.0,
+        "maximum": 1.0
+      }
+    },
+    "scope": "Diagnostic only. nps/nodes/depth come from the last regular USI info line; final_* counters require an explicit engine diagnostic. Missing counters are not substituted. Different models can visit different trees, so NPS ratios alone do not establish arithmetic speedups."
+  },
+  "scope": "Pentium fixed-node speed diagnostic; not real-time agreement or strength",
+  "limitation": "Position bootstrap does not account for unknown game or temporal block correlation; use alternating blocks and inspect their observations.",
+  "compared_at_utc": "2026-11-07T01:25:10.756103+00:00",
+  "measurements": {
+    "baseline": {
+      "path": "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-fixed-w8-h0-128m-packed-accumulator-speed-v1/baseline.json",
+      "sha256": "4c65f092b0914d3e592608fdfb54f7dc1f3a061fc5215468bff7784ab2bcea2b",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+    },
+    "candidate": {
+      "path": "/home/select766/shogi/shogi-1995/.local/evaluation/halfkp-fixed-w8-h0-128m-packed-accumulator-speed-v1/candidate.json",
+      "sha256": "f61988e887e42732c4fda43c4ef4ce9ea1a2789d0dcd6a9ce3aca8a4b61ecf33",
+      "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+    }
+  },
+  "comparison_sources": {
+    "scripts/compare-fixed-node-speed.py": "dcbef50770e1e975b1b4c977f1ce7ac43cfeda43939b9e57d891185ba974ba4c",
+    "src/shogi1995/speed_comparison.py": "4fd7c262692c62ac7ae71d5123f23b94533ce75de8d95a60c98e02b3c219aa6e",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "recorded_at_utc": "2026-11-07T01:18:11.232807+00:00",
+  "scope": "Read-only source review of ownership and cooperative USI access; no new binary, native engine or VM executed. Counter candidate remains unbuilt/untested.",
+  "source_sha256": {
+    "vendor/YaneuraOu/source/thread.cpp": "a80d95049f61ab57f70921af9d2772ec6a913dc9dca29aa0ac8da42af703b12d",
+    "vendor/YaneuraOu/source/engine.cpp": "5fc429ac20375674a539ffe124e22ec92ef74cbc2275bf284f69a62acfc8f89a",
+    "vendor/YaneuraOu/source/usi.cpp": "460769f71cdd83f8bbc0520cf6d15410bf434d9716a733a64b98392cb39bb38e",
+    "vendor/YaneuraOu/source/shogi1995.cpp": "6c511f1882d762da8614eb1849341a1b8c3825f1a11787faaf75af11ddaf4e4c",
+    "vendor/YaneuraOu/source/engine/yaneuraou-engine/yaneuraou-search.cpp": "16e88c31fe2dc0feefaedefb811717d22a5414033d65b25b647bed139090d02e",
+    "vendor/YaneuraOu/source/search.h": "fb0d5a0731edd0e7e805117a26314ae841ea6a7423224a8697909de3ba123b94",
+    "vendor/YaneuraOu/source/thread.h": "5e314837056dfdde518fdc373f26f5d11bd9bc33a2dea6720065684a2ea9037f",
+    "vendor/YaneuraOu/source/single_thread_counter.h": "837e120f9518db5069fca52a4f6a183931c6f06cf151ac8e18fab8e5c8efb722"
+  },
+  "findings": [
+    "SHOGI1995_SINGLE_THREAD suppresses native worker thread creation; run_custom_job invokes f() synchronously.",
+    "The same target constrains Threads to1..1.",
+    "Worker nodes access sites are increment load/store, zero reset, qsearch low4-bit poll test, ThreadPool sum and worker reset; no fetch_add/exchange API is required in the selected engine.",
+    "During search shogi1995_poll handles stop/quit/gameover through engine.stop callback. Other commands, including stats, are queued until the synchronous search returns. The stop callback does not read/update the nodes counter.",
+    "threads.stop remains its existing atomic flag; only the single-owner fulluint64 nodes counter is changed. Ordinary builds retain std::atomic<uint64_t>."
+  ],
+  "required_execution_proof": [
+    "UBSan and fulluint64 carry/wrap unit cases in both alias modes",
+    "native node limits over2^32, explicit stop and restart",
+    "full256 exact tree/node/depth and16guest values/8guest roots, RAM and lifecycle",
+    "target speed and full1024ordinary-time agreement before adoption"
+  ]
+}
