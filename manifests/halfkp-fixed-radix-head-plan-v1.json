@@ -1,0 +1,55 @@
+{
+  "created_at_utc": "2026-11-07T02:00:16.948477+00:00",
+  "status": "Engine integration source prepared; UNBUILT and UNTESTED, no speed/strength claim",
+  "frozen_model": "manifests/halfkp-model-frozen-20261107-1000.json",
+  "frozen_model_manifest_sha256": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "source_sha256": {
+    "vendor/YaneuraOu/source/eval/material/shogi1995_fixed_radix_head.h": "ca3b85b90406020cf9e334fa7b35fe90dccd322c1c9e7d176ecfb313168c8832",
+    "tests/fixed_radix_head.cpp": "1408cdd09be85f019917986029e21830f3cde4c50950812ebf36e4e0a0968885",
+    "vendor/YaneuraOu/source/eval/material/shogi1995_psqt.h": "fac419ba9dfced18696539ff6f8c53f873f03c0703e4d7d74df4f3aa752ccad1"
+  },
+  "change": "Exactly the same fixed linear head dot product, computed using radix256 coefficient residuals and grouped common terms. No coefficient, embedding, activation, quantization scale, network geometry or model-file bytes change.",
+  "identity": "C_j=256*floor((w_j+128)/256), r_j=w_j-C_j. Pair packed32 high16 gives a_even*(r_even+128)+a_odd*(r_odd+128). Re-add grouped(C_j-128)*a_j to recover the original dot exactly.",
+  "fixed_formula": "bias + eight packed high16 products +128*(9*d0+11*d1); d0=sum[4,5,8,10,11,15]-sum[0,1,2,3,7,12], d1=sum[9,14]-sum[6,13]",
+  "bounds": {
+    "activation": [
+      0,
+      128
+    ],
+    "residual": [
+      -128,
+      127
+    ],
+    "maximum_low_product": 32640,
+    "maximum_middle_coefficient": 65280,
+    "d0_absolute_max": 768,
+    "d1_absolute_max": 256,
+    "expanded_output_min": -1281979,
+    "expanded_output_max": 1730629
+  },
+  "required_load_guard": [
+    "standardHalfKP",
+    "width8/hidden0",
+    "all16 loaded head weights exactly match frozen head",
+    "loaded output bias equals-36795",
+    "output32 safe; original generic path remains fallback for non-matching models"
+  ],
+  "required_integration": [
+    "bool flag reset on EvalFile change and recomputed only after successful load",
+    "unchanged final signed rounding by256",
+    "diagnostic head_radix=1 proving actual selected execution, including real guest"
+  ],
+  "correctness_gates": [
+    "UBSan tests/fixed_radix_head.cpp reads the actual frozen model head independently;145196 activation cases including exhaustive129x129 per pair, all extremes/basis/random; rejection of other weights/bias/geometry",
+    "512 independent values and full256 old/new fixed-node moves/finalnodes/completeddepth including EvalVerify",
+    "generate NEW native reference with the SAME new binary for guest_nodes_parity.py; do not reuse a different-engine SHA reference",
+    "actual guest automatic16values/8roots, active-mode assertion, RAM/swap and lifecycle"
+  ],
+  "speed_gate": "same retained runtime except head arithmetic, quick256 nodes10000 block64ABBA; all exact tree/ops0 and paired95median saved lower>0+all4positive blocks",
+  "strength_gate": "full1024ordinary2000ms against retained same-model runtime, complete before06UTC for adoption; no selection from quick subsets or native NPS",
+  "prerequisite": "No compilation/native engine/additional VM during active counter-speed68204 or subsequent ordinary-time timing. Keep running images/profiles/measurement code unchanged. Candidate-only source edits do not modify active binaries.",
+  "integration_baseline": "Decide from actual counter-speed results: keep counter only if qualified and retained. Radix must be measured against the actual retained runtime; do not silently bundle an unaccepted counter change.",
+  "exploration_end_utc": "2026-11-07T06:00:00+00:00",
+  "integration_prepared_at_utc": "2026-11-07T02:05:40.428668+00:00"
+}

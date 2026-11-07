@@ -9,6 +9,7 @@
 #include <vector>
 #include "shogi1995_packed_fc.h"
 #include "shogi1995_packed_accumulator.h"
+#include "shogi1995_fixed_radix_head.h"
 
 namespace YaneuraOu { namespace Eval {
 namespace {
@@ -27,6 +28,7 @@ int32_t tiny_out_bias=0;
 bool tiny_output32=false;
 bool tiny_fc_packed32=false;
 bool tiny_accumulator_packed=false;
+bool tiny_fixed_radix=false;
 std::vector<uint32_t> tiny_fc_pairs;
 unsigned tiny_generation=1;
 bool tiny_verify=false;
@@ -34,11 +36,12 @@ uint64_t tiny_incremental_count=0,tiny_refresh_count=0,tiny_verification_count=0
 
 void psqt_stats() {
     unsigned kernel_width=tiny_loaded && tiny_standard_halfkp && (tiny_width==8 || tiny_width==16)?tiny_width:0;
-    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu output_bits=%u kernel_width=%u fc_packed=%u fc_bits=%u accumulator_packed=%u accumulator_bits=%u\n",
+    std::printf("info string shogi1995 accumulators incremental=%llu refresh=%llu verified=%llu output_bits=%u kernel_width=%u fc_packed=%u fc_bits=%u accumulator_packed=%u accumulator_bits=%u head_radix=%u\n",
                 (unsigned long long)tiny_incremental_count,(unsigned long long)tiny_refresh_count,
                 (unsigned long long)tiny_verification_count,unsigned(tiny_loaded?(tiny_output32?32:64):0),kernel_width,
                 unsigned(tiny_loaded && tiny_fc_packed32),unsigned(tiny_loaded && tiny_hidden?(tiny_fc_packed32?32:64):0),
-                unsigned(tiny_loaded && tiny_accumulator_packed),unsigned(tiny_loaded?(tiny_accumulator_packed?16:32):0));
+                unsigned(tiny_loaded && tiny_accumulator_packed),unsigned(tiny_loaded?(tiny_accumulator_packed?16:32):0),
+                unsigned(tiny_loaded && tiny_fixed_radix));
     std::fflush(stdout);
 }
 
@@ -53,6 +56,7 @@ void psqt_options(OptionsMap& options) {
         tiny_output32=false;
         tiny_fc_packed32=false;
         tiny_accumulator_packed=false;
+        tiny_fixed_radix=false;
         tiny_fc_pairs.clear();
         if(++tiny_generation==0)++tiny_generation;
         return std::nullopt;
@@ -110,6 +114,8 @@ void psqt_load() {
         }
         constexpr int64_t limit=int64_t(std::numeric_limits<int32_t>::max())-128;
         tiny_output32=low>=-limit && high<=limit;
+        tiny_fixed_radix=tiny_standard_halfkp && tiny_output32
+            && FixedRadixHead::matches(tiny_out.data(),tiny_out_bias,tiny_width,tiny_hidden);
         tiny_fc_packed32=tiny_standard_halfkp && tiny_hidden>0;
         for(unsigned i=0;i<tiny_hidden;++i) {
             int64_t fc_low=tiny_fc_bias[i],fc_high=tiny_fc_bias[i];
@@ -233,6 +239,10 @@ template<unsigned Width> void tiny_full_width(const Position& pos,int perspectiv
 }
 
 template<class Sum,unsigned Width> int tiny_correction(const int32_t* activation) {
+    if(tiny_fixed_radix) {
+        const int32_t output=FixedRadixHead::raw(activation);
+        return output>=0?int((output+128)/256):-int((-output+128)/256);
+    }
     const unsigned width=Width?Width:tiny_width;
     Sum output=tiny_out_bias;
     if(!tiny_hidden)
