@@ -1,0 +1,101 @@
+{
+  "complete": true,
+  "recorded_at_utc": "2026-11-07T01:00:02.767163+00:00",
+  "classification": "intentional user-deadline stop, not an engine failure or automatic retry",
+  "model_freeze": "manifests/halfkp-model-frozen-20261107-1000.json",
+  "freeze_sha256": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+  "frozen_at_utc": "2026-11-07T00:58:00.049490+00:00",
+  "selected_model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "main_exit_code": 143,
+  "queue_stopped_at_step": 8,
+  "stop_receipt": "results/2026-11-07/halfkp-model-deadline-stop-receipt-v1.json",
+  "archived_partial_control": {
+    "path": "results/2026-11-07/halfkp-w16-h0-deadline-partial-control-003-v1.json",
+    "sha256": "65677041ed107cd728e007c96171dce068c413a422c9484dadee3f600e69feb4"
+  },
+  "all_blocks": [
+    {
+      "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/000-baseline.json",
+      "sha256": "507394aabc638ed7db3d89c079f4c6645e8383c4cf169f60ffabea63ff84e618",
+      "complete": true,
+      "measured": 256,
+      "total": 256,
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0
+    },
+    {
+      "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/000-candidate.json",
+      "sha256": "235d74f727e8cfba74b8b7bc60e3c3cc0c3eb0f5d8c7d4fb04b8638143afd29d",
+      "complete": true,
+      "measured": 256,
+      "total": 256,
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0
+    },
+    {
+      "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/001-baseline.json",
+      "sha256": "747da2f5d26b27b93aa0e03dc3f2298a393b312abe5d37d72d7acb72bd1febc3",
+      "complete": true,
+      "measured": 256,
+      "total": 256,
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0
+    },
+    {
+      "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/001-candidate.json",
+      "sha256": "7d84989e8cc0ff263a61353b63379cb3f597f6a9d7331f8435168987dfbe13ac",
+      "complete": true,
+      "measured": 256,
+      "total": 256,
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0
+    },
+    {
+      "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/002-baseline.json",
+      "sha256": "e6487accf98c69676a6ae537a1273549f54f3cbd98957c1b4657ea4b4e9dab06",
+      "complete": true,
+      "measured": 256,
+      "total": 256,
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0
+    },
+    {
+      "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/002-candidate.json",
+      "sha256": "853f27c95937538f811bfcb13358670ee04e3159d8e7265200c79211a5b1be9b",
+      "complete": true,
+      "measured": 256,
+      "total": 256,
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0
+    },
+    {
+      "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/003-baseline.json",
+      "sha256": "65677041ed107cd728e007c96171dce068c413a422c9484dadee3f600e69feb4",
+      "complete": false,
+      "measured": 119,
+      "total": 256,
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0
+    },
+    {
+      "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/003-candidate.json",
+      "sha256": "f4d8e03006dd48439269ed2255df96352022318ce63a8e902ee1e3a37111bffe",
+      "complete": true,
+      "measured": 256,
+      "total": 256,
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0
+    }
+  ],
+  "candidate_only_full_result": "results/2026-11-07/halfkp-nnue-w16-h0-width-kernel-deadline-candidate-v1.json",
+  "paired_control_complete": false,
+  "next_width16_hidden8_comparison_started": false
+}

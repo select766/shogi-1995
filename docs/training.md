@@ -4,6 +4,53 @@
 
 学習元は許可済みのたぬきPSV原本に限定する。過去のtrain-nnueの加工データ、モデル、checkpointは使わない。評価用Floodgateは教師入力に含めない。大きな出力は`/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995`に置く。
 
+## 現行HalfKPモデルの再学習
+
+実時間測定中には次の学習・整数化検証を実行しない。すべて新規出力へ保存し、既存候補や進行中測定の入力を変更しない。専用venvの`.local/venv/bin/python`を使い、シンボリックリンク先のシステムPythonへ置き換えない。
+
+原本抽出・qsearch・固定seedでのshuffle・重複除外を済ませた特徴量を使う。qsearch/shuffleのseedは20261107、学習のseedは20261106。64百万件と128百万件の原本抽出・変換の来歴は[開発記録](halfkp-development.md)と対応manifestで追う。原本は許可済みの`train-nnue/dataset/tanuki-.nnue-pytorch-2024-07-30.1/`であり、同リポジトリの実験由来の加工資産は入力にしない。
+
+| 入力 | 特徴量の場所 | 除外後件数 | manifest SHA-256 |
+| --- | --- | ---: | --- |
+| train 64百万件版 | `.local/feature-cache/halfkp-v2/train` | 63,977,434 | `61128b71a90b2e63469749c27e00c4987439cb0d550ecc2642ad038e0e9d45d0` |
+| train 128百万件版 | `.local/feature-cache/halfkp-128m-v1/train` | 127,954,738 | `8aa100271caf06b21790d78c895bbcdf93a065c3fe36a2ddf1ada012f9613052` |
+| 共通validation | 外部保存先の`training/halfkp-features-v1/validation` | 204,662 | `e5989b9745681d07f1f391c19ae933c1ddec9515ea3ec815c7b1b3b83ce6cb16` |
+
+外部保存先の基点は`/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995`。両特徴量ルートの`validation`は上表の共通集合を参照する。学習器はmanifestだけでなく全特徴量・ターゲットのサイズとSHA、trainの除外に使ったvalidationのSHAも検査する。キャッシュが欠けていれば記録した前処理から再生成し、別の集合で置き換えない。
+
+比較した5モデルの正確な条件は次の学習manifestを正とする。
+
+| 構造 | データ | 学習manifest |
+| --- | --- | --- |
+| 幅8・追加隠れなし（2層） | 64百万件 | [w8-h0](../manifests/halfkp-nnue-w8-h0-v1-training.json) |
+| 幅16・追加隠れなし（2層） | 64百万件 | [w16-h0](../manifests/halfkp-nnue-w16-h0-v1-training.json) |
+| 幅16・追加隠れ8（3層） | 64百万件 | [w16-h8](../manifests/halfkp-nnue-w16-h8-v1-training.json) |
+| 幅8・追加隠れ8（3層） | 64百万件 | [w8-h8](../manifests/halfkp-nnue-w8-h8-v1-training.json) |
+| 幅8・追加隠れなし（2層） | 128百万件 | [w8-h0-128m](../manifests/halfkp-nnue-w8-h0-128m-v1-training.json) |
+
+128百万件・幅8・2層を新規に再学習する例は次のとおり。出力名は未使用のものを選ぶ。
+
+```bash
+HALFKP_DATA=.local/feature-cache/halfkp-128m-v1
+HALFKP_MODEL=/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-128m-reproduction-01
+.local/venv/bin/python scripts/train-halfkp-nnue.py \
+  --data "$HALFKP_DATA" --output "$HALFKP_MODEL" \
+  --width 8 --hidden 0 --seed 20261106 \
+  --batch 16384 --chunk-records 2000000 --lr 0.003 \
+  --min-epochs 40 --min-examples 2500000000 --max-epochs 100
+.local/venv/bin/python scripts/validate-halfkp-nnue.py \
+  --model "$HALFKP_MODEL" --validation "$HALFKP_DATA/validation" \
+  --output "$HALFKP_MODEL/quantization-reproduction.json"
+```
+
+64百万件の後続構造を再学習する場合は`--data .local/feature-cache/halfkp-v2`にし、対応する`--width`・`--hidden`を指定する。5モデルはいずれも非QATであり、`--qat`は付けない。最低40epoch・延べ25億局面に加え、学習率が初期値の3%以下、直近5epochのtrain loss範囲が5e-5以下、validation loss範囲が2e-5以下のすべてを満たすまで学習する。上限到達で`converged=false`なら収束済み候補としない。checkpointの選択はこのvalidationのlossで行い、Floodgateでは選ばない。128百万件版は40epochで延べ約51億局面となり、64百万件版と計算量を揃えた実験ではない。
+
+学習器は決定的アルゴリズム、`CUBLAS_WORKSPACE_CONFIG=:4096:8`、float32精度`highest`を設定する。実記録のGPUはRTX 4070、PyTorchは2.11.0+cu128。再現時は各manifestの依存版・データSHA・ソースSHAも照合する。初期の64百万件・幅8モデルのtrainer/modelソースは後続とSHAが異なるため、過去のビット列の再現には保存された`trainer-source.py`・`model-source.py`をSHA照合し、別のチェックアウトの対応位置へ復元する。進行中の作業ツリーへ上書きしない。[非QAT経路のソース照合](../results/2026-11-07/halfkp-nonqat-training-source-equivalence-v1.json)では、差がソース保存の追加と非使用QAT経路だけで、初期化・非QAT順伝播・整数出力を含む有効経路が同じであることを確認した。これは全学習の再実行によるSHA一致の実測ではなく、異なるGPUや依存版でのビット一致も保証しない。
+
+整数化検証後も、C++の独立整数参照・差分更新・同ノード探索・実Pentiumの自動ロード・RAM/swapの確認を経て、通常2秒のdevelopment比較を行う。既存推論版で新しい重みだけを比較する場合は`scripts/package-frozen-runtime.py`を使い、現ビルドのエンジンへ無条件に入れ替えない。最終候補の固定後の主評価・対局は[最終検証手順](final-verification.md)に従う。
+
+以降は初期試作のデータ処理・小型ネットワークからの開発経過を残した参考記録。現行HalfKPの再学習には上の手順と固定manifestを用いる。
+
 ## データの準備
 
 `requirements-evaluation.txt`の依存物を専用venvに入れ、`scripts/prepare-training.py --output <新規ディレクトリ>`を実行する。既定はtrain 2,000,000件、validation 32,768件、seed 20261106。原本ファイルを固定ハッシュ順に並べ、先頭32ファイルからvalidation、残りからtrainを抽出する。4096レコードのブロックを重複なしにランダム抽出し、ブロックの出所とSHAを記録する。全320GBの読み込みを必要としない方式であり、各棋譜から独立に一様抽出する方式ではない。

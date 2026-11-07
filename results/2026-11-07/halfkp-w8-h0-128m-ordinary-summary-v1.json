@@ -1,0 +1,76 @@
+{
+  "complete": true,
+  "recorded_at_utc": "2026-11-06T22:07:26.317573+00:00",
+  "positions": 1024,
+  "dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "mode": "fixed_byoyomi",
+  "milliseconds": 2000,
+  "nodes": null,
+  "options": {
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false,
+    "MultiPV": 1,
+    "MaxMovesToDraw": 512,
+    "EnteringKingRule": "CSARule27",
+    "NetworkDelay": 0,
+    "NetworkDelay2": 0
+  },
+  "model_geometry": "standardHalfKP shared width8 per view, hidden0, material residual; same C30 scalar width-specialized runtime",
+  "training_difference": "63,977,434 vs127,954,738 examples per epoch, both40 epochs; latter has about twice training examples AND dataset size, not a compute-matched experiment",
+  "reports": {
+    "64m": {
+      "matches": 380,
+      "accuracy": 0.37109375,
+      "wilson_95": {
+        "lower": 0.3420377634518856,
+        "upper": 0.4011132860271816
+      },
+      "started_at_utc": "2026-11-06T20:35:52.668364+00:00",
+      "finished_at_utc": "2026-11-06T22:05:22.124161+00:00",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "measurement_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "guest_model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0,
+      "archived_result": "results/2026-11-07/halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T220522124161Z-baseline.json",
+      "result_sha256": "f097e16af0f67a4c648b035f6ee3f776fba1eff4b560b053bb35450daa395d21"
+    },
+    "128m": {
+      "matches": 401,
+      "accuracy": 0.3916015625,
+      "wilson_95": {
+        "lower": 0.3621637722499568,
+        "upper": 0.42184961026653156
+      },
+      "started_at_utc": "2026-11-06T20:47:02.916112+00:00",
+      "finished_at_utc": "2026-11-06T21:54:11.494758+00:00",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "measurement_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "guest_model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0,
+      "archived_result": "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261106T215411494758Z-candidate.json",
+      "result_sha256": "3854281c7f6cd3091976ec115def00252d68a59f8df76315bde16db0c3a4a28e"
+    }
+  },
+  "candidate_minus_baseline_pp": 2.05078125,
+  "paired_95_pp": {
+    "lower": -0.78125,
+    "upper": 4.8828125
+  },
+  "comparison": {
+    "path": "results/2026-11-07/development-halfkp-w8-h0-128m-scalar-v1-comparison.json",
+    "sha256": "4d0e0aeecfb64eb351ddba4bd38ac5ae84a4fc6571e72f34fb794f46de3cc258"
+  },
+  "vs_saved_original": "results/2026-11-07/development-halfkp-w8-h0-128m-scalar-v1-vs-original-material.json",
+  "point_estimate_highest_so_far": true,
+  "remaining_geometry_comparisons": 3,
+  "heldout_test_used": false,
+  "conclusion": "128m has higher observed full-development agreement (401 vs380), but paired95 includes zero so improvement is not confirmed. Keep it as a provisional highest-point candidate, continue all remaining geometry comparisons, retain previous general e6 candidate too. Do not select from validation loss or claim pure data-size causality because training compute also doubled. No default activation or heldout tuning."
+}

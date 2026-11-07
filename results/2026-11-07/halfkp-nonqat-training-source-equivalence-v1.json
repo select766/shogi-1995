@@ -1,0 +1,84 @@
+{
+  "complete": true,
+  "passed": true,
+  "recorded_at_utc": "2026-11-06T23:38:22.479237+00:00",
+  "scope": "Read-only source and recorded training-identity audit; no learning or native/guest engine was launched during the active timing run.",
+  "trainer_difference": "Only adds writing model-source.py to the output. Removing that one verified line makes trainer bytes identical.",
+  "model_difference": "Only the QAT forward branch changed. Removing unreachable QAT tails for qat=false yields identical complete-module AST, including initialization, float forward and integer export.",
+  "normalized_nonqat_module_ast_sha256": "be505b2d3852cddb1c07d10eb1db85c9c9e8d5f21848dc0ad3ae60f470b4ca2d",
+  "old_sources": {
+    "trainer": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-v1/trainer-source.py",
+    "trainer_sha256": "2c08be49919b10e256d9e6426ff41fd7343ae879708d9fec427a73f7e577d906",
+    "model": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-v1/model-source.py",
+    "model_sha256": "078095eb4873035f3af05efc9dedfbd225e15b53edd9a7d630f8bfbd5a272c08"
+  },
+  "current_sources": {
+    "trainer": "scripts/train-halfkp-nnue.py",
+    "trainer_sha256": "83195742ad4501df6ca1b227fbccd03223d4d3153cb2b11b195d2ad7ba235d67",
+    "model": "src/shogi1995/halfkp_network.py",
+    "model_sha256": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023"
+  },
+  "models": [
+    {
+      "name": "w8-h0",
+      "manifest": "manifests/halfkp-nnue-w8-h0-v1-training.json",
+      "manifest_sha256": "308dac8193fca1d0c9227fc0acdc3090c9d06437e213e2beab954f081f8c4b6e",
+      "trainer_sha256": "2c08be49919b10e256d9e6426ff41fd7343ae879708d9fec427a73f7e577d906",
+      "model_source_sha256": "078095eb4873035f3af05efc9dedfbd225e15b53edd9a7d630f8bfbd5a272c08",
+      "feature_code_sha256": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+      "qat": false,
+      "precision": "highest",
+      "torch": "2.11.0+cu128",
+      "device": "NVIDIA GeForce RTX 4070"
+    },
+    {
+      "name": "w16-h0",
+      "manifest": "manifests/halfkp-nnue-w16-h0-v1-training.json",
+      "manifest_sha256": "c28270405e445b6ca458bcdddee31b67cdba7a60741150e15c8542291572acf9",
+      "trainer_sha256": "83195742ad4501df6ca1b227fbccd03223d4d3153cb2b11b195d2ad7ba235d67",
+      "model_source_sha256": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023",
+      "feature_code_sha256": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+      "qat": false,
+      "precision": "highest",
+      "torch": "2.11.0+cu128",
+      "device": "NVIDIA GeForce RTX 4070"
+    },
+    {
+      "name": "w16-h8",
+      "manifest": "manifests/halfkp-nnue-w16-h8-v1-training.json",
+      "manifest_sha256": "5321a3b15aa1595c5212d70ced72c043d5e7bbff15e824840ec49b8c3e623182",
+      "trainer_sha256": "83195742ad4501df6ca1b227fbccd03223d4d3153cb2b11b195d2ad7ba235d67",
+      "model_source_sha256": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023",
+      "feature_code_sha256": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+      "qat": false,
+      "precision": "highest",
+      "torch": "2.11.0+cu128",
+      "device": "NVIDIA GeForce RTX 4070"
+    },
+    {
+      "name": "w8-h8",
+      "manifest": "manifests/halfkp-nnue-w8-h8-v1-training.json",
+      "manifest_sha256": "cf07c3659a1579735ac2d883bd005a9c23038c7b83791c7e1177a9c63572a51d",
+      "trainer_sha256": "83195742ad4501df6ca1b227fbccd03223d4d3153cb2b11b195d2ad7ba235d67",
+      "model_source_sha256": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023",
+      "feature_code_sha256": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+      "qat": false,
+      "precision": "highest",
+      "torch": "2.11.0+cu128",
+      "device": "NVIDIA GeForce RTX 4070"
+    },
+    {
+      "name": "w8-h0-128m",
+      "manifest": "manifests/halfkp-nnue-w8-h0-128m-v1-training.json",
+      "manifest_sha256": "3bf1a1538588acfe93c8250f3c321d9652e06e670fb947e19ae6f756befb812c",
+      "trainer_sha256": "83195742ad4501df6ca1b227fbccd03223d4d3153cb2b11b195d2ad7ba235d67",
+      "model_source_sha256": "c0c584413385bf926b7448696d0d02f4681e7f3fd6fa514b55d2323032e6e023",
+      "feature_code_sha256": "ddf30ef5a0d7b96bbfd5088f7cab80ca0eafb738db1ed90c0f874dc9987a94c7",
+      "qat": false,
+      "precision": "highest",
+      "torch": "2.11.0+cu128",
+      "device": "NVIDIA GeForce RTX 4070"
+    }
+  ],
+  "limitation": "This proves source equivalence along the recorded non-QAT path, not byte-identical repetition of the full training process or reproducibility on different hardware/software. Dataset size, geometry and total training work still differ where specified."
+}

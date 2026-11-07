@@ -1,0 +1,77 @@
+{
+  "complete": true,
+  "recorded_at_utc": "2026-11-06T20:38:06.169492+00:00",
+  "positions": 1024,
+  "dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "mode": "fixed_byoyomi",
+  "milliseconds": 2000,
+  "nodes": null,
+  "options": {
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false,
+    "MultiPV": 1,
+    "MaxMovesToDraw": 512,
+    "EnteringKingRule": "CSARule27",
+    "NetworkDelay": 0,
+    "NetworkDelay2": 0
+  },
+  "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+  "comparison": {
+    "path": "results/2026-11-07/development-halfkp-w8-h0-scalar-optimization-v1-comparison.json",
+    "sha256": "e8acd5a0c72ede8f047a1f3a4834057e53c401888eebb7581e32dd2a234ffa7e"
+  },
+  "runtimes": {
+    "general_e6": {
+      "matches": 384,
+      "accuracy": 0.375,
+      "wilson_95": {
+        "lower": 0.34586696731601113,
+        "upper": 0.40506738369399337
+      },
+      "started_at_utc": "2026-11-06T19:06:20.099233+00:00",
+      "finished_at_utc": "2026-11-06T20:35:48.513601+00:00",
+      "source_commit": "e6d5f3893732b0aacede6dcde2d35b07f16f3f4d",
+      "measurement_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+      "engine_sha256": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+      "guest_model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0,
+      "archived_result": "results/2026-11-07/halfkp-nnue-w8-h0-output32-v1-usi-20261106T203548513601Z-baseline.json",
+      "result_sha256": "4ec0cf61c8493da8ccb087888e7dabb061f1cb7e5a24b6cfe0a533aa4ec7afb5"
+    },
+    "width_kernel_C30": {
+      "matches": 379,
+      "accuracy": 0.3701171875,
+      "wilson_95": {
+        "lower": 0.341080783828627,
+        "upper": 0.4001244402677058
+      },
+      "started_at_utc": "2026-11-06T19:17:30.181188+00:00",
+      "finished_at_utc": "2026-11-06T20:24:38.430762+00:00",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "measurement_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "guest_model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0,
+      "archived_result": "results/2026-11-07/halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T202438430762Z-candidate.json",
+      "result_sha256": "c7c9c9030a0d7878df8a69fd1bd8188351c68cc34f5a064c9f4266cd51692b30"
+    }
+  },
+  "candidate_minus_baseline_pp": -0.48828125,
+  "paired_95_pp": {
+    "lower": -1.26953125,
+    "upper": 0.29296875
+  },
+  "same_model_fixed_node_speed_evidence": "results/2026-11-06/halfkp-nnue-w8-h0-width-kernel-speed-v1.json",
+  "conclusion": "C30 is faster on identical searched trees; its ordinary-time agreement improvement is not confirmed. CI includes zero, so statistical regression is also unconfirmed. Preserve both runtime candidates; current full-sample point estimate favors general e6. Continue planned same-C30 architecture/data comparisons without changing inputs/time/data. No final candidate or default activation from this result.",
+  "remaining_full_development_comparisons": 4,
+  "heldout_test_used": false,
+  "scope": "same64m HalfKP width8/H0 weights, real Pentium ordinary2s full development runtime comparison",
+  "vs_original_material_comparison": "results/2026-11-07/development-halfkp-w8-h0-scalar-optimization-v1-vs-original-material.json",
+  "retain_general_e6_in_final_candidate_pool": true
+}

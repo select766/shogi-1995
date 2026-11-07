@@ -1,0 +1,58 @@
+{
+  "complete": true,
+  "passed": true,
+  "recorded_at_utc": "2026-11-07T00:07:51.097060+00:00",
+  "selector_sha256": "acd03e432695c98911782a6aff2ae62d44a838a95dc4df83a54016de08224d10",
+  "plan_sha256": "ae09afaf9d061437e491916769a20d84553feb5256704b07d9d6570d3ff74cbb",
+  "valid_full_report": true,
+  "corruption_rejections": [
+    "incomplete",
+    "wrong_model",
+    "duplicate_detail_id",
+    "hidden_illegal_detail",
+    "wrong_count",
+    "nonzero_delay"
+  ],
+  "full_four_block_candidate": {
+    "positions": 1024,
+    "matches": 387
+  },
+  "block_checks": [
+    "partial fourth block excluded",
+    "missing fourth block excluded",
+    "mismatched completed block rejected"
+  ],
+  "current_dry_run_rank": [
+    [
+      "w8-h0-128m-width",
+      401
+    ],
+    [
+      "w8-h8-packed-fc",
+      387
+    ],
+    [
+      "w8-h0-general",
+      384
+    ],
+    [
+      "w8-h0-width",
+      379
+    ],
+    [
+      "w16-h0-general",
+      378
+    ],
+    [
+      "w16-h8-general",
+      374
+    ]
+  ],
+  "current_excluded": [
+    {
+      "id": "w16-h0-width",
+      "reason": "candidate has not completed all 1024 positions"
+    }
+  ],
+  "scope": "Read-only real-result validation and disposable corrupted copies only; no engine, training, test split or fixed-model output was run/created."
+}

@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-11-06T23:58:05.913385+00:00",
+  "user_instruction": "End model-structure exploration by2026-11-07 10:00JST; fix model afterwards and explore other strength improvements until15:00JST.",
+  "model_freeze_deadline_utc": "2026-11-07T01:00:00+00:00",
+  "development_queue_stop_utc": "2026-11-07T00:59:00+00:00",
+  "algorithm_exploration_end_utc": "2026-11-07T06:00:00+00:00",
+  "supersedes_timing_of": "manifests/halfkp-scalar-development-execution-plan-v1.json",
+  "active_job": {
+    "pid": 562239,
+    "start_time": "7127309",
+    "state": ".local/jobs/halfkp-scalar-development-v1.json",
+    "plan_sha256": "2be1938629d691658d4c59a60814f6875417dfda15a48cae459b21429b34fc49"
+  },
+  "policy": [
+    "Do not modify the active frozen plan or measurement code. Stop the identified owned queue at00:59UTC and preserve all results/logs, including incomplete controls. Never launch its final width16/hidden8 geometry comparison after the cutoff.",
+    "Select a qualified model only from its full1024 ordinary-time candidate observations available before the freeze, never rank on partial positions. Completed raw256 blocks may be aggregated only after verifying all4 blocks complete, exact IDs/order/conditions/hashes and ops0. If the paired control remains incomplete, disclose this and do not claim a completed paired comparison.",
+    "Keep measurement uncertainty explicit; do not pool repeated controls. Freeze geometry, exact model bytes/SHA, dataset and selected input identity by01:00UTC. Final model choice is made once before non-model optimization.",
+    "From the model freeze until06:00UTC change runtime/arithmetic/search only, keeping the frozen model weights and geometry. The qualified packed accumulator is the first same-model runtime candidate. Verify integer/search parity and target fixed-node speed before full1024 ordinary-time strength comparison. Do not claim strength from native NPS or incomplete small subsets.",
+    "Preserve final heldout4096, actual auxiliary20 and tournament2 verification obligations; their results must not be used to retune a frozen candidate."
+  ]
+}

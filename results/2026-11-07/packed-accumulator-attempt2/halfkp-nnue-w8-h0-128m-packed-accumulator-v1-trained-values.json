@@ -1,0 +1,10 @@
+{
+  "positions": 512,
+  "exact_value_matches": 512,
+  "passed": true,
+  "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "validation_data_sha256": "4e8e45d808afeabe7ee1889e8cb08fb6cd97918e05d5ae92692e8b0b10d0060e",
+  "test_sha256": "bc2e9400a2e0f14d98a76e2d316ebe505ce4e31e7876525143fde88b0cff0499",
+  "verified_at_utc": "2026-11-06T19:04:44.513572+00:00"
+}

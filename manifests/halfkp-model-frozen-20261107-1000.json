@@ -1,0 +1,237 @@
+{
+  "complete": true,
+  "frozen_at_utc": "2026-11-07T00:58:00.049490+00:00",
+  "deadline_utc": "2026-11-07T01:00:00+00:00",
+  "plan_sha256": "ae09afaf9d061437e491916769a20d84553feb5256704b07d9d6570d3ff74cbb",
+  "selector_sha256": "acd03e432695c98911782a6aff2ae62d44a838a95dc4df83a54016de08224d10",
+  "selected": {
+    "id": "w8-h0-128m-width",
+    "profile": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+    "profile_sha256": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+    "training": "manifests/halfkp-nnue-w8-h0-128m-v1-training.json",
+    "training_sha256": "3bf1a1538588acfe93c8250f3c321d9652e06e670fb947e19ae6f756befb812c",
+    "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "width": 8,
+    "hidden": 0,
+    "weight_layers": 2,
+    "model_bytes": 2006300,
+    "matches": 401,
+    "positions": 1024,
+    "accuracy": 0.3916015625,
+    "wilson_95": {
+      "lower": 0.3621637722499568,
+      "upper": 0.42184961026653156
+    },
+    "finished_at_utc": "2026-11-06T21:54:11.494758+00:00",
+    "evidence": {
+      "path": "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261106T215411494758Z-candidate.json",
+      "sha256": "3854281c7f6cd3091976ec115def00252d68a59f8df76315bde16db0c3a4a28e"
+    },
+    "comparison_scope": "completed historical full-development run",
+    "priority": 2
+  },
+  "frozen_model": ".local/frozen-models/halfkp-20261107-1000/model.bin",
+  "ranked_eligible": [
+    {
+      "id": "w8-h0-128m-width",
+      "profile": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+      "profile_sha256": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+      "training": "manifests/halfkp-nnue-w8-h0-128m-v1-training.json",
+      "training_sha256": "3bf1a1538588acfe93c8250f3c321d9652e06e670fb947e19ae6f756befb812c",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "width": 8,
+      "hidden": 0,
+      "weight_layers": 2,
+      "model_bytes": 2006300,
+      "matches": 401,
+      "positions": 1024,
+      "accuracy": 0.3916015625,
+      "wilson_95": {
+        "lower": 0.3621637722499568,
+        "upper": 0.42184961026653156
+      },
+      "finished_at_utc": "2026-11-06T21:54:11.494758+00:00",
+      "evidence": {
+        "path": "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261106T215411494758Z-candidate.json",
+        "sha256": "3854281c7f6cd3091976ec115def00252d68a59f8df76315bde16db0c3a4a28e"
+      },
+      "comparison_scope": "completed historical full-development run",
+      "priority": 2
+    },
+    {
+      "id": "w8-h8-packed-fc",
+      "profile": "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json",
+      "profile_sha256": "df8b507c232cfef334f9df56f9b50e90396bff4b762c50035816b3dafca84b28",
+      "training": "manifests/halfkp-nnue-w8-h8-v1-training.json",
+      "training_sha256": "cf07c3659a1579735ac2d883bd005a9c23038c7b83791c7e1177a9c63572a51d",
+      "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+      "width": 8,
+      "hidden": 8,
+      "weight_layers": 3,
+      "model_bytes": 2006572,
+      "matches": 387,
+      "positions": 1024,
+      "accuracy": 0.3779296875,
+      "wilson_95": {
+        "lower": 0.3487402141912864,
+        "upper": 0.40803161296692114
+      },
+      "finished_at_utc": "2026-11-06T23:23:48.654061+00:00",
+      "evidence": {
+        "path": "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-v1-usi-20261106T232348654061Z-candidate.json",
+        "sha256": "66a3420a227028d74fd04f33a99e8baf9fa57cd47707db4d343dcef2232bfd30"
+      },
+      "comparison_scope": "completed historical full-development run",
+      "priority": 3
+    },
+    {
+      "id": "w8-h0-general",
+      "profile": "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+      "profile_sha256": "71724b3087e494734b5634cbb4d16ed2c6af79c543bacac15b38b8db055b4099",
+      "training": "manifests/halfkp-nnue-w8-h0-v1-training.json",
+      "training_sha256": "308dac8193fca1d0c9227fc0acdc3090c9d06437e213e2beab954f081f8c4b6e",
+      "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "width": 8,
+      "hidden": 0,
+      "weight_layers": 2,
+      "model_bytes": 2006300,
+      "matches": 384,
+      "positions": 1024,
+      "accuracy": 0.375,
+      "wilson_95": {
+        "lower": 0.34586696731601113,
+        "upper": 0.40506738369399337
+      },
+      "finished_at_utc": "2026-11-06T20:35:48.513601+00:00",
+      "evidence": {
+        "path": "results/2026-11-07/halfkp-nnue-w8-h0-output32-v1-usi-20261106T203548513601Z-baseline.json",
+        "sha256": "4ec0cf61c8493da8ccb087888e7dabb061f1cb7e5a24b6cfe0a533aa4ec7afb5"
+      },
+      "comparison_scope": "completed historical full-development run",
+      "priority": 0
+    },
+    {
+      "id": "w16-h0-width",
+      "profile": "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+      "profile_sha256": "4ec48ecbe4f0dd93b7b528ab94124aecf7542ca4628e56214a1a470560091d07",
+      "training": "manifests/halfkp-nnue-w16-h0-v1-training.json",
+      "training_sha256": "c28270405e445b6ca458bcdddee31b67cdba7a60741150e15c8542291572acf9",
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "width": 16,
+      "hidden": 0,
+      "weight_layers": 2,
+      "model_bytes": 4012572,
+      "matches": 380,
+      "positions": 1024,
+      "accuracy": 0.37109375,
+      "wilson_95": {
+        "lower": 0.3420377634518856,
+        "upper": 0.4011132860271816
+      },
+      "finished_at_utc": "2026-11-07T00:53:30.667081+00:00",
+      "evidence": [
+        {
+          "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/000-candidate.json",
+          "sha256": "235d74f727e8cfba74b8b7bc60e3c3cc0c3eb0f5d8c7d4fb04b8638143afd29d"
+        },
+        {
+          "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/001-candidate.json",
+          "sha256": "7d84989e8cc0ff263a61353b63379cb3f597f6a9d7331f8435168987dfbe13ac"
+        },
+        {
+          "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/002-candidate.json",
+          "sha256": "853f27c95937538f811bfcb13358670ee04e3159d8e7265200c79211a5b1be9b"
+        },
+        {
+          "path": ".local/evaluation/development-halfkp-w16-h0-scalar-v1/003-candidate.json",
+          "sha256": "f4d8e03006dd48439269ed2255df96352022318ce63a8e902ee1e3a37111bffe"
+        }
+      ],
+      "comparison_scope": "candidate-only full1024 from four complete blocks; paired control may remain incomplete; no full paired CI claimed",
+      "priority": 6
+    },
+    {
+      "id": "w8-h0-width",
+      "profile": "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+      "profile_sha256": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3",
+      "training": "manifests/halfkp-nnue-w8-h0-v1-training.json",
+      "training_sha256": "308dac8193fca1d0c9227fc0acdc3090c9d06437e213e2beab954f081f8c4b6e",
+      "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "width": 8,
+      "hidden": 0,
+      "weight_layers": 2,
+      "model_bytes": 2006300,
+      "matches": 379,
+      "positions": 1024,
+      "accuracy": 0.3701171875,
+      "wilson_95": {
+        "lower": 0.341080783828627,
+        "upper": 0.4001244402677058
+      },
+      "finished_at_utc": "2026-11-06T20:24:38.430762+00:00",
+      "evidence": {
+        "path": "results/2026-11-07/halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T202438430762Z-candidate.json",
+        "sha256": "c7c9c9030a0d7878df8a69fd1bd8188351c68cc34f5a064c9f4266cd51692b30"
+      },
+      "comparison_scope": "completed historical full-development run",
+      "priority": 1
+    },
+    {
+      "id": "w16-h0-general",
+      "profile": "manifests/halfkp-nnue-w16-h0-output32-v1-candidate.json",
+      "profile_sha256": "d784b10b86a0956c8ec097d01e8996796b4369aa5edbacd63dc3db7a8b29fc75",
+      "training": "manifests/halfkp-nnue-w16-h0-v1-training.json",
+      "training_sha256": "c28270405e445b6ca458bcdddee31b67cdba7a60741150e15c8542291572acf9",
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "width": 16,
+      "hidden": 0,
+      "weight_layers": 2,
+      "model_bytes": 4012572,
+      "matches": 378,
+      "positions": 1024,
+      "accuracy": 0.369140625,
+      "wilson_95": {
+        "lower": 0.3401239331564168,
+        "upper": 0.39913546555718166
+      },
+      "finished_at_utc": "2026-11-06T12:27:41.469745+00:00",
+      "evidence": {
+        "path": "results/2026-11-06/halfkp-nnue-w16-h0-output32-v1-usi-20261106T122741469745Z-candidate.json",
+        "sha256": "af6d26f019b69080a22834dbdee6eb7bf635f76a50f540ccf1c2e1ec120b9ca0"
+      },
+      "comparison_scope": "completed historical full-development run",
+      "priority": 4
+    },
+    {
+      "id": "w16-h8-general",
+      "profile": "manifests/halfkp-nnue-w16-h8-output32-v1-candidate.json",
+      "profile_sha256": "c3c27b7d30494da8ec8e1eb053f206d1fbe9af869dd64dc5a2081d92287cdbbd",
+      "training": "manifests/halfkp-nnue-w16-h8-v1-training.json",
+      "training_sha256": "5321a3b15aa1595c5212d70ced72c043d5e7bbff15e824840ec49b8c3e623182",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+      "width": 16,
+      "hidden": 8,
+      "weight_layers": 3,
+      "model_bytes": 4013068,
+      "matches": 374,
+      "positions": 1024,
+      "accuracy": 0.365234375,
+      "wilson_95": {
+        "lower": 0.336297824224669,
+        "upper": 0.39517827295799207
+      },
+      "finished_at_utc": "2026-11-06T13:57:17.743523+00:00",
+      "evidence": {
+        "path": "results/2026-11-06/halfkp-nnue-w16-h8-output32-v1-usi-20261106T135717743523Z-candidate.json",
+        "sha256": "b59a818aa54995f9ea9f4384fd041e7e9cf64d2d3a9aece25c4cd21f384c044d"
+      },
+      "comparison_scope": "completed historical full-development run",
+      "priority": 5
+    }
+  ],
+  "excluded": [],
+  "heldout_test_used": false,
+  "selection_rule": "Rank only full1024 ordinary2000ms operationally clean qualified candidates by observed matches descending; exact ties prefer fewer model bytes, fewer weight layers, then predefined priority retaining prior model. No pooling repeated controls. Candidate-only four-block runs may qualify without a completed paired control, which is explicitly disclosed; never claim their paired interval. No model shape or weight changes after freeze.",
+  "uncertainty": "Development point ranking for a deadline freeze; overlapping intervals are uncertain, repeated controls are not pooled, no incremental improvement is inferred from ranking.",
+  "next_phase": "Keep exact geometry/model bytes fixed; runtime/arithmetic/search exploration until06:00UTC. Reference runtime is a starting point, not yet final."
+}

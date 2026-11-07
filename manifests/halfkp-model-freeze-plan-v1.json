@@ -1,0 +1,94 @@
+{
+  "execute_at_utc": "2026-11-07T00:58:00+00:00",
+  "deadline_utc": "2026-11-07T01:00:00+00:00",
+  "dataset": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+  "dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "environment_signature": "b1928e1431a938c0a7eb318992ffbd650b26042ffcd244e73c761e89e6105e1d",
+  "options": {
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false,
+    "MultiPV": 1,
+    "MaxMovesToDraw": 512,
+    "EnteringKingRule": "CSARule27",
+    "NetworkDelay": 0,
+    "NetworkDelay2": 0
+  },
+  "selector_sha256": "acd03e432695c98911782a6aff2ae62d44a838a95dc4df83a54016de08224d10",
+  "selection_rule": "Rank only full1024 ordinary2000ms operationally clean qualified candidates by observed matches descending; exact ties prefer fewer model bytes, fewer weight layers, then predefined priority retaining prior model. No pooling repeated controls. Candidate-only four-block runs may qualify without a completed paired control, which is explicitly disclosed; never claim their paired interval. No model shape or weight changes after freeze.",
+  "candidates": [
+    {
+      "id": "w8-h0-general",
+      "profile": "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+      "profile_sha256": "71724b3087e494734b5634cbb4d16ed2c6af79c543bacac15b38b8db055b4099",
+      "training": "manifests/halfkp-nnue-w8-h0-v1-training.json",
+      "training_sha256": "308dac8193fca1d0c9227fc0acdc3090c9d06437e213e2beab954f081f8c4b6e",
+      "result": "results/2026-11-07/halfkp-nnue-w8-h0-output32-v1-usi-20261106T203548513601Z-baseline.json",
+      "result_sha256": "4ec0cf61c8493da8ccb087888e7dabb061f1cb7e5a24b6cfe0a533aa4ec7afb5",
+      "priority": 0
+    },
+    {
+      "id": "w8-h0-width",
+      "profile": "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+      "profile_sha256": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3",
+      "training": "manifests/halfkp-nnue-w8-h0-v1-training.json",
+      "training_sha256": "308dac8193fca1d0c9227fc0acdc3090c9d06437e213e2beab954f081f8c4b6e",
+      "result": "results/2026-11-07/halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T202438430762Z-candidate.json",
+      "result_sha256": "c7c9c9030a0d7878df8a69fd1bd8188351c68cc34f5a064c9f4266cd51692b30",
+      "priority": 1
+    },
+    {
+      "id": "w8-h0-128m-width",
+      "profile": "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+      "profile_sha256": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+      "training": "manifests/halfkp-nnue-w8-h0-128m-v1-training.json",
+      "training_sha256": "3bf1a1538588acfe93c8250f3c321d9652e06e670fb947e19ae6f756befb812c",
+      "result": "results/2026-11-07/halfkp-nnue-w8-h0-128m-width-kernel-v1-usi-20261106T215411494758Z-candidate.json",
+      "result_sha256": "3854281c7f6cd3091976ec115def00252d68a59f8df76315bde16db0c3a4a28e",
+      "priority": 2
+    },
+    {
+      "id": "w8-h8-packed-fc",
+      "profile": "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json",
+      "profile_sha256": "df8b507c232cfef334f9df56f9b50e90396bff4b762c50035816b3dafca84b28",
+      "training": "manifests/halfkp-nnue-w8-h8-v1-training.json",
+      "training_sha256": "cf07c3659a1579735ac2d883bd005a9c23038c7b83791c7e1177a9c63572a51d",
+      "result": "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-v1-usi-20261106T232348654061Z-candidate.json",
+      "result_sha256": "66a3420a227028d74fd04f33a99e8baf9fa57cd47707db4d343dcef2232bfd30",
+      "priority": 3
+    },
+    {
+      "id": "w16-h0-general",
+      "profile": "manifests/halfkp-nnue-w16-h0-output32-v1-candidate.json",
+      "profile_sha256": "d784b10b86a0956c8ec097d01e8996796b4369aa5edbacd63dc3db7a8b29fc75",
+      "training": "manifests/halfkp-nnue-w16-h0-v1-training.json",
+      "training_sha256": "c28270405e445b6ca458bcdddee31b67cdba7a60741150e15c8542291572acf9",
+      "result": "results/2026-11-06/halfkp-nnue-w16-h0-output32-v1-usi-20261106T122741469745Z-candidate.json",
+      "result_sha256": "af6d26f019b69080a22834dbdee6eb7bf635f76a50f540ccf1c2e1ec120b9ca0",
+      "priority": 4
+    },
+    {
+      "id": "w16-h8-general",
+      "profile": "manifests/halfkp-nnue-w16-h8-output32-v1-candidate.json",
+      "profile_sha256": "c3c27b7d30494da8ec8e1eb053f206d1fbe9af869dd64dc5a2081d92287cdbbd",
+      "training": "manifests/halfkp-nnue-w16-h8-v1-training.json",
+      "training_sha256": "5321a3b15aa1595c5212d70ced72c043d5e7bbff15e824840ec49b8c3e623182",
+      "result": "results/2026-11-06/halfkp-nnue-w16-h8-output32-v1-usi-20261106T135717743523Z-candidate.json",
+      "result_sha256": "b59a818aa54995f9ea9f4384fd041e7e9cf64d2d3a9aece25c4cd21f384c044d",
+      "priority": 5
+    },
+    {
+      "id": "w16-h0-width",
+      "profile": "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+      "profile_sha256": "4ec48ecbe4f0dd93b7b528ab94124aecf7542ca4628e56214a1a470560091d07",
+      "training": "manifests/halfkp-nnue-w16-h0-v1-training.json",
+      "training_sha256": "c28270405e445b6ca458bcdddee31b67cdba7a60741150e15c8542291572acf9",
+      "blocks": ".local/evaluation/development-halfkp-w16-h0-scalar-v1",
+      "priority": 6
+    }
+  ],
+  "output": "manifests/halfkp-model-frozen-20261107-1000.json",
+  "frozen_model": ".local/frozen-models/halfkp-20261107-1000/model.bin",
+  "receipt": ".local/jobs/halfkp-model-freeze-v1.json"
+}

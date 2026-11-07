@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-06T19:06:19.594248+00:00",
+  "qualification_producer_absent": true,
+  "qualification_completion_sha256": "c5e274d05c817c3b40803b493d59fe9c17c4571d4db9677476ffdd310085b037",
+  "gpu_compute_processes": [],
+  "default_engine_lock_available": true,
+  "scope": "entry preflight for full-development ordinary-time comparison"
+}

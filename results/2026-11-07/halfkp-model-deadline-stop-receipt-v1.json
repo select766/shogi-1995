@@ -1,0 +1,54 @@
+{
+  "status": "deadline_stop_complete",
+  "pid": 704758,
+  "target": {
+    "pid": 562239,
+    "start_time": "7127309",
+    "state": ".local/jobs/halfkp-scalar-development-v1.json",
+    "plan_sha256": "2be1938629d691658d4c59a60814f6875417dfda15a48cae459b21429b34fc49"
+  },
+  "stop_at_utc": "2026-11-07T00:59:00+00:00",
+  "guard_source_sha256": "310ae456016fa2efaa411709b87f715d549fae24cdf131e5f01f46f8d853d419",
+  "schedule_sha256": "f46abde8dd398969facf59e4fa39b81591789305613319a222fc9bed4a208b6a",
+  "reason": "user model-structure deadline; preserve evidence and prevent later geometry steps",
+  "state_before_stop": {
+    "status": "executing",
+    "pid": 562239,
+    "started_at_utc": "2026-11-06T19:01:00.549354+00:00",
+    "plan_sha256": "2be1938629d691658d4c59a60814f6875417dfda15a48cae459b21429b34fc49",
+    "completed_prerequisite_sha256": "c5e274d05c817c3b40803b493d59fe9c17c4571d4db9677476ffdd310085b037",
+    "completed_inputs": {
+      "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-packed-accumulator-validation-v1.json": {
+        "sha256": "485421b12241a468ee5759a46e8b225c324df5dabfbdfd22e631bf354b02fa93",
+        "records": null
+      }
+    },
+    "execution_started_at_utc": "2026-11-06T19:06:19.547226+00:00",
+    "step": 8,
+    "description": "same64m training inputs and common width-specialized arithmetic; wider two-layer model",
+    "log": "/tmp/shogi-development-halfkp-w16-h0-scalar-v1.log",
+    "child_pid": 693066
+  },
+  "signal_sent_at_utc": "2026-11-07T00:59:00.006232+00:00",
+  "updated_at_utc": "2026-11-07T00:59:00.206963+00:00",
+  "state_after_stop": {
+    "status": "stopped",
+    "pid": 562239,
+    "started_at_utc": "2026-11-06T19:01:00.549354+00:00",
+    "plan_sha256": "2be1938629d691658d4c59a60814f6875417dfda15a48cae459b21429b34fc49",
+    "completed_prerequisite_sha256": "c5e274d05c817c3b40803b493d59fe9c17c4571d4db9677476ffdd310085b037",
+    "completed_inputs": {
+      "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-packed-accumulator-validation-v1.json": {
+        "sha256": "485421b12241a468ee5759a46e8b225c324df5dabfbdfd22e631bf354b02fa93",
+        "records": null
+      }
+    },
+    "execution_started_at_utc": "2026-11-06T19:06:19.547226+00:00",
+    "step": 8,
+    "description": "same64m training inputs and common width-specialized arithmetic; wider two-layer model",
+    "log": "/tmp/shogi-development-halfkp-w16-h0-scalar-v1.log",
+    "child_pid": 693066,
+    "error": "143",
+    "updated_at_utc": "2026-11-07T00:59:00.009610+00:00"
+  }
+}

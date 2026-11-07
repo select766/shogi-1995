@@ -1,0 +1,84 @@
+{
+  "positions": 1024,
+  "dataset_sha256": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+  "mode": "fixed_byoyomi",
+  "milliseconds": 2000,
+  "nodes": null,
+  "options": {
+    "Threads": 1,
+    "USI_Hash": 2,
+    "USI_OwnBook": false,
+    "USI_Ponder": false,
+    "MultiPV": 1,
+    "MaxMovesToDraw": 512,
+    "EnteringKingRule": "CSARule27",
+    "NetworkDelay": 0,
+    "NetworkDelay2": 0
+  },
+  "complete": true,
+  "recorded_at_utc": "2026-11-06T23:35:52.017650+00:00",
+  "model_geometry": "standardHalfKP shared width8 per view; hidden0 vs hidden8; material residual; two layers vs three layers",
+  "training_difference": "same63,977,434 training inputs and canonical204,662 validation positions; both40epochs and preset loss-saturation criteria; different converged model weights",
+  "runtime_difference": "C30 width-specialized two-layer versus width-specialized plus packedFC three-layer; joint geometry/runtime deployment comparison, not isolated added-layer arithmetic effect",
+  "reports": {
+    "two_layer": {
+      "matches": 380,
+      "accuracy": 0.37109375,
+      "wilson_95": {
+        "lower": 0.3420377634518856,
+        "upper": 0.4011132860271816
+      },
+      "started_at_utc": "2026-11-06T22:05:26.348072+00:00",
+      "finished_at_utc": "2026-11-06T23:34:58.904851+00:00",
+      "source_commit": "196920bedbc33cd8fff03f069e08764af966a250",
+      "measurement_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "guest_model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0,
+      "archived_result": "results/2026-11-07/halfkp-nnue-w8-h0-width-kernel-v1-usi-20261106T233458904851Z-baseline.json",
+      "result_sha256": "b104e5f59903f93aeaeff3197eaafa7d85236cf7d0f3d08dc30db9e6cfd20848"
+    },
+    "three_layer": {
+      "matches": 387,
+      "accuracy": 0.3779296875,
+      "wilson_95": {
+        "lower": 0.3487402141912864,
+        "upper": 0.40803161296692114
+      },
+      "started_at_utc": "2026-11-06T22:16:36.800703+00:00",
+      "finished_at_utc": "2026-11-06T23:23:48.654061+00:00",
+      "source_commit": "b1839520dca645e04ff1103ef574fa0f695d479b",
+      "measurement_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+      "engine_sha256": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+      "guest_model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+      "errors": 0,
+      "illegal_moves": 0,
+      "time_overruns": 0,
+      "archived_result": "results/2026-11-07/halfkp-nnue-w8-h8-packed-fc-v1-usi-20261106T232348654061Z-candidate.json",
+      "result_sha256": "66a3420a227028d74fd04f33a99e8baf9fa57cd47707db4d343dcef2232bfd30"
+    }
+  },
+  "candidate_minus_baseline_pp": 0.68359375,
+  "paired_95_pp": {
+    "lower": -1.953125,
+    "upper": 3.61328125
+  },
+  "paired_counts": {
+    "both_correct": 275,
+    "baseline_only": 105,
+    "candidate_only": 112,
+    "both_wrong": 532
+  },
+  "comparison": {
+    "path": "results/2026-11-07/development-halfkp-w8-h8-scalar-v1-comparison.json",
+    "sha256": "25025b85c8b19677db8edc7407c7a9dcf60192a3c4f422a0dcf2555ae58504df"
+  },
+  "vs_saved_original": "results/2026-11-07/development-halfkp-w8-h8-scalar-v1-vs-original-material.json",
+  "point_estimate_highest_so_far": false,
+  "remaining_geometry_comparisons": 2,
+  "heldout_test_used": false,
+  "conclusion": "Three-layer64m387/1024 exceeds its fresh two-layer64m380/1024 by0.68359375pp, but paired95 includes zero so incremental improvement is not confirmed. The128m two-layer model remains provisional highest observed point401/1024. Continue both width16 comparisons, retain general e6 in final pool. Different models visit different trees; NPS ratios do not isolate arithmetic speedups. No default activation or heldout tuning.",
+  "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+}

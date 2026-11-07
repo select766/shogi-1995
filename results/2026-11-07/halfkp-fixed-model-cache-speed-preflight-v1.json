@@ -1,0 +1,24 @@
+{
+  "status": "complete",
+  "complete": true,
+  "pid": 735218,
+  "process_start_time": "9295089",
+  "plan_sha256": "956811fb7c158ba2e6f38d9c1e195f19b041a64b853382d2dac371fc89fdc2c0",
+  "finished_at_utc": "2026-11-07T01:02:18.944515+00:00",
+  "kind": "completed independent preflight producer, not completion of the intentionally stopped old queue",
+  "artifacts": {
+    "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json": {
+      "image_sha256": "b2a65670b0e357299349ed723b35792edaa292337e35a2bb07f85ebeb4b9594c",
+      "engine_sha256": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+    },
+    "manifests/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-candidate.json": {
+      "image_sha256": "21c4878ef8bc96261cdc6b0efec144a801a1ef2878af7bed4c9b9f4974ffb905",
+      "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+    }
+  },
+  "vm_lock_free": true,
+  "gpu_compute_pids": [],
+  "model_frozen_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff"
+}

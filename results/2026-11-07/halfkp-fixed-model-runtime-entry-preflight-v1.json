@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "passed": true,
+  "observed_at_utc": "2026-11-07T01:00:02.643642+00:00",
+  "processes": {
+    "562239": null,
+    "693066": null
+  },
+  "vm_lock_free": true,
+  "gpu_compute_pids": [],
+  "scope": "after authorized user-deadline stop, before fixed-model runtime optimization"
+}

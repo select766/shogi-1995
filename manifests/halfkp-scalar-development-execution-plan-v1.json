@@ -1,0 +1,238 @@
+{
+  "created_at_utc": "2026-11-06T19:00:56.647342+00:00",
+  "purpose": "five full1024 ordinary2000ms model/runtime development comparisons; fixed order, no heldout scoring",
+  "prerequisite_job": {
+    "state": "/home/select766/shogi/shogi-1995/.local/jobs/halfkp-packed-accumulator-qualification-attempt2-v1.json",
+    "pid": 560143,
+    "process_start_time": "7111517",
+    "plan_sha256": "7930a586b7ab85cfd5bfd344e225008fc336feead7068c5f1168fa59a02a3eef"
+  },
+  "code_sha256": {
+    "scripts/run-after-job.py": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985",
+    "scripts/evaluate-pair.py": "1a8ceeec13eeebc4920bbc03646a3eeec3dd79db7ef2cafc6d5f0fa08a32a03b",
+    "scripts/evaluate-accuracy.py": "85da0368dddce4dd6d16fdf02fee50ea47f6f86d8b18358eacee97ce52263f93",
+    "scripts/compare-accuracy.py": "ec7f84a9eac154cfe47e60952fa10e3354572849dbfcc18ab53265cb977570d5",
+    "scripts/update-measurements.py": "6cac7d767e5389e7071e6ddce4e0427b8037b842e854c4feacf7c62ce67f043b",
+    "scripts/plot-measurement-history.py": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
+    "src/shogi1995/plot_labels.py": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
+    "src/shogi1995/statistics.py": "a101cb0590d05d6a8115c8915e182b83d9b7dfc0948896b5a285160199c3671d",
+    "src/shogi1995/comparison.py": "9a7d30703eb6f0773bb515bd5d36c1edc191e062f8ad2fb148858438ce92e39b",
+    "src/shogi1995/performance.py": "976427b7cdaf0f8b22ec6b413eebecdff653b8b69526821b57c824e7b65d10cf",
+    "src/shogi1995/provenance.py": "bdc87dcc8dedd6513407084c78480e60a90a3ce9a8f250c08ab9a2c23df6cc3e",
+    "src/shogi1995/usi.py": "10e9250d85c9daab5022ee1e12cdce4f8faafb8eb8d503f7aadeb6882d096043",
+    "src/shogi1995/actions.py": "a7471126e86a817f1f716a66c1ce51d4e7319f060ef5475912a9d2885c1cbc84",
+    "src/bridge/main.py": "45eb81c0ae19e364e76c1fc3e18b33e4957c304774c553094d18dafc35bf8dcd"
+  },
+  "frozen_artifacts_sha256": {
+    "manifests/halfkp-scalar-development-selection-plan-v1.json": "4e27f9d503b386f8aae5a129aad22bbff2508f829a301e22e23e07c4de837016",
+    "results/2026-11-07/halfkp-scalar-runtime-selection-v1.json": "fbe4e1eec93870a2a1cc8ccac533b068dce3469f7a39d93b26e849cf6b18afd6",
+    "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl": "7e6c94b451ffb9a193863e74293d914388faa26b4524d88244f28f57cfb5a282",
+    "/home/select766/shogi/shogi-1995/results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json": "c365a1b3261480a8737a1e99047ad510465483a71ac412c0fe74a9e6a05b1c61",
+    "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json": "24588295e2afb1716997b14fb47a4549630a1f5478ce90c846d82220f90a87d3",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-width-kernel-v1/root.ext2": "8ce624219a2a9fa3cff4e3fe3cd585b3ecd3ccfe12579cef7c90d04445462bd3",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-width-kernel-v1/model.bin": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+    "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json": "4ec48ecbe4f0dd93b7b528ab94124aecf7542ca4628e56214a1a470560091d07",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-width-kernel-v1/root.ext2": "f5ba4996609de51e0b3f6c5a6197066bdb0535ba7449a7d91b87c3cf19f4f717",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h0-width-kernel-v1/model.bin": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+    "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json": "302f00f349f89379e2a1d07359fc33a16c871026c758b5b6eb37212bf783a074",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-packed-fc-v1/root.ext2": "43c30461389debb1525ae8cc68088c25bea49d307780b798dec36d0c6a7794d1",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-packed-fc-v1/shogi": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w16-h8-packed-fc-v1/model.bin": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+    "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json": "df8b507c232cfef334f9df56f9b50e90396bff4b762c50035816b3dafca84b28",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-packed-fc-v1/root.ext2": "a3b6c885266211594267cadc8996e882abd35a69d048edb4fda18ff323fbf753",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-packed-fc-v1/shogi": "5acaec77d5ebba9b127df2109ae74613d0bd606a6560d9bdeaa58c91a382f37d",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h8-packed-fc-v1/model.bin": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+    "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json": "b3f7be8980070a086d7ac65a65f681246ae5d9f044eadeb6666443ff0a910224",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/root.ext2": "b2a65670b0e357299349ed723b35792edaa292337e35a2bb07f85ebeb4b9594c",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/shogi": "a8ef31cb975bea831f9933b04a2d778c6e3ce973332ed4ea15d96317f1fa372e",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-width-kernel-v1/model.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json": "71724b3087e494734b5634cbb4d16ed2c6af79c543bacac15b38b8db055b4099",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-output32-v1/root.ext2": "d0957c7d88d3a5cc3c5f66e959ad907cffc1e84d56fedf9d3672c3a228688cd2",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-output32-v1/shogi": "25696e0b9b146f6e2d405c6bb214eae53ae9a37eb21813e1b5a6cb8590a216db",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-output32-v1/model.bin": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887"
+  },
+  "completed_inputs": {
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-packed-accumulator-validation-v1.json": {
+      "fields": {
+        "complete": true,
+        "passed": true,
+        "adopted": false,
+        "speed_or_strength_measured": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "description": "quiet-host and exited qualification producer check before timed development comparisons",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "-c",
+        "import datetime,fcntl,hashlib,json,subprocess\nfrom pathlib import Path\nstate=Path('.local/jobs/halfkp-packed-accumulator-qualification-attempt2-v1.json')\nx=json.loads(state.read_text());assert x['status']=='complete' and x['child_pid'] is None\nassert not Path('/proc/560143').exists(), 'owned qualification producer must exit'\ncompute=subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader,nounits'],text=True).strip();assert not compute, compute\nlock=Path('.local/run/engine.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)\nreport={'passed':True,'verified_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'qualification_producer_absent':True,'qualification_completion_sha256':hashlib.sha256(state.read_bytes()).hexdigest(),'gpu_compute_processes':[],'default_engine_lock_available':True,'scope':'entry preflight for full-development ordinary-time comparison'}\nwith Path('results/2026-11-07/halfkp-scalar-development-queue-preflight-v1.json').open('x') as file:json.dump(report,file,indent=2);file.write('\\n')\nprint(json.dumps(report,indent=2))\n"
+      ],
+      "log": "/tmp/shogi-halfkp-scalar-development-preflight-v1.log"
+    },
+    {
+      "description": "same64m weights ordinary-time effect of qualified CPU optimization",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-output32-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+        "--output",
+        ".local/evaluation/development-halfkp-w8-h0-scalar-optimization-v1",
+        "--block-size",
+        "256",
+        "--milliseconds",
+        "2000"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w8-h0-scalar-optimization-v1.log"
+    },
+    {
+      "description": "compare complete candidate against saved frozen original material development under strictly matching conditions",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/compare-accuracy.py",
+        "/home/select766/shogi/shogi-1995/results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json",
+        "/home/select766/shogi/shogi-1995/.local/evaluation/development-halfkp-w8-h0-scalar-optimization-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/development-halfkp-w8-h0-scalar-optimization-v1-vs-original-material.json"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w8-h0-scalar-optimization-v1-original-comparison.log"
+    },
+    {
+      "description": "fixed geometry and runtime; more training data AND twice training examples, not compute-matched ablation",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w8-h0-128m-width-kernel-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+        "--output",
+        ".local/evaluation/development-halfkp-w8-h0-128m-scalar-v1",
+        "--block-size",
+        "256",
+        "--milliseconds",
+        "2000"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w8-h0-128m-scalar-v1.log"
+    },
+    {
+      "description": "compare complete candidate against saved frozen original material development under strictly matching conditions",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/compare-accuracy.py",
+        "/home/select766/shogi/shogi-1995/results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json",
+        "/home/select766/shogi/shogi-1995/.local/evaluation/development-halfkp-w8-h0-128m-scalar-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/development-halfkp-w8-h0-128m-scalar-v1-vs-original-material.json"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w8-h0-128m-scalar-v1-original-comparison.log"
+    },
+    {
+      "description": "compact three-layer deployment candidate versus two-layer; same64m training inputs, joint model/runtime comparison if packedFC retained",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w8-h8-packed-fc-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+        "--output",
+        ".local/evaluation/development-halfkp-w8-h8-scalar-v1",
+        "--block-size",
+        "256",
+        "--milliseconds",
+        "2000"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w8-h8-scalar-v1.log"
+    },
+    {
+      "description": "compare complete candidate against saved frozen original material development under strictly matching conditions",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/compare-accuracy.py",
+        "/home/select766/shogi/shogi-1995/results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json",
+        "/home/select766/shogi/shogi-1995/.local/evaluation/development-halfkp-w8-h8-scalar-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/development-halfkp-w8-h8-scalar-v1-vs-original-material.json"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w8-h8-scalar-v1-original-comparison.log"
+    },
+    {
+      "description": "same64m training inputs and common width-specialized arithmetic; wider two-layer model",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w16-h0-width-kernel-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+        "--output",
+        ".local/evaluation/development-halfkp-w16-h0-scalar-v1",
+        "--block-size",
+        "256",
+        "--milliseconds",
+        "2000"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w16-h0-scalar-v1.log"
+    },
+    {
+      "description": "compare complete candidate against saved frozen original material development under strictly matching conditions",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/compare-accuracy.py",
+        "/home/select766/shogi/shogi-1995/results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json",
+        "/home/select766/shogi/shogi-1995/.local/evaluation/development-halfkp-w16-h0-scalar-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/development-halfkp-w16-h0-scalar-v1-vs-original-material.json"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w16-h0-scalar-v1-original-comparison.log"
+    },
+    {
+      "description": "same64m training inputs; wider three-layer deployment candidate, joint model/runtime comparison if packedFC retained",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/evaluate-pair.py",
+        "--baseline",
+        "manifests/halfkp-nnue-w8-h0-width-kernel-v1-candidate.json",
+        "--candidate",
+        "manifests/halfkp-nnue-w16-h8-packed-fc-v1-candidate.json",
+        "--dataset",
+        "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/evaluation/floodgate-hcpe-1995-v1/development.jsonl",
+        "--output",
+        ".local/evaluation/development-halfkp-w16-h8-scalar-v1",
+        "--block-size",
+        "256",
+        "--milliseconds",
+        "2000"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w16-h8-scalar-v1.log"
+    },
+    {
+      "description": "compare complete candidate against saved frozen original material development under strictly matching conditions",
+      "argv": [
+        "/home/select766/shogi/shogi-1995/.local/venv/bin/python",
+        "/home/select766/shogi/shogi-1995/scripts/compare-accuracy.py",
+        "/home/select766/shogi/shogi-1995/results/2026-11-06/material-v1-20261106T072451072756Z-baseline.json",
+        "/home/select766/shogi/shogi-1995/.local/evaluation/development-halfkp-w16-h8-scalar-v1/candidate.json",
+        "--output",
+        "results/2026-11-07/development-halfkp-w16-h8-scalar-v1-vs-original-material.json"
+      ],
+      "log": "/tmp/shogi-development-halfkp-w16-h8-scalar-v1-original-comparison.log"
+    }
+  ],
+  "policy": "one VM at a time, block256 AB/BA, ordinary2s with NetworkDelay/2 zero, no other heavy jobs; retain all complete controls separately; original comparison is a saved development reference, final4096 uses fresh paired material. Optional cache not used by these five; speed and strength testing only after retaining best weights. Stop on true failure, preserve state/logs, no automatic retry. Candidate freeze Nov7 06UTC, heldout4096 untouched."
+}

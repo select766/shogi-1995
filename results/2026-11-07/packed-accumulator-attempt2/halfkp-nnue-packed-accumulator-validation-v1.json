@@ -1,0 +1,131 @@
+{
+  "complete": true,
+  "passed": true,
+  "started_at_utc": "2026-11-06T18:58:22.713784+00:00",
+  "verified_at_utc": "2026-11-06T19:06:14.873324+00:00",
+  "build": {
+    "source_commit": "ec798ca4df14994aedf69e42ad00e2f1350c0206",
+    "source_tree_sha256": "a0db46a66cebd3928832dab05cd3def98db7c64cf491389d9c944be5cdb8d54a",
+    "source_worktree_dirty": false,
+    "source_commit_binding": "committed_source_tree",
+    "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+    "object_dir": "/home/select766/shogi/shogi-1995/.local/obj-pentium1995-9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+    "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6"
+  },
+  "driver_sha256": "4e02a9da4aab9d4d8a78cafc64eaea7a9ed47d373b962b2b4cf803941fce8ff6",
+  "models": [
+    {
+      "model": "w8-h0",
+      "manifest": "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w8-h0-packed-accumulator-v1-candidate.json",
+      "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+      "model_sha256": "1e6a77c6107bdadab4776aa2cd40cf635e2dd74ad70f402408d740ba1eeb8887",
+      "old_reference_sha256": "b1ad4db390a9153927f9f145a4bc6c87bb676de36e4746b7f402241558b8dfad",
+      "verified_accumulators": 1214176,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14630912,
+        "swap": 0
+      }
+    },
+    {
+      "model": "w16-h0",
+      "manifest": "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w16-h0-packed-accumulator-v1-candidate.json",
+      "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+      "model_sha256": "fb2166ee96340ee5d4c41f64b85f277b87fef396703e778432162acca9bfdd63",
+      "old_reference_sha256": "d4b7ec76972a8d2be1f75ea99e251745500b19701fda6ed259dad631f73addde",
+      "verified_accumulators": 1182427,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 10461184,
+        "swap": 0
+      }
+    },
+    {
+      "model": "w16-h8",
+      "manifest": "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w16-h8-packed-accumulator-v1-candidate.json",
+      "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+      "model_sha256": "e11e09b4db2cb919ddff4de1a50d21e220d237d84a578efcf7841527474e9f42",
+      "old_reference_sha256": "474fa6df38d023f49e7ca6bf9ddc712b7702299edc835ef5fd9358187a59e500",
+      "verified_accumulators": 1186295,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 10457088,
+        "swap": 0
+      }
+    },
+    {
+      "model": "w8-h8",
+      "manifest": "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w8-h8-packed-accumulator-v1-candidate.json",
+      "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+      "model_sha256": "de9e86658ae09ae39cb858f0ef7e254a7cd7fc743df052963882a40f544144f9",
+      "old_reference_sha256": "1ffa750d9eef0f1da673b4e0a8a03a1710564ddd28f1dcbd6c3c82e23e312b66",
+      "verified_accumulators": 1185751,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14630912,
+        "swap": 0
+      }
+    },
+    {
+      "model": "w8-h0-128m",
+      "manifest": "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-candidate.json",
+      "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "old_reference_sha256": "51bbce219d773dbb09c8e4ac3c6d86533463ec4b3861183997388498d7d636a3",
+      "verified_accumulators": 1197607,
+      "guest_memory": {
+        "total": 31866880,
+        "free": 14630912,
+        "swap": 0
+      }
+    }
+  ],
+  "artifacts": {
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-target-binary-v1.json": "148a9ffb5c03b5ef719d168dbf6b968bdce4739d0b9db62d86170689617bbf49",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-cpp-arithmetic-v1.json": "0b8c59f17b36f06b710f1a75a62e0b0d40fbb5589a7257ffefc918ae5424f453",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-boundaries-w8-v1.json": "a1bd793f81c1f152434b7bed496f11d0fb60952757a0492d91e1ddcccc8d87c8",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-boundaries-w16-v1.json": "95e8e5566044c682c13a885d1e11d930db779fc49307cc696d55e8cd66ccc043",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-nnue_output_accumulation-w2-v1.json": "9b056643880ba1bdddb4623a1edc3619e8384f37fbca1e20189e67095e92a400",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-nnue_packed_fc-w2-v1.json": "84980688498975b4c1c5646c948d5487d04d00ca76d9e17a8d5eb1765b6736e2",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-nnue_output_accumulation-w8-v1.json": "bc83841cddfa70ab426a89796f4ce6708c4e8a51590bf874ced0aa849b4c4e5c",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-nnue_packed_fc-w8-v1.json": "c420f46b5599d7f633fb094c24398a0620c92437ca456bb72e88778e5380f4f9",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-nnue_output_accumulation-w16-v1.json": "a2d0cb8730f36ae96bf61568f643448d41ad07cf90e9c457d64bd221027dd51a",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-nnue_packed_fc-w16-v1.json": "fd9ca12c2c34b50161a3f11df2d9b9532dac5b9b24305644d673f4c8bcca898a",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-nnue_output_accumulation-w32-v1.json": "a537480b09cc30aec67469298a04bdf06636fab35e9898532b3096955a3709b2",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-packed-accumulator-nnue_packed_fc-w32-v1.json": "d0d639502b87ff22bbde7b0e92ce135238e720e80b49d5405ed2c0221f36e113",
+    "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w8-h0-packed-accumulator-v1-candidate.json": "c6814f0663d4d07b9182a615c3c2bce92854d25dbdda07f0fbbb16d287243215",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h0-packed-accumulator-v1-trained-values.json": "90f490fe8bf34c4c6684169aba149250abb099a9dc784689fd025a5a3fffc281",
+    "/home/select766/shogi/shogi-1995/.local/validation/halfkp-packed-accumulator-attempt2-v1/halfkp-nnue-w8-h0-packed-accumulator-v1-native-nodes10000-quick256.json": "6724aa9789367523ba182f961b1c2e630d08302f329f19ea5d930caeb0e9bd29",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h0-packed-accumulator-v1-trained-search-parity.json": "29cc5f0baa70e01e65c52091c49edd745407a2b74e664e281ad28062bc12eac0",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h0-packed-accumulator-v1-guest-auto-model.json": "4492f42e519760bec072c116a1bfba6be2377e97b9a810a7635e56e855286548",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h0-packed-accumulator-v1-guest-nodes-parity.json": "0ad4b5e0586bac0f6970100df9b7a698902fba77d6df6379c1c88d6e14d6d7d2",
+    "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w16-h0-packed-accumulator-v1-candidate.json": "658b624308fb19e5f40527d34c8f1bbd3aea194ed139d3f105d1f0ef77d1c24e",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w16-h0-packed-accumulator-v1-trained-values.json": "11cd44b2d60bbfcdb9eeb4756f703b77c7ab1b440dee5e3ba2cb8bdd403ac103",
+    "/home/select766/shogi/shogi-1995/.local/validation/halfkp-packed-accumulator-attempt2-v1/halfkp-nnue-w16-h0-packed-accumulator-v1-native-nodes10000-quick256.json": "051d209f01fb5ac9f09ea1c4f274c81e259315266215a6792b7fac2cad5c1256",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w16-h0-packed-accumulator-v1-trained-search-parity.json": "0b580489cfe33c488e365eb4b771cc58b6dcf16921979294b4abde0d261eeaae",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w16-h0-packed-accumulator-v1-guest-auto-model.json": "b93b921712153db7d46bdf525db8e072c068249fc45422952d13b79aa642a9df",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w16-h0-packed-accumulator-v1-guest-nodes-parity.json": "a87d698bdb685031064c1e9760da4a48c5e75efa2023530f6f11b21ccbb04fdd",
+    "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w16-h8-packed-accumulator-v1-candidate.json": "36072f9dcf2d1cce8f8f066a81045d39854496ed955d74c747de518b80b3f995",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w16-h8-packed-accumulator-v1-trained-values.json": "5f7cc5a62144471a4a5a1321451472dfc5fbfa3d83fb0fd206415b83de9bd411",
+    "/home/select766/shogi/shogi-1995/.local/validation/halfkp-packed-accumulator-attempt2-v1/halfkp-nnue-w16-h8-packed-accumulator-v1-native-nodes10000-quick256.json": "a79d30b6e3a89bfafa59016ba4d2a63c05deb35d611a3767bfd72dbfa7318795",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w16-h8-packed-accumulator-v1-trained-search-parity.json": "922c82a20eadbaf01ed6b63f74fee610aa0f3015797fc7973e9c0c8674d94560",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w16-h8-packed-accumulator-v1-guest-auto-model.json": "a4e6b53adca4ddbb25d69d5bc25584e3645ccab345306c1d73235326c639f927",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w16-h8-packed-accumulator-v1-guest-nodes-parity.json": "2426e9d0b5be31e55ec7d4fb7c9ba959b47122ad5055cc9dc63f978c28f31ed0",
+    "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w8-h8-packed-accumulator-v1-candidate.json": "169438f7730f8ab2dc6059d2509eddcf5885c521e4bf8c6dbe5cd21763be161b",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h8-packed-accumulator-v1-trained-values.json": "5735d8d8fdefd9898b3af8806d3004b0d274beecf606b4c524078f2ec8a65773",
+    "/home/select766/shogi/shogi-1995/.local/validation/halfkp-packed-accumulator-attempt2-v1/halfkp-nnue-w8-h8-packed-accumulator-v1-native-nodes10000-quick256.json": "ecd6945c8cb1511b6fb9fbdd719917a07c8cf06d30c02972a597c4001bb4e358",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h8-packed-accumulator-v1-trained-search-parity.json": "ecd31dd38b26d37834884278f4d77cfd9c9e4c65dbfccf6ca903facf57459058",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h8-packed-accumulator-v1-guest-auto-model.json": "84245cec29c62a76757c5468ac12e25fc408d8f9975ffa15c95936f3146bf386",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h8-packed-accumulator-v1-guest-nodes-parity.json": "2a17243dae6ea267f183c4edf89acbbbc2b8280dc3feacc678640ad3f24157b3",
+    "/home/select766/shogi/shogi-1995/manifests/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-candidate.json": "16c2a416316f24d3c3b067a27a33b2c14c9f63c56815fa5d2046d0b3f12545de",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-trained-values.json": "1631b750f53c0b1392c5c4529a878cdc03c1091a40b7c5d2c939890c5f4d922f",
+    "/home/select766/shogi/shogi-1995/.local/validation/halfkp-packed-accumulator-attempt2-v1/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-native-nodes10000-quick256.json": "29f9ab1238ac8b1fab9c00305db5f920697e6eb2017ee481b6f4013c7792ac49",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-trained-search-parity.json": "f755a1905bd9e1f7e8bdcd1bdab304da14544245334d7ee46dddd1e77a95ab4b",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-guest-auto-model.json": "4be94919ae5c75f55c7de87e36716eab9274ebeb4474c5565274965ba7ac86ce",
+    "/home/select766/shogi/shogi-1995/results/2026-11-07/packed-accumulator-attempt2/halfkp-nnue-w8-h0-128m-packed-accumulator-v1-guest-nodes-parity.json": "9e2047b65fec04df260edd4e755cf6e5221f38c772f9461c51a5d3fe432768fd"
+  },
+  "all_five_models_same256_bestmoves_finalnodes_completeddepths_as_frozen_old_runtime": true,
+  "adopted": false,
+  "speed_or_strength_measured": false,
+  "scope": "independent integer/native and real Pentium operation/RAM qualification only; timing is not a speed or strength result"
+}

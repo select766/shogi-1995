@@ -1,0 +1,150 @@
+{
+  "complete": true,
+  "recorded_at_utc": "2026-11-07T00:13:40.455084+00:00",
+  "scope": "Read-only static analysis of the existing qualified packed-accumulator build object; this is not profiling or a speed/strength result. No engine/compiler/VM was launched.",
+  "object": ".local/obj-pentium1995-9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0/engine/yaneuraou-engine/yaneuraou-search.o",
+  "object_sha256": "f04a7af62ab62201e74537548341938e5a4c3100fc46a7b926f4cdd8e35b7ca8",
+  "build_manifest": "manifests/halfkp-nnue-packed-accumulator-v1-build.json",
+  "source_commit": "ec798ca4df14994aedf69e42ad00e2f1350c0206",
+  "counter_sites": [
+    {
+      "function": "00005310 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, YaneuraOu::Search::Stack*)>:",
+      "instruction": "534f:\tdf 6e 78             \tfildll 0x78(%esi)"
+    },
+    {
+      "function": "00005310 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, YaneuraOu::Search::Stack*)>:",
+      "instruction": "5352:\tdf 7c 24 08          \tfistpll 0x8(%esp)"
+    },
+    {
+      "function": "00005310 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, YaneuraOu::Search::Stack*)>:",
+      "instruction": "536f:\tdf 6c 24 14          \tfildll 0x14(%esp)"
+    },
+    {
+      "function": "00005310 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, YaneuraOu::Search::Stack*)>:",
+      "instruction": "5373:\tdf 7e 78             \tfistpll 0x78(%esi)"
+    },
+    {
+      "function": "00005410 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, bool, YaneuraOu::Search::Stack*)>:",
+      "instruction": "5441:\tdf 6e 78             \tfildll 0x78(%esi)"
+    },
+    {
+      "function": "00005410 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, bool, YaneuraOu::Search::Stack*)>:",
+      "instruction": "5444:\tdf 7c 24 08          \tfistpll 0x8(%esp)"
+    },
+    {
+      "function": "00005410 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, bool, YaneuraOu::Search::Stack*)>:",
+      "instruction": "5461:\tdf 6c 24 14          \tfildll 0x14(%esp)"
+    },
+    {
+      "function": "00005410 <YaneuraOu::Search::YaneuraOuWorker::do_move(YaneuraOu::Position&, YaneuraOu::Move, YaneuraOu::StateInfo&, bool, YaneuraOu::Search::Stack*)>:",
+      "instruction": "546b:\tdf 7e 78             \tfistpll 0x78(%esi)"
+    }
+  ],
+  "64bit_helper_relocations": [
+    {
+      "function": "000005b0 <YaneuraOu::Search::YaneuraOuEngine::set_ponderhit(bool)>:",
+      "relocation": "5dd: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "000007a0 <YaneuraOu::Search::YaneuraOuWorker::clear()>:",
+      "relocation": "8d3: R_386_PC32\t__udivdi3"
+    },
+    {
+      "function": "000007a0 <YaneuraOu::Search::YaneuraOuWorker::clear()>:",
+      "relocation": "903: R_386_PC32\t__udivdi3"
+    },
+    {
+      "function": "000007a0 <YaneuraOu::Search::YaneuraOuWorker::clear()>:",
+      "relocation": "985: R_386_PC32\t__udivdi3"
+    },
+    {
+      "function": "000007a0 <YaneuraOu::Search::YaneuraOuWorker::clear()>:",
+      "relocation": "9b3: R_386_PC32\t__udivdi3"
+    },
+    {
+      "function": "000007a0 <YaneuraOu::Search::YaneuraOuWorker::clear()>:",
+      "relocation": "bbd: R_386_PC32\t__udivdi3"
+    },
+    {
+      "function": "000007a0 <YaneuraOu::Search::YaneuraOuWorker::clear()>:",
+      "relocation": "c3f: R_386_PC32\t__udivdi3"
+    },
+    {
+      "function": "00000c50 <YaneuraOu::Search::SearchManager::check_time(YaneuraOu::Search::YaneuraOuWorker&) [clone .part.0]>:",
+      "relocation": "c94: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "00000c50 <YaneuraOu::Search::SearchManager::check_time(YaneuraOu::Search::YaneuraOuWorker&) [clone .part.0]>:",
+      "relocation": "d7c: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "000055f0 <YaneuraOu::Search::SearchManager::check_time(YaneuraOu::Search::YaneuraOuWorker&)>:",
+      "relocation": "5644: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "000055f0 <YaneuraOu::Search::SearchManager::check_time(YaneuraOu::Search::YaneuraOuWorker&)>:",
+      "relocation": "571c: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "00005820 <YaneuraOu::Search::SearchManager::pv(YaneuraOu::Search::YaneuraOuWorker&, YaneuraOu::ThreadPool const&, YaneuraOu::TranspositionTable const&, int)>:",
+      "relocation": "5e0a: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "00005820 <YaneuraOu::Search::SearchManager::pv(YaneuraOu::Search::YaneuraOuWorker&, YaneuraOu::ThreadPool const&, YaneuraOu::TranspositionTable const&, int)>:",
+      "relocation": "5e4c: R_386_PC32\t__udivdi3"
+    },
+    {
+      "function": "0000a470 <YaneuraOu::Search::YaneuraOuWorker::iterative_deepening()>:",
+      "relocation": "be79: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "0000a470 <YaneuraOu::Search::YaneuraOuWorker::iterative_deepening()>:",
+      "relocation": "bfc4: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "0000a470 <YaneuraOu::Search::YaneuraOuWorker::iterative_deepening()>:",
+      "relocation": "c02d: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "0000a470 <YaneuraOu::Search::YaneuraOuWorker::iterative_deepening()>:",
+      "relocation": "c10d: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "0000a470 <YaneuraOu::Search::YaneuraOuWorker::iterative_deepening()>:",
+      "relocation": "d5c4: R_386_PC32\t__udivdi3"
+    },
+    {
+      "function": "0000a470 <YaneuraOu::Search::YaneuraOuWorker::iterative_deepening()>:",
+      "relocation": "d764: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "0000dc80 <YaneuraOu::Search::YaneuraOuWorker::start_searching() [clone .part.0]>:",
+      "relocation": "e11f: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "0000dc80 <YaneuraOu::Search::YaneuraOuWorker::start_searching() [clone .part.0]>:",
+      "relocation": "e52e: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "0000dc80 <YaneuraOu::Search::YaneuraOuWorker::start_searching() [clone .part.0]>:",
+      "relocation": "e5cb: R_386_PC32\t__divdi3"
+    },
+    {
+      "function": "0000dc80 <YaneuraOu::Search::YaneuraOuWorker::start_searching() [clone .part.0]>:",
+      "relocation": "e824: R_386_PC32\t__divdi3"
+    }
+  ],
+  "single_thread_evidence": {
+    "build": "vendor/YaneuraOu/source/Makefile: PENTIUM1995 defines SHOGI1995_SINGLE_THREAD",
+    "thread": "vendor/YaneuraOu/source/thread.cpp: native stdThread constructor suppressed under that define",
+    "runtime": "src/compat/legacy-syscall.c: no OS threads supported"
+  },
+  "proposed_after_model_freeze": "Under SHOGI1995_SINGLE_THREAD only, use a full-width uint64_t counter wrapper with the same load/store API, rather than std::atomic<uint64_t>. Preserve unsigned64 carry/wrap semantics and public counts; ordinary builds retain std::atomic. Check every read/write site and cooperative input/signal behavior. This should permit plain32-bit add/adc and loads/stores without x87 conversion, but speed remains unproven.",
+  "required_checks": [
+    "uint64 boundary/carry cases including2^32 and2^64, UBSan",
+    "same-model full256 exact bestmove/finalnodes/completeddepth and stop/node-limit behavior",
+    "actual target scalar fixed-node AB/BA speed then normal full1024 agreement"
+  ],
+  "implemented": false,
+  "speed_measured": false
+}

@@ -4,6 +4,7 @@
 - [企画と要件](idea.md)
 - [ツール選定と実装計画](docs/implementation-plan.md)
 - [強化と棋譜一致率の評価計画](docs/strength-evaluation-plan.md)
+- [HalfKPの学習・構造と演算の比較状況](docs/halfkp-development.md)
 - [測定履歴の一覧表](docs/measurement-history.md) / [グラフ用CSV](results/measurement-history.csv)
 - [補助対局の履歴](docs/match-history.md) / [Elo換算・得点率のCSV](results/match-history.csv)
 

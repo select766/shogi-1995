@@ -1,0 +1,34 @@
+{
+  "id": "halfkp-nnue-w8-h0-128m-packed-accumulator-v1-usi",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "272e5a19a1b26405fcdd867baf47c8f32dc357959ef17e55d506f9f711fe8cc6",
+  "image_sha256": "21c4878ef8bc96261cdc6b0efec144a801a1ef2878af7bed4c9b9f4974ffb905",
+  "source_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+  "source_tree_sha256": "a0db46a66cebd3928832dab05cd3def98db7c64cf491389d9c944be5cdb8d54a",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "6039a637146dd9a6835d10f464646ce036c43036d65b9199b9a62dc199803b71",
+  "feature_difference": "\u6a19\u6e96HalfKP w8-h0-128m\u3001\u540c\u3058\u53ce\u675f\u6e08\u307f\u91cd\u307f\u3001\u5e45\u56fa\u5b9a\u30fbpackedFC\u306b\u5024\u57df\u8a3c\u660e\u4ed8\u304d2\u8981\u7d20\u306escalar\u52a0\u6e1b\u7b97\u30ad\u30e3\u30c3\u30b7\u30e5\u3092\u8ffd\u52a0\u3002\u901f\u5ea6\u30fb\u68cb\u529b\u306f\u672a\u6e2c\u5b9a\u3001USI\u901a\u5e38\u8d77\u52d5\u3067\u3082\u540c\u3058\u8a55\u4fa1\u30d5\u30a1\u30a4\u30eb\u3092\u81ea\u52d5\u8a2d\u5b9a",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-nnue-w8-h0-128m-packed-accumulator-v1/root.ext2"
+  ],
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "model_bytes": 2006300,
+  "model_origin": "/media/select766/HDCZ-UT/s7ubuntu/dev/shogi-1995/models/halfkp-nnue-w8-h0-128m-v1/model.bin",
+  "prepared_at_utc": "2026-11-06T19:04:44.251204+00:00",
+  "preparation_commit": "fdc8747b29d7dd58c1f6a759cbaebc9a5426f82c",
+  "preparation_worktree_dirty": true,
+  "preparation_script_sha256": "ed7b987cfe632a67edd3468d9995e49f3397207a0b30b8d1f2167c29c668518d",
+  "parent_manifest_sha256": "de996ee140be10a729ddd6f30ae582903ceb79ab6a2b9edfd8644b8b2cf4d756",
+  "configured_guest_options": {
+    "EvalFile": "/eval/model.bin"
+  }
+}
