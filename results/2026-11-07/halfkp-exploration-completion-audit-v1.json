@@ -1,0 +1,84 @@
+{
+  "complete": true,
+  "verified_at_utc": "2026-11-07T07:03:33.086667+00:00",
+  "scope": "Explicit user goal: model/runtime exploration ending10JST/15JST. This is not a claim that later deployment validation has completed.",
+  "requirements": [
+    {
+      "requirement": "End model-structure exploration by2026-11-07 10:00JST",
+      "passed": true,
+      "evidence": "manifests/halfkp-model-frozen-20261107-1000.json",
+      "sha256": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+      "actual_utc": "2026-11-07T00:58:00.049490+00:00"
+    },
+    {
+      "requirement": "Keep model/weights fixed during runtime exploration",
+      "passed": true,
+      "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+      "evidence": [
+        "manifests/halfkp-fixed-model-counter-ordinary-execution-plan-v1.json",
+        "manifests/halfkp-fixed-model-radix-ordinary-execution-plan-v1.json",
+        "manifests/halfkp-runtime-frozen-20261107-1500.json"
+      ]
+    },
+    {
+      "requirement": "Explore target-CPU arithmetic and select the strongest observed eligible runtime by15JST",
+      "passed": true,
+      "evidence": "manifests/halfkp-runtime-frozen-20261107-1500.json",
+      "sha256": "3fd9b5c58a59500c2fc70a803ee8ace78939cb5d55f9e30a8289035f3f189aa0",
+      "actual_utc": "2026-11-07T05:59:30.568302+00:00",
+      "selected": "radix",
+      "latest_full_development_ranking": [
+        [
+          "radix",
+          401
+        ],
+        [
+          "counter-cache",
+          400
+        ],
+        [
+          "c30",
+          399
+        ]
+      ]
+    },
+    {
+      "requirement": "Validate target operation, memory and numerical correctness",
+      "passed": true,
+      "evidence": "results/2026-11-07/halfkp-fixed-model-radix-qualification-v1.json"
+    },
+    {
+      "requirement": "Measure actual CPU speed and ordinary-time agreement with dated conditions/commits/features",
+      "passed": true,
+      "evidence": [
+        "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-v1.json",
+        "results/2026-11-07/development-halfkp-fixed-w8-h0-128m-radix-v1-comparison.json",
+        "docs/halfkp-development.md",
+        "results/measurement-history.csv",
+        "results/measurement-history.json"
+      ]
+    }
+  ],
+  "selected_runtime_engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+  "ordinary_development_difference_pp": 0.1953125,
+  "ordinary_development_paired95_pp": [
+    0.0,
+    0.48828125
+  ],
+  "strict_positive_strength_gain_established": false,
+  "background_final_validation": {
+    "state": ".local/jobs/halfkp-final-verification-v1.json",
+    "pid": 865808,
+    "status": "executing",
+    "step": 2,
+    "not_cancelled": true,
+    "pending": [
+      "independent4096 once versus freshly measured material",
+      "20auxiliary games",
+      "2asymmetric-clock operational games",
+      "default image adoption and final default USI checks"
+    ]
+  },
+  "default_engine_adopted": false,
+  "source_commit": "45dcb0b6ff51fec4cd41f0156477d27ea53a3ea8"
+}

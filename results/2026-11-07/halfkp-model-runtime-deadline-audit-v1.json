@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T06:00:58.465384+00:00",
+  "model_frozen_at_utc": "2026-11-07T00:58:00.049490+00:00",
+  "model_deadline_met": true,
+  "runtime_frozen_at_utc": "2026-11-07T05:59:30.568302+00:00",
+  "runtime_deadline_met": true,
+  "model_manifest_sha256": "b8b3d1b31307ad2e27e08cddb6d9354b979ac299cc8b1670b8230ca34009a42e",
+  "runtime_manifest_sha256": "3fd9b5c58a59500c2fc70a803ee8ace78939cb5d55f9e30a8289035f3f189aa0",
+  "same_model_before_and_after_runtime_optimization": true,
+  "selected_profile": "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+  "selected_engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+  "final_verification_entry_passed": true,
+  "scope": "Model and runtime exploration deadlines plus frozen identity; independent4096/games/default adoption are separate pending final validation, not yet passed."
+}

@@ -1,0 +1,46 @@
+{
+  "observed_at_utc": "2026-11-07T05:59:00.000411+00:00",
+  "deadline_utc": "2026-11-07T05:59:00+00:00",
+  "job_snapshot": {
+    "status": "complete",
+    "pid": 823660,
+    "started_at_utc": "2026-11-07T04:07:41.574445+00:00",
+    "plan_sha256": "80091a6897ec6644edb58a6927253e0808ff2825806ccc60e858370c231cfe00",
+    "completed_prerequisite_sha256": "69f593d9f9612983f19eb48f3f80925c2b68e0c6b6726c57bacea7fb5dcee155",
+    "completed_inputs": {
+      "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-blocks-v1.json": {
+        "sha256": "df440b87d751e65d5ee537fc120ba0d68a4fce2cb897e86796fda2885159fbd3",
+        "records": null
+      }
+    },
+    "execution_started_at_utc": "2026-11-07T04:07:42.561854+00:00",
+    "step": 3,
+    "description": "preserve complete paired comparison",
+    "log": "/tmp/shogi-fixed-radix-ordinary-archive-v1.log",
+    "child_pid": null,
+    "updated_at_utc": "2026-11-07T05:37:14.943545+00:00"
+  },
+  "owned_process_status": null,
+  "owned_process_start_time": null,
+  "signal_sent": false,
+  "reason": "owned ordinary trial had already exited; no signal needed",
+  "final_job_snapshot": {
+    "status": "complete",
+    "pid": 823660,
+    "started_at_utc": "2026-11-07T04:07:41.574445+00:00",
+    "plan_sha256": "80091a6897ec6644edb58a6927253e0808ff2825806ccc60e858370c231cfe00",
+    "completed_prerequisite_sha256": "69f593d9f9612983f19eb48f3f80925c2b68e0c6b6726c57bacea7fb5dcee155",
+    "completed_inputs": {
+      "results/2026-11-07/halfkp-fixed-w8-h0-128m-radix-speed-blocks-v1.json": {
+        "sha256": "df440b87d751e65d5ee537fc120ba0d68a4fce2cb897e86796fda2885159fbd3",
+        "records": null
+      }
+    },
+    "execution_started_at_utc": "2026-11-07T04:07:42.561854+00:00",
+    "step": 3,
+    "description": "preserve complete paired comparison",
+    "log": "/tmp/shogi-fixed-radix-ordinary-archive-v1.log",
+    "child_pid": null,
+    "updated_at_utc": "2026-11-07T05:37:14.943545+00:00"
+  }
+}

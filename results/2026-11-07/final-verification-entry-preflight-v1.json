@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T05:59:33.351780+00:00",
+  "runtime_freeze_sha256": "3fd9b5c58a59500c2fc70a803ee8ace78939cb5d55f9e30a8289035f3f189aa0",
+  "selected_profile": "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+  "development_producer_and_selector_absent": true,
+  "gpu_compute_processes": [],
+  "default_engine_lock_available": true,
+  "scope": "fixed finalist only; independent4096 once vs freshly measured original material, then20aux+2asym"
+}

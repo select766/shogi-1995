@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-07T07:18:58.312753+00:00",
+  "measurement_child_completed_while_parent_stopped": true,
+  "parent_term_before_cont_exit_code": 143,
+  "following_games_not_started": true,
+  "actual_benchmark_processes_not_signalled_by_this_test": true,
+  "controller_sha256": "a7a1d04f45e13d641c86bf8df9f48cb7643d45de779c7ecde4f3d3d7934d84b7",
+  "original_signal_handler_source_sha256": "66088fd8236da3af27b42d863351ce193a94f9157b6b162bd7296b77aff98985",
+  "scope": "small host-process signal/lifecycle integration test; no engine/VM/search/timing workload"
+}

@@ -1,0 +1,38 @@
+{
+  "complete": true,
+  "verified_at_utc": "2026-11-07T07:16:00.038854+00:00",
+  "user_request": "After agreement verification finishes, stop before auxiliary/tournament games; prioritize future Denryu operational verification.",
+  "parent_pid": 865808,
+  "parent_start_time": "10980854",
+  "parent_status": "T",
+  "signal_sent_to_parent_only": "SIGSTOP",
+  "measurement_child_pid": 872608,
+  "measurement_child_start_time": "11078593",
+  "measurement_child_status": "S",
+  "measurement_child_process_group": "872608",
+  "measurement_child_session": "872608",
+  "measurement_continues": true,
+  "original_plan_preserved": true,
+  "cancelled_following_stages": [
+    4,
+    5
+  ],
+  "original_job_snapshot": {
+    "status": "executing",
+    "pid": 865808,
+    "started_at_utc": "2026-11-07T05:43:15.993566+00:00",
+    "plan_sha256": "558ca5ab3a5ecd1307041f0a9be7bca949fd0dd457d1a975f1b68bc94f73e1b2",
+    "completed_prerequisite_sha256": "916f5e2915d069f33602c829064a968e92371083d825f09be87e150df5203a20",
+    "completed_inputs": {
+      "manifests/halfkp-runtime-frozen-20261107-1500.json": {
+        "sha256": "3fd9b5c58a59500c2fc70a803ee8ace78939cb5d55f9e30a8289035f3f189aa0",
+        "records": null
+      }
+    },
+    "execution_started_at_utc": "2026-11-07T05:59:33.308870+00:00",
+    "step": 2,
+    "description": "independent4096 ordinary2000ms fresh original material vs fixed finalist,block256ABBA; once only",
+    "log": "/tmp/shogi-final-heldout-4096-v1.log",
+    "child_pid": 872608
+  }
+}
