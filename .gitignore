@@ -67,4 +67,5 @@ vcpkg_installed/
 Testing/
 .cache/
 .local/
+private/
 __pycache__/

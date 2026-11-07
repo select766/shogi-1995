@@ -1,6 +1,7 @@
 # shogi-1995
 2026年の将棋ソフトを1995年のパソコン環境に移植する実験
 
+- [クローンからビルド・定跡・対局までの手順](docs/getting-started.md)
 - [企画と要件](idea.md)
 - [ツール選定と実装計画](docs/implementation-plan.md)
 - [強化と棋譜一致率の評価計画](docs/strength-evaluation-plan.md)

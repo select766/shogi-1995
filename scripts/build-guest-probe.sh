@@ -19,6 +19,13 @@ ln -sfn ld-linux.so.1.7.3 .local/guest-root/lib/ld-linux.so.1
 ln -sfn libc.so.5.0.9 .local/guest-root/lib/libc.so.5
 gcc -m32 -march=pentium -Os -fno-pie -no-pie -fno-stack-protector \
     -nostdlib -static "${extra[@]}" src/compat/guest-init.c -o .local/guest-root/sbin/init
+# Optional private tournament book. The staging tree is ignored by git.
+if [[ "${1:-}" == --engine && -f private/petashock/reduced/user_book1.ybb ]]; then
+    mkdir -p .local/guest-root/book
+    cp private/petashock/reduced/user_book1.ybb .local/guest-root/book/user_book1.ybb
+else
+    rm -f .local/guest-root/book/user_book1.ybb
+fi
 truncate -s "$size" "$image"
 mke2fs -q -F -t ext2 -r 0 -O none -I 128 -b 1024 \
     -N 4096 -d .local/guest-root "$image"
