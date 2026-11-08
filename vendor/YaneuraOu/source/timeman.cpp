@@ -41,7 +41,8 @@ void TimeManagement::add_options(OptionsMap& options) {
     // ネットワークの最大遅延時間[ms]
     // 切れ負けの瞬間だけはこの時間だけ早めに指す。
     // 1.2秒ほど早く指さないとfloodgateで切れ負けしかねない。
-    options.add("NetworkDelay2", Option(time_margin + 1000, 0, 10000));
+    // Allow a tournament safety margin above ten seconds; keep the usual default.
+    options.add("NetworkDelay2", Option(time_margin + 1000, 0, 60000));
 
     // 最小思考時間[ms]
     options.add("MinimumThinkingTime", Option(2000, 1, 100000));
