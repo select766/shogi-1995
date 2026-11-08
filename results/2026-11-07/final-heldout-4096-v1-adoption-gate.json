@@ -1,0 +1,16 @@
+{
+  "complete": true,
+  "adoption_pass": true,
+  "verified_at_utc": "2026-11-07T11:57:37.965488+00:00",
+  "positions": 4096,
+  "baseline_matches": 1168,
+  "candidate_matches": 1542,
+  "difference_pp": 9.130859375,
+  "paired95_pp": {
+    "lower": 7.5439453125,
+    "upper": 10.7177734375
+  },
+  "comparison_sha256": "ac35901956392434574e073599eb7ff797bdc3f2c3316c2031d187d28c8ee4be",
+  "no_retuning_after_test": true,
+  "scope": "one independent test of fixed model/runtime vs fresh original material; not an Elo estimate"
+}

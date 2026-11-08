@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "stopped_at_utc": "2026-11-07T11:57:37.970017+00:00",
+  "reason": "User requested a stop after agreement verification.",
+  "measurement_finished": true,
+  "measurement_exit_status": 0,
+  "agreement_verdict": {
+    "complete": true,
+    "adoption_pass": true,
+    "verified_at_utc": "2026-11-07T11:57:37.965488+00:00",
+    "positions": 4096,
+    "baseline_matches": 1168,
+    "candidate_matches": 1542,
+    "difference_pp": 9.130859375,
+    "paired95_pp": {
+      "lower": 7.5439453125,
+      "upper": 10.7177734375
+    },
+    "comparison_sha256": "ac35901956392434574e073599eb7ff797bdc3f2c3316c2031d187d28c8ee4be",
+    "no_retuning_after_test": true,
+    "scope": "one independent test of fixed model/runtime vs fresh original material; not an Elo estimate"
+  },
+  "summary_exit_code": 0,
+  "cancelled_original_stages": [
+    4,
+    5
+  ],
+  "games_started": false,
+  "default_image_changed": false,
+  "original_controller_final_state": {
+    "status": "stopped",
+    "pid": 865808,
+    "started_at_utc": "2026-11-07T05:43:15.993566+00:00",
+    "plan_sha256": "558ca5ab3a5ecd1307041f0a9be7bca949fd0dd457d1a975f1b68bc94f73e1b2",
+    "completed_prerequisite_sha256": "916f5e2915d069f33602c829064a968e92371083d825f09be87e150df5203a20",
+    "completed_inputs": {
+      "manifests/halfkp-runtime-frozen-20261107-1500.json": {
+        "sha256": "3fd9b5c58a59500c2fc70a803ee8ace78939cb5d55f9e30a8289035f3f189aa0",
+        "records": null
+      }
+    },
+    "execution_started_at_utc": "2026-11-07T05:59:33.308870+00:00",
+    "step": 2,
+    "description": "independent4096 ordinary2000ms fresh original material vs fixed finalist,block256ABBA; once only",
+    "log": "/tmp/shogi-final-heldout-4096-v1.log",
+    "child_pid": 872608,
+    "error": "143",
+    "updated_at_utc": "2026-11-07T11:57:37.772298+00:00"
+  },
+  "future_plan": "docs/denryu-next-steps.md"
+}

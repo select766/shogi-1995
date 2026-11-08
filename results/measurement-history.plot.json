@@ -1,5 +1,5 @@
 {
-  "input_sha256": "121a330c606620a390e7af74206f59334ea5df96edbaf04a7a8e89cd6ddff634",
+  "input_sha256": "44ccb89a10522bcc8f18939ff3384660af3f43a0fc41bc596c9433e6907f7366",
   "plotter_sha256": "b788c09948e11f17606825f6a0c9a216e566b8e7f9c3ca4fbf8bae89df3e8d43",
   "label_layout_sha256": "912a50019283d38dfde0731a3deba7253c6823587a3828207a3172b56a56daf2",
   "matplotlib": "3.9.2",
@@ -8,7 +8,8 @@
   "groups": [
     "33ccaf2e75e7",
     "24625c57c23a",
-    "86a9670dafa6"
+    "86a9670dafa6",
+    "6aa56e21e68b"
   ],
   "points": [
     {
@@ -654,6 +655,34 @@
         -18,
         6
       ]
+    },
+    {
+      "run_id": "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T114609202100Z-candidate",
+      "comparison_group": "6aa56e21e68b",
+      "finished_at_utc": "2026-11-07T11:46:09.202100+00:00",
+      "accuracy_percent": "37.646484375",
+      "wilson95_lower_percent": "36.17495921303739",
+      "wilson95_upper_percent": "39.14115946704693",
+      "source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+      "result_sha256": "2f98b16671dade243004c4d9dd0cb840c13e71ef8a8b0b09680ff9708b976804",
+      "label_offset_points": [
+        6,
+        6
+      ]
+    },
+    {
+      "run_id": "material-v1-20261107T115716342732Z-baseline",
+      "comparison_group": "6aa56e21e68b",
+      "finished_at_utc": "2026-11-07T11:57:16.342732+00:00",
+      "accuracy_percent": "28.515625",
+      "wilson95_lower_percent": "27.153597551320452",
+      "wilson95_upper_percent": "29.91791319665227",
+      "source_commit": "06219a9480c5fbfd46de1cbe167ba4de4cea37e6",
+      "result_sha256": "ad0ca5fd56b8e9efb8469dc66a8c365538ec247ccfb360bfac73468ea59c525a",
+      "label_offset_points": [
+        6,
+        6
+      ]
     }
   ],
   "excluded_run_ids": [
@@ -875,8 +904,33 @@
     "material-v1-20261107T064414301328Z-001-baseline",
     "material-v1-20261107T065521880684Z-002-baseline",
     "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T070632215201Z-002-candidate",
-    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T071745029809Z-003-candidate"
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T071745029809Z-003-candidate",
+    "material-v1-20261107T072857413995Z-003-baseline",
+    "material-v1-20261107T074010275889Z-004-baseline",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T075121025874Z-004-candidate",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T080235509712Z-005-candidate",
+    "material-v1-20261107T081348857867Z-005-baseline",
+    "material-v1-20261107T082501519091Z-006-baseline",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T083611582304Z-006-candidate",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T084722075773Z-007-candidate",
+    "material-v1-20261107T085834626576Z-007-baseline",
+    "material-v1-20261107T090945935437Z-008-baseline",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T092056417761Z-008-candidate",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T093206671206Z-009-candidate",
+    "material-v1-20261107T094321239424Z-009-baseline",
+    "material-v1-20261107T095428752441Z-010-baseline",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T100538779407Z-010-candidate",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T101649175815Z-011-candidate",
+    "material-v1-20261107T102756750421Z-011-baseline",
+    "material-v1-20261107T103904867250Z-012-baseline",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T105015345980Z-012-candidate",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T110125573717Z-013-candidate",
+    "material-v1-20261107T111235705104Z-013-baseline",
+    "material-v1-20261107T112346349866Z-014-baseline",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T113456594376Z-014-candidate",
+    "halfkp-fixed-w8-h0-128m-radix-v1-usi-20261107T114609202100Z-015-candidate",
+    "material-v1-20261107T115716342732Z-015-baseline"
   ],
-  "svg_sha256": "3d7d2b422ce900bf9bc549e422ff2c0aababe8168e9c83940b800d8445226df5",
-  "png_sha256": "55d0d38ce98a5c789a3af72959a7b4e32d174b4ca656a80178439f991c0cf3fb"
+  "svg_sha256": "1776f02d396f5a6212671558bfd1bd82b7c260226cf31ec414bead5238284431",
+  "png_sha256": "199f2570fe71470002f80207cf847e7a518e20af2795da7112c612fb0b1ae843"
 }

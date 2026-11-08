@@ -1,0 +1,29 @@
+{
+  "verified_at_utc": "2026-11-08T02:11:06.879997+00:00",
+  "review_commit": "3a224a661f4152861fa410e0c9922f406f606e7c",
+  "complete": true,
+  "positions": 4096,
+  "unique_sample_ids": 4096,
+  "blocks_per_engine": 16,
+  "all_block_details_equal_full_report": true,
+  "conditions_and_engine_image_model_hashes_consistent": true,
+  "recomputed_paired": {
+    "both_correct": 795,
+    "baseline_only": 373,
+    "candidate_only": 747,
+    "both_wrong": 2181,
+    "difference": 0.09130859375,
+    "bootstrap_95": {
+      "lower": 0.075439453125,
+      "upper": 0.107177734375
+    },
+    "replicates": 10000,
+    "seed": 20261106,
+    "limitation": "position bootstrap; unknown within-game correlation is not accounted for"
+  },
+  "comparison_sha256": "ac35901956392434574e073599eb7ff797bdc3f2c3316c2031d187d28c8ee4be",
+  "operational_errors": 0,
+  "user_requested_stop_confirmed": true,
+  "later_game_outputs_absent": true,
+  "scope": "read-only reaggregation of existing measurements; no engine execution or retuning"
+}
