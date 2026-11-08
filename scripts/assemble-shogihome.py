@@ -123,10 +123,12 @@ def assemble(assets, output, book, no_book=False):
                 'profile_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"\n'
                 'repo_dir="$(cd -- "$profile_dir"/' + shlex.quote(relative_root) + ' && pwd)"\n'
                 'exec "$repo_dir/run-shogi-1995.sh" --image "$profile_dir/root.ext2" '
-                '--engine-defaults "$profile_dir/engine-defaults.json" "$@"\n')
+                '--engine-defaults "$profile_dir/engine-defaults.json" --engine-name '
+                + shlex.quote(selection['usi_name']) + ' "$@"\n')
     (output / 'run.sh').write_text(launcher)
     (output / 'run.sh').chmod(0o755)
-    report = {'id': selection['id'], 'complete': True, 'assembled_at_utc': datetime.now(timezone.utc).isoformat(),
+    report = {'id': selection['id'], 'usi_name': selection['usi_name'],
+              'complete': True, 'assembled_at_utc': datetime.now(timezone.utc).isoformat(),
               'release_manifest_sha256': digest(assets / 'release-manifest.json'),
               'image_sha256': digest(image), 'payload_sha256': selection['files'],
               'private_book_included': include_book, 'private_book_sha256': book_hash,

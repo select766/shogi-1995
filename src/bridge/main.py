@@ -34,7 +34,9 @@ def load_engine_defaults(path):
     return values
 
 
-def advertise_defaults(line, defaults):
+def advertise_defaults(line, defaults, engine_name=None):
+    if engine_name is not None and line.startswith('id name '):
+        return 'id name ' + engine_name
     match = re.match(r'option name (.*?) type ', line)
     if match and match[1] in defaults:
         return re.sub(r' default .*?(?= (?:min|max|var) |$)',
@@ -84,9 +86,12 @@ def main():
     parser.add_argument('--image', type=Path, default=ROOT / '.local/images/engine-root.ext2')
     parser.add_argument('--engine-defaults', type=Path,
                         help='Initial USI settings, overridable by the GUI; never rewrites go commands')
+    parser.add_argument('--engine-name', help='USI display name for an explicitly selected engine profile')
     parser.add_argument('--run-dir', type=Path, default=RUN,
                         help='Isolated VM state, serial FIFOs, logs and lock directory')
     args = parser.parse_args()
+    if args.engine_name is not None and (not args.engine_name.strip() or any(c in args.engine_name for c in '\r\n\0')):
+        parser.error('engine name must be a nonempty single line')
     engine_defaults = load_engine_defaults(args.engine_defaults)
     os.chdir(ROOT)
     RUN = args.run_dir.resolve()
@@ -238,7 +243,7 @@ def main():
                             if quit_sent is not None:
                                 return 0
                             raise RuntimeError('guest engine exited unexpectedly')
-                        print(advertise_defaults(line, engine_defaults), flush=True)
+                        print(advertise_defaults(line, engine_defaults, args.engine_name), flush=True)
     finally:
         selector.close()
         if process is not None and process.poll() is None:

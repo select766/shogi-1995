@@ -10,6 +10,14 @@ spec.loader.exec_module(bridge)
 
 
 class EngineDefaultsTests(unittest.TestCase):
+    def test_only_explicit_profile_changes_engine_name(self):
+        original = 'id name YaneuraOu MaterialLv1 9.80git 32PENTIUM1995'
+        name = 'shogi-1995 HalfKP NNUE w8 D42 radix (Pentium 100MHz)'
+        self.assertEqual(bridge.advertise_defaults(original, {}), original)
+        self.assertEqual(bridge.advertise_defaults(original, {}, name), 'id name ' + name)
+        for line in ['id author YaneuraOu', 'bestmove 7g7f', 'go btime 180000 wtime 600000 binc 2000 winc 2000']:
+            self.assertEqual(bridge.advertise_defaults(line, {}, name), line)
+
     def test_advertised_defaults_keep_ranges_and_choices(self):
         cases = [
             ('option name NetworkDelay type spin default 120 min 0 max 10000', 'NetworkDelay', '321',

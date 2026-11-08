@@ -24,6 +24,8 @@
 
 ShogiHomeのエンジン実行ファイルに上の絶対パスを登録する。登録前に最大起動待ち時間を120秒にする。起動スクリプトは作業ディレクトリに依存せず、専用`root.ext2`を使う。起動するのはCUIゲストで、盤面はShogiHomeに表示する。従来の`.local/images/engine-root.ext2`と通常ランチャーは変更しない。同じ既定VM領域を使うため、通常起動と同時使用しない。
 
+専用profileがUSIで返す名称は`shogi-1995 HalfKP NNUE w8 D42 radix (Pentium 100MHz)`。評価済みバイナリ内部の旧ビルド名`MaterialLv1`は残っているため、専用ランチャーの`--engine-name`でUSIの`id name`だけを置き換える。エンジン・モデル・イメージのバイト列とSHAは変えない。汎用起動や駒得基準版の名称は変更しない。表示名を更新する場合は対局終了後にエンジンを再起動し、ShogiHomeが名称を保存している場合はエンジン情報の再取得または再登録を行う。
+
 定跡を含めない検証用の起動先は`.local/shogihome/denryu-halfkp-v1-no-book/run.sh`。各profileの`manifest.json`に実際のイメージSHA・設定・定跡の有無を保存する。
 
 |設定|初期値|

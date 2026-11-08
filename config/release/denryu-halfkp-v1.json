@@ -1,5 +1,6 @@
 {
   "id": "denryu-halfkp-v1",
+  "usi_name": "shogi-1995 HalfKP NNUE w8 D42 radix (Pentium 100MHz)",
   "candidate_manifest": "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
   "engine_source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
   "files": {

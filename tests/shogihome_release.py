@@ -26,6 +26,7 @@ def main():
     started = datetime.now(timezone.utc).isoformat()
     logs = ROOT / '.local/tests' / output.stem
     with Engine([str(profile / 'run.sh')], '/tmp', logs) as engine:
+        assert engine.name == manifest['usi_name']
         def value(key):
             engine.send('getoption ' + key)
             _, lines = engine.until('Options[' + key + ']', 10)
