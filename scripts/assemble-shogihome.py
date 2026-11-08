@@ -62,7 +62,7 @@ def assemble(assets, output, book, no_book=False):
             if stream.read(16).rstrip(b'\0') != b'YANE-BINBOOK-V1':
                 raise ValueError('expected a reduced YBB book')
         if book.stat().st_size > 300 * 1024 * 1024:
-            raise ValueError('book too large for 504 MiB image; reduce with --max-ply 20')
+            raise ValueError('book too large for 504 MiB image; reduce the book first')
     output.mkdir(parents=True)
     stage = output / 'root'
     stage.mkdir()
@@ -87,7 +87,7 @@ def assemble(assets, output, book, no_book=False):
                'USI_OwnBook': 'true' if include_book else 'false',
                'BookFile': 'user_book1.db' if include_book else 'no_book',
                'BookDir': '/book', 'BookOnTheFly': 'true', 'IgnoreBookPly': 'true',
-               'FlippedBook': 'true', 'BookMoves': '999', 'BookEvalDiff': '0',
+               'FlippedBook': 'false', 'BookMoves': '999', 'BookEvalDiff': '0',
                'BookDepthLimit': '0', 'BookPvMoves': '1'}
     book_hash = None
     if include_book:

@@ -24,7 +24,7 @@
 
 ShogiHomeのエンジン実行ファイルに上の絶対パスを登録する。登録前に最大起動待ち時間を120秒にする。起動スクリプトは作業ディレクトリに依存せず、専用`root.ext2`を使う。起動するのはCUIゲストで、盤面はShogiHomeに表示する。従来の`.local/images/engine-root.ext2`と通常ランチャーは変更しない。同じ既定VM領域を使うため、通常起動と同時使用しない。
 
-専用profileがUSIで返す名称は`shogi-1995 HalfKP NNUE w8 D42 radix (Pentium 100MHz)`。評価済みバイナリ内部の旧ビルド名`MaterialLv1`は残っているため、専用ランチャーの`--engine-name`でUSIの`id name`だけを置き換える。エンジン・モデル・イメージのバイト列とSHAは変えない。汎用起動や駒得基準版の名称は変更しない。表示名を更新する場合は対局終了後にエンジンを再起動し、ShogiHomeが名称を保存している場合はエンジン情報の再取得または再登録を行う。
+専用profileがUSIで返す名称は`shogi-1995 HalfKP NNUE w8 D42 radix (Pentium 100MHz)`。評価済みバイナリ内部の旧ビルド名`MaterialLv1`は残っているため、専用ランチャーの`--engine-name`でUSIの`id name`だけを置き換える。表示名の置換はエンジンやモデルのバイト列を変えない。汎用起動や駒得基準版の名称は変更しない。表示名を更新する場合は対局終了後にエンジンを再起動し、ShogiHomeが名称を保存している場合はエンジン情報の再取得または再登録を行う。
 
 定跡を含めない検証用の起動先は`.local/shogihome/denryu-halfkp-v1-no-book/run.sh`。各profileの`manifest.json`に実際のイメージSHA・設定・定跡の有無を保存する。
 
@@ -37,7 +37,7 @@ ShogiHomeのエンジン実行ファイルに上の絶対パスを登録する�
 |NetworkDelay / NetworkDelay2|120 / 1120 ms（実対局環境に合わせて変更）|
 |USI_OwnBook / BookFile|定跡ありはtrue / user_book1.db、なしはfalse / no_book|
 
-定跡ありでは`BookDir=/book`、`BookOnTheFly=true`、`IgnoreBookPly=true`、`FlippedBook=true`、`BookMoves=999`、`BookEvalDiff=0`、`BookDepthLimit=0`、`BookPvMoves=1`も初期設定する。32 MiBでは定跡を全件メモリに読む設定に変更しない。
+定跡ありでは`BookDir=/book`、`BookOnTheFly=true`、`IgnoreBookPly=true`、`FlippedBook=false`、`BookMoves=999`、`BookEvalDiff=0`、`BookDepthLimit=0`、`BookPvMoves=1`も初期設定する。32 MiBでは定跡を全件メモリに読む設定に変更しない。
 
 モデル以外は起動時にUSIの初期値として設定する。ShogiHomeに通知する既定値にも反映するため、新規登録時に定跡が自動で有効になる。保存済みのShogiHome設定はそちらが優先されるので、登録後に値を確認する。定跡やNetworkDelayはShogiHomeから変更できる。`engine_options.txt`に固定するのはEvalFileだけ。ブリッジは`go`の時間を書き換えず、独自の思考期限によるstopも送らない。
 
@@ -95,7 +95,7 @@ Linux x86-64ホストを想定する。Python 3、bash、tar、e2fsprogs（mke2f
    bash scripts/setup-runtime.sh
    ```
 
-4. 定跡は任意。権利を持つ利用者だけが[私有定跡の手順](private-book.md)で`private/petashock/reduced/user_book1.ybb`を用意する。加工済みファイルが既にあればそのまま使える。元の7zだけがある場合は、先に`python3 scripts/reduce-petashock.py --max-ply 20`で加工する（7zと作業用空き容量が必要）。**加工済み定跡がなければ次の処理は自動でスキップし、入手・購入・展開を試みない。**
+4. 定跡は任意。権利を持つ利用者だけが[私有定跡の手順](private-book.md)で`private/petashock/reduced/user_book1.ybb`を用意する。加工済みファイルが既にあればそのまま使える。元の7zだけがある場合は、先に`.local/venv/bin/python scripts/reduce-petashock.py`で加工する（7zと作業用空き容量が必要）。**加工済み定跡がなければ次の処理は自動でスキップし、入手・購入・展開を試みない。**
 
 5. 新規の専用イメージを作る。
 

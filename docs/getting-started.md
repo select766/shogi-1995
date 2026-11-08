@@ -44,7 +44,7 @@ bash scripts/build-guest-probe.sh --engine
 [定跡の手順](private-book.md)に従い、権利を持つ利用者が `private/petashock/user_book1-19003763.7z` を用意します。配布物には含めません。
 
 ```bash
-python3 scripts/reduce-petashock.py --max-ply 20
+.local/venv/bin/python scripts/reduce-petashock.py
 bash scripts/build-guest-probe.sh --engine
 ```
 
