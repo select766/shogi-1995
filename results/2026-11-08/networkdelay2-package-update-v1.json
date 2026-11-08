@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-08T03:01:54.849064+00:00",
+  "network_delay2_default": 1120,
+  "network_delay2_range": [
+    0,
+    60000
+  ],
+  "requested_10120_accepted": true,
+  "engine_sha256": "01ead057e47a7c887c6de203fb5b53db83dde172c8d0d1f0c987f3c144689c33",
+  "engine_source_commit": "a96c9273eb8dc0554e2c29fa4c8ea6386b13c6d5",
+  "runtime_changes_since_measurement": {
+    "baseline_engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+    "change": "NetworkDelay2 upper bound 10000 -> 60000; default unchanged; no new strength measurement"
+  },
+  "source_archive_tree_sha256": "c667d6ff07541020862a16a03aca02ea569429cec03d275461d3554d4f6ae4e6",
+  "source_files_changed_since_measured_engine": [
+    "vendor/YaneuraOu/source/timeman.cpp"
+  ],
+  "installed_profiles": [
+    {
+      "launcher": "/home/select766/shogi/shogi-1995/.local/shogihome/denryu-halfkp-v1/run.sh",
+      "image_sha256": "edbc162dfea57f66be4eda6a77b5a1adf4dccde8da8bc071291946266f63fad5",
+      "book": true
+    },
+    {
+      "launcher": "/home/select766/shogi/shogi-1995/.local/shogihome/denryu-halfkp-v1-no-book/run.sh",
+      "image_sha256": "585652f2de9e688580a5d9f71fbd54a602f6ad02c52082e5f16d1acd51d60cc1",
+      "book": false
+    }
+  ],
+  "release_assets_sha256": {
+    "COPYING.YaneuraOu": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "README.txt": "1e1d90028ea666fb02d0beee0768da5e2f61b2286cc00a85de80d0e50f57031e",
+    "SHA256SUMS": "2f3f4f1003a01cb9bee84edcf67d7702a7100a3adc0f024a422b422ed98153a5",
+    "guest-init-pentium1995": "0164b73503a213aeb93f249f1950f12da8c00c54a5b059eab53dcce3948c26c9",
+    "halfkp-w8-d42.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "release-manifest.json": "f88c1bacb29752e29975911458438e1dc967b191687c669b070a25f05cdb6374",
+    "shogi-1995-engine-source.tar.gz": "cc76b6db34c03e20c3c70d18cd98df17476990f1bd1989868ae904ff28e32db6",
+    "shogi-pentium1995": "01ead057e47a7c887c6de203fb5b53db83dde172c8d0d1f0c987f3c144689c33"
+  },
+  "private_book_in_release": false,
+  "full_strength_remeasurement": false,
+  "guest_test": "results/2026-11-08/shogihome-networkdelay2-range-v1.json"
+}

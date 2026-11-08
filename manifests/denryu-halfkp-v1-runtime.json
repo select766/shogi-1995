@@ -1,0 +1,39 @@
+{
+  "id": "halfkp-fixed-w8-h0-128m-radix-networkdelay2-v1-usi",
+  "complete": true,
+  "guest_diagnostics": true,
+  "search_diagnostics": true,
+  "engine_sha256": "01ead057e47a7c887c6de203fb5b53db83dde172c8d0d1f0c987f3c144689c33",
+  "image_sha256": "b183094a8378423af28dd0a9cddad425b397feaf20cd5ddcf744e4705f4774b7",
+  "source_commit": "a96c9273eb8dc0554e2c29fa4c8ea6386b13c6d5",
+  "source_tree_sha256": "c667d6ff07541020862a16a03aca02ea569429cec03d275461d3554d4f6ae4e6",
+  "source_worktree_dirty": false,
+  "source_commit_binding": "committed_source_tree",
+  "build_key": "9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "build_manifest_sha256": "d364f728a9b3c96f4fe740d4f4fa9614793122a31d278e459b93046aea73ebf5",
+  "feature_difference": "Measured D42 NNUE/radix model; only NetworkDelay2 upper bound extended 10000 to 60000 ms; default remains 1120 ms.",
+  "engine_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "command": [
+    "/home/select766/shogi/shogi-1995/run-shogi-1995.sh",
+    "--image",
+    "/home/select766/shogi/shogi-1995/.local/profiles/halfkp-fixed-w8-h0-128m-radix-networkdelay2-v1/root.ext2"
+  ],
+  "model_sha256": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+  "model_bytes": 2006300,
+  "model_origin": "/home/select766/shogi/shogi-1995/.local/frozen-models/halfkp-20261107-1000/model.bin",
+  "prepared_at_utc": "2026-11-08T03:02:25.980404+00:00",
+  "preparation_commit": "a96c9273eb8dc0554e2c29fa4c8ea6386b13c6d5",
+  "preparation_worktree_dirty": true,
+  "parent_manifest_sha256": "4efdca6e326b23125b4be5edf2e69e9a143327f82a8149695381958365ac329b",
+  "configured_guest_options": {
+    "EvalFile": "/eval/model.bin"
+  },
+  "object_dir": "/home/select766/shogi/shogi-1995/.local/obj-pentium1995-9253cb455fcac3beb196a405bb7905d9f8a43c8da5086dbeb60b1573cea2bac0",
+  "runtime_changes_since_measurement": {
+    "baseline_engine_sha256": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+    "change": "NetworkDelay2 upper bound 10000 -> 60000; default unchanged; no new strength measurement"
+  },
+  "preparation_method": "Copy measured frozen image, replace only /shogi using debugfs, and verify installed engine hash; model/config/init retained."
+}

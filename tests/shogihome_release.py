@@ -43,6 +43,13 @@ def main():
             # Book outputs stay under ignored .local/: publish only whether it hit.
             trace = (logs / 'protocol.log').read_text()
             assert 'book file fallback' in trace and re.search(r'\bnodes 0\b.*\bpv ', trace)
+        assert 'default 1120 min 0 max 60000' in engine.options['NetworkDelay2']
+        for delay in (10120, 60000):
+            engine.send(f'setoption name NetworkDelay2 value {delay}')
+            engine.reset()
+            assert value('NetworkDelay2') == str(delay)
+        engine.send('setoption name NetworkDelay2 value 60001')
+        assert value('NetworkDelay2') == '60000'
         engine.send('setoption name USI_OwnBook value false')
         engine.send('setoption name BookFile value no_book')
         engine.send('setoption name NetworkDelay value 0')
@@ -83,6 +90,8 @@ def main():
               'guest_memory': memory, 'ordinary_tournament_go_stop_seconds': stop_seconds,
               'move_list_512_plies': True, 'nnue_and_radix_loaded': True,
               'book_and_network_delays_configurable': True, 'restart_from_other_cwd_passed': True,
+              'network_delay2_10120_and_60000_accepted': True,
+              'network_delay2_60001_rejected': True, 'network_delay2_default_1120_unchanged': True,
               'scope': '86Box launcher/USI operation; not a ShogiHome GUI test or a strength measurement'}
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2) + '\n')

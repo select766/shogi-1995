@@ -4,15 +4,15 @@
 
 現時点の完了済み測定に基づき、**標準HalfKP(Friend)幅8・2層、駒得への残差モデルD42、出力積和radix版**を採用候補とする。独立4,096局面・Pentium 100 MHz・32 MiB・通常2秒で、駒得基準1,168件（28.5156%）に対して1,542件（37.6465%）、差+9.1309ポイント、対応あり95%区間+7.5439〜+10.7178ポイントだった。両版とも異常・反則・時間超過0件。[全件結果](halfkp-development.md)を参照。定跡による改善やEloを測った結果ではない。
 
-選択記録は[`config/release/denryu-halfkp-v1.json`](../config/release/denryu-halfkp-v1.json)。新たな再学習や再ビルドをせず、評価済みイメージから同一バイト列を取り出す。
+選択記録は[`config/release/denryu-halfkp-v1.json`](../config/release/denryu-halfkp-v1.json)。学習済みモデルは評価時と同一バイト列を使用する。エンジンはオプション上限変更だけを加えて再ビルドした固定イメージから取り出す。
 
 |対象|SHA-256|
 |---|---|
-|エンジン `shogi-pentium1995`|`700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656`|
+|エンジン `shogi-pentium1995`|`01ead057e47a7c887c6de203fb5b53db83dde172c8d0d1f0c987f3c144689c33`|
 |モデル `halfkp-w8-d42.bin`|`d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff`|
 |ゲストinit `guest-init-pentium1995`|`0164b73503a213aeb93f249f1950f12da8c00c54a5b059eab53dcce3948c26c9`|
 
-エンジンの対応ソースcommitは`abf86665bbefff7da8ef54a77975aba602b4d310`。モデルは上流の任意のNNUEファイルとは互換でなく、この企画専用の形式である。通常のたぬき棋譜をシャッフル・新規qsearchして学習したもので、学習履歴は[`halfkp-model-frozen-20261107-1000.json`](../manifests/halfkp-model-frozen-20261107-1000.json)にある。
+エンジンの対応ソースcommitは`a96c9273eb8dc0554e2c29fa4c8ea6386b13c6d5`。全件測定したabf8666からのエンジンソース差分はNetworkDelay2の上限10000→60000 msだけで、初期値1120 ms・モデル・探索・評価処理は維持する。この再ビルド版で独立4,096局面の再測定はしていない。モデルは上流の任意のNNUEファイルとは互換でなく、この企画専用の形式である。通常のたぬき棋譜をシャッフル・新規qsearchして学習したもので、学習履歴は[`halfkp-model-frozen-20261107-1000.json`](../manifests/halfkp-model-frozen-20261107-1000.json)にある。
 
 ## このマシンでの登録先
 
@@ -40,6 +40,8 @@ ShogiHomeのエンジン実行ファイルに上の絶対パスを登録する�
 定跡ありでは`BookDir=/book`、`BookOnTheFly=true`、`IgnoreBookPly=true`、`FlippedBook=true`、`BookMoves=999`、`BookEvalDiff=0`、`BookDepthLimit=0`、`BookPvMoves=1`も初期設定する。32 MiBでは定跡を全件メモリに読む設定に変更しない。
 
 モデル以外は起動時にUSIの初期値として設定する。ShogiHomeに通知する既定値にも反映するため、新規登録時に定跡が自動で有効になる。保存済みのShogiHome設定はそちらが優先されるので、登録後に値を確認する。定跡やNetworkDelayはShogiHomeから変更できる。`engine_options.txt`に固定するのはEvalFileだけ。ブリッジは`go`の時間を書き換えず、独自の思考期限によるstopも送らない。
+
+`NetworkDelay2=10120`を大会用に設定できるよう、指定範囲を0〜60000 msに拡張した。初期値は1120 msのまま。更新前のShogiHome登録情報には上限10000が保存されている場合があるため、対局終了後にエンジンを再起動し、オプション情報を再取得するか同じrun.shを再登録してから10120を設定する。
 
 対局設定は**先手3分・後手10分・双方1手2秒加算**。ShogiHome経由での実際の接続と連続対局、両方の先後での大会時計の確認はユーザーが行う。USI試験の成功をGUI対局済みとは扱わない。
 
@@ -120,13 +122,15 @@ Linux x86-64ホストを想定する。Python 3、bash、tar、e2fsprogs（mke2f
 
 ## ソースから再ビルドする場合
 
-ビルドには[ソース構築の依存ツール](getting-started.md)とGit履歴が必要。リポジトリの別クローンでエンジン対応commit `abf86665bbefff7da8ef54a77975aba602b4d310`をチェックアウトし、`bash scripts/setup.sh`で互換ツールチェーンとエンジンをビルドする。対応ソース添付物にもソースと依存物manifestを収録しているが、Git履歴は含まないため、その展開だけではGit由来のビルド記録を生成できない。これはモデルを取得・学習する処理ではない。バイナリ再ビルドとReleaseバイナリ利用を混同しない。評価に使った同一バイト列を必要とする場合は照合済み添付物を使う。独自ビルドを出場候補にする場合は別途動作確認・測定を行う。
+ビルドには[ソース構築の依存ツール](getting-started.md)とGit履歴が必要。リポジトリの別クローンでエンジン対応commit `a96c9273eb8dc0554e2c29fa4c8ea6386b13c6d5`をチェックアウトし、`bash scripts/setup.sh`で互換ツールチェーンとエンジンをビルドする。対応ソース添付物にもソースと依存物manifestを収録しているが、Git履歴は含まないため、その展開だけではGit由来のビルド記録を生成できない。これはモデルを取得・学習する処理ではない。バイナリ再ビルドとReleaseバイナリ利用を混同しない。評価に使った同一バイト列を必要とする場合は照合済み添付物を使う。独自ビルドを出場候補にする場合は別途動作確認・測定を行う。
 
 ## 公開・配布に含めないもの
 
 `private/`、加工済み定跡、定跡入りイメージ、定跡由来のプロトコルログはGitへコミットせず、Releaseにも添付しない。`.local/`全体を圧縮して配布しない。定跡の有無にかかわらず今回のReleaseは上記8ファイルだけとし、ゲストOS・ROMのイメージ自体の配布は行わない。
 
 ## 2026年11月8日の動作確認結果
+
+同日、NetworkDelay2の指定上限を60000 msへ拡張した再ビルド版を追加検証した。10120・60000を指定してisready後も値が保持され、60001は拒否された。初期値1120・NNUE/radix・定跡ヒット・通常2秒・大会時間go/stop・512手履歴・再起動も成功。[実ゲスト記録](../results/2026-11-08/shogihome-networkdelay2-range-v1.json)と[Release・既存起動先への反映記録](../results/2026-11-08/networkdelay2-package-update-v1.json)を参照。以下の初回検証表と監査記録は上限変更前の履歴であり、現在の添付物のSHAは冒頭の表とRelease内のSHA256SUMSで確認する。
 
 Release添付物と同じSHAの入力から、空の専用rootを使って両構成を生成した。定跡なし版は存在しない定跡パスを指定してスキップ動作も確認した。両profileの`release_manifest_sha256`が実際の添付フォルダ内のmanifestと一致することを確認済み。
 

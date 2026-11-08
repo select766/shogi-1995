@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "started_at_utc": "2026-11-08T02:59:56.691385+00:00",
+  "finished_at_utc": "2026-11-08T03:01:10.350234+00:00",
+  "image_sha256": "edbc162dfea57f66be4eda6a77b5a1adf4dccde8da8bc071291946266f63fad5",
+  "payload_sha256": {
+    "shogi-pentium1995": "01ead057e47a7c887c6de203fb5b53db83dde172c8d0d1f0c987f3c144689c33",
+    "halfkp-w8-d42.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "guest-init-pentium1995": "0164b73503a213aeb93f249f1950f12da8c00c54a5b059eab53dcce3948c26c9"
+  },
+  "book_included": true,
+  "book_hit_confirmed": true,
+  "first_response_ms": 3532.891720009502,
+  "movetime_2000_ms": 2030.012347997399,
+  "guest_memory": {
+    "total": 31866880,
+    "free": 14655488,
+    "swap": 0
+  },
+  "ordinary_tournament_go_stop_seconds": 0.023443726007826626,
+  "move_list_512_plies": true,
+  "nnue_and_radix_loaded": true,
+  "book_and_network_delays_configurable": true,
+  "restart_from_other_cwd_passed": true,
+  "network_delay2_10120_and_60000_accepted": true,
+  "network_delay2_60001_rejected": true,
+  "network_delay2_default_1120_unchanged": true,
+  "scope": "86Box launcher/USI operation; not a ShogiHome GUI test or a strength measurement"
+}

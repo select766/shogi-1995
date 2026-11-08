@@ -64,6 +64,7 @@ def main():
                     ['git', 'status', '--porcelain'], cwd=ROOT, text=True).strip()),
                 'engine_source_commit': selection['engine_source_commit'],
                 'selection': selection['selection'], 'private_book_included': False,
+                'runtime_changes_since_measurement': selection.get('runtime_changes_since_measurement'),
                 'files': {p.name: {'sha256': digest(p), 'bytes': p.stat().st_size}
                           for p in sorted(out.iterdir())}}
     (out / 'release-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
