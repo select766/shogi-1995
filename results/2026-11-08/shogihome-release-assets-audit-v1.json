@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-08T02:24:12.303379+00:00",
+  "release_directory": ".local/release-assets/denryu-halfkp-v1",
+  "attachment_count": 8,
+  "only_public_allowlisted_files": true,
+  "private_book_and_images_absent": true,
+  "source_archive_tree_matches_measured_engine": "01c94314460598d02917c4037b19069434ad0ff3071aee800cc3212951147a05",
+  "corrupt_model_rejected_before_image_creation": true,
+  "files": {
+    "COPYING.YaneuraOu": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "README.txt": "1e1d90028ea666fb02d0beee0768da5e2f61b2286cc00a85de80d0e50f57031e",
+    "SHA256SUMS": "2a9f50ec6e927fa3262aad47f7b75652135c8b7fa2905ad2ba87cb923c04977d",
+    "guest-init-pentium1995": "0164b73503a213aeb93f249f1950f12da8c00c54a5b059eab53dcce3948c26c9",
+    "halfkp-w8-d42.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "release-manifest.json": "56769828773e49b12aa8a65daa84b2a51323a86139ab39f8c32a95d794705791",
+    "shogi-1995-engine-source.tar.gz": "a02b431f60f922bccf5ab008c4556d5d5e5e9efb64686940e9c901754deae3a6",
+    "shogi-pentium1995": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656"
+  }
+}

@@ -2,6 +2,7 @@
 2026年の将棋ソフトを1995年のパソコン環境に移植する実験
 
 - [クローンからビルド・定跡・対局までの手順](docs/getting-started.md)
+- [最良候補のShogiHome用イメージ・Release添付物と再構築](docs/shogihome-release.md)
 - [企画と要件](idea.md)
 - [ツール選定と実装計画](docs/implementation-plan.md)
 - [強化と棋譜一致率の評価計画](docs/strength-evaluation-plan.md)
@@ -9,7 +10,7 @@
 - [測定履歴の一覧表](docs/measurement-history.md) / [グラフ用CSV](results/measurement-history.csv)
 - [補助対局の履歴](docs/match-history.md) / [Elo換算・得点率のCSV](results/match-history.csv)
 
-Pentium 100 MHz、RAM 32 MiBの86BoxでSlackware 3.0のLinux 1.2.13を動かし、移植したやねうら王をUSI経由で操作します。現在の評価関数は駒得評価です。
+Pentium 100 MHz、RAM 32 MiBの86BoxでSlackware 3.0のLinux 1.2.13を動かし、移植したやねうら王をUSI経由で操作します。評価済みの最良候補はHalfKP幅8・2層のNNUE版です。[専用イメージと起動手順](docs/shogihome-release.md)を用意しています。従来のソース構築の既定は駒得評価です。
 
 ```bash
 bash scripts/setup.sh > /tmp/shogi-1995-setup.log 2>&1

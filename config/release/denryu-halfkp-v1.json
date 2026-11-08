@@ -1,0 +1,19 @@
+{
+  "id": "denryu-halfkp-v1",
+  "candidate_manifest": "manifests/halfkp-fixed-w8-h0-128m-radix-v1-candidate.json",
+  "engine_source_commit": "abf86665bbefff7da8ef54a77975aba602b4d310",
+  "files": {
+    "shogi-pentium1995": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+    "halfkp-w8-d42.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "guest-init-pentium1995": "0164b73503a213aeb93f249f1950f12da8c00c54a5b059eab53dcce3948c26c9"
+  },
+  "selection": {
+    "positions": 4096,
+    "baseline_matches": 1168,
+    "candidate_matches": 1542,
+    "difference_pp": 9.130859375,
+    "paired_95_pp": [7.5439453125, 10.7177734375],
+    "book_used": false,
+    "report": "results/2026-11-07/final-heldout-4096-v1-comparison.json"
+  }
+}

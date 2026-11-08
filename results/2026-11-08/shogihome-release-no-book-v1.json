@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at_utc": "2026-11-08T02:23:00.378461+00:00",
+  "finished_at_utc": "2026-11-08T02:24:08.102876+00:00",
+  "image_sha256": "4577fbdc2d9b5a41b4c53dbe193c32b9fd8e06d1e311c9d2420fe4d25c7a691a",
+  "payload_sha256": {
+    "shogi-pentium1995": "700996f5cb97d0f389a693be6bea7d3814668d3609588d8baebaa39a4406d656",
+    "halfkp-w8-d42.bin": "d42b68f3da24fe3d77d9549aeca1c0b6a4ced375d7ff7fa6b14c737d876bdeff",
+    "guest-init-pentium1995": "0164b73503a213aeb93f249f1950f12da8c00c54a5b059eab53dcce3948c26c9"
+  },
+  "book_included": false,
+  "book_hit_confirmed": false,
+  "first_response_ms": 263.43823099159636,
+  "movetime_2000_ms": 2032.120471005328,
+  "guest_memory": {
+    "total": 31866880,
+    "free": 14675968,
+    "swap": 0
+  },
+  "ordinary_tournament_go_stop_seconds": 0.01969094600644894,
+  "move_list_512_plies": true,
+  "nnue_and_radix_loaded": true,
+  "book_and_network_delays_configurable": true,
+  "restart_from_other_cwd_passed": true,
+  "scope": "86Box launcher/USI operation; not a ShogiHome GUI test or a strength measurement"
+}

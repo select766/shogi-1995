@@ -1,14 +1,22 @@
 #!/usr/bin/env python3
 """Fetch only fixed setup assets, verifying hashes before use. No training data."""
+import argparse
 import hashlib
 import json
 from pathlib import Path
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--runtime-only', action='store_true', help='Skip compiler, libc sources and engine sources')
+args = parser.parse_args()
+runtime_names = {'86Box-v6.0.AppImage', '86box-roms.tar.gz', 'idenet.tgz',
+                 'aaa_base.tgz', 'bash.tgz', 'ldso.tgz', 'shlibs.tgz', 'bin.tgz', 'sh_utils.tgz'}
 destination = ROOT / '.local/downloads'
 destination.mkdir(parents=True, exist_ok=True)
 for asset in json.loads((ROOT / 'manifests/assets.json').read_text())['assets']:
+    if args.runtime_only and asset['name'] not in runtime_names:
+        continue
     path = destination / asset['name']
     def verified(p):
         return p.exists() and p.stat().st_size == asset['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest() == asset['sha256']

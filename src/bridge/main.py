@@ -3,7 +3,9 @@
 import argparse
 import ctypes
 import fcntl
+import json
 import os
+import re
 from pathlib import Path
 import selectors
 import signal
@@ -13,6 +15,31 @@ import time
 
 ROOT = Path(__file__).resolve().parents[2]
 RUN = ROOT / '.local/run'
+
+
+def load_engine_defaults(path):
+    if path is None:
+        return {}
+    raw = json.loads(path.read_text())
+    if not isinstance(raw, dict):
+        raise ValueError('engine defaults must be an option/value object')
+    values = {}
+    for key, value in raw.items():
+        if not re.fullmatch(r'[A-Za-z0-9_]+', key) or not isinstance(value, (str, int, bool)):
+            raise ValueError('invalid engine default')
+        encoded = str(value).lower() if isinstance(value, bool) else str(value)
+        if not encoded or any(c in encoded for c in '\r\n\0'):
+            raise ValueError('invalid engine default value')
+        values[key] = encoded
+    return values
+
+
+def advertise_defaults(line, defaults):
+    match = re.match(r'option name (.*?) type ', line)
+    if match and match[1] in defaults:
+        return re.sub(r' default .*?(?= (?:min|max|var) |$)',
+                      lambda _: ' default ' + defaults[match[1]], line, count=1)
+    return line
 
 
 def bios_escape():
@@ -55,9 +82,12 @@ def main():
     parser.add_argument('--backend', choices=('86box', 'qemu'), default='86box')
     parser.add_argument('--boot-timeout', type=float, default=120)
     parser.add_argument('--image', type=Path, default=ROOT / '.local/images/engine-root.ext2')
+    parser.add_argument('--engine-defaults', type=Path,
+                        help='Initial USI settings, overridable by the GUI; never rewrites go commands')
     parser.add_argument('--run-dir', type=Path, default=RUN,
                         help='Isolated VM state, serial FIFOs, logs and lock directory')
     args = parser.parse_args()
+    engine_defaults = load_engine_defaults(args.engine_defaults)
     os.chdir(ROOT)
     RUN = args.run_dir.resolve()
     RUN.mkdir(parents=True, exist_ok=True)
@@ -195,6 +225,8 @@ def main():
                         if line == 'SHOGI1995_ENGINE_READY':
                             ready = True
                             print(f'shogi-1995: guest ready after {now-boot_started:.1f}s ({args.backend})', file=sys.stderr)
+                            for name, value in engine_defaults.items():
+                                command(f'setoption name {name} value {value}')
                             for item in queued:
                                 command(item)
                             queued.clear()
@@ -206,7 +238,7 @@ def main():
                             if quit_sent is not None:
                                 return 0
                             raise RuntimeError('guest engine exited unexpectedly')
-                        print(line, flush=True)
+                        print(advertise_defaults(line, engine_defaults), flush=True)
     finally:
         selector.close()
         if process is not None and process.poll() is None:

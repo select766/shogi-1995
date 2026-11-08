@@ -1,5 +1,7 @@
 # 電竜戦向け私有定跡
 
+最良のNNUE候補と組み合わせる場合は[ShogiHome用Releaseイメージの手順](shogihome-release.md)を使う。`assemble-shogihome.py`は加工済み定跡があれば組み込み、なければスキップする。Release添付物は定跡を含めず、各利用者がローカルで組み立てる。
+
 `private/readme.md` と配布元の条件に従い、元ファイル・加工結果・定跡入りイメージを公開しない。`private/` と `.local/` は Git の対象外。強さ測定では使用しない。
 
 ```

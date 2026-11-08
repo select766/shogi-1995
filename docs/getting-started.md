@@ -23,9 +23,9 @@ bash scripts/setup.sh > /tmp/shogi-1995-setup.log 2>&1
 
 ### GitHub Releasesから入手する場合
 
-[Releases](https://github.com/select766/shogi-1995/releases)で、利用するリビジョン・用途に対応する資産、チェックサム、同梱説明を確認してください。配布予定の対象は駒得／NNUE対応エンジン、GNU Shogi、評価関数です。**資産名や配布開始は未確定です。現在のスクリプトには、エンジン単体を取得するだけでコンパイラなしに初期環境を作る手順はありません。** `scripts/setup.sh` は必ずビルドし、`gui/build-image.sh` もGUI本体とinitをコンパイルします。
+[最良NNUE候補のRelease手順](shogihome-release.md)に、添付物の名前・SHA・配置先と、コンパイラなしでCUIゲストを組み立てる方法を記載しています。Release自体は動作確認後に公開予定です。エンジン・モデル・ゲストinit等の添付物を取得し、`bash scripts/setup-runtime.sh`で固定したエミュレータ・ROM・OSパッケージを準備した後、`scripts/assemble-shogihome.py`で専用イメージとShogiHome用run.shを生成します。私有定跡は配布せず、各利用者の手元に加工済みファイルがある場合だけ組み込みます。
 
-コンパイラ不要の配布を行うには、エンジンや評価関数に加え、利用経路に対応した構築済みゲストイメージ・起動用カーネル／フロッピー、86BoxとROMの準備方法、GUIの場合はGUI入りイメージも必要です。GNU Shogiの場合は対応するゲストイメージ、カーネル、manifestと中継プログラムも必要です。公開時に同梱物の配置先、検証用SHA-256、互換バージョン、ライセンスと起動手順をリリースごとに示してください。バイナリ単体はゲストOSそのものではなく、ホスト上で直接USI実行するものでもありません。コンパイラ不要の一式が公開されるまでは上のソース構築を使います。ホストのPython、エミュレータ、イメージ操作ツール等は引き続き必要です。
+これはShogiHome用のCUIゲスト経路です。ゲスト内GUIの`gui/build-image.sh`は引き続きGUI本体とinitをコンパイルします。GNU Shogiは別の構築手順です。ホストのPython、エミュレータ、イメージ操作ツール等は引き続き必要です。
 
 ## 評価関数を使う場合
 
