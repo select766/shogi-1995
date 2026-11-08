@@ -1,0 +1,33 @@
+{
+  "started_utc": "2026-11-08T05:25:36.991999+00:00",
+  "scope": "86Box USI smoke test; not GUI play or strength measurement",
+  "memory_bytes": {
+    "total": 31866880,
+    "free": 5595136,
+    "swap": 0
+  },
+  "depth1": {
+    "actual": "7g7f",
+    "host_ms": 392.8416749986354,
+    "go": "go depth 1",
+    "time": 351,
+    "nodes": 30,
+    "nps": 85,
+    "depth": 1,
+    "seldepth": 2
+  },
+  "movetime2000": {
+    "actual": "2g2f",
+    "host_ms": 2118.6852799728513,
+    "go": "go movetime 2000",
+    "time": 2077,
+    "nodes": 793,
+    "nps": 381,
+    "depth": 7,
+    "seldepth": 9
+  },
+  "stop_seconds": 0.06550482497550547,
+  "passed": true,
+  "finished_utc": "2026-11-08T05:26:16.966931+00:00",
+  "image_sha256": "b9b9bc33b587a3d163d6c3a7a2ca049d6afa4613512c627c53b9c8f1e82989d7"
+}
