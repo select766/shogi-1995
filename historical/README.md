@@ -76,3 +76,18 @@ quit
 比較相手は明示した凍結manifestで固定し、image SHAを照合する。`--prepare-only` は実行引数の保存だけ。短い接続試験には `--backend qemu --depth 2 --max-plies 8`。先後入替2局で、短手数打切りの勝敗を棋力測定にしない。
 
 任意のUSIエンジン同士は `match.py --a '<JSON argv>' --b '<JSON argv>' --output <新規JSON>`。通常は2秒/手、明示的な200ms超過許容。GNUの時間超過はそのまま記録する。再現用に開始局面・時間条件・両エンジンの識別情報を保存し、同一の決定的な開始局面の反復を独立な標本として数えない。
+
+## ネイティブ GNU Shogi と10秒／手の評価
+
+`bash historical/build-native.sh` は 1.2p03 と `compatibility.patch` を現代ホスト向けに `.local/native-gnushogi/` へ構築する。探索・時間確認の変更は含まないが、互換性と局面読戻しのためのパッチを適用する。ホストのコンパイラ・ビルドオプションに依存する。再構築前には既存ディレクトリの扱いを確認する。
+
+`historical/usi.py --backend native` はこのネイティブバイナリを起動する。`historical/native-series.py` は開始手順を指定データから選び、凍結manifestのエンジンとの先後入替対局を行う。標準設定は1手10秒、256手（開始手順を含む）、50局面。手番の経過時間を記録し、10秒超過のみで負けにしない。90秒の応答待ちは異常検出であり、勝敗をつけない。異常が発生した場合はシリーズを中断して証跡を残すため、再開・補充はまだ自動化されていない。
+
+```bash
+TMPDIR=/tmp .local/venv/bin/python historical/native-series.py \
+  --output .local/native-series-example --backend 86box --pairs 50
+```
+
+`series.json` に条件・進捗・結果、`game-001.usi` 等に `startpos moves ...` 形式の棋譜を保存する。出力先が既存の場合は上書きしない。短い試験の `--backend qemu --depth 2 --max-plies 40 --pairs 1` は接続確認専用で、棋力評価には使わない。撮影用GUIとの接続・録画は先後入替の2局で検証済み。
+
+水匠5による評価・初期局面と対局中の推移、原版の不具合を分離した参考試験は [調査報告](../docs/gnu-shogi-suisho5-investigation.md) と [進捗](../results/suisho5-native-gnu-live/progress.md) に記録する。`recapture-audit.patch` と `ttclear-audit.patch` は別条件の実験用であり、本番バイナリには適用していない。撮影済み素材は `.local/match-video/recording-gnu-sente-02/` と `.local/match-video/recording-gnu-gote-02/` の `capture.mkv`、棋譜はそれぞれ `game.usi`。

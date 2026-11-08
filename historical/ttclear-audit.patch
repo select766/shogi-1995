@@ -1,0 +1,11 @@
+--- a/src/util.c
++++ b/src/util.c
+@@ -295 +294,0 @@
+-#ifndef BAREBONES
+@@ -296,0 +296 @@
++#ifndef BAREBONES
+@@ -362,2 +362,2 @@
+-   array_zero(ttable[black],(ttblsize+rehash));
+-   array_zero(ttable[white],(ttblsize+rehash));
++   array_zero(ttable[black],sizeof(struct hashentry)*(ttblsize+rehash));
++   array_zero(ttable[white],sizeof(struct hashentry)*(ttblsize+rehash));

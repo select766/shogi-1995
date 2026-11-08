@@ -108,7 +108,7 @@ proc startGame {} {
     send "new $player0 $player1 [expr $m*60] $i"
 }
 proc gameScreen {} {
-    global view lastBoard lastHands player0 player1 lastDestination
+    global view lastBoard lastHands player0 player1 lastDestination env
     set lastDestination -1
     set view game
     foreach w [winfo children .] {destroy $w}
@@ -116,7 +116,7 @@ proc gameScreen {} {
     pack .top -side top -fill x -padx 10 -pady 4
     foreach side {0 1} {
         set name [lindex {sente gote} $side]
-        caption .top.l$side ${name}_[set player$side]
+        if {[info exists env(SHOGI_MATCH_MODE)]} {label .top.l$side -text "" -width 13} else {caption .top.l$side ${name}_[set player$side]}
         label .top.t$side -text 05:00 -width 10 -relief sunken -font 9x15
         pack .top.l$side .top.t$side -side left -padx 7
     }
@@ -152,7 +152,7 @@ proc clockText {ms} {
     return [format "%s%02d:%02d" $prefix [expr $n/60] [expr $n%60]]
 }
 proc snapshot {fields} {
-    global turn active board hands status player0 player1 ply view lastBoard lastHands selected selectedDrop promotion
+    global turn active board hands status player0 player1 ply view lastBoard lastHands selected selectedDrop promotion env
     set turn [lindex $fields 1]; set active [lindex $fields 2]; set canDeclare [lindex $fields 3]
     set board [split [lindex $fields 6] ,]; set hands [split [lindex $fields 7] ,]
     set status [lindex $fields 8];set ply [lindex $fields 11]
@@ -162,7 +162,11 @@ proc snapshot {fields} {
     if {$view != "game"} {return}
     foreach side {0 1} {
         set name [lindex {sente gote} $side]
-        .top.l$side configure -bitmap [bm ${name}_[set player$side]]
+        if {[info exists env(SHOGI_MATCH_MODE)]} {
+            if {[set player$side] == "ai"} {set who "YaneuraOu"} else {set who "GNU Shogi"}
+            if {$side == 0} {set mark S} else {set mark G}
+            .top.l$side configure -text "$mark $who"
+        } else {.top.l$side configure -bitmap [bm ${name}_[set player$side]]}
         set ms [lindex $fields [expr 4+$side]]
         .top.t$side configure -text [clockText $ms]
         if {$side == $turn && $active} {set bg #fff3bd} else {set bg #d9d9d9}
@@ -176,7 +180,7 @@ proc snapshot {fields} {
     .bottom.action configure -bitmap [bm $action]
     if {$active} {
         .bottom.action configure -state normal; .bottom.next configure -state disabled
-        if {$status == "engine_starting"} {set label starting} elseif {[set player$turn] == "ai"} {set label thinking} elseif {$status == "check"} {set label check} else {set label choose}
+        if {$status == "engine_starting"} {set label starting} elseif {[info exists env(SHOGI_MATCH_MODE)] || [set player$turn] == "ai"} {set label thinking} elseif {$status == "check"} {set label check} else {set label choose}
     } else {
         .bottom.action configure -state disabled; .bottom.next configure -state normal
         if {[string match sente_wins* $status] || [string match gote_loses* $status]} {set label sente_win} elseif {[string match gote_wins* $status] || [string match sente_loses* $status]} {set label gote_win} elseif {[string match draw* $status]} {set label draw} else {set label failure}
@@ -335,6 +339,9 @@ proc debugState {fields} {
     puts $f $fields
     puts $f "selection $selected $selectedDrop"
     puts $f "records [llength $records] promotion [llength $promotion]"
+    set usimoves {}
+    foreach row $records {lappend usimoves [lindex $row 10]}
+    puts $f "moves $usimoves"
     close $f
 }
 settings

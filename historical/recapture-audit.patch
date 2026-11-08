@@ -1,0 +1,5 @@
+--- a/src/search.c
++++ b/src/search.c
+@@ -1110 +1110 @@
+-	  CptrFlag[ply] = (node->flags & capture);
++	  CptrFlag[ply] = !!(node->flags & capture);

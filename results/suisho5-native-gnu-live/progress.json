@@ -1,0 +1,252 @@
+{
+  "updated_jst": "2026-11-08T09:01:18.223799+09:00",
+  "score": {
+    "yaneuraou": 100,
+    "duplicate_excluded": 6
+  },
+  "series": [
+    {
+      "series": ".local/native-gnu-evaluation-20261107/series.json",
+      "finished": 50,
+      "complete_flag": true
+    },
+    {
+      "series": ".local/native-gnu-evaluation-20261107-worker2/series.json",
+      "finished": 50,
+      "complete_flag": true
+    },
+    {
+      "series": ".local/native-gnu-evaluation-supplement/series.json",
+      "finished": 6,
+      "complete_flag": true
+    }
+  ],
+  "suisho5": {
+    "games": 100,
+    "statistics": {
+      "gnu": {
+        "count": 1566,
+        "median_loss": 138.0,
+        "mean_loss": 705.4272030651341,
+        "loss_ge_200": 618,
+        "loss_ge_500": 299,
+        "largest_losses": [
+          {
+            "loss": 31888,
+            "game": 35,
+            "ply": 81,
+            "move": "8h7h",
+            "before": -3393,
+            "after": -35281,
+            "bestmove": "9g8f"
+          },
+          {
+            "loss": 31800,
+            "game": 12,
+            "ply": 56,
+            "move": "4b3c",
+            "before": -3481,
+            "after": -35281,
+            "bestmove": "2a3c"
+          },
+          {
+            "loss": 31366,
+            "game": 27,
+            "ply": 75,
+            "move": "6h6i",
+            "before": -3915,
+            "after": -35281,
+            "bestmove": "5h5g"
+          },
+          {
+            "loss": 31159,
+            "game": 71,
+            "ply": 77,
+            "move": "7h6h",
+            "before": -4122,
+            "after": -35281,
+            "bestmove": "7h6h"
+          },
+          {
+            "loss": 31050,
+            "game": 29,
+            "ply": 75,
+            "move": "B*3i",
+            "before": -4231,
+            "after": -35281,
+            "bestmove": "G*5h"
+          },
+          {
+            "loss": 31009,
+            "game": 75,
+            "ply": 67,
+            "move": "7h6g",
+            "before": -4272,
+            "after": -35281,
+            "bestmove": "7g8h"
+          },
+          {
+            "loss": 30914,
+            "game": 73,
+            "ply": 71,
+            "move": "8h6f",
+            "before": -4367,
+            "after": -35281,
+            "bestmove": "6h7g"
+          },
+          {
+            "loss": 30831,
+            "game": 52,
+            "ply": 54,
+            "move": "7f5d",
+            "before": -4450,
+            "after": -35281,
+            "bestmove": "7f8g+"
+          },
+          {
+            "loss": 30737,
+            "game": 76,
+            "ply": 60,
+            "move": "3b3c",
+            "before": -4544,
+            "after": -35281,
+            "bestmove": "B*5a"
+          },
+          {
+            "loss": 30678,
+            "game": 67,
+            "ply": 57,
+            "move": "B*3f",
+            "before": -4603,
+            "after": -35281,
+            "bestmove": "B*2e"
+          }
+        ]
+      },
+      "yaneuraou": {
+        "count": 1598,
+        "median_loss": -3.0,
+        "mean_loss": -106.02565707133917,
+        "loss_ge_200": 160,
+        "loss_ge_500": 23,
+        "largest_losses": [
+          {
+            "loss": 30213,
+            "game": 75,
+            "ply": 68,
+            "move": "G*6f",
+            "before": -35281,
+            "after": -5068,
+            "bestmove": "S*6f"
+          },
+          {
+            "loss": 29945,
+            "game": 95,
+            "ply": 82,
+            "move": "N*8e",
+            "before": -35281,
+            "after": -5336,
+            "bestmove": "S*7g"
+          },
+          {
+            "loss": 2233,
+            "game": 77,
+            "ply": 72,
+            "move": "6h5i",
+            "before": -5151,
+            "after": -2918,
+            "bestmove": "G*5h"
+          },
+          {
+            "loss": 1343,
+            "game": 58,
+            "ply": 65,
+            "move": "2c3c",
+            "before": -3726,
+            "after": -2383,
+            "bestmove": "6c6b+"
+          },
+          {
+            "loss": 985,
+            "game": 72,
+            "ply": 89,
+            "move": "3g2e",
+            "before": -5565,
+            "after": -4580,
+            "bestmove": "N*5e"
+          },
+          {
+            "loss": 944,
+            "game": 59,
+            "ply": 68,
+            "move": "P*8g",
+            "before": -5397,
+            "after": -4453,
+            "bestmove": "P*7f"
+          },
+          {
+            "loss": 881,
+            "game": 12,
+            "ply": 55,
+            "move": "P*3c",
+            "before": -4362,
+            "after": -3481,
+            "bestmove": "1d1c+"
+          },
+          {
+            "loss": 801,
+            "game": 6,
+            "ply": 61,
+            "move": "P*1c",
+            "before": -878,
+            "after": -77,
+            "bestmove": "G*3b"
+          },
+          {
+            "loss": 764,
+            "game": 24,
+            "ply": 45,
+            "move": "R*8e",
+            "before": -328,
+            "after": 436,
+            "bestmove": "P*8b"
+          },
+          {
+            "loss": 716,
+            "game": 71,
+            "ply": 68,
+            "move": "S*5g",
+            "before": -3426,
+            "after": -2710,
+            "bestmove": "8e8f"
+          }
+        ]
+      }
+    }
+  },
+  "recapture_test": {
+    "fix": 5,
+    "original": 1
+  },
+  "recapture_vs_yane": {
+    "yaneuraou": 6
+  },
+  "videos": [
+    {
+      "path": ".local/match-video/recording-gnu-sente-02",
+      "status": "complete",
+      "moves": 64,
+      "outcome": "gote_wins_mate",
+      "error": null,
+      "verification": "pass"
+    },
+    {
+      "path": ".local/match-video/recording-gnu-gote-02",
+      "status": "complete",
+      "moves": 39,
+      "outcome": "sente_wins_mate",
+      "error": null,
+      "verification": "pass"
+    }
+  ]
+}

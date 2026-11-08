@@ -26,3 +26,4 @@ bash scripts/setup.sh > /tmp/shogi-1995-setup.log 2>&1
 新規学習と候補モデルの検証手順は[学習・検証の手順](docs/training.md)を参照してください。主評価は固定したHCPE局面を86Box上で通常の2秒指定で探索し、収録手との一致率を比較します。
 
 - [1995年版GNU Shogiとの比較・再現ビルド](historical/README.md) / [選定と検証結果](docs/historical-engine-validation.md)
+- [GNU Shogi 対局と水匠5による調査報告](docs/gnu-shogi-suisho5-investigation.md) / [対局・録画の進捗](results/suisho5-native-gnu-live/progress.md)

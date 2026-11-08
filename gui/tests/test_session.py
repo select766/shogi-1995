@@ -65,6 +65,29 @@ class SessionTest(unittest.TestCase):
                 s.send('new human ai 300 10');f=s.state(lambda f:f[2]=='0')
                 self.assertIn('engine_',f[8])
             finally:s.close()
+    def test_fixed_byoyomi_go_command(self):
+        with tempfile.TemporaryDirectory() as d:
+            d=Path(d);engine=d/'engine';trace=d/'trace'
+            engine.write_text("""#!/usr/bin/env python3
+from pathlib import Path
+import sys
+trace=Path(__file__).with_name('trace')
+for line in sys.stdin:
+ line=line.strip()
+ with trace.open('a') as f: f.write(line+'\\n')
+ if line=='usi': print('usiok',flush=True)
+ elif line=='isready': print('readyok',flush=True)
+ elif line.startswith('go '): print('bestmove resign',flush=True)
+""")
+            engine.chmod(0o755)
+            cfg=d/'engine.conf';cfg.write_text(f'Engine={engine}\nEngineDir={d}\nMatchByoyomiMs=10000\n')
+            session=Session(cfg)
+            try:
+                session.send('new ai human 0 0')
+                session.state(lambda f:f[2]=='0')
+                self.assertIn('go btime 0 wtime 0 byoyomi 10000',trace.read_text())
+                self.assertNotIn('setoption name MatchByoyomiMs',trace.read_text())
+            finally: session.close()
     def test_single_engine_both_sides_and_restart(self):
         with tempfile.TemporaryDirectory() as d:
             d=Path(d);engine=d/'engine';trace=d/'trace'

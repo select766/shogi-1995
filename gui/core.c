@@ -13,6 +13,7 @@
 #include <stdarg.h>
 static Position pos,history[MAX_PLY+1];
 static int checks[MAX_PLY+1],players[2],ply,active,debug_mode,engine_state,engine_in=-1,engine_out=-1;
+static int match_byoyomi_ms, match_max_ply;
 static pid_t engine_pid=-1;
 static double remaining[2],increment,last_tick,deadline;
 static char moves[MAX_PLY][8],result[96]="settings",engine_path[1024]="/shogi",engine_dir[1024]="/";
@@ -56,7 +57,8 @@ static void think(void) {
     strcpy(command,"position startpos");
     if(ply) { strcat(command," moves"); for(i=0;i<ply;i++) { strcat(command," "); strcat(command,moves[i]); } }
     send_engine(command);
-    snprintf(t,sizeof(t),"go btime %.0f wtime %.0f binc %.0f winc %.0f",remaining[0]>0?remaining[0]*1000:0,remaining[1]>0?remaining[1]*1000:0,increment*1000,increment*1000);
+    if(match_byoyomi_ms) snprintf(t,sizeof(t),"go btime 0 wtime 0 byoyomi %d",match_byoyomi_ms);
+    else snprintf(t,sizeof(t),"go btime %.0f wtime %.0f binc %.0f winc %.0f",remaining[0]>0?remaining[0]*1000:0,remaining[1]>0?remaining[1]*1000:0,increment*1000,increment*1000);
     send_engine(t); engine_state=4;
 }
 static void accept(Move m) {
@@ -64,7 +66,7 @@ static void accept(Move m) {
     char text[8],r[96];
     tick(); move_text(m,text); strcpy(moves[ply],text);
     emit("move %d %d %d %d %d %d %d %d %d %s",ply+1,mover,9-m.to%9,m.to/9+1,v,m.promote,m.drop,m.from<0?0:9-m.from%9,m.from<0?0:m.from/9+1,text);
-    apply(&pos,m); remaining[mover]+=increment; ply++;
+    apply(&pos,m); remaining[mover]+=increment; if(match_byoyomi_ms) remaining[pos.turn]=match_byoyomi_ms/1000.0; ply++;
     history[ply]=pos; checks[ply]=in_check(&pos,pos.turn); strcpy(result,checks[ply]?"check":"playing");
     for(i=0;i<=ply;i++) if(memcmp(&history[i],&pos,sizeof(pos))==0) { if(!n) start=i; n++; }
     if(n>=4) {
@@ -73,7 +75,7 @@ static void accept(Move m) {
         else finish("draw_repetition"); return;
     }
     if(!has_legal(&pos)) { sprintf(r,"%s_wins_mate",mover?"gote":"sente"); finish(r); return; }
-    if(ply>=MAX_PLY) { finish("draw_move_limit"); return; }
+    if(ply>=MAX_PLY || (match_max_ply && ply>=match_max_ply)) { finish("draw_move_limit"); return; }
     last_tick=now(); snapshot(); think();
 }
 #ifdef SHOGI_GUI_LEGACY
@@ -141,6 +143,8 @@ static int load_config(const char *name) {
         *e=0; key=trim(s); s=trim(e+1);
         if(!strcmp(key,"Engine")) snprintf(engine_path,sizeof(engine_path),"%s",s);
         else if(!strcmp(key,"EngineDir")) snprintf(engine_dir,sizeof(engine_dir),"%s",s);
+        else if(!strcmp(key,"MatchByoyomiMs")) { match_byoyomi_ms=atoi(s); if(match_byoyomi_ms<0 || match_byoyomi_ms>3600000) { fclose(f); return 0; } }
+        else if(!strcmp(key,"MatchMaxPly")) { match_max_ply=atoi(s); if(match_max_ply<0 || match_max_ply>MAX_PLY) { fclose(f); return 0; } }
         else if(option_count<64&&strlen(key)+strlen(s)+2<sizeof(options[0])) snprintf(options[option_count++],sizeof(options[0]),"%s=%s",key,s);
         else { fclose(f); return 0; }
     }
@@ -152,7 +156,7 @@ static int command(char *s) {
     if(sscanf(s,"new %31s %31s %lf %lf %c",a,b,&t,&inc,&tail)==4) {
         if((strcmp(a,"human")&&strcmp(a,"ai"))||(strcmp(b,"human")&&strcmp(b,"ai"))||!(t>=0&&t<=86400)||!(inc>=0&&inc<=3600)) { emit("error invalid_settings"); return 1; }
         engine_close(); initial(&pos); ply=0; memset(checks,0,sizeof(checks)); history[0]=pos;
-        players[0]=!strcmp(a,"ai");players[1]=!strcmp(b,"ai"); remaining[0]=remaining[1]=t; increment=inc; active=1; last_tick=now(); strcpy(result,"playing"); emit("reset");
+        players[0]=!strcmp(a,"ai");players[1]=!strcmp(b,"ai"); remaining[0]=remaining[1]=match_byoyomi_ms ? match_byoyomi_ms/1000.0 : t; increment=inc; active=1; last_tick=now(); strcpy(result,"playing"); emit("reset");
         if(players[0]||players[1]) { strcpy(result,"engine_starting"); spawn_engine(); }
         snapshot();
     } else if(!strncmp(s,"move ",5)) {

@@ -1,0 +1,363 @@
+{
+  "source": ".local/suisho5-analysis/pass-002/analysis.json",
+  "analysis_complete": true,
+  "nodes": 500000,
+  "games": [
+    {
+      "game": 1,
+      "gnu_side": 0,
+      "start": {
+        "ply": 36,
+        "turn": 0,
+        "score_type": "cp",
+        "score_gnu": 23,
+        "depth": 13,
+        "nodes": 265018,
+        "bestmove": "7g6e",
+        "played_next": "3i4h",
+        "pv": "7g6e B*6d 3g4e 7a6b P*2c 2b3a R*8d P*8b 8f7f 4c4d 7i7h 8i4i+ 5h4i 6d1i+"
+      },
+      "last": {
+        "ply": 45,
+        "turn": 1,
+        "score_type": "mate",
+        "score_gnu": -1,
+        "depth": 8,
+        "nodes": 1308,
+        "bestmove": "G*5h",
+        "played_next": "G*5h",
+        "pv": "G*5h"
+      }
+    },
+    {
+      "game": 2,
+      "gnu_side": 1,
+      "start": {
+        "ply": 36,
+        "turn": 0,
+        "score_type": "cp",
+        "score_gnu": -23,
+        "depth": 13,
+        "nodes": 265018,
+        "bestmove": "7g6e",
+        "played_next": "P*8b",
+        "pv": "7g6e B*6d 3g4e 7a6b P*2c 2b3a R*8d P*8b 8f7f 4c4d 7i7h 8i4i+ 5h4i 6d1i+"
+      },
+      "last": {
+        "ply": 54,
+        "turn": 0,
+        "score_type": "mate",
+        "score_gnu": -1,
+        "depth": 8,
+        "nodes": 1678,
+        "bestmove": "R*4a",
+        "played_next": "R*4a",
+        "pv": "R*4a"
+      }
+    },
+    {
+      "game": 3,
+      "gnu_side": 0,
+      "start": {
+        "ply": 36,
+        "turn": 0,
+        "score_type": "cp",
+        "score_gnu": 16,
+        "depth": 17,
+        "nodes": 311883,
+        "bestmove": "4f4e",
+        "played_next": "4f4e",
+        "pv": "4f4e 4d5c 6g6f 6a5b 6h6g 8a9c 5f5e 5d5e P*5d 5c6b 7g6e 6c6d 5d5c+ 4b5c 6e5c 6b5c 3f4g 7d6c 6f6e 6c5d 6e6d"
+      },
+      "last": {
+        "ply": 87,
+        "turn": 1,
+        "score_type": "mate",
+        "score_gnu": -1,
+        "depth": 8,
+        "nodes": 2124,
+        "bestmove": "6g5f",
+        "played_next": "6g5f",
+        "pv": "6g5f"
+      }
+    },
+    {
+      "game": 4,
+      "gnu_side": 1,
+      "start": {
+        "ply": 36,
+        "turn": 0,
+        "score_type": "cp",
+        "score_gnu": -16,
+        "depth": 17,
+        "nodes": 311883,
+        "bestmove": "4f4e",
+        "played_next": "P*2d",
+        "pv": "4f4e 4d5c 6g6f 6a5b 6h6g 8a9c 5f5e 5d5e P*5d 5c6b 7g6e 6c6d 5d5c+ 4b5c 6e5c 6b5c 3f4g 7d6c 6f6e 6c5d 6e6d"
+      },
+      "last": {
+        "ply": 102,
+        "turn": 0,
+        "score_type": "mate",
+        "score_gnu": -1,
+        "depth": 8,
+        "nodes": 1421,
+        "bestmove": "G*3b",
+        "played_next": "G*3b",
+        "pv": "G*3b"
+      }
+    },
+    {
+      "game": 5,
+      "gnu_side": 0,
+      "start": {
+        "ply": 36,
+        "turn": 0,
+        "score_type": "cp",
+        "score_gnu": 4,
+        "depth": 16,
+        "nodes": 256985,
+        "bestmove": "2h2d",
+        "played_next": "2h2d",
+        "pv": "2h2d P*2c 2d2i 3a2b 9f9e 3b4c 4g4f 4a3b 5i5h 5c5d 4h4g 6d6e 6f6e 7c6e 7g6f P*6d 8i7g"
+      },
+      "last": {
+        "ply": 81,
+        "turn": 1,
+        "score_type": "mate",
+        "score_gnu": -1,
+        "depth": 8,
+        "nodes": 1858,
+        "bestmove": "G*6g",
+        "played_next": "G*6g",
+        "pv": "G*6g"
+      }
+    },
+    {
+      "game": 6,
+      "gnu_side": 1,
+      "start": {
+        "ply": 36,
+        "turn": 0,
+        "score_type": "cp",
+        "score_gnu": -4,
+        "depth": 16,
+        "nodes": 256985,
+        "bestmove": "2h2d",
+        "played_next": "2h2d",
+        "pv": "2h2d P*2c 2d2i 3a2b 9f9e 3b4c 4g4f 4a3b 5i5h 5c5d 4h4g 6d6e 6f6e 7c6e 7g6f P*6d 8i7g"
+      },
+      "last": {
+        "ply": 86,
+        "turn": 0,
+        "score_type": "mate",
+        "score_gnu": -1,
+        "depth": 8,
+        "nodes": 706,
+        "bestmove": "R*1b",
+        "played_next": "R*1b",
+        "pv": "R*1b"
+      }
+    }
+  ],
+  "statistics": {
+    "gnu": {
+      "count": 94,
+      "median_loss": 148.0,
+      "mean_loss": 305.52127659574467,
+      "loss_ge_200": 41,
+      "loss_ge_500": 18,
+      "largest_losses": [
+        {
+          "loss": 2489,
+          "game": 2,
+          "ply": 46,
+          "move": "8c9b",
+          "before": -2688,
+          "after": -5177,
+          "bestmove": "P*8b"
+        },
+        {
+          "loss": 1850,
+          "game": 3,
+          "ply": 45,
+          "move": "7h7i",
+          "before": -1048,
+          "after": -2898,
+          "bestmove": "9g7i"
+        },
+        {
+          "loss": 1610,
+          "game": 5,
+          "ply": 61,
+          "move": "5i6i",
+          "before": -2131,
+          "after": -3741,
+          "bestmove": "P*1h"
+        },
+        {
+          "loss": 1554,
+          "game": 6,
+          "ply": 76,
+          "move": "1i2i",
+          "before": -1552,
+          "after": -3106,
+          "bestmove": "B*1d"
+        },
+        {
+          "loss": 1502,
+          "game": 2,
+          "ply": 40,
+          "move": "B*3g",
+          "before": 166,
+          "after": -1336,
+          "bestmove": "6c6d"
+        },
+        {
+          "loss": 1130,
+          "game": 5,
+          "ply": 65,
+          "move": "4e5c",
+          "before": -4447,
+          "after": -5577,
+          "bestmove": "6i5h"
+        },
+        {
+          "loss": 971,
+          "game": 5,
+          "ply": 57,
+          "move": "S*8g",
+          "before": -400,
+          "after": -1371,
+          "bestmove": "6f6e"
+        },
+        {
+          "loss": 962,
+          "game": 2,
+          "ply": 44,
+          "move": "8b8c",
+          "before": -1485,
+          "after": -2447,
+          "bestmove": "8b7a"
+        },
+        {
+          "loss": 961,
+          "game": 4,
+          "ply": 42,
+          "move": "4d7g+",
+          "before": -106,
+          "after": -1067,
+          "bestmove": "P*2b"
+        },
+        {
+          "loss": 887,
+          "game": 4,
+          "ply": 74,
+          "move": "6c6d",
+          "before": -3317,
+          "after": -4204,
+          "bestmove": "5a4a"
+        }
+      ]
+    },
+    "yaneuraou": {
+      "count": 96,
+      "median_loss": 1.0,
+      "mean_loss": -288.3854166666667,
+      "loss_ge_200": 12,
+      "loss_ge_500": 4,
+      "largest_losses": [
+        {
+          "loss": 801,
+          "game": 6,
+          "ply": 61,
+          "move": "P*1c",
+          "before": -878,
+          "after": -77,
+          "bestmove": "G*3b"
+        },
+        {
+          "loss": 708,
+          "game": 4,
+          "ply": 75,
+          "move": "S*6c",
+          "before": -4204,
+          "after": -3496,
+          "bestmove": "9a6d"
+        },
+        {
+          "loss": 686,
+          "game": 5,
+          "ply": 40,
+          "move": "B*2f",
+          "before": -504,
+          "after": 182,
+          "bestmove": "5b4c"
+        },
+        {
+          "loss": 530,
+          "game": 6,
+          "ply": 59,
+          "move": "1h1i",
+          "before": -830,
+          "after": -300,
+          "bestmove": "1h2i"
+        },
+        {
+          "loss": 379,
+          "game": 6,
+          "ply": 79,
+          "move": "P*2b",
+          "before": -4020,
+          "after": -3641,
+          "bestmove": "P*2b"
+        },
+        {
+          "loss": 370,
+          "game": 3,
+          "ply": 62,
+          "move": "G*6i",
+          "before": -4120,
+          "after": -3750,
+          "bestmove": "7i7h"
+        },
+        {
+          "loss": 336,
+          "game": 5,
+          "ply": 56,
+          "move": "L*6d",
+          "before": -736,
+          "after": -400,
+          "bestmove": "P*6d"
+        },
+        {
+          "loss": 322,
+          "game": 3,
+          "ply": 56,
+          "move": "5a5b",
+          "before": -3906,
+          "after": -3584,
+          "bestmove": "6a5b"
+        },
+        {
+          "loss": 281,
+          "game": 4,
+          "ply": 61,
+          "move": "5i4h",
+          "before": -2002,
+          "after": -1721,
+          "bestmove": "7e6f"
+        },
+        {
+          "loss": 262,
+          "game": 4,
+          "ply": 47,
+          "move": "4f4e",
+          "before": -1395,
+          "after": -1133,
+          "bestmove": "7g6h"
+        }
+      ]
+    }
+  }
+}

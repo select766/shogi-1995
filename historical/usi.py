@@ -74,6 +74,14 @@ class Transport:
   # Keep logs for audit; TemporaryDirectory would otherwise remove them.
   self.temp._finalizer.detach()
 
+class NativeTransport(Transport):
+ def __init__(self,args):
+  self.args=args;self.temp=tempfile.TemporaryDirectory(prefix='gnushogi-native-',dir=args.run_root);self.run=Path(self.temp.name);self.buf=b'';self.fds=[];self.sel=selectors.DefaultSelector();self.log=(self.run/'transport.log').open('wb');self.events=(self.run/'commands.log').open('w',buffering=1);self.p=None
+  try:
+   self.p=subprocess.Popen([str(args.native_binary.resolve()),'-b','/dev/null','-B',str(self.run/'empty-book'),'10'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=self.log,start_new_session=True,cwd=self.run)
+   self.reader=self.p.stdout.fileno();self.writer=self.p.stdin.fileno();os.set_blocking(self.reader,False);self.sel.register(self.reader,selectors.EVENT_READ)
+   self.until(PROMPT,30)
+  except BaseException:self.close();raise
 def edit_commands(sfen):
  board,side,hand,_=sfen.split();placements=[[],[]]
  for rank,row in enumerate(board.split('/')):
@@ -90,6 +98,9 @@ def edit_commands(sfen):
 class Adapter:
  def __init__(self,args):self.args=args;self.t=None;self.live=False;self.board=None;self.queue=queue.Queue();self.position=None
  def ready(self):
+  if self.args.backend=='native':
+   if self.t:self.t.close()
+   self.t=NativeTransport(self.args);self.live=True;self.board=None;return
   if self.t is None:self.t=Transport(self.args)
   if self.live:self.t.send('quit');self.t.until(rb'guest1995# ')
   path='/work/old/src/gnushogir' if self.args.compiler=='old' else '/work/modern/gnushogir'
@@ -170,7 +181,7 @@ class Adapter:
     line=self.queue.get()
     if line is None or line=='quit':break
     if line=='usi':
-     emit('id name GNU Shogi 1.2p03 GCC '+json.loads((HERE/('manifest-'+self.args.compiler+'.json')).read_text())['compiler'].removeprefix('GCC ')+' adapter')
+     emit('id name GNU Shogi 1.2p03 GCC '+('native host' if self.args.backend=='native' else json.loads((HERE/('manifest-'+self.args.compiler+'.json')).read_text())['compiler'].removeprefix('GCC '))+' adapter')
      emit('id author Matthias Mutz; historical USI adapter')
      for name,value in FIXED.items():
       kind=('check default '+value if value in ('true','false') else 'spin default '+value+' min '+value+' max '+value if value.isdigit() else 'combo default '+value+' var '+value)
@@ -189,7 +200,7 @@ class Adapter:
   finally:
    if self.t:self.t.close()
 def main():
- p=argparse.ArgumentParser();p.add_argument('--backend',choices=('qemu','86box'),default='86box');p.add_argument('--compiler',choices=('old','modern'),default='old');p.add_argument('--research-root',type=Path,default=HERE.parent);p.add_argument('--run-root',type=Path,default=HERE/'runs');args=p.parse_args();args.run_root.mkdir(parents=True,exist_ok=True)
+ p=argparse.ArgumentParser();p.add_argument('--backend',choices=('qemu','86box','native'),default='86box');p.add_argument('--native-binary',type=Path,default=HERE.parent/'.local/native-gnushogi/src/gnushogir');p.add_argument('--compiler',choices=('old','modern'),default='old');p.add_argument('--research-root',type=Path,default=HERE.parent);p.add_argument('--run-root',type=Path,default=HERE/'runs');args=p.parse_args();args.run_root.mkdir(parents=True,exist_ok=True)
  def terminate(signum,frame):raise SystemExit(128+signum)
  signal.signal(signal.SIGTERM,terminate)
  Adapter(args).run()
