@@ -17,6 +17,9 @@ os.chdir(ROOT)
 run = ROOT / '.local/pentium100-dhry'
 run.mkdir(parents=True, exist_ok=True)
 source = Path(sys.argv[1] if len(sys.argv) > 1 else '/tmp/shogi-dhry-c').resolve()
+iterations = int(sys.argv[2]) if len(sys.argv) > 2 else 2_000_000
+if not 1 <= iterations <= 100_000_000:
+    raise SystemExit('iterations must be between 1 and 100000000')
 expected = '038a7e9169787125c3451a6c941f3aca5db2d2f3863871afcdce154ef17f4e3e'
 if hashlib.sha256(source.read_bytes()).hexdigest() != expected:
     raise SystemExit('Unexpected Dhrystone archive SHA-256')
@@ -60,7 +63,7 @@ sent = False
 start = time.monotonic()
 next_escape = start+8
 try:
-    while time.monotonic()-start < 240:
+    while time.monotonic()-start < 240 + iterations * 3 / 100_000:
         if proc.poll() is not None:
             raise RuntimeError('86Box exited; see emulator.log')
         if time.monotonic() >= next_escape:
@@ -72,7 +75,7 @@ try:
             sys.stdout.buffer.write(data)
             sys.stdout.buffer.flush()
             if not sent and b'guest1995# ' in buffer:
-                os.write(writer, b"echo BENCH_START; for n in 1 2 3; do echo 2000000 | /dhry; done; echo BENCH_DONE\n")
+                os.write(writer, f"echo BENCH_START; for n in 1 2 3; do echo {iterations} | /dhry; done; echo BENCH_DONE\n".encode())
                 sent = True
             if sent and b'BENCH_DONE\n' in buffer.replace(b'\r',b''):
                 break
@@ -87,7 +90,7 @@ finally:
     log.close()
 
 result = buffer.decode('ascii', errors='replace').replace('\r', '')
-for value, expected_value in [('Int_Glob', '5'), ('Bool_Glob', '1'), ('Ch_1_Glob', 'A'), ('Ch_2_Glob', 'B'), ('Arr_1_Glob[8]', '7'), ('Arr_2_Glob[8][7]', '2000010'), ('Int_1_Loc', '5'), ('Int_2_Loc', '13'), ('Int_3_Loc', '7'), ('Enum_Loc', '1')]:
+for value, expected_value in [('Int_Glob', '5'), ('Bool_Glob', '1'), ('Ch_1_Glob', 'A'), ('Ch_2_Glob', 'B'), ('Arr_1_Glob[8]', '7'), ('Arr_2_Glob[8][7]', str(iterations + 10)), ('Int_1_Loc', '5'), ('Int_2_Loc', '13'), ('Int_3_Loc', '7'), ('Enum_Loc', '1')]:
     found = re.findall(r'^' + re.escape(value) + r':\s*(\S+)', result, re.M)
     if found != [expected_value] * 3:
         raise SystemExit('Unexpected benchmark output for ' + value + ': ' + repr(found))
