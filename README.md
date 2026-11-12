@@ -1,6 +1,8 @@
 # shogi-1995
 2026年の将棋ソフトを1995年のパソコン環境に移植する実験
 
+将棋AIの大会「文部科学大臣杯第7回世界将棋AI電竜戦本戦」に出場予定。
+
 - [クローンからビルド・定跡・対局までの手順](docs/getting-started.md)
 - [最良候補のShogiHome用イメージ・Release添付物と再構築](docs/shogihome-release.md)
 - [企画と要件](idea.md)
