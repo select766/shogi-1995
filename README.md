@@ -30,3 +30,4 @@ bash scripts/setup.sh > /tmp/shogi-1995-setup.log 2>&1
 
 - [1995年版GNU Shogiとの比較・再現ビルド](historical/README.md) / [選定と検証結果](docs/historical-engine-validation.md)
 - [GNU Shogi 対局と水匠5による調査報告](docs/gnu-shogi-suisho5-investigation.md) / [対局・録画の進捗](results/suisho5-native-gnu-live/progress.md)
+- [GNU Shogi 対ランダム合法手の実験](docs/gnu-random-opponent.md)
