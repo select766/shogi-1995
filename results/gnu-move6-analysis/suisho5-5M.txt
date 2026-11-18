@@ -1,0 +1,24 @@
+=== 2g2f 3c3d 2f2e 5a6b 2e2d
+1 cp -212 2c2d 2h2d 4a3b 7g7f 8c8d 5i5h 8d8e 2d3d
+2 cp -1755 2b4d 2d2c+ 8c8d 7g7f 3a4b 8h4d 4c4d B*2b
+3 cp -1772 8c8d 2d2c+ 2b4d 7g7f 8d8e P*2b 8e8f 8g8f
+4 cp -1803 3d3e 2d2c+ 2b5e 5g5f 5e6d 2c2b 3e3f 3i4h
+bestmove 2c2d ponder 2h2d
+=== 2g2f 3c3d 2f2e 5a6b 2e2d 2b3c
+1 cp 2213 2d2c+ 3c5e 5g5f 5e4d 2c2d 4d3e 3i4h 3e2d
+2 cp 243 7g7f 2c2d 8h3c+ 2a3c B*2c 4a3b 2c3d+ B*2c
+3 cp 38 3i3h 2c2d 7g7f 4a3b 4g4f 3a2b 8h3c+ 2b3c
+4 cp 38 5i6h 2c2d 7g7f 4a3b 3i4h 3c8h+ 7i8h 3b3c
+bestmove 2d2c+ ponder 3c5e
+=== 2g2f 3c3d 2f2e 5a6b 2e2d 2c2d
+1 cp 212 2h2d 4a3b 7g7f 8c8d 5i5h 8d8e 2d3d 2b3c
+2 cp 71 7g7f 6b5a 6i7h 2b8h+ 7i8h 8b2b B*6e 3a3b
+3 cp 18 3i4h 2b3c 7g7f 3a2b 5i6h 4a3b 8h3c+ 2b3c
+4 cp 7 5i6h 2b3c 7g7f 4a3b 3i3h 3a2b 8h3c+ 2b3c
+bestmove 2h2d ponder 4a3b
+=== 2g2f 3c3d 2f2e 5a6b 2e2d 2c2d 2h2d P*2c 2d3d
+1 cp -300 7a7b 5i5h 3a3b 6i7h 8c8d 7g7f 3b3c 8h7g
+2 cp -331 8c8d 5i5h 3a3b 7g7f 3b3c 3i3h 1c1d 3g3f
+3 cp -337 6a5b 5i5h 8c8d 7g7f 8d8e 8h2b+ 3a2b B*7g
+4 cp -342 2b3c 5i5h 7a7b 7g7f 4a3b 8h7g 3a4b 3i3h
+bestmove 7a7b ponder 5i5h
